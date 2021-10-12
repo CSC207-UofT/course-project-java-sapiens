@@ -1,4 +1,4 @@
-package Java.controllers;
+package Java.use_cases;
 
 public class ShoppingListManager {
 }
