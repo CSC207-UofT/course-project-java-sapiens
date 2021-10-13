@@ -25,6 +25,7 @@ gradle-app.setting
 
 # Generated files
 .idea/**/contentModel.xml
+.idea/course-project-java-sapiens.iml
 
 # Sensitive or high-churn files
 .idea/**/dataSources/
