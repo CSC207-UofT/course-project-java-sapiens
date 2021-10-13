@@ -8,28 +8,28 @@ public class Customer extends User{
     }
 
     @Override
-    String getName() {
+    public String getName() {
         return null;
     }
 
 
     @Override
-    String getUname() {
+    public String getUname() {
         return null;
     }
 
     @Override
-    String getPassword() {
+    public String getPassword() {
         return null;
     }
 
     @Override
-    int getNumber() {
+    public int getNumber() {
         return 0;
     }
 
     @Override
-    int[] getLocation() {
+    public int[] getLocation() {
         return new int[0];
     }
 
