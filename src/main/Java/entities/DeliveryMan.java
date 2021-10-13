@@ -19,11 +19,11 @@ public class DeliveryMan extends User{
         return this.transport;
     }
 
-    int getSin(){
+    public int getSin(){
         return this.sin;
     }
 
-    float getRate(){
+    public float getRate(){
         return this.rate;
     }
 }
