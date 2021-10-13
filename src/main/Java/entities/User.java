@@ -1,4 +1,4 @@
-package Java.entities;
+package entities;
 
 public abstract class User {
 

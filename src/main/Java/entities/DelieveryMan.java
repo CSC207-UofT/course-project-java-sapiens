@@ -1,4 +1,4 @@
-package Java.entities;
+package entities;
 
 public class DelieveryMan extends User{
 
