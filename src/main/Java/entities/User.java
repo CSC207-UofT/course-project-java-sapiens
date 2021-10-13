@@ -20,18 +20,59 @@ User(String n, int[] l, int num, String user, String pass){
     this.password = pass;
 }
 
-abstract String getName();
+    public String getName() {
+        return name;
+    }
 
-abstract String getUname();
+    public void setName(String name) {
+        this.name = name;
+    }
 
-abstract String getPassword();
+    public int[] getLocation() {
+        return location;
+    }
 
-abstract int getNumber();
+    public void setLocation(int[] location) {
+        this.location = location;
+    }
 
-abstract int[] getLocation();
+    public int getNumber() {
+        return number;
+    }
 
-//abstract void setUname();
-//
-//abstract void setPassword();
+    public void setNumber(int number) {
+        this.number = number;
+    }
 
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getUname() {
+        return uname;
+    }
+
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
