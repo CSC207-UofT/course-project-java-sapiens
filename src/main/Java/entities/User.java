@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.Optional;
+
 public abstract class User {
 
 private String name;
@@ -27,4 +29,9 @@ abstract String getPassword();
 abstract int getNumber();
 
 abstract int[] getLocation();
+
+//abstract void setUname();
+//
+//abstract void setPassword();
+
 }
