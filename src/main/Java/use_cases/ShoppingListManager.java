@@ -12,13 +12,13 @@ import java.util.HashMap;
  */
 public class ShoppingListManager {
 
-    private HashMap<User, ShoppingList> userIDToShoppingList;
+    private HashMap<String, ShoppingList> userIDToShoppingList;
 
     /**
      * Create a ShoppingListManager with an empty userIDToShoppingList.
      */
     public ShoppingListManager(){
-        userIDToShoppingList = new HashMap<User, ShoppingList>();
+        userIDToShoppingList = new HashMap<String, ShoppingList>();
     }
 
     /**
@@ -28,6 +28,8 @@ public class ShoppingListManager {
      * @param userID user ID of the User.
      */
     public void newShoppingList(String outlet, String userID){
+        ShoppingList shoppingList = new ShoppingList();
+        userIDToShoppingList.put(userID, shoppingList);
     }
 
     /**
@@ -35,7 +37,8 @@ public class ShoppingListManager {
      * If user is not
      * @param userID user ID of the User.
      */
-    public void newShoppingList(User userID){
+    public void deleteShoppingList(String userID){
+        userIDToShoppingList.put(userID, null);
     }
 
     /**
