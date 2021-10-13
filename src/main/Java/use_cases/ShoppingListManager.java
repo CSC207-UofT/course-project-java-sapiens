@@ -1,7 +1,7 @@
 package use_cases;
 
-import Java.entities.Commodity;
-import Java.entities.ShoppingList;
+import entities.Commodity;
+import entities.ShoppingList;
 
 import java.util.HashMap;
 
