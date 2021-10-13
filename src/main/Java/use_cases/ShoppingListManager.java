@@ -49,7 +49,6 @@ public class ShoppingListManager {
      * @param commodity a Commodity.
      */
     public void addCommodity(String outlet, String userID, Commodity commodity){
-
     }
 
     /**
