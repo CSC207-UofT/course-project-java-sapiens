@@ -1,10 +1,8 @@
-package Java.use_cases;
+package use_cases;
 
 import Java.entities.Commodity;
 import Java.entities.ShoppingList;
-import Java.entities.User;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -46,9 +44,11 @@ public class ShoppingListManager {
      * If user is not
      * @param outlet name of the outlet.
      * @param userID user ID of the User.
-     * @param commodity a Commodity.
+     * @param commodityName name of commodity.
+     * @param commodityPrice price of commodity.
+     * @return a ShoppingList
      */
-    public void addCommodity(String outlet, String userID, Commodity commodity){
+    public ShoppingList addCommodity(String outlet, String userID, String commodityName, float commodityPrice){
     }
 
     /**
@@ -56,8 +56,10 @@ public class ShoppingListManager {
      * If user is not
      * @param outlet name of the outlet.
      * @param userID user ID of the User.
-     * @param commodity a Commodity.
+     * @param commodityName name of commodity.
+     * @param commodityPrice price of commodity.
+     * @return a ShoppingList
      */
-    public void removeCommodity(String outlet, String userID, Commodity commodity){
+    public ShoppingList removeCommodity(String outlet, String userID, String commodityName, float commodityPrice){
     }
 }
