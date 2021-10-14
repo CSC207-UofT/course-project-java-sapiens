@@ -8,16 +8,14 @@ public class Order {
     private DeliveryMan deliveryMan;
     private Customer customer;
     private final int UID;
-    private double price;
+    private ShoppingList shoppingList;
 
-    private HashMap<Outlet, ArrayList<Entity>> shoppingList;
-
-    public Order(DeliveryMan deliveryMan, Customer customer, int UID){
+    public Order(DeliveryMan deliveryMan, Customer customer, int UID, ShoppingList shoppingList){
         this.deliveryMan = deliveryMan;
         this.customer = customer;
         this.UID = UID;
         isComplete = false;
-        shoppingList = new HashMap<>();
+        this.shoppingList = shoppingList;
     }
 
     public boolean isComplete() {
@@ -46,16 +44,6 @@ public class Order {
 
     public int getUID() {
         return UID;
-    }
-
-    public void addEntity(Outlet outlet, Entity entity){
-        if(shoppingList.get(outlet) == null){
-            ArrayList<Entity> outletList = new ArrayList<>();
-            shoppingList.put(outlet, outletList);
-        }
-        else {
-            shoppingList.get(outlet).add(entity);
-        }
     }
 }
 

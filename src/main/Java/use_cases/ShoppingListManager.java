@@ -1,9 +1,10 @@
 package use_cases;
 
-import Java.entities.Commodity;
-import Java.entities.ShoppingList;
+import entities.Commodity;
+import entities.ShoppingList;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * Represents the entire system of Customers creating ShoppingLists.
@@ -21,18 +22,17 @@ public class ShoppingListManager {
 
     /**
      * Create and add a new ShoppingList and maps it to the User in userIDToShoppingList.
-     * If user is not
-     * @param outlet name of the outlet.
+     *
      * @param userID user ID of the User.
      */
-    public void newShoppingList(String outlet, String userID){
+    public void newShoppingList(String userID){
         ShoppingList shoppingList = new ShoppingList();
         userIDToShoppingList.put(userID, shoppingList);
     }
 
     /**
-     * remove the user's ShoppingList from userToShoppingLists.
-     * If user is not
+     * Remove the user's ShoppingList from userToShoppingLists.
+     *
      * @param userID user ID of the User.
      */
     public void deleteShoppingList(String userID){
@@ -41,25 +41,45 @@ public class ShoppingListManager {
 
     /**
      * Add commodity to the user's ShoppingList under the outlet.
-     * If user is not
-     * @param outlet name of the outlet.
+     *
      * @param userID user ID of the User.
+     * @param outlet name of the outlet.
      * @param commodityName name of commodity.
      * @param commodityPrice price of commodity.
-     * @return a ShoppingList
+     *
+     * @return the ShoppingList after change
      */
-    public ShoppingList addCommodity(String outlet, String userID, String commodityName, float commodityPrice){
+    public ShoppingList addCommodity(String userID, String outlet, String commodityName, double commodityPrice){
+        if (userIDToShoppingList.get(userID) == null){
+            newShoppingList(userID);
+        }
+//        for (Commodity comm : userIDToShoppingList.get(userID).getOutletHashMap(outlet).keySet()) {
+//            if (comm.getName().equals(commodityName)) {
+//                userIDToShoppingList.get(userID).addCommodity(outlet, comm);
+//                return userIDToShoppingList.get(userID);
+//            }
+//        }
+        Commodity commodity = new Commodity(commodityName, commodityPrice);
+        userIDToShoppingList.get(userID).addCommodity(outlet, commodity);
+        return userIDToShoppingList.get(userID);
     }
 
     /**
      * Remove commodity from the user's ShoppingList under the outlet.
-     * If user is not
-     * @param outlet name of the outlet.
+     *
      * @param userID user ID of the User.
+     * @param outlet name of the outlet.
      * @param commodityName name of commodity.
-     * @param commodityPrice price of commodity.
-     * @return a ShoppingList
+     *
+     * @return the ShoppingList after change
      */
-    public ShoppingList removeCommodity(String outlet, String userID, String commodityName, float commodityPrice){
+    public ShoppingList removeCommodity(String userID, String outlet, String commodityName) {
+        for (Commodity comm : userIDToShoppingList.get(userID).getOutletHashMap(outlet).keySet()) {
+            if (comm.getName().equals(commodityName)) {
+                userIDToShoppingList.get(userID).removeCommodity(outlet, comm);
+                return userIDToShoppingList.get(userID);
+            }
+        }
+        return null;
     }
 }
