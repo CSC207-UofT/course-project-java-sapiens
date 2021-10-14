@@ -1,5 +1,6 @@
 package use_cases;
 
+import entities.Commodity;
 import entities.ShoppingList;
 import org.junit.*;
 
@@ -19,13 +20,24 @@ public class ShoppingListManagerTest{
         String userID = "Dummy";
         shoppingListManager.newShoppingList(userID);
         shoppingListManager.addCommodity(userID, "Walmart", "Apple", 3.5);
+        shoppingListManager.addCommodity(userID, "Walmart", "Banana", 2);
         ShoppingList shoppingList = shoppingListManager.addCommodity(userID, "Walmart", "Apple", 3.5);
 
-        System.out.println(shoppingList.getTotalPrice());
-        assertEquals(7, shoppingList.getTotalPrice());
+        assertEquals(9, shoppingList.getTotalPrice(),0);
     }
 
     @Test(timeout = 50)
     public void testRemoveCommodity() {
+        String userID = "Dummy";
+        shoppingListManager.newShoppingList(userID);
+        shoppingListManager.addCommodity(userID, "Walmart", "Apple", 3.5);
+        shoppingListManager.addCommodity(userID, "Walmart", "Apple", 3.5);
+        ShoppingList shoppingList = shoppingListManager.removeCommodity(userID, "Walmart", "Apple");
+
+        System.out.println(shoppingList.getTotalPrice());
+        assertEquals(3.5, shoppingList.getTotalPrice(),0);
+
+        ShoppingList shoppingList2 = shoppingListManager.removeCommodity(userID, "Walmart", "Apple");
+        assertEquals(0, shoppingList.getTotalPrice(),0);
     }
 }
