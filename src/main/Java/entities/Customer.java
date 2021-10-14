@@ -6,13 +6,4 @@ public class Customer extends User{
         super(n, l, num, user, pass);
 
     }
-
-    @Override
-    public String getUname() {
-        return super.getUname();
-    }
-    @Override
-    public String getPassword() {
-        return super.getPassword();
-    }
 }
