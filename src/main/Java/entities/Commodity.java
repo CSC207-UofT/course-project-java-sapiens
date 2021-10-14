@@ -2,9 +2,9 @@ package entities;
 
 public class Commodity {
     private String name;
-    private float price;
+    private double price;
 
-    public Commodity(String name, float price){
+    public Commodity(String name, double price){
         this.name = name;
         this.price = price;
     }

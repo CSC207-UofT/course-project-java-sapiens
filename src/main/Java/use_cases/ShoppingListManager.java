@@ -23,10 +23,9 @@ public class ShoppingListManager {
     /**
      * Create and add a new ShoppingList and maps it to the User in userIDToShoppingList.
      *
-     * @param outlet name of the outlet.
      * @param userID user ID of the User.
      */
-    public void newShoppingList(String outlet, String userID){
+    public void newShoppingList(String userID){
         ShoppingList shoppingList = new ShoppingList();
         userIDToShoppingList.put(userID, shoppingList);
     }
@@ -42,13 +41,14 @@ public class ShoppingListManager {
 
     /**
      * Find the Commodity in userToShoppingLists by commodityName
-     * @param outlet name of the outlet.
+     *
      * @param userID user ID of the User.
+     * @param outlet name of the outlet.
      * @param commodityName name of commodity.
      *
      * @return the Commodity that has commodityName
      */
-    public Commodity commodityByName(String outlet, String userID, String commodityName) {
+    public Commodity commodityByName(String userID, String outlet, String commodityName) {
         for (Commodity comm: userIDToShoppingList.get(userID).getOutletHashMap(outlet).keySet()){
             if (comm.getName().equals(commodityName)){
                 return comm;
@@ -60,14 +60,14 @@ public class ShoppingListManager {
     /**
      * Add commodity to the user's ShoppingList under the outlet.
      *
-     * @param outlet name of the outlet.
      * @param userID user ID of the User.
+     * @param outlet name of the outlet.
      * @param commodityName name of commodity.
      * @param commodityPrice price of commodity.
      *
      * @return the ShoppingList after change
      */
-    public ShoppingList addCommodity(String outlet, String userID, String commodityName, float commodityPrice){
+    public ShoppingList addCommodity(String userID, String outlet, String commodityName, double commodityPrice){
         Commodity comm = commodityByName(outlet, userID, commodityName);
         if (Objects.isNull(comm)){
             Commodity commodity = new Commodity(commodityName, commodityPrice);
@@ -82,14 +82,14 @@ public class ShoppingListManager {
     /**
      * Remove commodity from the user's ShoppingList under the outlet.
      *
-     * @param outlet name of the outlet.
      * @param userID user ID of the User.
+     * @param outlet name of the outlet.
      * @param commodityName name of commodity.
      * @param commodityPrice price of commodity.
      *
      * @return the ShoppingList after change
      */
-    public ShoppingList removeCommodity(String outlet, String userID, String commodityName, float commodityPrice){
+    public ShoppingList removeCommodity(String userID, String outlet, String commodityName, double commodityPrice){
         Commodity comm = commodityByName(outlet, userID, commodityName);
         userIDToShoppingList.get(userID).removeCommodity(outlet, comm);
         return userIDToShoppingList.get(userID);
