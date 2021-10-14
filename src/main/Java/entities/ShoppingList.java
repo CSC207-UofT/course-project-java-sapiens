@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class ShoppingList {
 
-    private HashMap<Outlet, HashMap<Commodity, Integer>> shoppingList;
+    private HashMap<String, HashMap<Commodity, Integer>> shoppingList;
     private double totalPrice;
 
     public ShoppingList(){
@@ -20,11 +20,11 @@ public class ShoppingList {
         return totalPrice;
     }
 
-    public HashMap<Outlet, HashMap<Commodity, Integer>> getShoppingList() {
+    public HashMap<String, HashMap<Commodity, Integer>> getShoppingList() {
         return shoppingList;
     }
 
-    public void addCommodity(Outlet outlet, Commodity commodity){
+    public void addCommodity(String outlet, Commodity commodity){
         if(shoppingList.get(outlet) == null){
             // if the outlet is not there
             HashMap<Commodity, Integer> outletList = new HashMap<>();
@@ -43,7 +43,7 @@ public class ShoppingList {
         totalPrice += commodity.getPrice();
     }
 
-    public void removeCommodity(Outlet outlet, Commodity commodity){
+    public void removeCommodity(String outlet, Commodity commodity){
         if(shoppingList.get(outlet) == null || shoppingList.get(outlet).get(commodity) == null){
             //TODO: handle the exception
             System.out.println("No such commodity found");
@@ -56,5 +56,9 @@ public class ShoppingList {
                 shoppingList.get(outlet).put(commodity, currentQuantity - 1);
             totalPrice -= commodity.getPrice();
         }
+    }
+
+    public HashMap<Commodity, Integer> getOutletHashMap(String outlet){
+        return this.shoppingList.get(outlet);
     }
 }
