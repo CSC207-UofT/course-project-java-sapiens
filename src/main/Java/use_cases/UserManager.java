@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class UserManager<DeliveryMan,Customer> {
+public class UserManager {
     private HashMap<String, String> customers;
     private HashMap<String, String> deliverymans;
 
@@ -38,11 +38,14 @@ public class UserManager<DeliveryMan,Customer> {
 
     /**
      * checking if the consumer's input match the password
-     * @param
+     * @param uname and password
      */
     public boolean checkC(String uname, String password) {
         if (customers.get(uname).equals(password) ) {
             return true;
+        }
+        else if(customers.get(uname) == null){
+            return false;
         }
         else{
             return false;
@@ -56,6 +59,9 @@ public class UserManager<DeliveryMan,Customer> {
     public boolean checkD(String uname, String password) {
         if (deliverymans.get(uname).equals(password) ) {
             return true;
+        }
+        else if(deliverymans.get(uname) == null){
+            return false;
         }
         else{
             return false;
