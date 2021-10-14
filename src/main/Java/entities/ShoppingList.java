@@ -1,9 +1,5 @@
 package entities;
 
-import entities.Commodity;
-import entities.Outlet;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ShoppingList {
@@ -12,7 +8,7 @@ public class ShoppingList {
     private double totalPrice;
 
     public ShoppingList(){
-        shoppingList = null;
+        shoppingList = new HashMap<String, HashMap<Commodity, Integer>>();
         totalPrice = 0.0;
     }
 
@@ -20,9 +16,9 @@ public class ShoppingList {
         return totalPrice;
     }
 
-    public HashMap<String, HashMap<Commodity, Integer>> getShoppingList() {
-        return shoppingList;
-    }
+//    public HashMap<String, HashMap<Commodity, Integer>> getShoppingList() {
+//        return shoppingList;
+//    }
 
     public void addCommodity(String outlet, Commodity commodity){
         if(shoppingList.get(outlet) == null){

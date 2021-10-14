@@ -40,24 +40,6 @@ public class ShoppingListManager {
     }
 
     /**
-     * Find the Commodity in userToShoppingLists by commodityName
-     *
-     * @param userID user ID of the User.
-     * @param outlet name of the outlet.
-     * @param commodityName name of commodity.
-     *
-     * @return the Commodity that has commodityName
-     */
-    public Commodity commodityByName(String userID, String outlet, String commodityName) {
-        for (Commodity comm: userIDToShoppingList.get(userID).getOutletHashMap(outlet).keySet()){
-            if (comm.getName().equals(commodityName)){
-                return comm;
-            }
-        }
-        return null;
-    }
-
-    /**
      * Add commodity to the user's ShoppingList under the outlet.
      *
      * @param userID user ID of the User.
@@ -68,14 +50,17 @@ public class ShoppingListManager {
      * @return the ShoppingList after change
      */
     public ShoppingList addCommodity(String userID, String outlet, String commodityName, double commodityPrice){
-        Commodity comm = commodityByName(outlet, userID, commodityName);
-        if (Objects.isNull(comm)){
-            Commodity commodity = new Commodity(commodityName, commodityPrice);
-            userIDToShoppingList.get(userID).addCommodity(outlet, commodity);
+        if (userIDToShoppingList.get(userID) == null){
+            newShoppingList(userID);
         }
-        else {
-            userIDToShoppingList.get(userID).addCommodity(outlet, comm);
-        }
+//        for (Commodity comm : userIDToShoppingList.get(userID).getOutletHashMap(outlet).keySet()) {
+//            if (comm.getName().equals(commodityName)) {
+//                userIDToShoppingList.get(userID).addCommodity(outlet, comm);
+//                return userIDToShoppingList.get(userID);
+//            }
+//        }
+        Commodity commodity = new Commodity(commodityName, commodityPrice);
+        userIDToShoppingList.get(userID).addCommodity(outlet, commodity);
         return userIDToShoppingList.get(userID);
     }
 
@@ -85,13 +70,16 @@ public class ShoppingListManager {
      * @param userID user ID of the User.
      * @param outlet name of the outlet.
      * @param commodityName name of commodity.
-     * @param commodityPrice price of commodity.
      *
      * @return the ShoppingList after change
      */
-    public ShoppingList removeCommodity(String userID, String outlet, String commodityName, double commodityPrice){
-        Commodity comm = commodityByName(outlet, userID, commodityName);
-        userIDToShoppingList.get(userID).removeCommodity(outlet, comm);
-        return userIDToShoppingList.get(userID);
+    public ShoppingList removeCommodity(String userID, String outlet, String commodityName) {
+        for (Commodity comm : userIDToShoppingList.get(userID).getOutletHashMap(outlet).keySet()) {
+            if (comm.getName().equals(commodityName)) {
+                userIDToShoppingList.get(userID).removeCommodity(outlet, comm);
+                return userIDToShoppingList.get(userID);
+            }
+        }
+        return null;
     }
 }
