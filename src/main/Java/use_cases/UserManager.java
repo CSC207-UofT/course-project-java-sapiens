@@ -41,15 +41,13 @@ public class UserManager {
      * @param uname and password
      */
     public boolean checkC(String uname, String password) {
-        if (customers.get(uname).equals(password) ) {
-            return true;
-        }
-        else if(customers.get(uname) == null){
+        if(customers.get(uname) == null){
             return false;
         }
         else{
-            return false;
+            return customers.get(uname).equals(password);
         }
+
     }
 
     /**
@@ -57,14 +55,12 @@ public class UserManager {
      * @param uname and password
      */
     public boolean checkD(String uname, String password) {
-        if (deliverymans.get(uname).equals(password) ) {
-            return true;
-        }
-        else if(deliverymans.get(uname) == null){
+        if(deliverymans.get(uname) == null){
             return false;
         }
         else{
-            return false;
+            return deliverymans.get(uname).equals(password);
         }
+
     }
 }
