@@ -87,7 +87,7 @@ Responsibilities:
 
 Collaborators: Customer, DeliveryMan  
 
-#Controller:  
+# Controller:  
 ### Class name: OrderSystem  
 Sub-classes:  
 Responsibilities:  
@@ -95,7 +95,7 @@ Responsibilities:
 
 Collaborators: All use cases
 
-#Text User Interface:
+# Text User Interface:
 ### Class name: SystemInOut (Tyner)
 Sub-classes:  
 Responsibilities:  
