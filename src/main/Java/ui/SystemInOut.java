@@ -3,9 +3,8 @@ package ui;
 import java.util.Scanner;
 
 /**
- * Running this class starts the program in the console.
- * User then can enter corresponding command into the console.
- * This class will keep running until the user type in "quit".
+ * This file contains the UI class that is in charge of collecting user
+ * inputs and presenting program outputs.
  */
 public class SystemInOut {
 
