@@ -21,6 +21,17 @@ public class ShoppingListManager implements DBManager<String, ShoppingList> {
     }
 
     /**
+     * Get ShoppingList given a userID.
+     *
+     * @param userID user ID of the User.
+     *
+     * @return the ShoppingList of the userID.
+     */
+    public ShoppingList getShoppingList(String userID){
+        return this.userIDToShoppingList.get(userID);
+    }
+
+    /**
      * Create and add a new ShoppingList and maps it to the User in userIDToShoppingList.
      *
      * @param userID user ID of the User.
