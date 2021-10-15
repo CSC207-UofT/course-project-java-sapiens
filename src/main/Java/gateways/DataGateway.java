@@ -1,4 +1,4 @@
-package Java.gateways;
+package gateways;
 
 public class DataGateway {
 }

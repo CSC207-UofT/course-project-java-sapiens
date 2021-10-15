@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class UserManager {
+public class UserManager implements DBManager<String, String> {
     private HashMap<String, String> customers;
     private HashMap<String, String> deliverymans;
 
@@ -62,5 +62,27 @@ public class UserManager {
             return deliverymans.get(uname).equals(password);
         }
 
+    }
+
+    /**
+     * All Manager classes in use_cases have some transactions to save.
+     *
+     * @param obj The 'key' with which the database can be queried
+     * @param val The corresponding object
+     */
+    @Override
+    public void save(String obj, String val) {
+
+    }
+
+    /**
+     * All Manager classes query the database for a specific object type that it is managing.
+     *
+     * @param obj The 'key' with which the database can be queried.
+     * @return The corresponding object
+     */
+    @Override
+    public String get(String obj) {
+        return null;
     }
 }

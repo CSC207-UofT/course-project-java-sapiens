@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * Represents the entire system of Customers creating ShoppingLists.
  */
-public class ShoppingListManager {
+public class ShoppingListManager implements DBManager<String, ShoppingList> {
 
     private HashMap<String, ShoppingList> userIDToShoppingList;
 
@@ -80,6 +80,28 @@ public class ShoppingListManager {
                 return userIDToShoppingList.get(userID);
             }
         }
+        return null;
+    }
+
+    /**
+     * All Manager classes in use_cases have some transactions to save.
+     *
+     * @param obj The 'key' with which the database can be queried
+     * @param val The corresponding object
+     */
+    @Override
+    public void save(String obj, ShoppingList val) {
+
+    }
+
+    /**
+     * All Manager classes query the database for a specific object type that it is managing.
+     *
+     * @param obj The 'key' with which the database can be queried.
+     * @return The corresponding object
+     */
+    @Override
+    public ShoppingList get(String obj) {
         return null;
     }
 }
