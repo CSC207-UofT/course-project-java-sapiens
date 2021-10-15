@@ -1,5 +1,6 @@
 # Entities:
-##Class name: User (Sidharth)
+
+###Class name: User (Sidharth)
 Sub-classes: Customer, DeliveryMan  
 Responsibilities:
 - Store info (name, location, phone number, rating, comment, username, password)  
