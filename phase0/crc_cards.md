@@ -1,21 +1,21 @@
 # Entities:
 
-###Class name: User (Sidharth)
+### Class name: User (Sidharth)
 Sub-classes: Customer, DeliveryMan  
 Responsibilities:
 - Store info (name, location, phone number, rating, comment, username, password)  
 
-###Class name: Customer (Sidharth)
+### Class name: Customer (Sidharth)
 Parent class: User  
 Responsibilities:  
 - Store additional info (past orders)  
 
-###Class name: DeliveryMan (Sidharth)  
+### Class name: DeliveryMan (Sidharth)  
 Parent class: User  
 Responsibilities:  
 - Store additional info (legal identification, transportation used to deliver, and how their service is charged, deposited money(in case they run away))
 
-###Class name: ShoppingList (Ansh)
+### Class name: ShoppingList (Ansh)
 Responsibilities:  
 - Store total price  
 - Store a Hashmap of store/location/outlet to a List of Commodities  
@@ -23,14 +23,14 @@ Responsibilities:
 
 Collaborators: Customer, DeliveryMan
 
-###Class name:  Messenger
+### Class name:  Messenger
 Responsibilities:  
 - Store chat history  
 - Store the Customer and DeliveryMan in this chat  
 
 Collaborators: Customer, DeliveryMan  
 
-###Class name: Order (Nikhil)
+### Class name: Order (Nikhil)
 Responsibilities:  
 - Map Customer, DeliveryMan, and ShoppingList for this order.
 - Store transaction detail (time to complete, money earned for our app, order status, payment method)
@@ -38,20 +38,20 @@ Responsibilities:
 
 Collaborators: shopping list, customer, DeliveryMan  
 
-###Class name: Commodity
+### Class name: Commodity
 Responsibilities:
 - Stores characteristics of the commodity. (name, price)
 
 
 # Use Cases:
-###Class name: DBManager (interface)  
+### Class name: DBManager (interface)  
 Sub-classes: UserManager, OrderManager, MessengerManager  
 Responsibilities: 
 - save and get methods used for DB transactions (implemented by children)   
 
 Collaborators:  
 
-###Class name: UserManager (Patrick)  
+### Class name: UserManager (Patrick)  
 Sub-classes:  
 Responsibilities:  
 - Store a Hashmap of userID to User 
@@ -61,7 +61,7 @@ Responsibilities:
 
 Collaborators: Customer, DeliveryMan  
 
-###Class name: OrderManager (Nikhil)
+### Class name: OrderManager (Nikhil)
 Parent-classes: DBManager
 Responsibilities:  
 - Create Order
@@ -69,7 +69,7 @@ Responsibilities:
 
 Collaborators: Order  
 
-###Class name: ShoppingListManager (Kevin)
+### Class name: ShoppingListManager (Kevin)
 Parent-classes: DBManager  
 Responsibilities:  
 - Store a Hashmap of userID to ShoppingList 
@@ -79,7 +79,7 @@ Responsibilities:
 
 Collaborators: ShoppingList, Commodity  
 
-###Class name: MessengerManager
+### Class name: MessengerManager
 Parent-classes: DBManager  
 Responsibilities:  
 - Create a Messenger  
@@ -88,7 +88,7 @@ Responsibilities:
 Collaborators: Customer, DeliveryMan  
 
 #Controller:  
-###Class name: OrderSystem  
+### Class name: OrderSystem  
 Sub-classes:  
 Responsibilities:  
 - Takes input from UI and identifies which command the user is trying to execute then calls the corresponding use case.
@@ -96,7 +96,7 @@ Responsibilities:
 Collaborators: All use cases
 
 #Text User Interface:
-###Class name: SystemInOut (Tyner)
+### Class name: SystemInOut (Tyner)
 Sub-classes:  
 Responsibilities:  
 - Take inputs from the console and send outputs to the console
