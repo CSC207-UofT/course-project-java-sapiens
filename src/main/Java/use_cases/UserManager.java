@@ -3,14 +3,17 @@ package use_cases;
 //import entities.Customer;
 //import entities.DeliveryMan;
 
-import java.util.ArrayList;
+import entities.Customer;
+import entities.DeliveryMan;
+
 import java.util.HashMap;
-import java.util.List;
 
 public class UserManager implements DBManager<String, String> {
     private HashMap<String, String> customers;
     private HashMap<String, String> deliverymans;
 
+    private HashMap<String, Customer> customerMap;
+    private HashMap<String, DeliveryMan> deliverymanMap;
     /**
      * Creates a UserManager with lists of customer and delivery man that are empty
      */
@@ -19,6 +22,22 @@ public class UserManager implements DBManager<String, String> {
         deliverymans = new HashMap<String, String>();
     }
 
+
+    /**
+     * create a new customer object
+     * @param uname and password to be stored
+     */
+    public void createC(String name, String uname, String password) {
+        customerMap.put(uname, new Customer(name, uname, password));
+    }
+
+    /**
+     * create a new customer object
+     * @param uname and password to be stored
+     */
+    public void createD(String name, String uname, String password) {
+        deliverymanMap.put(uname, new DeliveryMan(name, uname, password));
+    }
 
     /**
      * Stores the uname and password in this customers' class list.

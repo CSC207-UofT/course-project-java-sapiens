@@ -20,6 +20,13 @@ User(String n, int[] l, int num, String user, String pass){
     this.password = pass;
 }
 
+
+    public User(String n, String user, String pass) {
+        this.name = n;
+        this.uname = user;
+        this.password = pass;
+    }
+
     public String getName() {
         return name;
     }
