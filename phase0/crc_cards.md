@@ -110,7 +110,7 @@ Responsibilities:
 - Load data from a local file, and create corresponding entities through their controllers.  
 - Read and modify the info of entities through respective managers on a local file.  
 
-Collaborators: LoginRegistrationController, ShoppingListController. 
+Collaborators: LoginRegistrationController, ShoppingListController
 
 
 
