@@ -33,5 +33,5 @@ Now, The Managers hand the transfer of control (via database) to the entities, w
 - Patrick: UserManager class
 - Nikhil: DBManager.class, OrderManager.class, Order.class
 - Sidharth Sachdev: User, Customer, DeliveryMan, Scenario Walkthrough, assisted with the ui.
-- Tyner:
-- Ansh:
+- Tyner: Main.java, SystemInOut class, OrderSystem class.
+- Ansh: ShoppingList class
