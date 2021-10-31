@@ -4,11 +4,11 @@ import java.util.HashMap;
 
 public class ShoppingList {
 
-    private HashMap<String, HashMap<Commodity, Integer>> shoppingList;
+    private HashMap<String, HashMap<Commodity, Integer>> shoppingList; // TODO: prevent hashmap of hashmap
     private double totalPrice;
 
     public ShoppingList(){
-        shoppingList = new HashMap<String, HashMap<Commodity, Integer>>();
+        shoppingList = new HashMap<>();
         totalPrice = 0.0;
     }
 

@@ -1,8 +1,5 @@
 package entities;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class Order {
     private boolean isComplete;
     private DeliveryMan deliveryMan;

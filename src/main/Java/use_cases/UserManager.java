@@ -1,8 +1,5 @@
 package use_cases;
 
-//import entities.Customer;
-//import entities.DeliveryMan;
-
 import entities.Customer;
 import entities.DeliveryMan;
 
@@ -73,7 +70,7 @@ public class UserManager implements DBManager<String, String> {
      * checking if the deliveryMan's input match the password
      * @param uname and password
      */
-    public boolean checkD(String uname, String password) {
+    public boolean checkD(String uname, String password) { //TODO: Make custom managers local to entity.
         if(deliverymans.get(uname) == null){
             return false;
         }
