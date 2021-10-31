@@ -1,7 +1,5 @@
 package entities;
 
-import java.util.Optional;
-
 public abstract class User {
 
 private String name;

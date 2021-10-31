@@ -25,7 +25,6 @@ public class DeliveryMan extends User{
     }
 
 
-
 //    String getTransport(){
 //        return this.transport;
 //    }

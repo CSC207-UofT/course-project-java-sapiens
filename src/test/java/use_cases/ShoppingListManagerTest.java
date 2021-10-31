@@ -1,10 +1,8 @@
 package use_cases;
 
-import entities.Commodity;
 import entities.ShoppingList;
 import org.junit.*;
 
-import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 
