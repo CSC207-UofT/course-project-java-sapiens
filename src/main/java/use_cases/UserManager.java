@@ -6,6 +6,7 @@ import entities.DeliveryMan;
 import java.util.HashMap;
 
 public class UserManager extends DBManager<String, String> {
+    //TODO: Shift role over to Customer and Delivery Man
     private HashMap<String, String> customers;
     private HashMap<String, String> deliverymans;
 
