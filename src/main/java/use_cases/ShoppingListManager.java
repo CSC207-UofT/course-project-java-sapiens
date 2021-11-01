@@ -3,13 +3,14 @@ package use_cases;
 import entities.Commodity;
 import entities.ShoppingList;
 
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Objects;
 
 /**
  * Represents the entire system of Customers creating ShoppingLists.
  */
-public class ShoppingListManager implements DBManager<String, ShoppingList> {
+public class ShoppingListManager extends DBManager<String, ShoppingList> {
 
     private HashMap<String, ShoppingList> userIDToShoppingList;
 
@@ -17,6 +18,7 @@ public class ShoppingListManager implements DBManager<String, ShoppingList> {
      * Create a ShoppingListManager with an empty userIDToShoppingList.
      */
     public ShoppingListManager(){
+        super();
         userIDToShoppingList = new HashMap<String, ShoppingList>();
     }
 

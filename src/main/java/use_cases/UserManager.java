@@ -5,7 +5,7 @@ import entities.DeliveryMan;
 
 import java.util.HashMap;
 
-public class UserManager implements DBManager<String, String> {
+public class UserManager extends DBManager<String, String> {
     private HashMap<String, String> customers;
     private HashMap<String, String> deliverymans;
 
@@ -15,6 +15,7 @@ public class UserManager implements DBManager<String, String> {
      * Creates a UserManager with lists of customer and delivery man that are empty
      */
     public UserManager() {
+        super();
         customers = new HashMap<String, String>();
         deliverymans = new HashMap<String, String>();
     }

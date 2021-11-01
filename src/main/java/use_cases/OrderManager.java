@@ -5,8 +5,10 @@ import entities.DeliveryMan;
 import entities.Order;
 import entities.ShoppingList;
 
+import java.io.FileNotFoundException;
 
-public class OrderManager implements DBManager<Integer, Order> {
+
+public class OrderManager extends DBManager<Integer, Order> {
 
     public int generateUID(){
         return 1546; //Assume there have been 1546 orders before (Need to sync with database) Hardcoded for now
