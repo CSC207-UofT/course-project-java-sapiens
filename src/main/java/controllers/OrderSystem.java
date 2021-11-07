@@ -2,7 +2,7 @@ package controllers;
 
 import ui.SystemInOut;
 import use_cases.OrderManager;
-import use_cases.ShoppingListManager;
+import use_cases.ShoppingListManagerOld;
 import use_cases.UserManager;
 
 /**
@@ -46,7 +46,7 @@ public class OrderSystem {
         // After login:
         // Create a ShoppingListManager for later order placement
         // Create a OrderManager for later order placement (not implemented for phase 0)
-        ShoppingListManager slM = new ShoppingListManager();
+        ShoppingListManagerOld slM = new ShoppingListManagerOld();
 
         // Starts to receive commands
         while (true) {
@@ -76,7 +76,7 @@ public class OrderSystem {
                 case "place order": // If the user enters place order, start the order placement procedure.
 
                     // collects all the information needed to form an Order.
-                    ShoppingListManager result = orderPlacement(inOut, slM);
+                    ShoppingListManagerOld result = orderPlacement(inOut, slM);
 
                     // should call OrderManager here to create Order, but hardcoded for now
                     if (result != null) {
@@ -136,7 +136,7 @@ public class OrderSystem {
     /**
      * This method is in charge of collection information for the order placement.
      */
-    private ShoppingListManager orderPlacement(SystemInOut inOut, ShoppingListManager slM){
+    private ShoppingListManagerOld orderPlacement(SystemInOut inOut, ShoppingListManagerOld slM){
 
         // repeat the process until user enters finish or cancel
         while (true){
@@ -186,7 +186,7 @@ public class OrderSystem {
      * This method is a helper for orderPlacement().
      * Manages the commodity addition to a certain location.
      */
-    private ShoppingListManager addComs(SystemInOut inOut, ShoppingListManager slM, String location){
+    private ShoppingListManagerOld addComs(SystemInOut inOut, ShoppingListManagerOld slM, String location){
         String command;
         String comName;
         double comPrice;
