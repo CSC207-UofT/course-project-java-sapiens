@@ -1,25 +1,23 @@
 package use_cases;
 
 import entities.Commodity;
-import entities.ShoppingList;
+import entities.ShoppingListOld;
 
-import java.io.FileNotFoundException;
 import java.util.HashMap;
-import java.util.Objects;
 
 /**
  * Represents the entire system of Customers creating ShoppingLists.
  */
-public class ShoppingListManager extends DBManager<String, ShoppingList> {
+public class ShoppingListManagerOld extends DBManager<String, ShoppingListOld> {
 
-    private HashMap<String, ShoppingList> userIDToShoppingList;
+    private HashMap<String, ShoppingListOld> userIDToShoppingList;
 
     /**
      * Create a ShoppingListManager with an empty userIDToShoppingList.
      */
-    public ShoppingListManager(){
+    public ShoppingListManagerOld(){
         super();
-        userIDToShoppingList = new HashMap<String, ShoppingList>();
+        userIDToShoppingList = new HashMap<String, ShoppingListOld>();
     }
 
     /**
@@ -29,7 +27,7 @@ public class ShoppingListManager extends DBManager<String, ShoppingList> {
      *
      * @return the ShoppingList of the userID.
      */
-    public ShoppingList getShoppingList(String userID){
+    public ShoppingListOld getShoppingList(String userID){
         return this.userIDToShoppingList.get(userID);
     }
 
@@ -39,8 +37,8 @@ public class ShoppingListManager extends DBManager<String, ShoppingList> {
      * @param userID user ID of the User.
      */
     public void newShoppingList(String userID){
-        ShoppingList shoppingList = new ShoppingList();
-        userIDToShoppingList.put(userID, shoppingList);
+        ShoppingListOld shoppingListOld = new ShoppingListOld();
+        userIDToShoppingList.put(userID, shoppingListOld);
     }
 
     /**
@@ -62,7 +60,7 @@ public class ShoppingListManager extends DBManager<String, ShoppingList> {
      *
      * @return the ShoppingList after change
      */
-    public ShoppingList addCommodity(String userID, String outlet, String commodityName, double commodityPrice){
+    public ShoppingListOld addCommodity(String userID, String outlet, String commodityName, double commodityPrice){
         if (userIDToShoppingList.get(userID) == null){
             newShoppingList(userID);
         }
@@ -86,7 +84,7 @@ public class ShoppingListManager extends DBManager<String, ShoppingList> {
      *
      * @return the ShoppingList after change
      */
-    public ShoppingList removeCommodity(String userID, String outlet, String commodityName) {
+    public ShoppingListOld removeCommodity(String userID, String outlet, String commodityName) {
         for (Commodity comm : userIDToShoppingList.get(userID).getOutletHashMap(outlet).keySet()) {
             if (comm.getName().equals(commodityName)) {
                 userIDToShoppingList.get(userID).removeCommodity(outlet, comm);
@@ -103,7 +101,7 @@ public class ShoppingListManager extends DBManager<String, ShoppingList> {
      * @param val The corresponding object
      */
     @Override
-    public void save(String obj, ShoppingList val) {
+    public void save(String obj, ShoppingListOld val) {
 
     }
 
@@ -114,7 +112,7 @@ public class ShoppingListManager extends DBManager<String, ShoppingList> {
      * @return The corresponding object
      */
     @Override
-    public ShoppingList get(String obj) {
+    public ShoppingListOld get(String obj) {
         return null;
     }
 }

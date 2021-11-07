@@ -2,12 +2,13 @@ package entities;
 
 import java.util.HashMap;
 
-public class ShoppingList {
+public class ShoppingListOld {
 
-    private HashMap<String, HashMap<Commodity, Integer>> shoppingList; // TODO: prevent hashmap of hashmap
+    private HashMap<String, HashMap<Commodity, Integer>> shoppingList;
+    // TODO: prevent hashmap of hashmap, use a list of Commodities instead, with Commodity objects store its own quantity
     private double totalPrice;
 
-    public ShoppingList(){
+    public ShoppingListOld(){
         shoppingList = new HashMap<>();
         totalPrice = 0.0;
     }
