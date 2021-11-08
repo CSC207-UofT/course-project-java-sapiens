@@ -3,7 +3,7 @@ package use_cases;
 import entities.Customer;
 import entities.DeliveryMan;
 import entities.Order;
-import entities.ShoppingList;
+//import entities.ShoppingList;
 
 import java.io.FileNotFoundException;
 
@@ -14,18 +14,18 @@ public class OrderManager extends DBManager<Integer, Order> {
         return 1546; //Assume there have been 1546 orders before (Need to sync with database) Hardcoded for now
     }
 
-    /**
-     * Creates an Order
-     *
-     * @param deliveryMan Delivery man of new order
-     * @param customer Customer of new order
-     * @param shoppingList The shoppingList that the customer has added
-     * @return required order.
-     */
-    public Order createOrder(DeliveryMan deliveryMan, Customer customer, ShoppingList shoppingList){
-        int currUID = generateUID();
-        return new Order(deliveryMan, customer, ++currUID ,shoppingList);
-    }
+//    /**
+//     * Creates an Order
+//     *
+//     * @param deliveryMan Delivery man of new order
+//     * @param customer Customer of new order
+//     * @param shoppingList The shoppingList that the customer has added
+//     * @return required order.
+//     */
+//    public Order createOrder(DeliveryMan deliveryMan, Customer customer, ShoppingList shoppingList){
+//        int currUID = generateUID();
+//        return new Order(deliveryMan, customer, ++currUID ,shoppingList);
+//    }
 
     /**
      * Provided the UID of the required order, get its information in the form of

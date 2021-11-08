@@ -10,19 +10,20 @@ import java.io.FileInputStream;
 
 public abstract class DBManager<K, V> {
 
+    FirebaseDatabase database;
     DatabaseReference ref;
 
     public DBManager(){
         try {
-            FileInputStream serviceAccount =  new FileInputStream("../../resources/java-sapiens-10b7745de594.json");
+            FileInputStream serviceAccount =  new FileInputStream("/home/vic/Sapiens/src/main/resources/java-sapiens-10b7745de594.json");
 
             FirebaseOptions options = FirebaseOptions.builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .setDatabaseUrl("https://console.firebase.google.com/project/java-sapiens/database/java-sapiens-default-rtdb/data/~2F")
+                    .setDatabaseUrl("https://java-sapiens-default-rtdb.firebaseio.com/")
                     .build();
             FirebaseApp.initializeApp(options);
 
-            DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+            database = FirebaseDatabase.getInstance();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -33,13 +34,13 @@ public abstract class DBManager<K, V> {
      * @param obj The 'key' with which the database can be queried
      * @param val The corresponding object
      */
-    abstract void save(K obj, V val);
+    abstract public void save(K obj, V val);
 
     /**
      * All Manager classes query the database for a specific object type that it is managing.
      * @param obj The 'key' with which the database can be queried.
      * @return The corresponding object
      */
-    abstract V get(K obj);
+    abstract public V get(K obj);
 
 }

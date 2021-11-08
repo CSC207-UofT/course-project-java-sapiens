@@ -1,10 +1,18 @@
 package use_cases;
+import entities.Customer;
+import entities.DeliveryMan;
 import entities.User;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class DeliveryManManager extends UserManager{
 
+    final String REF_PATH = "DeliveryMan";
+
     public DeliveryManManager(String userType) {
         super(userType);
+        ref = database.getReference(REF_PATH);
     }
 
     /**
@@ -14,8 +22,11 @@ public class DeliveryManManager extends UserManager{
      * @param val The corresponding delivery man
      */
     @Override
-    void save(String obj, User val) {
+    public void save(String obj, User val) {
+        Map<String, DeliveryMan> toSave = new HashMap<>();
+        toSave.put(obj, (DeliveryMan) val);
 
+        ref.setValueAsync(toSave);
     }
 
     /**

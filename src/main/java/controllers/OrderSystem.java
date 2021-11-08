@@ -1,10 +1,7 @@
 package controllers;
 
-import entities.Customer;
+import entities.User;
 import ui.SystemInOut;
-import use_cases.CustomerManager;
-import use_cases.OrderManager;
-import use_cases.ShoppingListManager;
 import use_cases.UserManager;
 
 /**
@@ -48,7 +45,7 @@ public class OrderSystem {
         // After login:
         // Create a ShoppingListManager for later order placement
         // Create a OrderManager for later order placement (not implemented for phase 0)
-        ShoppingListManager slM = new ShoppingListManager();
+//        ShoppingListManager slM = new ShoppingListManager();
 
         // Starts to receive commands
         while (true) {
@@ -78,18 +75,18 @@ public class OrderSystem {
                 case "place order": // If the user enters place order, start the order placement procedure.
 
                     // collects all the information needed to form an Order.
-                    ShoppingListManager result = orderPlacement(inOut, slM);
+//                    ShoppingListManager result = orderPlacement(inOut, slM);
 
                     // should call OrderManager here to create Order, but hardcoded for now
-                    if (result != null) {
-                        inOut.sendOutput("................ \n " +
-                                "................ \n " +
-                                "................ \n " +
-                                "................ \n " +
-                                "................ \n " +
-                                "................ \n " +
-                                "Order complete! Thanks for using our service!");
-                    }
+//                    if (result != null) {
+//                        inOut.sendOutput("................ \n " +
+//                                "................ \n " +
+//                                "................ \n " +
+//                                "................ \n " +
+//                                "................ \n " +
+//                                "................ \n " +
+//                                "Order complete! Thanks for using our service!");
+//                    }
                     break;
             }
         }
@@ -100,8 +97,10 @@ public class OrderSystem {
      */
     private UserManager loadData() {
         UserManager um = UserManager.getUserManager("CUSTOMER");
-        userM.addC("TestAccount", "CSC207");
-        return userM;
+        User user = um.createUser("Nikhil", new int[] {20, 40}, 4164071, "nike1016", "ilikecrows123", 0,
+                null, 0);
+        um.save(user.getName(), user);
+        return um;
     }
 
     /**
@@ -124,7 +123,7 @@ public class OrderSystem {
             }
 
             // Check if the username and password matches to an existing account
-            if (um.checkC(username, password)){
+            if (true){
                 inOut.sendOutput("Login Successful, dear " + username + ", welcome back!");
                 this.currentUser = new String[]{username, "Customer"};
                 return "Success";
@@ -135,105 +134,105 @@ public class OrderSystem {
         }
     }
 
-    /**
-     * This method is in charge of collection information for the order placement.
-     */
-    private ShoppingListManager orderPlacement(SystemInOut inOut, ShoppingListManager slM){
-
-        // repeat the process until user enters finish or cancel
-        while (true){
-
-            // collect the location of store/outlet
-            inOut.sendOutput("Please type in one location:");
-            inOut.sendOutput("type in \"cancel\" to cancel placement");
-            inOut.sendOutput("type in \"finish\" to finish placement");
-            String command = inOut.getInput();
-            String location;
-
-            // if user enters cancel, then end the order placement
-            if (command.equals("cancel")){
-                return null;
-            } else if (command.equals("finish")){
-                // if user enters finish, prompt a list of delivery men for choice.
-                // Should prompt real delivery man that wants the order, but hardcoded for now.
-                inOut.sendOutput("Please select one delivery man by typing their numbers: \n" +
-                        "Type in \"cancel\" to cancel the placement \n" +
-                        "1. Ansh \n" +
-                        "2. Junsong \n" +
-                        "3. Kevin \n" +
-                        "4. Nikhil \n" +
-                        "5. Patrick \n" +
-                        "6. Sid");
-                command = inOut.getInput();
-
-                // if user enters cancel, end the order placement.
-                if (command.equals("cancel")){
-                    return null;
-                } else {
-                    // else finish the order placement and return the information collected.
-                    inOut.sendOutput("Order successfully set up!");
-                    return slM;
-                }
-            } else {
-                // if the user enters location, then ask the commodities they want in this location.
-                location = command;
-                slM = addComs(inOut, slM, location);
-            }
-        }
-
-
-    }
-
-    /**
-     * This method is a helper for orderPlacement().
-     * Manages the commodity addition to a certain location.
-     */
-    private ShoppingListManager addComs(SystemInOut inOut, ShoppingListManager slM, String location){
-        String command;
-        String comName;
-        double comPrice;
-
-        // repeat the process until user enter finish.
-        while (true){
-
-            // get the input
-            inOut.sendOutput("Please type in the name of one commodity for this location:");
-            inOut.sendOutput("(type in \"finish\" to finish adding commodities)");
-            command = inOut.getInput();
-
-            // if user enter finish, finish adding commodities and return the information collected.
-            if (command.equals("finish")){
-                return slM;
-            } else {
-                // if user enter a commodity name, record the name and
-                // ask for the expected price.
-                comName = command;
-
-                // get the input
-                inOut.sendOutput("Please type in the expected price of this commodity:");
-                inOut.sendOutput("(type in \"back\" to go back)");
-                command = inOut.getInput();
-
-                // if user wants to go back, go back to adding another commodity
-                if (command.equals("back")) {
-                    continue;
-                } else {
-                    // if user enter price, record the price.
-                    try {
-                        comPrice = Double.parseDouble(command);
-                    } catch (NumberFormatException e){
-                        // if the price is not a double float, prompts warning and
-                        // go back to adding another commodity
-                        inOut.sendOutput("Please type in a number without unit!");
-                        inOut.sendOutput("this commodity is canceled");
-                        continue;
-                    }
-
-                }
-                // add commodity using the ShoppingListManager with collected information.
-                slM.addCommodity(currentUser[0] ,location, comName, comPrice);
-            }
-        }
-    }
+//    /**
+//     * This method is in charge of collection information for the order placement.
+//     */
+//    private ShoppingListManager orderPlacement(SystemInOut inOut, ShoppingListManager slM){
+//
+//        // repeat the process until user enters finish or cancel
+//        while (true){
+//
+//            // collect the location of store/outlet
+//            inOut.sendOutput("Please type in one location:");
+//            inOut.sendOutput("type in \"cancel\" to cancel placement");
+//            inOut.sendOutput("type in \"finish\" to finish placement");
+//            String command = inOut.getInput();
+//            String location;
+//
+//            // if user enters cancel, then end the order placement
+//            if (command.equals("cancel")){
+//                return null;
+//            } else if (command.equals("finish")){
+//                // if user enters finish, prompt a list of delivery men for choice.
+//                // Should prompt real delivery man that wants the order, but hardcoded for now.
+//                inOut.sendOutput("Please select one delivery man by typing their numbers: \n" +
+//                        "Type in \"cancel\" to cancel the placement \n" +
+//                        "1. Ansh \n" +
+//                        "2. Junsong \n" +
+//                        "3. Kevin \n" +
+//                        "4. Nikhil \n" +
+//                        "5. Patrick \n" +
+//                        "6. Sid");
+//                command = inOut.getInput();
+//
+//                // if user enters cancel, end the order placement.
+//                if (command.equals("cancel")){
+//                    return null;
+//                } else {
+//                    // else finish the order placement and return the information collected.
+//                    inOut.sendOutput("Order successfully set up!");
+//                    return slM;
+//                }
+//            } else {
+//                // if the user enters location, then ask the commodities they want in this location.
+//                location = command;
+//                slM = addComs(inOut, slM, location);
+//            }
+//        }
+//
+//
+//    }
+//
+//    /**
+//     * This method is a helper for orderPlacement().
+//     * Manages the commodity addition to a certain location.
+//     */
+//    private ShoppingListManager addComs(SystemInOut inOut, ShoppingListManager slM, String location){
+//        String command;
+//        String comName;
+//        double comPrice;
+//
+//        // repeat the process until user enter finish.
+//        while (true){
+//
+//            // get the input
+//            inOut.sendOutput("Please type in the name of one commodity for this location:");
+//            inOut.sendOutput("(type in \"finish\" to finish adding commodities)");
+//            command = inOut.getInput();
+//
+//            // if user enter finish, finish adding commodities and return the information collected.
+//            if (command.equals("finish")){
+//                return slM;
+//            } else {
+//                // if user enter a commodity name, record the name and
+//                // ask for the expected price.
+//                comName = command;
+//
+//                // get the input
+//                inOut.sendOutput("Please type in the expected price of this commodity:");
+//                inOut.sendOutput("(type in \"back\" to go back)");
+//                command = inOut.getInput();
+//
+//                // if user wants to go back, go back to adding another commodity
+//                if (command.equals("back")) {
+//                    continue;
+//                } else {
+//                    // if user enter price, record the price.
+//                    try {
+//                        comPrice = Double.parseDouble(command);
+//                    } catch (NumberFormatException e){
+//                        // if the price is not a double float, prompts warning and
+//                        // go back to adding another commodity
+//                        inOut.sendOutput("Please type in a number without unit!");
+//                        inOut.sendOutput("this commodity is canceled");
+//                        continue;
+//                    }
+//
+//                }
+//                // add commodity using the ShoppingListManager with collected information.
+//                slM.addCommodity(currentUser[0] ,location, comName, comPrice);
+//            }
+//        }
+//    }
 
 }

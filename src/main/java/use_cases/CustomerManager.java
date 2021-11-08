@@ -1,10 +1,17 @@
 package use_cases;
+import entities.Customer;
 import entities.User;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class CustomerManager extends UserManager{
 
+    final String REF_PATH = "Customer";
+
     public CustomerManager(String userType) {
         super(userType);
+        ref = database.getReference(REF_PATH);
     }
 
     /**
@@ -14,8 +21,11 @@ public class CustomerManager extends UserManager{
      * @param val The corresponding Customer
      */
     @Override
-    void save(String obj, User val) {
+    public void save(String obj, User val) {
+        Map<String, Customer> toSave = new HashMap<>();
+        toSave.put(obj, (Customer) val);
 
+        ref.setValueAsync(toSave);
     }
 
     /**

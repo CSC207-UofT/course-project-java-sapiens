@@ -1,9 +1,12 @@
 package entities;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public abstract class User {
 
     private String name;
-    private int[] location;
+    private ArrayList<Integer> location;
     private int number;
     private float rating;
     private String comment;
@@ -11,8 +14,10 @@ public abstract class User {
     private String password;
 
     public User(String n, int[] l, int num, String user, String pass){
+        location = new ArrayList<>();
         this.name = n;
-        this.location = l;
+        this.location.add(l[0]);
+        this.location.add(l[1]);
         this.number = num;
         this.uname = user;
         this.password = pass;
@@ -31,11 +36,11 @@ public abstract class User {
         this.name = name;
     }
 
-    public int[] getLocation() {
+    public ArrayList<Integer> getLocation() {
         return location;
     }
 
-    public void setLocation(int[] location) {
+    public void setLocation(ArrayList<Integer> location) {
         this.location = location;
     }
 

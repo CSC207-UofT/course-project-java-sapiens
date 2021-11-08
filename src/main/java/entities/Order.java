@@ -4,16 +4,16 @@ public class Order {
     private boolean isComplete;
     private DeliveryMan deliveryMan;
     private Customer customer;
-    private final int UID;
-    private ShoppingList shoppingList;
+//    private final int UID;
+//    private ShoppingList shoppingList;
 
-    public Order(DeliveryMan deliveryMan, Customer customer, int UID, ShoppingList shoppingList){
-        this.deliveryMan = deliveryMan;
-        this.customer = customer;
-        this.UID = UID;
-        isComplete = false;
-        this.shoppingList = shoppingList;
-    }
+//    public Order(DeliveryMan deliveryMan, Customer customer, int UID, ShoppingList shoppingList){
+//        this.deliveryMan = deliveryMan;
+//        this.customer = customer;
+//        this.UID = UID;
+//        isComplete = false;
+//        this.shoppingList = shoppingList;
+//    }
 
     public boolean isComplete() {
         return isComplete;
@@ -39,8 +39,8 @@ public class Order {
         this.customer = customer;
     }
 
-    public int getUID() {
-        return UID;
-    }
+//    public int getUID() {
+//        return UID;
+//    }
 }
 
