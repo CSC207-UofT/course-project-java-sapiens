@@ -1,6 +1,8 @@
 package controllers;
 
+import entities.Customer;
 import ui.SystemInOut;
+import use_cases.CustomerManager;
 import use_cases.OrderManager;
 import use_cases.ShoppingListManager;
 import use_cases.UserManager;
@@ -97,7 +99,7 @@ public class OrderSystem {
      * This method is in charge of loading existing data
      */
     private UserManager loadData() {
-        UserManager userM = new UserManager();
+        UserManager um = UserManager.getUserManager("CUSTOMER");
         userM.addC("TestAccount", "CSC207");
         return userM;
     }

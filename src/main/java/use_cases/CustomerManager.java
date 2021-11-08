@@ -1,8 +1,11 @@
 package use_cases;
+import entities.User;
 
-import entities.Customer;
+public class CustomerManager extends UserManager{
 
-public class CustomerManager extends DBManager<String, Customer> {
+    public CustomerManager(String userType) {
+        super(userType);
+    }
 
     /**
      * All Manager classes in use_cases have some transactions to save.
@@ -11,7 +14,7 @@ public class CustomerManager extends DBManager<String, Customer> {
      * @param val The corresponding Customer
      */
     @Override
-    void save(String obj, Customer val) {
+    void save(String obj, User val) {
 
     }
 
@@ -22,7 +25,8 @@ public class CustomerManager extends DBManager<String, Customer> {
      * @return The corresponding customer
      */
     @Override
-    Customer get(String obj) {
+    public User get(String obj) {
         return null;
     }
+
 }

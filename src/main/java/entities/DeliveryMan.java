@@ -2,38 +2,45 @@ package entities;
 
 public class DeliveryMan extends User{
 
-//    private final int sin;
-//
-//    private final String transport;
-//
-//    private final float rate;
+    private int sin;
+    private String transport;
+    private float rate;
 
-    public DeliveryMan(String n, int[] l, int num, String user, String pass, int id, String transport, float rate, int sin) {
+    public void setSin(int sin) {
+        this.sin = sin;
+    }
+
+    public String getTransport() {
+        return transport;
+    }
+
+    public void setTransport(String transport) {
+        this.transport = transport;
+    }
+
+    public void setRate(float rate) {
+        this.rate = rate;
+    }
+
+    public DeliveryMan(String n, int[] l, int num, String user, String pass, int sin, String transport, float rate) {
         super(n, l, num, user, pass);
-//        this.sin = id;
-//        this.transport = transport;
-//        this.rate = rate;
-//        this.sin = sin;
+        this.transport = transport;
+        this.rate = rate;
+        this.sin = sin;
     }
 
-//    for phase 0
-    public DeliveryMan(String n, String user, String pass) {
-        super(n, user,pass);
-//        this.sin = sin;
-//        this.transport = transport;
-//        this.rate = rate;
+    public DeliveryMan(String n, int[] l, int num, String user, String pass, int sin, String transport, float rate, float rating) {
+        super(n, l, num, user, pass, rating);
+        this.transport = transport;
+        this.rate = rate;
+        this.sin = sin;
     }
 
+    public int getSin() {
+        return sin;
+    }
 
-//    String getTransport(){
-//        return this.transport;
-//    }
-//
-//    public int getSin(){
-//        return this.sin;
-//    }
-//
-//    public float getRate(){
-//        return this.rate;
-//    }
+    public float getRate() {
+        return rate;
+    }
 }

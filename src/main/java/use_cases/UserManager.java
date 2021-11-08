@@ -1,106 +1,60 @@
 package use_cases;
-
 import entities.Customer;
 import entities.DeliveryMan;
+import entities.User;
 
-import java.util.HashMap;
+public abstract class UserManager extends DBManager<String, User> {
 
-public class UserManager extends DBManager<String, String> {
-    //TODO: Shift role over to Customer and Delivery Man
-    private HashMap<String, String> customers;
-    private HashMap<String, String> deliverymans;
+    String userType;
 
-    private HashMap<String, Customer> customerMap;
-    private HashMap<String, DeliveryMan> deliverymanMap;
-    /**
-     * Creates a UserManager with lists of customer and delivery man that are empty
-     */
-    public UserManager() {
-        super();
-        customers = new HashMap<String, String>();
-        deliverymans = new HashMap<String, String>();
-    }
-
-
-    /**
-     * create a new customer object
-     * @param uname and password to be stored
-     */
-    public void createC(String name, String uname, String password) {
-        customerMap.put(uname, new Customer(name, uname, password));
+    public UserManager(String userType){
+        this.userType = userType;
     }
 
     /**
-     * create a new customer object
-     * @param uname and password to be stored
-     */
-    public void createD(String name, String uname, String password) {
-        deliverymanMap.put(uname, new DeliveryMan(name, uname, password));
-    }
-
-    /**
-     * Stores the uname and password in this customers' class list.
-     * @param uname and password to be stored
-     */
-    public void addC(String uname, String password) {
-        customers.put(uname, password);
-    }
-
-    /**
-     * Stores the uname  and password in this deliveryMan' class list.
-     * @param uname and password to be stored
-     */
-    public void addD(String uname, String password) {
-        deliverymans.put(uname, password);
-    }
-
-    /**
-     * checking if the consumer's input match the password
-     * @param uname and password
-     */
-    public boolean checkC(String uname, String password) {
-        if(customers.get(uname) == null){
-            return false;
-        }
-        else{
-            return customers.get(uname).equals(password);
-        }
-
-    }
-
-    /**
-     * checking if the deliveryMan's input match the password
-     * @param uname and password
-     */
-    public boolean checkD(String uname, String password) { //TODO: Make custom managers local to entity.
-        if(deliverymans.get(uname) == null){
-            return false;
-        }
-        else{
-            return deliverymans.get(uname).equals(password);
-        }
-
-    }
-
-    /**
-     * All Manager classes in use_cases have some transactions to save.
+     * Takes in a password entered and uses SHA256 to hash it
+     * when storing in Firebase.
      *
-     * @param obj The 'key' with which the database can be queried
-     * @param val The corresponding object
+     * @param password The password of User.
+     * @return hashed password
      */
-    @Override
-    public void save(String obj, String val) {
-
-    }
-
-    /**
-     * All Manager classes query the database for a specific object type that it is managing.
-     *
-     * @param obj The 'key' with which the database can be queried.
-     * @return The corresponding object
-     */
-    @Override
-    public String get(String obj) {
+    public String createHash(String password){
         return null;
     }
+
+    /**
+     * A Factory to create the appropriate UserManager
+     *
+     * @param userType Type of User being created
+     * @return Required user manager
+     */
+    public static UserManager getUserManager(String userType){
+
+        if(userType.equalsIgnoreCase("CUSTOMER")){
+            return new CustomerManager(userType);
+        } else if(userType.equalsIgnoreCase("DELIVERYMAN")){
+            return new DeliveryManManager(userType);
+        }
+
+        return null;
+    }
+
+    /**
+     * Creates a user as per the user type found
+     *
+     * All parameters are the arguments for creating DeliveryMan and Customer.
+     * Any extraneous values entered not used by customer are ignored if userType
+     * is customer.
+     *
+     * @return User created.
+     */
+    public User createUser(String n, int[] l, int num, String user, String pass, int sin, String transport, float rate){
+        if(userType.equalsIgnoreCase("DELIVERYMAN")){
+            return new DeliveryMan(n, l, num, user, pass, sin, transport, rate);
+        }
+        else{
+            return new Customer(n, l, num, user, pass);
+        }
+    }
+
 }
