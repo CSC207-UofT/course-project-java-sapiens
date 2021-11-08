@@ -57,4 +57,24 @@ public abstract class UserManager extends DBManager<String, User> {
         }
     }
 
+    /**
+     * Register the user into database if possible
+     * @return User if registered successfully, null if not so.
+     */
+    public User registration(String n, int[] l, int num, String user, String pass, int sin, String transport, float rate){
+        User currUser = createUser(n, l, num, user, pass, sin, transport, rate);
+        return discrepancyCheck(currUser) ? currUser : null; // Template of creating user and discrepancy check
+    }
+
+    protected abstract boolean discrepancyCheck(User currUser);
+
+    /**
+     * Returns the user if existing in database
+     *
+     * @param uname Username of suer
+     * @param password Password of user
+     * @return The user if authenticated else null
+     */
+    abstract User authenticate(String uname, String password);
+
 }

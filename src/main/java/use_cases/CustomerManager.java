@@ -14,6 +14,23 @@ public class CustomerManager extends UserManager{
         ref = database.getReference(REF_PATH);
     }
 
+    @Override
+    protected boolean discrepancyCheck(User currUser) {
+        return false;
+    }
+
+    /**
+     * Returns the user if existing in database
+     *
+     * @param uname    Username of suer
+     * @param password Password of user
+     * @return The user if authenticated else null
+     */
+    @Override
+    User authenticate(String uname, String password) {
+        return null;
+    }
+
     /**
      * All Manager classes in use_cases have some transactions to save.
      *
