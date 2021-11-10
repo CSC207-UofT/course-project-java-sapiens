@@ -7,6 +7,7 @@ import com.google.firebase.database.*;
 import entities.Customer;
 
 import java.io.FileInputStream;
+import java.util.List;
 
 public abstract class DBManager<K, V> {
 
@@ -21,7 +22,11 @@ public abstract class DBManager<K, V> {
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
                     .setDatabaseUrl("https://java-sapiens-default-rtdb.firebaseio.com/")
                     .build();
-            FirebaseApp.initializeApp(options);
+
+            List<FirebaseApp> firebaseApps = FirebaseApp.getApps();
+            if(firebaseApps == null || firebaseApps.isEmpty()){
+                FirebaseApp.initializeApp(options);
+            }
 
             database = FirebaseDatabase.getInstance();
         }catch (Exception e){
