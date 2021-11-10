@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "java-sapiens",
+  "private_key_id": "10b7745de5946eed032891f31e3b06820e2a028c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC0fXjgsVAKNRKM\nwOQboviUFOmLF9gR40e5mucYtSoDHBtKA/euw2Y2Ejn3vikEWZkJywN4C2ivnmtR\nJvuOTBukBupw5AC9MjbEbSLgmqJgI5G4Vj6Y2hqLiSVvWEiWuTQfykqI4ddooQrR\nVlEsvKQS7qZYzTBF0CEAqoCLRPXi3ekfu4j9O8rfcTCPuxcDP/N8f7ccF2iUr1C+\nEziBoiIC/sfranphxithugJKHOUTlaaxcTbsKmDAaWz2qEscsAEnwzjxUDxFXGIv\ngJ0GGxzedANNqLH7GtmmGK+Y+irYEpfy4ha93vs7dh+c/GDqpMOaP7zXmAnyK7Oo\njBTbAP8vAgMBAAECggEASv5JX978uUkE/JvXC86ix3CK+0K8ge40Kp/8vozjuGgQ\nxKeyXZiN2xCmqlQGWerahjGmrtXauQGzaIQwiJcB8xz2g1KRJgt7qxEHqVhG+Hg+\n/19CYiNZXTnuZn3Bp3KrgDv+zTI9XRlw07swPkzhRYaIcqRLFu7cD5lIkNVl701+\nPJbklcnEmORrq2Zz6Di/ektoCVHO1+tTrMtm14FWd5Kd4F4usYqyidqWTr40O4mM\njpkB3Ezh8Ng8dGb1G3zLjAA8H4OZUXWF03LkPoUY/wB0RoPabGGg0zTdz3/92L04\nwoXY1AmnIIRVcdkgY9sMsdEr9TFWxE3fnstkZCYNvQKBgQDyOUV7ulQGEyBQiqaj\nE7vYPiJmn3lLApnUDIaxgYEUp7pW+tL6lutBtHus3O0c4Tyk+tqjD4KHUtF3WNxB\n0m5KbiGUes8gGx3cf8ZuRdSklqPamb4Z4dXSw5HlHYM+m148g+wCqIdnrQxRzEhM\nYX89JjiaJ43PP3GwP5MRWwec3QKBgQC+wV9Bw/ZGoddNdg7VL1bofZ8pgwt6eKzv\naSxDIkqdgGkprvJ70EalNjtzYWIgNDYPu9j6k6mLQm5QXEMNDRMPVDCHy9ZPZ+Tt\nBmK9cshQjzYPmhEG49GJHx7Mla+4w2UrsRVwCHoI93GyV9mcw6pBgrfySDNekmYx\nVpCjuXyVewKBgQDAcUgG+Q5wlRmDY+Tog3EmaJckOWdAdRyKIDmTJXTMWEXvfO/K\nL8VROndX615nJ3vrB3JVQqlNojrRO0Qi93Cwqbb8JGYS9/hNiya3zbsX2KbtsmAa\naBZdkQuEoGH5h67jHVyQ8BxD/nRfOJHoPT2983Pc5bgBBELq6FeL3mq58QKBgEtJ\nctk4CJl0As/1yoDlgD2eZxUxPXSG8GpFbkzI2f4z0k27WMT5PQiz0N8HDn17XeLz\n1v1/DimCfJuG7ofWIzGnnsfZ8anBbZ8HKC1xghIZk9KwkgvQGsEt4TAJ3CLmK6YE\n7FsdXVzwnJUxCxhOOYJFn2gmiu/GhELw0YFtEfjFAoGALPBcDyhiE7xHKNgsJJrj\nNqUitfWdKk7+6lQEsOIlycRTqjCrIEKwwYxKyU/xvMhRDXfmRBcUzBdt+1GYzE0g\nFjTNyFOmITRZbl4gHw/7b/NPLRXgdA12qiRkJLKXAFu70gGaeKhdEQXxrZ3RDOZz\nLFuOwpXZO45m5AnCTA0Klag=\n-----END PRIVATE KEY-----\n",
+  "client_email": "sapiensa@java-sapiens.iam.gserviceaccount.com",
+  "client_id": "118364758993285745444",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sapiensa%40java-sapiens.iam.gserviceaccount.com"
+}
