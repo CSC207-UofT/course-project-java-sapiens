@@ -1,7 +1,10 @@
 package use_cases;
-import entities.Customer;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import entities.DeliveryMan;
 import entities.User;
+import use_cases.Database.OnDataReadListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,10 +53,25 @@ public class DeliveryManManager extends UserManager{
      * All Manager classes query the database for a specific object type that it is managing.
      *
      * @param obj The username with which the database can be queried.
-     * @return The corresponding delivery man
      */
     @Override
-    public User get(String obj) {
-        return null;
+    public void get(String obj, final OnDataReadListener onDataReadListener) {
+        ref.child(obj);
+        final User[] user = {null};
+
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for(DataSnapshot ds : snapshot.getChildren()) {
+                    user[0] = ds.child("name").getValue(DeliveryMan.class);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                user[0] = null;
+            }
+        });
+
     }
 }

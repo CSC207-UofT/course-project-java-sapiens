@@ -1,11 +1,9 @@
 package use_cases;
 
-import entities.Customer;
-import entities.DeliveryMan;
 import entities.Order;
+import use_cases.Database.DBManager;
+import use_cases.Database.OnDataReadListener;
 //import entities.ShoppingList;
-
-import java.io.FileNotFoundException;
 
 
 public class OrderManager extends DBManager<Integer, Order> {
@@ -27,15 +25,15 @@ public class OrderManager extends DBManager<Integer, Order> {
 //        return new Order(deliveryMan, customer, ++currUID ,shoppingList);
 //    }
 
-    /**
-     * Provided the UID of the required order, get its information in the form of
-     * an order object.
-     * @param UID the required order's UID.
-     * @return The order corresponding to the UID.
-     */
-    public Order getOrderInfo(int UID){
-        return get(UID); // Get order from database which matches UID. DB connection not implemented so currently null.
-    }
+//    /**
+//     * Provided the UID of the required order, get its information in the form of
+//     * an order object.
+//     * @param UID the required order's UID.
+//     * @return The order corresponding to the UID.
+//     */
+////    public Order getOrderInfo(int UID){
+////        return get(UID); // Get order from database which matches UID. DB connection not implemented so currently null.
+////    }
 
     /**
      * All Manager classes in use_cases have some transactions to save.
@@ -52,10 +50,9 @@ public class OrderManager extends DBManager<Integer, Order> {
      * All Manager classes query the database for a specific Order type that it is managing.
      *
      * @param UID The UID with which the database can be queried.
-     * @return The corresponding Order
      */
     @Override
-    public Order get(Integer UID) {
-        return null;
+    public void get(Integer UID, final OnDataReadListener onDataReadListener) {
+        return;
     }
 }

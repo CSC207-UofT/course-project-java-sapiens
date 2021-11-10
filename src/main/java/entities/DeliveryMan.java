@@ -6,6 +6,10 @@ public class DeliveryMan extends User{
     private String transport;
     private float rate;
 
+    public DeliveryMan(){
+        super();
+    }
+
     public void setSin(int sin) {
         this.sin = sin;
     }

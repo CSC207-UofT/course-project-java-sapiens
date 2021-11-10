@@ -2,6 +2,8 @@ package use_cases;
 import entities.Customer;
 import entities.DeliveryMan;
 import entities.User;
+import org.apache.commons.codec.digest.DigestUtils;
+import use_cases.Database.DBManager;
 
 public abstract class UserManager extends DBManager<String, User> {
 
@@ -19,7 +21,7 @@ public abstract class UserManager extends DBManager<String, User> {
      * @return hashed password
      */
     public String createHash(String password){
-        return null;
+        return DigestUtils.sha256Hex(password);
     }
 
     /**
@@ -71,7 +73,7 @@ public abstract class UserManager extends DBManager<String, User> {
     /**
      * Returns the user if existing in database
      *
-     * @param uname Username of suer
+     * @param uname Username of user
      * @param password Password of user
      * @return The user if authenticated else null
      */

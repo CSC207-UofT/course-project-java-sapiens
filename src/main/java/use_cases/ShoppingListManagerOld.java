@@ -2,6 +2,8 @@ package use_cases;
 
 import entities.Commodity;
 import entities.ShoppingListOld;
+import use_cases.Database.DBManager;
+import use_cases.Database.OnDataReadListener;
 
 import java.util.HashMap;
 
@@ -109,10 +111,9 @@ public class ShoppingListManagerOld extends DBManager<String, ShoppingListOld> {
      * All Manager classes query the database for a specific object type that it is managing.
      *
      * @param obj The 'key' with which the database can be queried.
-     * @return The corresponding object
      */
     @Override
-    public ShoppingListOld get(String obj) {
-        return null;
+    public void get(String obj, final OnDataReadListener onDataReadListener) {
+        return;
     }
 }

@@ -1,6 +1,11 @@
 package use_cases;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import entities.Customer;
 import entities.User;
+import use_cases.Database.OnDataReadListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -49,11 +54,21 @@ public class CustomerManager extends UserManager{
      * All Manager classes query the database for a specific object type that it is managing.
      *
      * @param obj The username with which the database can be queried.
-     * @return The corresponding customer
      */
     @Override
-    public User get(String obj) {
-        return null;
+    public void get(String obj, final OnDataReadListener onDataReadListener){
+        ref.child(obj).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                onDataReadListener.setSavedObject(snapshot.getValue(Customer.class));
+                onDataReadListener.onSuccess();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                onDataReadListener.onFailure();
+            }
+        });
     }
 
 }

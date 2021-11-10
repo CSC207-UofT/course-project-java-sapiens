@@ -1,17 +1,17 @@
-package use_cases;
+package use_cases.Database;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.*;
+import entities.Customer;
 
 import java.io.FileInputStream;
 
 public abstract class DBManager<K, V> {
 
-    FirebaseDatabase database;
-    DatabaseReference ref;
+    public FirebaseDatabase database;
+    public DatabaseReference ref;
 
     public DBManager(){
         try {
@@ -41,6 +41,6 @@ public abstract class DBManager<K, V> {
      * @param obj The 'key' with which the database can be queried.
      * @return The corresponding object
      */
-    abstract public V get(K obj);
+    abstract public void get(K obj, final OnDataReadListener onDataReadListener);
 
 }

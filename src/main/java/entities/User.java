@@ -22,6 +22,16 @@ public abstract class User {
         this.password = pass;
     }
 
+    public User(){
+        name = "";
+        location = new ArrayList<>();
+        number = 0;
+        rating = 0;
+        comment = "";
+        uname = "";
+        password= "";
+    }
+
     public User(String n, int[] l, int num, String user, String pass, float rating){
         this(n, l, num, user, pass);
         this.rating = rating;
