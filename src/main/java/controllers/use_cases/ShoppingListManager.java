@@ -1,11 +1,15 @@
 package controllers.use_cases;
 
 import entities.Commodity;
+import entities.DeliveryMan;
 import entities.ShoppingList;
 import controllers.use_cases.Database.DBManager;
 import controllers.use_cases.Database.OnDataReadListener;
+import entities.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Represents the entire system of Customers creating ShoppingLists.
@@ -94,7 +98,10 @@ public class ShoppingListManager extends DBManager<String, ShoppingList> {
      */
     @Override
     public void save(String obj, ShoppingList val) {
+        Map<String, ArrayList<ShoppingList>> toSave = new HashMap<>();
+        toSave.put(obj, this.shoppingLists);
 
+        ref.setValueAsync(toSave);
     }
 
     /**
