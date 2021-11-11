@@ -1,5 +1,8 @@
-package ui;
+package controllers;
 
+import ui.Activity;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -19,5 +22,16 @@ public class SystemInOut {
     }
     public void sendOutput(Object s) {
         System.out.println(s);
+    }
+
+    /**
+     * Replicate intent in Android
+     *
+     * @param activity Activity to which transfer of control is going to
+     * @param objects The data to be transferred to this activity
+     */
+    public void intent(Activity activity, ArrayList<Object> objects){
+        activity.display();
+        activity.getData(objects);
     }
 }

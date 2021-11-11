@@ -1,9 +1,9 @@
-package use_cases;
+package controllers.use_cases;
 
 import entities.Commodity;
 import entities.ShoppingListOld;
-import use_cases.Database.DBManager;
-import use_cases.Database.OnDataReadListener;
+import controllers.use_cases.Database.DBManager;
+import controllers.use_cases.Database.OnDataReadListener;
 
 import java.util.HashMap;
 
@@ -97,7 +97,7 @@ public class ShoppingListManagerOld extends DBManager<String, ShoppingListOld> {
     }
 
     /**
-     * All Manager classes in use_cases have some transactions to save.
+     * All Manager classes in controllers.use_cases have some transactions to save.
      *
      * @param obj The 'key' with which the database can be queried
      * @param val The corresponding object

@@ -1,4 +1,4 @@
-package use_cases;
+package controllers.use_cases;
 
 import entities.ShoppingListOld;
 import org.junit.*;

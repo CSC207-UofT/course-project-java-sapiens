@@ -2,7 +2,7 @@ package ui;
 
 import java.util.ArrayList;
 
-public class RegistrationActivity implements Activity{
+public class DeliveryManActivity implements Activity{
     @Override
     public void display() {
 

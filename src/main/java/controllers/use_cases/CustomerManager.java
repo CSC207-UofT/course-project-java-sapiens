@@ -1,11 +1,10 @@
-package use_cases;
+package controllers.use_cases;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import entities.Customer;
 import entities.User;
-import use_cases.Database.OnDataReadListener;
+import controllers.use_cases.Database.OnDataReadListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,12 +31,12 @@ public class CustomerManager extends UserManager{
      * @return The user if authenticated else null
      */
     @Override
-    User authenticate(String uname, String password) {
+    public User authenticate(String uname, String password) {
         return null;
     }
 
     /**
-     * All Manager classes in use_cases have some transactions to save.
+     * All Manager classes in controllers.use_cases have some transactions to save.
      *
      * @param obj The username with which the database can be queried
      * @param val The corresponding Customer

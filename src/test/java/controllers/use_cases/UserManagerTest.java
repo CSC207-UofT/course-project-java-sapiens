@@ -1,8 +1,8 @@
-package use_cases;
+package controllers.use_cases;
 
 import entities.Customer;
 import org.junit.*;
-import use_cases.Database.OnDataReadListener;
+import controllers.use_cases.Database.OnDataReadListener;
 
 import static org.junit.Assert.assertEquals;
 

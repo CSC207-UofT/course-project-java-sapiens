@@ -1,8 +1,7 @@
-package ui.controllers;
+package controllers;
 
 import entities.User;
-import ui.SystemInOut;
-import use_cases.UserManager;
+import controllers.use_cases.UserManager;
 
 /**
  * This file contains the controller that is in charge of distinguishing the

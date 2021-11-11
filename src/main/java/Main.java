@@ -1,5 +1,5 @@
-import ui.controllers.OrderSystem;
-import ui.SystemInOut;
+import controllers.OrderSystem;
+import controllers.SystemInOut;
 
 /**
  * This is main class of our program, please run this file to start the program

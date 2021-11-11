@@ -1,9 +1,9 @@
-package use_cases;
+package controllers.use_cases;
 import entities.Customer;
 import entities.DeliveryMan;
 import entities.User;
 import org.apache.commons.codec.digest.DigestUtils;
-import use_cases.Database.DBManager;
+import controllers.use_cases.Database.DBManager;
 
 public abstract class UserManager extends DBManager<String, User> {
 
@@ -34,11 +34,9 @@ public abstract class UserManager extends DBManager<String, User> {
 
         if(userType.equalsIgnoreCase("CUSTOMER")){
             return new CustomerManager(userType);
-        } else if(userType.equalsIgnoreCase("DELIVERYMAN")){
+        } else {
             return new DeliveryManManager(userType);
         }
-
-        return null;
     }
 
     /**
@@ -77,6 +75,6 @@ public abstract class UserManager extends DBManager<String, User> {
      * @param password Password of user
      * @return The user if authenticated else null
      */
-    abstract User authenticate(String uname, String password);
+    public abstract User authenticate(String uname, String password);
 
 }

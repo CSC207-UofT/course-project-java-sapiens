@@ -1,10 +1,10 @@
-package use_cases;
+package controllers.use_cases;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import entities.DeliveryMan;
 import entities.User;
-import use_cases.Database.OnDataReadListener;
+import controllers.use_cases.Database.OnDataReadListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,12 +31,12 @@ public class DeliveryManManager extends UserManager{
      * @return The user if authenticated else null
      */
     @Override
-    User authenticate(String uname, String password) {
+    public User authenticate(String uname, String password) {
         return null;
     }
 
     /**
-     * All Manager classes in use_cases have some transactions to save.
+     * All Manager classes in controllers.use_cases have some transactions to save.
      *
      * @param obj The username with which the database can be queried
      * @param val The corresponding delivery man
@@ -56,20 +56,17 @@ public class DeliveryManManager extends UserManager{
      */
     @Override
     public void get(String obj, final OnDataReadListener onDataReadListener) {
-        ref.child(obj);
-        final User[] user = {null};
 
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+        ref.child(obj).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                for(DataSnapshot ds : snapshot.getChildren()) {
-                    user[0] = ds.child("name").getValue(DeliveryMan.class);
-                }
+                onDataReadListener.setSavedObject(snapshot.getValue(DeliveryMan.class));
+                onDataReadListener.onSuccess();
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
-                user[0] = null;
+                onDataReadListener.onFailure();
             }
         });
 

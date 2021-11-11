@@ -1,8 +1,8 @@
-package use_cases;
+package controllers.use_cases;
 
 import entities.Order;
-import use_cases.Database.DBManager;
-import use_cases.Database.OnDataReadListener;
+import controllers.use_cases.Database.DBManager;
+import controllers.use_cases.Database.OnDataReadListener;
 //import entities.ShoppingList;
 
 
@@ -36,7 +36,7 @@ public class OrderManager extends DBManager<Integer, Order> {
 ////    }
 
     /**
-     * All Manager classes in use_cases have some transactions to save.
+     * All Manager classes in controllers.use_cases have some transactions to save.
      *
      * @param UID The UID with which the database can be queried
      * @param order The corresponding Order

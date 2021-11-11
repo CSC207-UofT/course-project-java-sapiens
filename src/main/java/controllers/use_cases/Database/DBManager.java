@@ -1,10 +1,9 @@
-package use_cases.Database;
+package controllers.use_cases.Database;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.*;
-import entities.Customer;
 
 import java.io.FileInputStream;
 import java.util.List;
@@ -35,7 +34,7 @@ public abstract class DBManager<K, V> {
     }
 
     /**
-     * All Manager classes in use_cases have some transactions to save.
+     * All Manager classes in controllers.use_cases have some transactions to save.
      * @param obj The 'key' with which the database can be queried
      * @param val The corresponding object
      */
@@ -44,7 +43,6 @@ public abstract class DBManager<K, V> {
     /**
      * All Manager classes query the database for a specific object type that it is managing.
      * @param obj The 'key' with which the database can be queried.
-     * @return The corresponding object
      */
     abstract public void get(K obj, final OnDataReadListener onDataReadListener);
 
