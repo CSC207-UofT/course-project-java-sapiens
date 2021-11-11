@@ -26,13 +26,13 @@ public class DeliveryManManager extends UserManager{
     /**
      * Returns the user if existing in database
      *
-     * @param uname    Username of suer
-     * @param password Password of user
-     * @return The user if authenticated else null
+     * @param uname              Username of user
+     * @param password           Password of user
+     * @param onDataReadListener  Action to be performed on authentication
      */
     @Override
-    public User authenticate(String uname, String password) {
-        return null;
+    public void authenticate(String uname, String password, OnDataReadListener onDataReadListener) {
+
     }
 
     /**

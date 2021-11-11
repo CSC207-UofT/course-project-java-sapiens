@@ -1,13 +1,21 @@
 package ui;
 
+import controllers.use_cases.Database.OnDataReadListener;
 import controllers.use_cases.UserManager;
 
 import java.util.ArrayList;
 
 public class SignInActivity implements Activity{
 
+    boolean flag;
+
+    public boolean isFlag() {
+        return flag;
+    }
+
     @Override
-    public void display() {
+    public void display(){
+
         sio.sendOutput("Already Registered [Y/N]?");
 
         if(sio.getInput().equalsIgnoreCase("Y")){
@@ -33,7 +41,24 @@ public class SignInActivity implements Activity{
             }
 
             ArrayList<Object> toSave = new ArrayList<>();
-            toSave.add(um.authenticate(username, um.createHash(password)));
+
+            um.authenticate(username, password, new OnDataReadListener() {
+                @Override
+                public void onSuccess(){
+                    System.out.println(Thread.currentThread().getId());
+                    ArrayList<Object> savedObjects = new ArrayList<>();
+                    savedObjects.add(getSavedObject());
+                    flag = true;
+                    sio.sendOutput("Successful!");
+                    sio.intent(userActivity, savedObjects);
+                }
+
+                @Override
+                public void onFailure() {
+                    flag = true;
+                    sio.sendOutput("Wrong username/password");
+                }
+            });
 
             sio.intent(userActivity, toSave);
         }

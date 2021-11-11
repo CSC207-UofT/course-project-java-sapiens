@@ -1,5 +1,5 @@
-import controllers.OrderSystem;
-import controllers.SystemInOut;
+import ui.SignInActivity;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  * This is main class of our program, please run this file to start the program
@@ -13,9 +13,11 @@ import controllers.SystemInOut;
  * 3. To quit the program, please type in "quit".
  */
 public class Main {
-    public static void main(String[] args) {
-        SystemInOut sio = new SystemInOut();
-        OrderSystem os = new OrderSystem();
-        os.run(sio);
+    public static void main(String[] args) throws InterruptedException {
+        SignInActivity signInActivity = new SignInActivity();
+        signInActivity.display();
+        while (!signInActivity.isFlag()){
+            Thread.sleep(1);
+        }
     }
 }

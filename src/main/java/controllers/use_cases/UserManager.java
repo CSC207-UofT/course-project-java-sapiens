@@ -1,4 +1,5 @@
 package controllers.use_cases;
+import controllers.use_cases.Database.OnDataReadListener;
 import entities.Customer;
 import entities.DeliveryMan;
 import entities.User;
@@ -75,6 +76,6 @@ public abstract class UserManager extends DBManager<String, User> {
      * @param password Password of user
      * @return The user if authenticated else null
      */
-    public abstract User authenticate(String uname, String password);
+    public abstract void authenticate(String uname, String password, final OnDataReadListener onDataReadListener);
 
 }
