@@ -1,33 +1,35 @@
 package entities;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class ShoppingListTest {
-    ShoppingListOld shoppingListOld;
+    ShoppingList walmartList;
     @Before
     public void setUp() throws Exception {
-        shoppingListOld = new ShoppingListOld();
+        walmartList = new ShoppingList("Walmart");
+        Commodity apple = new Commodity("Apple", 3.5);
+        walmartList.setCommodity(apple); // Apple #1
     }
 
     @Test
     public void addCommodity() {
-        Commodity apple = new Commodity("Apple", 3.5);
-        shoppingListOld.addCommodity("Walmart", apple);
-        assertEquals( 3.5, shoppingListOld.getTotalPrice(), 0);
+        walmartList.addCommodity("Apple"); // Apple #2
+        walmartList.addCommodity("Apple"); // Apple #3
+        assertEquals(10.5, walmartList.getTotalPrice(),0);
+
+        int numOfApples = walmartList.getShoppingList().get("Apple").getQuantity();
+        assertEquals(3, numOfApples,0);
     }
 
     @Test
     public void removeCommodity() {
-        Commodity apple = new Commodity("Apple", 3.5);
-        shoppingListOld.addCommodity("Walmart", apple);
-        shoppingListOld.addCommodity("Walmart", apple);
-        shoppingListOld.removeCommodity("Walmart", apple);
-        assertEquals( 3.5, shoppingListOld.getTotalPrice(), 0);
-        shoppingListOld.removeCommodity("Walmart", apple);
-        assertEquals( 0, shoppingListOld.getTotalPrice(), 0);
+        walmartList.addCommodity("Apple"); // Apple #2
+        walmartList.removeCommodity("Apple"); // Apple #1
+        assertEquals(3.5, walmartList.getTotalPrice(),0);
 
+        int numOfApples = walmartList.getShoppingList().get("Apple").getQuantity();
+        assertEquals(1, numOfApples,0);
     }
 }

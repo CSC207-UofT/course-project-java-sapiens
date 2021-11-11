@@ -1,12 +1,15 @@
 package entities;
 
 public class Commodity {
-    private String name;
-    private double price;
+    private final String name;
+    private final double price;
+    private int quantity;
+    private String note;
 
     public Commodity(String name, double price){
         this.name = name;
         this.price = price;
+        this.quantity = 1;
     }
 
     public double getPrice() {
@@ -15,5 +18,25 @@ public class Commodity {
 
     public String getName() {
         return this.name;
+    }
+
+    public int getQuantity() {
+        return this.quantity;
+    }
+
+    public void addQuantity(){
+        this.quantity += 1;
+    }
+
+    public void removeQuantity(){
+        this.quantity -= 1;
+    }
+
+    private void setNote(String note){
+        this.note =  note;
+    }
+
+    private String getNote() {
+        return this.note;
     }
 }

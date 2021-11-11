@@ -1,41 +1,34 @@
 package controllers.use_cases;
 
-import entities.ShoppingListOld;
+import entities.ShoppingList;
 import org.junit.*;
-
 
 import static org.junit.Assert.assertEquals;
 
 public class ShoppingListManagerTest{
-    ShoppingListManagerOld shoppingListManager;
+    ShoppingListManager shoppingListManager;
     @Before
     public void setUp() {
-        shoppingListManager = new ShoppingListManagerOld();
+        shoppingListManager = new ShoppingListManager();
+        shoppingListManager.newShoppingList("Best Buy");
+        shoppingListManager.newShoppingList("KFC");
     }
 
     @Test(timeout = 50)
     public void testAddCommodity() {
-        String userID = "Dummy";
-        shoppingListManager.newShoppingList(userID);
-        shoppingListManager.addCommodity(userID, "Walmart", "Apple", 3.5);
-        shoppingListManager.addCommodity(userID, "Walmart", "Banana", 2);
-        ShoppingListOld shoppingListOld = shoppingListManager.addCommodity(userID, "Walmart", "Apple", 3.5);
-
-        assertEquals(9, shoppingListOld.getTotalPrice(),0);
+        shoppingListManager.setCommodity(0, "iPad",700);
+        // Creates a Commodity iPad in Best Buy's shopping list at index 0
+        shoppingListManager.setCommodity(0, "Charger",30);
+        ShoppingList shoppingList = shoppingListManager.addCommodity(0, "iPad");
+        // Adds a commodity iPad in Best Buy's shopping list at index 0
+        assertEquals(1430, shoppingList.getTotalPrice(), 0);
     }
 
     @Test(timeout = 50)
     public void testRemoveCommodity() {
-        String userID = "Dummy";
-        shoppingListManager.newShoppingList(userID);
-        shoppingListManager.addCommodity(userID, "Walmart", "Apple", 3.5);
-        shoppingListManager.addCommodity(userID, "Walmart", "Apple", 3.5);
-        ShoppingListOld shoppingListOld = shoppingListManager.removeCommodity(userID, "Walmart", "Apple");
-
-        System.out.println(shoppingListOld.getTotalPrice());
-        assertEquals(3.5, shoppingListOld.getTotalPrice(),0);
-
-        ShoppingListOld shoppingListOld2 = shoppingListManager.removeCommodity(userID, "Walmart", "Apple");
-        assertEquals(0, shoppingListOld.getTotalPrice(),0);
+        shoppingListManager.setCommodity(1, "10x Wings",20);
+        // Creates a Commodity 10x Wings in Best Buy's shopping list at index 1
+        ShoppingList shoppingList = shoppingListManager.removeCommodity(1, "10x Wings");
+        assertEquals(0, shoppingList.getTotalPrice(), 0);
     }
 }
