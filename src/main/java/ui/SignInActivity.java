@@ -45,7 +45,6 @@ public class SignInActivity implements Activity{
             um.authenticate(username, password, new OnDataReadListener() {
                 @Override
                 public void onSuccess(){
-                    System.out.println(Thread.currentThread().getId());
                     ArrayList<Object> savedObjects = new ArrayList<>();
                     savedObjects.add(getSavedObject());
                     flag = true;
