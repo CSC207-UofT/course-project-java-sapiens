@@ -9,7 +9,7 @@ public class ShoppingListTest {
     @Before
     public void setUp() throws Exception {
         walmartList = new ShoppingList("Walmart");
-        Commodity apple = new Commodity("Apple", 3.5);
+        Commodity apple = new Commodity("Apple", 3.5, 1);
         walmartList.setCommodity(apple); // Apple #1
     }
 

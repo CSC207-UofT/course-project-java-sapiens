@@ -33,10 +33,19 @@ public class ShoppingListManager extends DBManager<String, ShoppingList> {
     }
 
     /**
-     * Create and add a new ShoppingList to shoppingLists.
+     * Create and add a new store ShoppingList to shoppingLists.
      */
-    public void newShoppingList(String outletName){
+    public void newShoppingList(String storeName){
+        ShoppingList shoppingList = new ShoppingList(storeName);
+        this.shoppingLists.add(shoppingList);
+    }
+
+    /**
+     * Create and add a new outlet ShoppingList to shoppingLists.
+     */
+    public void newShoppingList(String outletName, String outletAddress){
         ShoppingList shoppingList = new ShoppingList(outletName);
+        shoppingList.setOutletAddress(outletAddress);
         this.shoppingLists.add(shoppingList);
     }
 
@@ -58,8 +67,8 @@ public class ShoppingListManager extends DBManager<String, ShoppingList> {
      *
      * @return the ShoppingList after change
      */
-    public ShoppingList setCommodity(int index, String commodityName, double commodityPrice){
-        Commodity commodity = new Commodity(commodityName, commodityPrice);
+    public ShoppingList setCommodity(int index, String commodityName, double commodityPrice, int quantity){
+        Commodity commodity = new Commodity(commodityName, commodityPrice, quantity);
         this.shoppingLists.get(index).setCommodity(commodity);
         return this.shoppingLists.get(index);
     }
