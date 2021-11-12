@@ -1,6 +1,7 @@
 package controllers.use_cases;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import entities.Customer;
 import entities.User;
@@ -32,12 +33,17 @@ public class CustomerManager extends UserManager{
      */
     @Override
     public void authenticate(String uname, String password, final OnDataReadListener onDataReadListener) {
+
         ref.child(uname).addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 Customer customer = snapshot.getValue(Customer.class);
-                if(customer.getPassword().equals(createHash(password))){
+
+                if(customer == null){
+                    onDataReadListener.onFailure();
+                }
+                else if(customer.getPassword().equals(createHash(password))){
                     onDataReadListener.setSavedObject(snapshot.getValue(Customer.class));
                     onDataReadListener.onSuccess();
                 }

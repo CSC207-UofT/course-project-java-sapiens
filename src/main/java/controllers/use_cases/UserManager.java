@@ -74,7 +74,6 @@ public abstract class UserManager extends DBManager<String, User> {
      *
      * @param uname Username of user
      * @param password Password of user
-     * @return The user if authenticated else null
      */
     public abstract void authenticate(String uname, String password, final OnDataReadListener onDataReadListener);
 

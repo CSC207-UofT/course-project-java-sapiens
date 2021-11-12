@@ -24,15 +24,17 @@ public class CustomerActivity implements Activity{
     public void display() {
 
         cm = (CustomerManager) UserManager.getUserManager("CUSTOMER");
+        boolean activityShift = false;
 
-        while (true) {
+        while (!activityShift) {
             sio.sendOutput("$ Please type in command (Type in \"help\" to get help) $");
             String command = sio.getInput();
             switch (command) {
                 case "1": // If the user wants to check order status, switch to the order placement activity.
                     this.save();
                     sio.sendOutput("Starting order placement");
-//                    sio.intent(new ShoppingListActivity(), this.cus);
+                    sio.intent(new ShoppingListActivity(), this.cus);
+                    activityShift = true;
                     break;
 
                 case "2": // If the user wants to check order status, switch to the order status activity.
@@ -51,6 +53,7 @@ public class CustomerActivity implements Activity{
                     this.save();
                     sio.sendOutput("Sign out successful, please login");
                     sio.intent(new SignInActivity(), null);
+                    activityShift = true;
                     break;
 
                 case "5": // If the user wants to quit, quit the program.

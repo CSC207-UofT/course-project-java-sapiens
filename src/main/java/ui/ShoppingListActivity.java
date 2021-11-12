@@ -88,15 +88,8 @@ public class ShoppingListActivity implements Activity{
     }
 
     @Override
-
-    public void getData(ArrayList<Object> transferredData) {
-        this.customer = (Customer) transferredData.get(0);
+    public void getData(Object transferredData) {
+        this.customer = (Customer) transferredData;
     }
-}
 
-class RunShoppingListActivity {
-    public static void main(String[] args) throws InterruptedException {
-        ShoppingListActivity SA = new ShoppingListActivity();
-        SA.display();
-    }
 }

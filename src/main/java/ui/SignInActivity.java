@@ -27,6 +27,10 @@ public class SignInActivity implements Activity{
                um = UserManager.getUserManager("CUSTOMER");
                userActivity = new CustomerActivity();
             }
+            else if(usertype.equals("tf")){
+                um = UserManager.getUserManager("CUSTOMER");
+                userActivity = new CustomerActivity();
+            }
             else{
                 um = UserManager.getUserManager("DELIVERYMAN");
                 userActivity = new DeliveryManActivity();
@@ -42,6 +46,7 @@ public class SignInActivity implements Activity{
                 @Override
                 public void onFailure() {
                     sio.sendOutput("Wrong username/password");
+                    display();
                 }
             });
         }
