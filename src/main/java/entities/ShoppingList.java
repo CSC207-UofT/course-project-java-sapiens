@@ -35,9 +35,9 @@ public class ShoppingList {
         this.outletAddress = address;
     }
 
-    public int setCommodity(Commodity commodity){
+    public int setCommodity(Commodity commodity, int quantity){
         this.shoppingList.put(commodity.getName(), commodity);
-        this.totalPrice += commodity.getPrice();
+        this.totalPrice += commodity.getPrice()*quantity;
         return 1;
     }
 

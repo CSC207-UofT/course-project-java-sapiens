@@ -69,7 +69,8 @@ public class ShoppingListManager extends DBManager<String, ShoppingList> {
      */
     public ShoppingList setCommodity(int index, String commodityName, double commodityPrice, int quantity){
         Commodity commodity = new Commodity(commodityName, commodityPrice, quantity);
-        this.shoppingLists.get(index).setCommodity(commodity);
+        this.shoppingLists.get(index).setCommodity(commodity, quantity);
+
         return this.shoppingLists.get(index);
     }
 
