@@ -20,7 +20,6 @@ public class CustomerActivity implements Activity{
             "4. sign out: sign out from the current account \n" +
             "5. quit: quit the program \n";
 
-
     @Override
     public void display() {
 

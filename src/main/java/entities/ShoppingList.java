@@ -31,9 +31,13 @@ public class ShoppingList {
         return this.shoppingList;
     }
 
-    public int setCommodity(Commodity commodity){
+    public void setOutletAddress(String address) {
+        this.outletAddress = address;
+    }
+
+    public int setCommodity(Commodity commodity, int quantity){
         this.shoppingList.put(commodity.getName(), commodity);
-        this.totalPrice += commodity.getPrice();
+        this.totalPrice += commodity.getPrice()*quantity;
         return 1;
     }
 

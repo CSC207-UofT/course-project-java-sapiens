@@ -6,10 +6,10 @@ public class Commodity {
     private int quantity;
     private String note;
 
-    public Commodity(String name, double price){
+    public Commodity(String name, double price, int quantity){
         this.name = name;
         this.price = price;
-        this.quantity = 1;
+        this.quantity = quantity;
     }
 
     public double getPrice() {
