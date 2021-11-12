@@ -15,7 +15,7 @@ public abstract class DBManager<K, V> {
 
     public DBManager(){
         try {
-            FileInputStream serviceAccount =  new FileInputStream("/home/vic/Sapiens/src/main/resources/java-sapiens-10b7745de594.json");
+            FileInputStream serviceAccount =  new FileInputStream("src/main/resources/java-sapiens-10b7745de594.json");
 
             FirebaseOptions options = FirebaseOptions.builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))

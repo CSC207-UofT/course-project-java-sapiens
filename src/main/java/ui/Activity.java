@@ -14,5 +14,5 @@ public interface Activity {
     SystemInOut sio = new SystemInOut();
 
     void display();
-    void getData(ArrayList<Object> transferredData);
+    void getData(Object transferredData);
 }

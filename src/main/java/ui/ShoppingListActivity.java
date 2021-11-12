@@ -88,6 +88,7 @@ public class ShoppingListActivity implements Activity{
     }
 
     @Override
+
     public void getData(ArrayList<Object> transferredData) {
         this.customer = (Customer) transferredData.get(0);
     }

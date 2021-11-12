@@ -16,8 +16,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         SignInActivity signInActivity = new SignInActivity();
         signInActivity.display();
-        while (!signInActivity.isFlag()){
-            Thread.sleep(1);
-        }
+
+        Thread.sleep(3600000); // Timeout after an hour.
     }
 }
