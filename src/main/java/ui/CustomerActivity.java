@@ -1,6 +1,7 @@
 package ui;
 
 import controllers.use_cases.CustomerManager;
+import controllers.use_cases.UserManager;
 import entities.Customer;
 import entities.ShoppingList;
 
@@ -22,6 +23,9 @@ public class CustomerActivity implements Activity{
 
     @Override
     public void display() {
+
+        cm = (CustomerManager) UserManager.getUserManager("CUSTOMER");
+
         while (true) {
             sio.sendOutput("$ Please type in command (Type in \"help\" to get help) $");
             String command = sio.getInput();
@@ -52,6 +56,7 @@ public class CustomerActivity implements Activity{
 
                 case "5": // If the user wants to quit, quit the program.
                     this.save();
+                    System.exit(0);
                     return;
 
                 case "help": // If the user enters help, prompt the commandList to help.
@@ -67,7 +72,7 @@ public class CustomerActivity implements Activity{
     }
 
     @Override
-    public void getData(ArrayList<Object> transferredData) {
-        this.cus = (Customer) transferredData.get(0);
+    public void getData(Object transferredData) {
+        this.cus = (Customer) transferredData;
     }
 }

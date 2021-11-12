@@ -28,10 +28,10 @@ public class SystemInOut {
      * Replicate intent in Android
      *
      * @param activity Activity to which transfer of control is going to
-     * @param objects The data to be transferred to this activity
+     * @param object The data to be transferred to this activity
      */
-    public void intent(Activity activity, ArrayList<Object> objects){
+    public void intent(Activity activity, Object object){
+        activity.getData(object);
         activity.display();
-        activity.getData(objects);
     }
 }

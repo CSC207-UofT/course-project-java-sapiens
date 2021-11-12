@@ -3,15 +3,7 @@ package ui;
 import controllers.use_cases.Database.OnDataReadListener;
 import controllers.use_cases.UserManager;
 
-import java.util.ArrayList;
-
 public class SignInActivity implements Activity{
-
-    boolean flag;
-
-    public boolean isFlag() {
-        return flag;
-    }
 
     @Override
     public void display(){
@@ -40,26 +32,18 @@ public class SignInActivity implements Activity{
                 userActivity = new DeliveryManActivity();
             }
 
-            ArrayList<Object> toSave = new ArrayList<>();
-
             um.authenticate(username, password, new OnDataReadListener() {
                 @Override
                 public void onSuccess(){
-                    ArrayList<Object> savedObjects = new ArrayList<>();
-                    savedObjects.add(getSavedObject());
-                    flag = true;
                     sio.sendOutput("Successful!");
-                    sio.intent(userActivity, savedObjects);
+                    sio.intent(userActivity, getSavedObject());
                 }
 
                 @Override
                 public void onFailure() {
-                    flag = true;
                     sio.sendOutput("Wrong username/password");
                 }
             });
-
-            sio.intent(userActivity, toSave);
         }
         else{
             sio.intent(new RegistrationActivity(), null);
@@ -67,7 +51,7 @@ public class SignInActivity implements Activity{
     }
 
     @Override
-    public void getData(ArrayList<Object> transferredData) {
+    public void getData(Object transferredData) {
 
     }
 }

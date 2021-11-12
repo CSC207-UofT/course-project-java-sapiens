@@ -11,6 +11,6 @@ public class ShoppingListActivity implements Activity{
     }
 
     @Override
-    public void getData(ArrayList<Object> transferredData) {
+    public void getData(Object transferredData) {
     }
 }
