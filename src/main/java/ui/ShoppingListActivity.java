@@ -9,6 +9,34 @@ import java.util.Scanner;
 public class ShoppingListActivity implements Activity{
     private Customer customer;
     private final ShoppingListManager slManager = new ShoppingListManager();
+
+    public String checkRegex(String reg, String str, String prompt){
+        String string = str;
+        while (!string.matches(reg)) {
+            sio.sendOutput(prompt);
+            string = sio.getInput();
+        }
+        return string;
+    }
+    public int checkInt(String str, String prompt){
+        String string = str;
+        String reg = "[0-9]*";
+        while (!string.matches(reg)) {
+            sio.sendOutput(prompt);
+            string = sio.getInput();
+        }
+        return Integer.parseInt(string);
+    }
+    public double checkDouble(String str, String prompt){
+        String string = str;
+        String reg = "[0-9]*[\\.]?[0-9]*";
+        while (!string.matches(reg)) {
+            sio.sendOutput(prompt);
+            string = sio.getInput();
+        }
+        return Double.parseDouble(string);
+    }
+
     @Override
     public void display() {
         boolean addSL = true;
@@ -18,7 +46,8 @@ public class ShoppingListActivity implements Activity{
             Scanner sc = new Scanner(System.in);
 
             sio.sendOutput("Store or Outlet?");
-            if (sio.getInput().toLowerCase().equals("store")) {
+            if (checkRegex("[Ss]tore|[Oo]utlet", sio.getInput(), "Store or Outlet?")
+                    .toLowerCase().equals("store")) {
                 sio.sendOutput("Enter the store's name");
                 String storeName = sio.getInput();
                 slManager.newShoppingList(storeName);
@@ -34,10 +63,14 @@ public class ShoppingListActivity implements Activity{
             while (addCommodity) {
                 sio.sendOutput("Enter the name of commodity");
                 String commName = sio.getInput();
-                sio.sendOutput("Enter " + commName + "'s price");
-                double commPrice = sc.nextDouble();
-                sio.sendOutput("Enter " + commName + "'s quantity");
-                int commQuantity = sc.nextInt();
+
+                String commPricePrompt = "Enter " + commName + "'s price";
+                sio.sendOutput(commPricePrompt);
+                double commPrice = checkDouble(sio.getInput(),commPricePrompt);
+
+                String commQuantityPrompt = "Enter " + commName + "'s quantity";
+                sio.sendOutput(commQuantityPrompt);
+                int commQuantity = checkInt(sio.getInput(),commQuantityPrompt);
                 slManager.setCommodity(index, commName, commPrice, commQuantity);
 
                 sio.sendOutput("Type 'c' to add another commodity \n'n' to continue");
