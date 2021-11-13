@@ -1,11 +1,9 @@
 package controllers.use_cases;
 
 import entities.Commodity;
-import entities.DeliveryMan;
 import entities.ShoppingList;
 import controllers.use_cases.Database.DBManager;
 import controllers.use_cases.Database.OnDataReadListener;
-import entities.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;

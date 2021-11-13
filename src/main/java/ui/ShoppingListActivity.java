@@ -42,8 +42,8 @@ public class ShoppingListActivity implements Activity{
         boolean addSL = true;
         int index = 0;
 
+        // Add ShoppingLists
         while (addSL) {
-
             sio.sendOutput("Store or Outlet?");
             if (checkRegex("[Ss]tore|[Oo]utlet", sio.getInput(), "Store or Outlet?")
                     .toLowerCase().equals("store")) {
@@ -59,6 +59,7 @@ public class ShoppingListActivity implements Activity{
                 slManager.newShoppingList(outletName, outletAddress);
             }
 
+            // addCommodities
             boolean addCommodity = true;
             while (addCommodity) {
                 sio.sendOutput("Enter the name of commodity");
@@ -81,6 +82,7 @@ public class ShoppingListActivity implements Activity{
                 }
             }
 
+            // Modify a ShoppingList once it's been created
             String chooseContinuePrompt = "Type 'r' to remove a commodity by name \n" +
                     "'a' to add to a commodity by name \n'p' to check the total price for this store \n" +
                     "'n' to exit this store";
@@ -119,9 +121,9 @@ public class ShoppingListActivity implements Activity{
 
         slManager.save(customer.getUname(), null);
 
-        // ArrayList<Object> savedObjects = new ArrayList<>();
-        // savedObjects.add(customer);
-        // sio.intent(new OrderActivity(), savedObjects);
+        // Pass the control to OrderCreation Activity
+
+        // sio.intent(new OrderCreationActivity(), this.customer);
 
     }
 

@@ -9,7 +9,6 @@ public class Order {
 
     private Customer customer;
     private ArrayList<ShoppingList> shoppingLists;
-
     private enum OrderStatus {
         OTW {
             @Override
@@ -33,12 +32,22 @@ public class Order {
         }
     }
 
+    private double totalPrice;
+
     public OrderStatus getStatus() {
         return status;
     }
 
-    public void setStatus(OrderStatus status) {
-        this.status = status;
+    public void setStatusOTW() {
+        this.status = OrderStatus.OTW;
+    }
+
+    public void setStatusREC() {
+        this.status = OrderStatus.REC;
+    }
+
+    public void setStatusCOMP() {
+        this.status = OrderStatus.COMP;
     }
 
     public DeliveryMan getDeliveryMan() {
@@ -63,6 +72,17 @@ public class Order {
 
     public void setShoppingLists(ArrayList<ShoppingList> shoppingLists) {
         this.shoppingLists = shoppingLists;
+    }
+
+    public void setTotalPrice() {
+        double total = 0;
+        for (ShoppingList shoppingList : this.getShoppingLists()) {
+            total += shoppingList.getTotalPrice();
+        }
+    }
+
+    public double getTotalPrice() {
+        return this.totalPrice;
     }
 }
 
