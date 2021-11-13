@@ -73,18 +73,19 @@ public class ShoppingListActivity implements Activity{
                 int commQuantity = checkInt(sio.getInput(),commQuantityPrompt);
                 slManager.setCommodity(index, commName, commPrice, commQuantity);
 
-                sio.sendOutput("Type 'c' to add another commodity \n'n' to continue");
-                String choice = sio.getInput().toLowerCase();
-
-                if ("n".equals(choice)) {
+                String choiceCommPrompt = "Type 'c' to add another commodity \n'n' to continue";
+                sio.sendOutput(choiceCommPrompt);
+                String choiceComm= checkRegex("[c|n]", sio.getInput(), choiceCommPrompt);
+                if ("n".equals(choiceComm)) {
                     addCommodity = false;
                 }
             }
 
-            sio.sendOutput("Type 'r' to remove a commodity by name \n" +
+            String chooseContinuePrompt = "Type 'r' to remove a commodity by name \n" +
                     "'a' to add to a commodity by name \n'p' to check the total price for this store \n" +
-                    "'n' to exit this store");
-            String choiceContinue = sio.getInput().toLowerCase();
+                    "'n' to exit this store";
+            sio.sendOutput(chooseContinuePrompt);
+            String choiceContinue = checkRegex("[r|a|p|n]", sio.getInput(), chooseContinuePrompt);
             boolean chooseContinue = true;
             while (chooseContinue) {
                 switch (choiceContinue) {
@@ -107,12 +108,13 @@ public class ShoppingListActivity implements Activity{
             }
             index += 1;
 
-            sio.sendOutput("Type 'a' to add another store/outlet\n'n' to create an order with these shopping lists");
-            String choice = sio.getInput().toLowerCase();
+            String choicePrompt = "Type 'a' to add another store/outlet" +
+                    "\n'n' to create an order with these shopping lists";
+            sio.sendOutput(choicePrompt);
+            String choice = checkRegex("[a|n]", sio.getInput(), choicePrompt);
             if ("n".equals(choice)) {
                 addSL = false;
             }
-
         }
 
         slManager.save(customer.getUname(), null);
@@ -128,4 +130,11 @@ public class ShoppingListActivity implements Activity{
         this.customer = (Customer) transferredData;
     }
 
+}
+
+class RunSLA {
+    public static void main(String[] args){
+        ShoppingListActivity sla = new ShoppingListActivity();
+        sla.display();
+    }
 }
