@@ -2,7 +2,7 @@ package entities;
 
 public class DeliveryMan extends User{
 
-    private int sin;
+    private long sin;
     private String transport;
     private float rate;
 
@@ -10,7 +10,7 @@ public class DeliveryMan extends User{
         super();
     }
 
-    public void setSin(int sin) {
+    public void setSin(long sin) {
         this.sin = sin;
     }
 
@@ -26,21 +26,21 @@ public class DeliveryMan extends User{
         this.rate = rate;
     }
 
-    public DeliveryMan(String n, int[] l, int num, String user, String pass, int sin, String transport, float rate) {
+    public DeliveryMan(String n, int[] l, String num, String user, String pass, long sin, String transport, float rate) {
         super(n, l, num, user, pass);
         this.transport = transport;
         this.rate = rate;
         this.sin = sin;
     }
 
-    public DeliveryMan(String n, int[] l, int num, String user, String pass, int sin, String transport, float rate, float rating) {
+    public DeliveryMan(String n, int[] l, String num, String user, String pass, long sin, String transport, float rate, float rating) {
         super(n, l, num, user, pass, rating);
         this.transport = transport;
         this.rate = rate;
         this.sin = sin;
     }
 
-    public int getSin() {
+    public long getSin() {
         return sin;
     }
 

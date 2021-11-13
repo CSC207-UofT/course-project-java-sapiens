@@ -49,7 +49,7 @@ public abstract class UserManager extends DBManager<String, User> {
      *
      * @return User created.
      */
-    public User createUser(String n, int[] l, int num, String user, String pass, int sin, String transport, float rate){
+    public User createUser(String n, int[] l, String num, String user, String pass, long sin, String transport, float rate){
         if(userType.equalsIgnoreCase("DELIVERYMAN")){
             return new DeliveryMan(n, l, num, user, pass, sin, transport, rate);
         }
@@ -62,7 +62,7 @@ public abstract class UserManager extends DBManager<String, User> {
      * Register the user into database if possible
      * @return User if registered successfully, null if not so.
      */
-    public User registration(String n, int[] l, int num, String user, String pass, int sin, String transport, float rate){
+    public User registration(String n, int[] l, String num, String user, String pass, long sin, String transport, float rate){
         User currUser = createUser(n, l, num, user, pass, sin, transport, rate);
         return discrepancyCheck(currUser) ? currUser : null; // Template of creating user and discrepancy check
     }

@@ -6,13 +6,13 @@ public abstract class User {
 
     private String name;
     private ArrayList<Integer> location;
-    private int number;
+    private String number;
     private float rating;
     private String comment;
     private String uname;
     private String password;
 
-    public User(String n, int[] l, int num, String user, String pass){
+    public User(String n, int[] l, String num, String user, String pass){
         location = new ArrayList<>();
         this.name = n;
         this.location.add(l[0]);
@@ -25,14 +25,14 @@ public abstract class User {
     public User(){
         name = "";
         location = new ArrayList<>();
-        number = 0;
+        number = "";
         rating = 0;
         comment = "";
         uname = "";
         password= "";
     }
 
-    public User(String n, int[] l, int num, String user, String pass, float rating){
+    public User(String n, int[] l, String num, String user, String pass, float rating){
         this(n, l, num, user, pass);
         this.rating = rating;
     }
@@ -53,11 +53,11 @@ public abstract class User {
         this.location = location;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 

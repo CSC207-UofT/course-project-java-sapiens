@@ -30,7 +30,7 @@ public class CustomerActivity implements Activity{
             sio.sendOutput("$ Please type in command (Type in \"help\" to get help) $");
             String command = sio.getInput();
             switch (command) {
-                case "1": // If the user wants to check order status, switch to the order placement activity.
+                case "1": // The customer places the order.
                     this.save();
                     sio.sendOutput("Starting order placement");
                     sio.intent(new ShoppingListActivity(), this.cus);
@@ -39,8 +39,8 @@ public class CustomerActivity implements Activity{
 
                 case "2": // If the user wants to check order status, switch to the order status activity.
                     this.save();
-                    sio.sendOutput("Starting order placement");
-//                    sio.intent(new OrderStatusActivity(), this.cus);
+                    sio.sendOutput("Status of the order:");
+                    sio.intent(new OrderStatusActivity(), this.cus);
                     break;
 
                 case "3": // If the user wants user info, prompt the info of current account.
@@ -61,7 +61,7 @@ public class CustomerActivity implements Activity{
                     System.exit(0);
                     return;
 
-                case "help": // If the user enters help, prompt the commandList to help.
+                case "help": // If the user enters help, give them help.
                     sio.sendOutput(commandList);
                     break;
             }

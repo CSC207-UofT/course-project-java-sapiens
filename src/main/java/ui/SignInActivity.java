@@ -8,28 +8,26 @@ public class SignInActivity implements Activity{
     @Override
     public void display(){
 
-        sio.sendOutput("Already Registered [Y/N]?");
+        UserManager um;
 
-        if(sio.getInput().equalsIgnoreCase("Y")){
+        sio.sendOutput("Already Registered [Y/N]?");
+        boolean registered = sio.getInput().equalsIgnoreCase("Y");
+
+        sio.sendOutput("Enter 'c' if customer, 'd' if delivery-man");
+        String usertype = sio.getInput();
+
+        if(registered){
             sio.sendOutput("Enter Username ");
             String username = sio.getInput();
 
             sio.sendOutput("Enter Password");
             String password = sio.getInput();
 
-            sio.sendOutput("Enter 'c' if customer, 'd' if delivery-man");
-            String usertype = sio.getInput();
-
-            UserManager um;
             Activity userActivity;
 
             if(usertype.equals("c")){
                um = UserManager.getUserManager("CUSTOMER");
                userActivity = new CustomerActivity();
-            }
-            else if(usertype.equals("tf")){
-                um = UserManager.getUserManager("CUSTOMER");
-                userActivity = new CustomerActivity();
             }
             else{
                 um = UserManager.getUserManager("DELIVERYMAN");
@@ -51,7 +49,7 @@ public class SignInActivity implements Activity{
             });
         }
         else{
-            sio.intent(new RegistrationActivity(), null);
+            sio.intent(new RegistrationActivity(), usertype);
         }
     }
 
