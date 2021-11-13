@@ -1,16 +1,27 @@
 package controllers.use_cases;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+import entities.Customer;
 import entities.Order;
 import controllers.use_cases.Database.DBManager;
 import controllers.use_cases.Database.OnDataReadListener;
 //import entities.ShoppingList;
 
 
-public class OrderManager extends DBManager<Integer, Order> {
+public class OrderManager extends DBManager<String, Order> {
 
-    public int generateUID(){
-        return 1546; //Assume there have been 1546 orders before (Need to sync with database) Hardcoded for now
-    }
+      final String REF_PATH;
+
+    /**
+     * Creates an OrderManager on the basis of the current customer's username
+     */
+      public OrderManager() {
+          REF_PATH = "Order";
+          ref = database.getReference(REF_PATH);
+      }
+
 
 //    /**
 //     * Creates an Order
@@ -38,21 +49,32 @@ public class OrderManager extends DBManager<Integer, Order> {
     /**
      * All Manager classes in controllers.use_cases have some transactions to save.
      *
-     * @param UID The UID with which the database can be queried
+     * @param customerUsername The username with which the database can be queried
      * @param order The corresponding Order
      */
     @Override
-    public void save(Integer UID, Order order) {
+    public void save(String customerUsername, Order order) {
 
     }
 
     /**
      * All Manager classes query the database for a specific Order type that it is managing.
      *
-     * @param UID The UID with which the database can be queried.
+     * @param customerUsername The username with which the database can be queried
      */
     @Override
-    public void get(Integer UID, final OnDataReadListener onDataReadListener) {
-        return;
+    public void get(String customerUsername, final OnDataReadListener onDataReadListener) {
+        ref.child(customerUsername).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                onDataReadListener.setSavedObject(snapshot.getValue(Order.class));
+                onDataReadListener.onSuccess();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                onDataReadListener.onFailure();
+            }
+        });
     }
 }

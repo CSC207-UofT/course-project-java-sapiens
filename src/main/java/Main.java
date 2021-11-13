@@ -1,5 +1,4 @@
 import ui.SignInActivity;
-import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  * This is main class of our program, please run this file to start the program

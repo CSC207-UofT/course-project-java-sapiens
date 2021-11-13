@@ -18,7 +18,7 @@ public class UserManagerTest {
     public void testRead() throws InterruptedException {
         final String[] assertResult = {""};
 
-        cm.get("Nikhil", new OnDataReadListener() {
+        cm.get("Kevin", new OnDataReadListener() {
             @Override
             public void onSuccess() {
                 Customer customer = (Customer) getSavedObject();
@@ -31,7 +31,7 @@ public class UserManagerTest {
             }
         });
         Thread.sleep(10000);
-        assertEquals(assertResult[0], "Nikhil");
+        assertEquals("Kevin", assertResult[0]);
     }
 
 }
