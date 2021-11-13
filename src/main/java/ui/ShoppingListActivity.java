@@ -132,9 +132,9 @@ public class ShoppingListActivity implements Activity{
 
 }
 
-class RunSLA {
-    public static void main(String[] args){
-        ShoppingListActivity sla = new ShoppingListActivity();
-        sla.display();
-    }
-}
+//class RunSLA {
+//    public static void main(String[] args){
+//        ShoppingListActivity sla = new ShoppingListActivity();
+//        sla.display();
+//    }
+//}

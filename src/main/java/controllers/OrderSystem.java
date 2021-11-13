@@ -96,7 +96,7 @@ public class OrderSystem {
      */
     private UserManager loadData() {
         UserManager um = UserManager.getUserManager("CUSTOMER");
-        User user = um.registration("Nikhil", new int[] {20, 40}, 4164071, "nike1016", "ilikecrows123", 0,
+        User user = um.registration("Nikhil", new int[] {20, 40}, "4164071", "nike1016", "ilikecrows123", 0,
                 null, 0);
         um.save(user.getName(), user);
         return um;
