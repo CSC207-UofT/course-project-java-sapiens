@@ -3,18 +3,42 @@ package entities;
 import java.util.ArrayList;
 
 public class Order {
-    private boolean isComplete;
+    private OrderStatus status;
+
     private DeliveryMan deliveryMan;
+
     private Customer customer;
     private ArrayList<ShoppingList> shoppingLists;
 
+    private enum OrderStatus {
+        OTW {
+            @Override
+            public String toString() {
+                return "On the Way to get your order.";
+            }
+        },
 
-    public boolean isComplete() {
-        return isComplete;
+        REC {
+            @Override
+            public String toString() {
+                return "Order Received, Out for Delivery.";
+            }
+        },
+
+        COMP {
+            @Override
+            public String toString() {
+                return "Order Delivered and Complete.";
+            }
+        }
     }
 
-    public void setComplete(boolean complete) {
-        isComplete = complete;
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
     }
 
     public DeliveryMan getDeliveryMan() {
@@ -37,6 +61,8 @@ public class Order {
         return this.shoppingLists;
     }
 
-//    public void setShoppingList(ShoppingList shoppingList){this.shoppingList = shoppingList; }
+    public void setShoppingLists(ArrayList<ShoppingList> shoppingLists) {
+        this.shoppingLists = shoppingLists;
+    }
 }
 

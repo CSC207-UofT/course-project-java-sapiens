@@ -43,7 +43,6 @@ public class ShoppingListActivity implements Activity{
         int index = 0;
 
         while (addSL) {
-            Scanner sc = new Scanner(System.in);
 
             sio.sendOutput("Store or Outlet?");
             if (checkRegex("[Ss]tore|[Oo]utlet", sio.getInput(), "Store or Outlet?")
@@ -51,6 +50,7 @@ public class ShoppingListActivity implements Activity{
                 sio.sendOutput("Enter the store's name");
                 String storeName = sio.getInput();
                 slManager.newShoppingList(storeName);
+
             } else {
                 sio.sendOutput("Enter the outlet's name");
                 String outletName = sio.getInput();
@@ -89,9 +89,12 @@ public class ShoppingListActivity implements Activity{
             while (chooseContinue) {
                 switch (choiceContinue) {
                     case "r":
+                        sio.sendOutput("Enter index of outlet you want to delete");
+                        int removeIndex = Integer.parseInt(sio.getInput());
+
                         sio.sendOutput("Enter the name of commodity to remove(1)");
                         String commNameRemove = sio.getInput();
-                        slManager.removeCommodity(index, commNameRemove);
+                        slManager.removeCommodity(removeIndex, commNameRemove);
                     case "a":
                         sio.sendOutput("Enter the name of commodity to add(1)");
                         String commNameAdd = sio.getInput();

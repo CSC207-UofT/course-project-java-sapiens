@@ -19,9 +19,9 @@ public class OrderStatusActivity implements Activity{
         String delContact = order.getDeliveryMan().getNumber();
         float delRate = order.getDeliveryMan().getRate();
         String displayName = "Name: " + delName;
-        String displayId = "ID: " + String.valueOf(delId);
+        String displayId = "ID: " + delId;
         String displayContact = "Phone Number: " + delContact;
-        String displayRate = "Rating: " + String.valueOf(delRate);
+        String displayRate = "Rating: " + delRate;
 
         sio.sendOutput(displayName);
         sio.sendOutput(displayId);
@@ -33,7 +33,6 @@ public class OrderStatusActivity implements Activity{
         sio.sendOutput("The commodities you asked for are:");
 
         ArrayList<ShoppingList> shoppingLists = order.getShoppingLists();
-        int numShoppingLists = shoppingLists.size();
 
         for (ShoppingList shoppingList : shoppingLists) {
 
@@ -47,7 +46,9 @@ public class OrderStatusActivity implements Activity{
         }
     }
 
-    private void displayStatus(Order order){}
+    private void displayStatus(Order order){
+        sio.sendOutput("Order Status: " + order.getStatus());
+    }
 
     @Override
     public void display(){
