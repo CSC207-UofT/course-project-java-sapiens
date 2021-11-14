@@ -3,14 +3,17 @@ package ui;
 import controllers.use_cases.CustomerManager;
 import controllers.use_cases.UserManager;
 import entities.Customer;
+import entities.Order;
 import entities.ShoppingList;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CustomerActivity implements Activity{
     // This variable contains the current user.
     private Customer cus;
     private CustomerManager cm;
+    private Order order;
     // This variable contains all the available command.
     private final String commandList =
             "Please type in the corresponding number of the following command\n" +
@@ -31,17 +34,30 @@ public class CustomerActivity implements Activity{
             String command = sio.getInput();
             switch (command) {
                 case "1": // The customer places the order.
-                    this.save();
-                    sio.sendOutput("Starting order placement");
-                    sio.intent(new ShoppingListActivity(), this.cus);
-                    activityShift = true;
-                    break;
+                    if (this.order == null){
+                        this.save();
+                        sio.sendOutput("Starting order placement");
+                        sio.intent(new ShoppingListActivity(), this.cus);
+                        activityShift = true;
+                        break;
+                    }else {
+                        sio.sendOutput("You already have an Order in progress, " +
+                                "cannot place order now!");
+                        break;
+                    }
+
 
                 case "2": // If the user wants to check order status, switch to the order status activity.
-                    this.save();
-                    sio.sendOutput("Status of the order:");
-                    sio.intent(new OrderStatusActivity(), this.cus);
-                    break;
+                    if (this.order == null){
+                        sio.sendOutput("You have not placed an order yet!");
+                        break;
+                    }else {
+                        this.save();
+                        sio.sendOutput("Status of the order:");
+                        sio.intent(new OrderStatusActivity(), new Object[]{this.cus, this.order});
+                        break;
+                    }
+
 
                 case "3": // If the user wants user info, prompt the info of current account.
                     sio.sendOutput("Username: " + this.cus.getName() +
@@ -75,6 +91,8 @@ public class CustomerActivity implements Activity{
 
     @Override
     public void getData(Object transferredData) {
-        this.cus = (Customer) transferredData;
+        this.cus = (Customer) Array.get(transferredData, 0);
+        this.order = (Order) Array.get(transferredData, 1);
     }
+
 }

@@ -38,7 +38,7 @@ public class SignInActivity implements Activity{
                 @Override
                 public void onSuccess(){
                     sio.sendOutput("Successful!");
-                    sio.intent(userActivity, getSavedObject());
+                    sio.intent(userActivity, new Object[] {getSavedObject(), null});
                 }
 
                 @Override
