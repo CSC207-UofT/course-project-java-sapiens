@@ -12,39 +12,30 @@ import java.util.Map;
 /**
  * Represents the entire system of Customers creating ShoppingLists.
  */
-public class ShoppingListManager extends DBManager<String, ShoppingList> {
-    private ArrayList<ShoppingList> shoppingLists;
+public class ShoppingListManager extends DBManager<String, ArrayList<ShoppingList>> {
 
-    /**
-     * Create a ShoppingListManager with an empty shoppingLists.
-     */
+    final String REF_PATH = "ShoppingList";
+
     public ShoppingListManager(){
         super();
-        this.shoppingLists = new ArrayList<ShoppingList>();
-    }
-
-    /**
-     * Get shoppingLists.
-     */
-    public ArrayList<ShoppingList> getShoppingLists(){
-        return this.shoppingLists;
+        ref = database.getReference(REF_PATH);
     }
 
     /**
      * Create and add a new store ShoppingList to shoppingLists.
      */
-    public void newShoppingList(String storeName){
+    public void newShoppingList(String storeName, ArrayList<ShoppingList> shoppingLists){
         ShoppingList shoppingList = new ShoppingList(storeName);
-        this.shoppingLists.add(shoppingList);
+        shoppingLists.add(shoppingList);
     }
 
     /**
      * Create and add a new outlet ShoppingList to shoppingLists.
      */
-    public void newShoppingList(String outletName, String outletAddress){
+    public void newShoppingList(String outletName, String outletAddress, ArrayList<ShoppingList> shoppingLists){
         ShoppingList shoppingList = new ShoppingList(outletName);
         shoppingList.setOutletAddress(outletAddress);
-        this.shoppingLists.add(shoppingList);
+        shoppingLists.add(shoppingList);
     }
 
     /**
@@ -52,8 +43,8 @@ public class ShoppingListManager extends DBManager<String, ShoppingList> {
      *
      * @param index index of the ShoppingList is at in shoppingLists.
      */
-    public void deleteShoppingList(int index){
-        this.shoppingLists.remove(index);
+    public void deleteShoppingList(int index, ArrayList<ShoppingList> shoppingLists){
+        shoppingLists.remove(index);
     }
 
     /**
@@ -65,11 +56,12 @@ public class ShoppingListManager extends DBManager<String, ShoppingList> {
      *
      * @return the ShoppingList after change
      */
-    public ShoppingList setCommodity(int index, String commodityName, double commodityPrice, int quantity){
+    public ShoppingList setCommodity(int index, String commodityName, double commodityPrice, int quantity
+    , ArrayList<ShoppingList> shoppingLists){
         Commodity commodity = new Commodity(commodityName, commodityPrice, quantity);
-        this.shoppingLists.get(index).setCommodity(commodity, quantity);
+        shoppingLists.get(index).setCommodity(commodity, quantity);
 
-        return this.shoppingLists.get(index);
+        return shoppingLists.get(index);
     }
 
     /**
@@ -80,9 +72,9 @@ public class ShoppingListManager extends DBManager<String, ShoppingList> {
      *
      * @return the ShoppingList after change
      */
-    public ShoppingList addCommodity(int index, String commName){
-        this.shoppingLists.get(index).addCommodity(commName);
-        return this.shoppingLists.get(index);
+    public ShoppingList addCommodity(int index, String commName, ArrayList<ShoppingList> shoppingLists){
+        shoppingLists.get(index).addCommodity(commName);
+        return shoppingLists.get(index);
     }
 
     /**
@@ -93,9 +85,9 @@ public class ShoppingListManager extends DBManager<String, ShoppingList> {
      *
      * @return the ShoppingList after change
      */
-    public ShoppingList removeCommodity(int index, String commName){
-        this.shoppingLists.get(index).removeCommodity(commName);
-        return this.shoppingLists.get(index);
+    public ShoppingList removeCommodity(int index, String commName, ArrayList<ShoppingList> shoppingLists){
+        shoppingLists.get(index).removeCommodity(commName);
+        return shoppingLists.get(index);
     }
 
     /**
@@ -105,9 +97,9 @@ public class ShoppingListManager extends DBManager<String, ShoppingList> {
      * @param val The corresponding object
      */
     @Override
-    public void save(String obj, ShoppingList val) {
+    public void save(String obj, ArrayList<ShoppingList> val) {
         Map<String, ArrayList<ShoppingList>> toSave = new HashMap<>();
-        toSave.put(obj, this.shoppingLists);
+        toSave.put(obj, val);
 
         ref.setValueAsync(toSave);
     }
