@@ -96,5 +96,16 @@ public class Order {
     public int getUID(){
         return this.UID;
     }
+
+    public String getDeliverManDisplay() {
+        String start = "The Information of the Delivery Person completing your order is: \n";
+        String delName = this.deliveryMan.getName();
+        String delContact = this.deliveryMan.getNumber();
+        float delRate = this.deliveryMan.getRate();
+        String displayName = "Name: " + delName + "\n";
+        String displayContact = "Phone Number: " + "\n";
+        String displayRate = "Rating: "  + "\n";
+        return (start + displayName + displayContact + displayRate);
+    }
 }
 

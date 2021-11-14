@@ -11,7 +11,7 @@ public class ShoppingListActivity implements Activity{
     private Customer customer;
     private final ShoppingListManager slManager = new ShoppingListManager();
 
-    public String checkRegex(String reg, String str, String prompt){
+    private String checkRegex(String reg, String str, String prompt){
         String string = str;
         while (!string.matches(reg)) {
             sio.sendOutput(prompt);
@@ -19,7 +19,7 @@ public class ShoppingListActivity implements Activity{
         }
         return string;
     }
-    public int checkInt(String str, String prompt){
+    private int checkInt(String str, String prompt){
         String string = str;
         String reg = "[0-9]*";
         while (!string.matches(reg)) {
@@ -28,7 +28,7 @@ public class ShoppingListActivity implements Activity{
         }
         return Integer.parseInt(string);
     }
-    public double checkDouble(String str, String prompt){
+    private double checkDouble(String str, String prompt){
         String string = str;
         String reg = "[0-9]*[\\.]?[0-9]*";
         while (!string.matches(reg)) {
@@ -125,7 +125,7 @@ public class ShoppingListActivity implements Activity{
 
         slManager.save(customer.getUname(), shoppingLists);
 
-         sio.intent(new OrderAssignmentActivity(), new Object[] {customer, shoppingLists});
+        sio.intent(new OrderAssignmentActivity(), new Object[] {customer, shoppingLists});
     }
 
     @Override
