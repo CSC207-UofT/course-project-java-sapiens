@@ -1,28 +1,28 @@
-SOLID
+#SOLID
 
 
-Clean Architecture
+#Clean Architecture
 
 
-Design Patterns
+#Design Patterns
 
 
-Use of GitHub Features
+#Use of GitHub Features
 
 
-Code Style and Documentation
+#Code Style and Documentation
 
 
-Testing
+#Testing
 
 
-Refactoring
+#Refactoring
 
 
-Code Organization
+#Code Organization
 
 
-Functionality
+#Functionality
 
 
-Design Document
+#Design Document
