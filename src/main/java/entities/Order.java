@@ -111,8 +111,8 @@ public class Order {
         String delContact = this.deliveryMan.getNumber();
         double delRate = this.deliveryMan.getRate();
         String displayName = "Name: " + delName + "\n";
-        String displayContact = "Phone Number: " + "\n";
-        String displayRate = "Rating: "  + "\n";
+        String displayContact = "Phone Number: " + delContact + "\n";
+        String displayRate = "Rating: " + delRate  + "\n";
         return (start + displayName + displayContact + displayRate);
     }
 }
