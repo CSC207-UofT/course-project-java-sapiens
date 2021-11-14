@@ -125,7 +125,7 @@ public class ShoppingListActivity implements Activity{
 
         slManager.save(customer.getUname(), shoppingLists);
 
-        sio.intent(new OrderAssignmentActivity(), new Object[] {customer, shoppingLists});
+        sio.intent(new OrderCreationActivity(), new Object[] {customer, shoppingLists});
     }
 
     @Override
