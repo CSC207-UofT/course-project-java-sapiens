@@ -10,11 +10,24 @@ public class Order {
     private Customer customer;
     private ArrayList<ShoppingList> shoppingLists;
 
+    private double totalPrice;
+
+    // Order stores a list of ShoppingLists, one ShoppingList for each store/outlet.
+    public Order(DeliveryMan deliveryMan, Customer customer, int UID, ArrayList<ShoppingList> shoppingLists) {
+        this.deliveryMan  = deliveryMan;
+        this.customer = customer;
+        this.UID = UID;
+        this.shoppingLists = shoppingLists;
+
+        for (ShoppingList shoppingList : shoppingLists) {
+            this.totalPrice += shoppingList.getTotalPrice();
+        }
+    }
+
     public Order(DeliveryMan deliveryMan, Customer customer, int UID, ShoppingList shoppingList) {
         this.deliveryMan  = deliveryMan;
         this.customer = customer;
         this.UID = UID;
-//        this.shoppingList = shoppingList;
     }
 
     private enum OrderStatus {
@@ -39,8 +52,6 @@ public class Order {
             }
         }
     }
-
-    private double totalPrice;
 
     public OrderStatus getStatus() {
         return status;
@@ -76,17 +87,6 @@ public class Order {
 
     public ArrayList<ShoppingList> getShoppingLists(){
         return this.shoppingLists;
-    }
-
-    public void setShoppingLists(ArrayList<ShoppingList> shoppingLists) {
-        this.shoppingLists = shoppingLists;
-    }
-
-    public void setTotalPrice() {
-        double total = 0;
-        for (ShoppingList shoppingList : this.getShoppingLists()) {
-            total += shoppingList.getTotalPrice();
-        }
     }
 
     public double getTotalPrice() {
