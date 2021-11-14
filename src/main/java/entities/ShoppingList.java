@@ -2,6 +2,11 @@ package entities;
 
 import java.util.HashMap;
 
+/**
+ * An entity class that represents a shopping list.
+ * Contains relative information about a shopping list and
+ * a list of Commodities.
+ */
 public class ShoppingList {
     private final String outletName;
     private String outletAddress; // optional
@@ -14,6 +19,8 @@ public class ShoppingList {
         this.shoppingList = new HashMap<>();
         this.totalPrice = 0.0;
     }
+
+    //A set of getters and setters.
 
     public String getOutletName() {
         return this.outletName;
@@ -41,6 +48,7 @@ public class ShoppingList {
         return 1;
     }
 
+    // A method that allows the addition of a commodity
     public int addCommodity(String commName){
         //if the commodity is already in shoppingList
         Commodity commodity = this.shoppingList.get(commName);
@@ -49,6 +57,7 @@ public class ShoppingList {
         return commodity.getQuantity();
     }
 
+    // A method that allows the deletion of a commodity
     public int removeCommodity(String commName){
         Commodity commodity = this.shoppingList.get(commName);
         if(commodity.getQuantity() == 1){

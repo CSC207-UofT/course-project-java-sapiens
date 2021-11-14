@@ -1,5 +1,9 @@
 package entities;
 
+/**
+ * An entity class that represents a commodity.
+ * Contains relative information about a commodity.
+ */
 public class Commodity {
     private final String name;
     private final double price;
@@ -11,6 +15,8 @@ public class Commodity {
         this.price = price;
         this.quantity = quantity;
     }
+
+    // A set of getters and setters.
 
     public double getPrice() {
         return this.price;
