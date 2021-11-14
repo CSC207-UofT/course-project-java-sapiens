@@ -4,7 +4,7 @@ public class DeliveryMan extends User{
 
     private long sin;
     private String transport;
-    private float rate;
+    private double rate;
 
     public DeliveryMan(){
         super();
@@ -26,25 +26,25 @@ public class DeliveryMan extends User{
         this.rate = rate;
     }
 
-    public DeliveryMan(String n, int[] l, String num, String user, String pass, long sin, String transport, float rate) {
-        super(n, l, num, user, pass);
+    public DeliveryMan(String name, int[] location, String phoneNumber, String userName, String password, long sin, String transport, double rate) {
+        super(name, location, phoneNumber, userName, password);
         this.transport = transport;
         this.rate = rate;
         this.sin = sin;
     }
 
-    public DeliveryMan(String n, int[] l, String num, String user, String pass, long sin, String transport, float rate, float rating) {
-        super(n, l, num, user, pass, rating);
-        this.transport = transport;
-        this.rate = rate;
-        this.sin = sin;
-    }
+//    public DeliveryMan(String n, int[] l, String num, String user, String pass, long sin, String transport, float rate, float rating) {
+//        super(n, l, num, user, pass, rating);
+//        this.transport = transport;
+//        this.rate = rate;
+//        this.sin = sin;
+//    }
 
     public long getSin() {
         return sin;
     }
 
-    public float getRate() {
+    public double getRate() {
         return rate;
     }
 }

@@ -32,8 +32,8 @@ public abstract class User {
         password= "";
     }
 
-    public User(String n, int[] l, String num, String user, String pass, float rating){
-        this(n, l, num, user, pass);
+    public User(String name, int[] location, String phoneNum, String user, String pass, float rating){
+        this(name, location, phoneNum, user, pass);
         this.rating = rating;
     }
 
