@@ -9,6 +9,8 @@ import entities.Order;
 import controllers.use_cases.Database.DBManager;
 import controllers.use_cases.Database.OnDataReadListener;
 import entities.ShoppingList;
+
+import java.util.ArrayList;
 //import entities.ShoppingList;
 
 
@@ -30,16 +32,20 @@ public class OrderManager extends DBManager<String, Order> {
      *
      * @param deliveryMan Delivery man of new order
      * @param customer Customer of new order
-     * @param shoppingList The shoppingList that the customer has added
+     * @param shoppingLists The shoppingLists that the customer has added
      * @return required order.
      */
-    public Order createOrder(DeliveryMan deliveryMan, Customer customer, ShoppingList shoppingList){
-        int currUID = generateUID(shoppingList);
-        return new Order(deliveryMan, customer, ++currUID ,shoppingList);
+    public Order createOrder(DeliveryMan deliveryMan, Customer customer, ArrayList<ShoppingList> shoppingLists){
+        int currUID = generateUID(shoppingLists);
+        return new Order(deliveryMan, customer, ++currUID ,shoppingLists);
     }
 
-    private int generateUID(ShoppingList shoppingList) {
-        return (int) (shoppingList.getTotalPrice() + Math.floor(Math.random()*(1000)));
+    private int generateUID(ArrayList<ShoppingList> shoppingLists) {
+        double totalPrice = 0;
+        for (ShoppingList shoppingList : shoppingLists) {
+            totalPrice += shoppingList.getTotalPrice();
+        }
+        return (int) (totalPrice + Math.floor(Math.random()*(1000)));
     }
 
 //    /**

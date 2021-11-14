@@ -40,6 +40,8 @@ public class ShoppingListActivity implements Activity{
 
     @Override
     public void display() {
+//        sio.intent(new OrderCreationActivity(), new Object[] {customer, null});
+
         boolean addSL = true;
         int index = 0;
 
@@ -87,7 +89,7 @@ public class ShoppingListActivity implements Activity{
             // Modify a ShoppingList once it's been created
             String chooseContinuePrompt = "Type 'r' to remove a commodity by name \n" +
                     "'a' to add to a commodity by name \n'p' to check the total price for this store \n" +
-                    "'n' to exit this store\n";
+                    "'n' to exit this store";
 
             boolean chooseContinue = true;
             while (chooseContinue) {
