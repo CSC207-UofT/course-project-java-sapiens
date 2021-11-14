@@ -1,14 +1,22 @@
 package entities;
-
 import java.util.ArrayList;
 
 public class Order {
     private OrderStatus status;
 
     private DeliveryMan deliveryMan;
+    private int UID;
 
     private Customer customer;
     private ArrayList<ShoppingList> shoppingLists;
+
+    public Order(DeliveryMan deliveryMan, Customer customer, int UID, ShoppingList shoppingList) {
+        this.deliveryMan  = deliveryMan;
+        this.customer = customer;
+        this.UID = UID;
+//        this.shoppingList = shoppingList;
+    }
+
     private enum OrderStatus {
         OTW {
             @Override
@@ -83,6 +91,10 @@ public class Order {
 
     public double getTotalPrice() {
         return this.totalPrice;
+    }
+
+    public int getUID(){
+        return this.UID;
     }
 }
 
