@@ -7,6 +7,7 @@ import entities.DeliveryMan;
 import entities.Order;
 import entities.ShoppingList;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class OrderCreationActivity implements Activity{
@@ -58,7 +59,8 @@ public class OrderCreationActivity implements Activity{
 
     @Override
     public void getData(Object transferredData) {
-        this.customer = (Customer) transferredData;
-        this.shoppingList = (ShoppingList) transferredData;
+        this.customer = (Customer) Array.get(transferredData, 0);
+
+        this.shoppingList = (ShoppingList) Array.get(transferredData, 1);
     }
 }
