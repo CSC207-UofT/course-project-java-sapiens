@@ -2,6 +2,10 @@ package entities;
 
 import java.util.ArrayList;
 
+/**
+ * An abstract class that represents a user,
+ * extended by Customer and DeliveryMan.
+ */
 public abstract class User {
 
     private String name;
@@ -36,6 +40,8 @@ public abstract class User {
         this(name, location, phoneNum, user, pass);
         this.rating = rating;
     }
+
+    // A set of getters and setters.
 
     public String getName() {
         return name;

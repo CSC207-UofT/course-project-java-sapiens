@@ -1,6 +1,11 @@
 package entities;
 import java.util.ArrayList;
 
+/**
+ * An entity class that represents an Order.
+ * Order relates a Customer, a deliveryMan, and a ShoppingList
+ */
+
 public class Order {
     private OrderStatus status;
 
@@ -30,6 +35,7 @@ public class Order {
         this.UID = UID;
     }
 
+    // An enum for different status of an Order
     private enum OrderStatus {
         OTW {
             @Override
@@ -52,6 +58,8 @@ public class Order {
             }
         }
     }
+
+    // A set of getters and setters.
 
     public OrderStatus getStatus() {
         return status;

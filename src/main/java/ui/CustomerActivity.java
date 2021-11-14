@@ -14,9 +14,9 @@ public class CustomerActivity implements Activity{
     // This variable contains all the available command.
     private final String commandList =
             "Please type in the corresponding number of the following command\n" +
-            "1. place order: start to place an order \n" +
-            "2. order status: show your current order status \n" +
-            "3. user info: gets the current username and the type of the current account \n" +
+            "1. place order: go to order placement page \n" +
+            "2. order status: go to order status page \n" +
+            "3. user profile: go to user profile page \n" +
             "4. sign out: sign out from the current account \n" +
             "5. quit: quit the program \n";
 
