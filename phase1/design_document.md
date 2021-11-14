@@ -8,7 +8,7 @@ Our project follows Clean Architecture layers with Entities for the different ty
 ### A brief description of how your project is consistent with the SOLID design principles (if you notice a violation and aren't sure how to fix it, talk about that too!)
 
 ### A brief description of which packaging strategies you considered, which you decided to use, and why. (see slide 7 from the packages slides)
-This project structures the source code files into packages based on architecture by layer being showed: [img.png](img.png). 
+This project structures the source code files into packages based on architecture by layer being showed: [img.png](img.png).
 Each fold contains files that usually aren't closely related to each other. This results in packages by layer with low cohesion modularity, but with high coupling between packages.
 This strategy also leads to a package for each technical group of classes. One disadvantage of using Clean Architecture by layer is that editing a feature involves editing files across different folders.
 ### A summary of any design patterns your group has implemented (or plans to implement).
