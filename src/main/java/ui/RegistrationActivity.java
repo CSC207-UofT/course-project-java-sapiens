@@ -1,6 +1,8 @@
 package ui;
 
+import controllers.SystemInOut;
 import controllers.use_cases.UserManager;
+import entities.User;
 
 public class RegistrationActivity implements Activity{
 
@@ -54,7 +56,18 @@ public class RegistrationActivity implements Activity{
             userActivity = new DeliveryManActivity();
         }
 
-        um.registration(name, l, number, username, password, sin, transport, rate);
+        User user =  um.registration(name, l, number, username, password, sin, transport, rate);
+
+        if(user != null){
+            um.save(user.getUname(), user);
+            sio.intent(userActivity, user);
+        }
+        else{
+            sio.sendOutput("You cannot register as your username is already used, or information is incorrect");
+            sio.sendOutput("Try again!");
+            display();
+        }
+
     }
 
     @Override
