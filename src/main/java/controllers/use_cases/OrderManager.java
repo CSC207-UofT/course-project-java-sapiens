@@ -11,6 +11,8 @@ import controllers.use_cases.Database.OnDataReadListener;
 import entities.ShoppingList;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 //import entities.ShoppingList;
 
 
@@ -40,6 +42,12 @@ public class OrderManager extends DBManager<String, Order> {
         return new Order(deliveryMan, customer, ++currUID ,shoppingLists);
     }
 
+    /**
+     * Creates an Unique ID for an order
+     *
+     * @param shoppingLists The shoppingLists that the customer has added
+     * @return unique ID based on.
+     */
     private int generateUID(ArrayList<ShoppingList> shoppingLists) {
         double totalPrice = 0;
         for (ShoppingList shoppingList : shoppingLists) {
@@ -48,15 +56,15 @@ public class OrderManager extends DBManager<String, Order> {
         return (int) (totalPrice + Math.floor(Math.random()*(1000)));
     }
 
-//    /**
-//     * Provided the UID of the required order, get its information in the form of
-//     * an order object.
-//     * @param UID the required order's UID.
-//     * @return The order corresponding to the UID.
-//     */
-////    public Order getOrderInfo(int UID){
-////        return get(UID); // Get order from database which matches UID. DB connection not implemented so currently null.
-////    }
+    /**
+     * Provided the UID of the required order, get its information in the form of
+     * an order object.
+     * @param UID the required order's UID.
+     * @return The order corresponding to the UID.
+     */
+    public int getOrderInfo(int UID){
+        return UID; // Get order from database which matches UID. DB connection not implemented so currently null.
+    }
 
     /**
      * All Manager classes in controllers.use_cases have some transactions to save.
@@ -66,7 +74,10 @@ public class OrderManager extends DBManager<String, Order> {
      */
     @Override
     public void save(String customerUsername, Order order) {
-
+//        Map<String, Order> toSave = new HashMap<>();
+//        toSave.put(customerUsername, (Order) order);
+//
+//        ref.setValueAsync(toSave);
     }
 
     /**
