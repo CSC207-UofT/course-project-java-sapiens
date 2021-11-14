@@ -4,9 +4,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import entities.Customer;
+import entities.DeliveryMan;
 import entities.Order;
 import controllers.use_cases.Database.DBManager;
 import controllers.use_cases.Database.OnDataReadListener;
+import entities.ShoppingList;
 //import entities.ShoppingList;
 
 
@@ -23,18 +25,22 @@ public class OrderManager extends DBManager<String, Order> {
       }
 
 
-//    /**
-//     * Creates an Order
-//     *
-//     * @param deliveryMan Delivery man of new order
-//     * @param customer Customer of new order
-//     * @param shoppingList The shoppingList that the customer has added
-//     * @return required order.
-//     */
-//    public Order createOrder(DeliveryMan deliveryMan, Customer customer, ShoppingList shoppingList){
-//        int currUID = generateUID();
-//        return new Order(deliveryMan, customer, ++currUID ,shoppingList);
-//    }
+    /**
+     * Creates an Order
+     *
+     * @param deliveryMan Delivery man of new order
+     * @param customer Customer of new order
+     * @param shoppingList The shoppingList that the customer has added
+     * @return required order.
+     */
+    public Order createOrder(DeliveryMan deliveryMan, Customer customer, ShoppingList shoppingList){
+        int currUID = generateUID(shoppingList);
+        return new Order(deliveryMan, customer, ++currUID ,shoppingList);
+    }
+
+    private int generateUID(ShoppingList shoppingList) {
+        return (int) (shoppingList.getTotalPrice() + Math.floor(Math.random()*(1000)));
+    }
 
 //    /**
 //     * Provided the UID of the required order, get its information in the form of
