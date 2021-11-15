@@ -8,7 +8,6 @@ public class Commodity {
     private final String name;
     private final double price;
     private int quantity;
-    private String note;
 
     public Commodity(String name, double price, int quantity){
         this.name = name;
@@ -36,13 +35,5 @@ public class Commodity {
 
     public void removeQuantity(){
         this.quantity -= 1;
-    }
-
-    private void setNote(String note){
-        this.note =  note;
-    }
-
-    private String getNote() {
-        return this.note;
     }
 }
