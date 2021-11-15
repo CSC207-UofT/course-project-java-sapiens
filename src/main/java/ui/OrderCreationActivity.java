@@ -14,6 +14,7 @@ public class OrderCreationActivity implements Activity{
     private final OrderManager orderManager = new OrderManager();
     private ArrayList<ShoppingList> shoppingLists;
     private ArrayList<DeliveryMan> dList;
+    private Order order;
 
     @Override
     public void display() {
@@ -23,7 +24,8 @@ public class OrderCreationActivity implements Activity{
         sio.sendOutput("Which delivery man would you like to select for your order?");
         sio.sendOutput("This step is skipped for phase1");
         sio.sendOutput("Delivery man is chosen successfully");
-        Order order = orderManager.createOrder(d1, customer, shoppingLists);
+        order = orderManager.createOrder(d1, customer, shoppingLists);
+        order.setStatusOTW();
 //
 //        sio.sendOutput("Which delivery man would you like to select for your order:\n +" +
 //                "1:" + dList.get(0).getName() + " "+ dList.get(0).getRate() +"\n"+
@@ -55,7 +57,6 @@ public class OrderCreationActivity implements Activity{
     @Override
     public void getData(Object transferredData) {
         this.customer = (Customer) Array.get(transferredData, 0);
-
         this.shoppingLists = (ArrayList<ShoppingList>) Array.get(transferredData, 1);
     }
 }
