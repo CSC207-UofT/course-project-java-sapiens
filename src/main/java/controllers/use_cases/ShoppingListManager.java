@@ -54,14 +54,12 @@ public class ShoppingListManager extends DBManager<String, ArrayList<ShoppingLis
      * @param commodityName name of commodity.
      * @param commodityPrice price of commodity.
      *
-     * @return the ShoppingList after change
      */
-    public ShoppingList setCommodity(int index, String commodityName, double commodityPrice, int quantity
+    public void setCommodity(int index, String commodityName, double commodityPrice, int quantity
     , ArrayList<ShoppingList> shoppingLists){
         Commodity commodity = new Commodity(commodityName, commodityPrice, quantity);
         shoppingLists.get(index).setCommodity(commodity, quantity);
 
-        return shoppingLists.get(index);
     }
 
     /**
@@ -111,7 +109,6 @@ public class ShoppingListManager extends DBManager<String, ArrayList<ShoppingLis
      */
     @Override
     public void get(String obj, final OnDataReadListener onDataReadListener) {
-        return;
     }
 }
 
