@@ -1,9 +1,8 @@
 ### A description of any major design decisions your group has made (along with brief explanations of why you made them).
-We decided to continue with a text based UI for phase 1 since most of our group members are still learning Android Studio. But we implemented our text UI completely differently from phase 0. We modeled our text UI based on how we plan to implement the UI in Android Studio, with different activities classes in the UI layer of our program. This way when we work in Android, we re-use most of the code we used in phase 1 for the text UI. 
+We decided to continue with a text-based UI for phase 1 since most of our group members are still learning Android Studio. But we implemented our text UI completely differently from phase 0. We modelled our text UI based on how we plan to implement the UI in Android Studio, with different activities classes in the UI layer of our program. This way when we work in Android, we re-use most of the code we used in phase 1 for the text UI. 
 
 ### A brief description of how your project adheres to Clean Architecture (if you notice a violation and aren't sure how to fix it, talk about that too!)
-Our project follows Clean Architecture layers with Entities for the different types of Users, and the data the Users can create and manipulate. We also have usecases that uses dependency inversion to call the controller interface to save data remotely. We also have a seperate UI for display and taking 
-
+Our project follows Clean Architecture layers with Entities for the different types of Users, and the data the Users can create and manipulate. We also have usecases that uses dependency inversion to call the controller interface to save data remotely. We also have a seperate UI for display and taking in user inputs. We violated the clean architecture only a little since our UI is using the methods of Entities on rare occassions. We are not sure weither having duplicate methods inside the use cases is necessary since a lot of the methods the UI uses from the Entities is implemented in the Entities. So if we want follow clean architecture then we have to have a lot of duplicate methods which we're not sure is the best solution. 
 
 ### A brief description of how your project is consistent with the SOLID design principles (if you notice a violation and aren't sure how to fix it, talk about that too!)
 Single Responsibility Principle: In phase 0, we had a huge controller OrderSystem that does all the things, which violated the single responsibility principle. In phase 1, we separated the OrderSystem and made it become a group of smaller activities so that each of them are responsible for only one part of the original controller. This made the process easier to code and clearer to understand.
@@ -15,8 +14,8 @@ Liskov Substitution Principle: One example of LSP in our project is in SignInAct
 Interface Segregation Principle: In out project, we have an Activity interface that every different activities implements. We tried to only include the methods that all the activities have in common (display, and getData), so that none of them has to implement a method that it does not need.
 
 ### A brief description of which packaging strategies you considered, which you decided to use, and why. (see slide 7 from the packages slides)
-This project structures the source code files into packages based on architecture by layer being showed: [img.png](img.png).
-Each fold contains files that usually aren't closely related to each other. This results in packages by layer with low cohesion modularity, but with high coupling between packages.
-This strategy also leads to a package for each technical group of classes. One disadvantage of using Clean Architecture by layer is that editing a feature involves editing files across different folders.
-### A summary of any design patterns your group has implemented (or plans to implement).
+This project structures the source code files into packages based on the clean architecture layer. Each fold contains files that usually aren't closely related to each other. This results in packages by layer with low cohesion modularity, but with high coupling between packages. This strategy also leads to a package for each technical group of classes. One disadvantage of using Clean Architecture by layer is that editing a feature involves editing files across different folders. But since most of our features is very losely related, we didn't need to seperate our packages by feature. 
 
+### A summary of any design patterns your group has implemented (or plans to implement).
+- We used a Factory to create the appropriate use case for the two type of users using our program. 
+- We plan to use an Adaptor to wrap additional info to the Commodities such as a note to the delivery on how the commodity should be handled. 
