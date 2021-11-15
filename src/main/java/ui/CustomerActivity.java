@@ -4,24 +4,14 @@ import controllers.use_cases.CustomerManager;
 import controllers.use_cases.UserManager;
 import entities.Customer;
 import entities.Order;
-import entities.ShoppingList;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 public class CustomerActivity implements Activity{
     // This variable contains the current user.
     private Customer cus;
     private CustomerManager cm;
     private Order order;
-    // This variable contains all the available command.
-    private final String commandList =
-            "Please type in the corresponding number of the following command\n" +
-            "1. place order: go to order placement page \n" +
-            "2. order status: go to order status page \n" +
-            "3. user profile: go to user profile page \n" +
-            "4. sign out: sign out from the current account \n" +
-            "5. quit: quit the program \n";
 
     @Override
     public void display() {
@@ -32,6 +22,15 @@ public class CustomerActivity implements Activity{
         while (!activityShift) {
             sio.sendOutput("$ Please type in command (Type in \"help\" to get help) $");
             String command = sio.getInput();
+
+            // This variable contains all the available command.
+            String commandList = "Please type in the corresponding number of the following command\n" +
+                    "1. place order: go to order placement page \n" +
+                    "2. order status: go to order status page \n" +
+                    "3. user profile: go to user profile page \n" +
+                    "4. sign out: sign out from the current account \n" +
+                    "5. quit: quit the program \n";
+
             switch (command) {
                 case "1": // The customer places the order.
                     if (this.order == null){
@@ -39,24 +38,22 @@ public class CustomerActivity implements Activity{
                         sio.sendOutput("Starting order placement");
                         sio.intent(new ShoppingListActivity(), this.cus);
                         activityShift = true;
-                        break;
                     }else {
                         sio.sendOutput("You already have an Order in progress, " +
                                 "cannot place order now!");
-                        break;
                     }
+                    break;
 
 
                 case "2": // If the user wants to check order status, switch to the order status activity.
                     if (this.order == null){
                         sio.sendOutput("You have not placed an order yet!");
-                        break;
                     }else {
                         this.save();
                         sio.sendOutput("Status of the order:");
                         sio.intent(new OrderStatusActivity(), new Object[]{this.cus, this.order});
-                        break;
                     }
+                    break;
 
 
                 case "3": // If the user wants user info, prompt the info of current account.
