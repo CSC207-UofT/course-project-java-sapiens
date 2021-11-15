@@ -12,4 +12,4 @@
 - Nikhil: DBManager.class, OrderManager.class, Order.class, and implemented FireBase. 
 - Sidharth Sachdev: Added the feature to check order status with OrderStatusActivity class 
 - Tyner: CustomerActivity class, UserTest, and contributed to check order status feature. 
-- Ansh: 
+- Ansh: RatingActivity and related changes to enable the rating and review system.
