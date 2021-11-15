@@ -5,7 +5,6 @@ import entities.Customer;
 import entities.ShoppingList;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class ShoppingListActivity implements Activity{
     private Customer customer;
