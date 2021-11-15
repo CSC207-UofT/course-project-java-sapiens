@@ -36,6 +36,10 @@ public class Order {
         this.UID = UID;
     }
 
+    public String getStatusOTW() {
+        return "On the Way to get your order.";
+    }
+
     // An enum for different status of an Order
     private enum OrderStatus {
         OTW {
