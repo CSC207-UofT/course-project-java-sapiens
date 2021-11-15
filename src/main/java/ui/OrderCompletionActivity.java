@@ -1,6 +1,5 @@
 package ui;
 
-import entities.Customer;
 import entities.Order;
 
 import java.lang.reflect.Array;

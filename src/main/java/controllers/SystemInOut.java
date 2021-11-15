@@ -2,7 +2,6 @@ package controllers;
 
 import ui.Activity;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
