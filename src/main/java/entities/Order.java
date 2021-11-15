@@ -23,6 +23,7 @@ public class Order {
         this.customer = customer;
         this.UID = UID;
         this.shoppingLists = shoppingLists;
+        this.totalPrice = 0;
 
         for (ShoppingList shoppingList : shoppingLists) {
             this.totalPrice += shoppingList.getTotalPrice();
