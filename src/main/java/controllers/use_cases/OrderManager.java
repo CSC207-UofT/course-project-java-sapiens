@@ -53,7 +53,7 @@ public class OrderManager extends DBManager<String, Order> {
         for (ShoppingList shoppingList : shoppingLists) {
             totalPrice += shoppingList.getTotalPrice();
         }
-        return (int) (totalPrice + Math.floor(Math.random()*(1000)));
+        return (int) (totalPrice + Math.floor(Math.random()*(Math.pow(10,(int) (Math.log10(totalPrice) + 1)))));
     }
 
     /**
