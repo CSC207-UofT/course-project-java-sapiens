@@ -12,7 +12,7 @@ public class RatingActivity implements Activity{
     @Override
     public void display() {
         String userToRateType = (this.userToRateType.equals("c")) ? "customer" : "delivery man";
-        System.out.println("Please rate your experience with the " + userToRateType + ":");
+        System.out.println("Please rate your experience with the " + userToRateType + ": (from 1 to 5)");
         float ratedValue = Float.parseFloat(sio.getInput());
         float rating = userToRate.getRating();
         int noOfRatings = userToRate.getNoOfRatings();
@@ -24,7 +24,7 @@ public class RatingActivity implements Activity{
         if (toCommentOrNot){
             System.out.println("Please leave a comment:");
             String comment = sio.getInput();
-            userToRate.getComments().add(comment);
+//            userToRate.getComments().add(comment);
         }
 
         if (this.userToRateType.equals("d")){
