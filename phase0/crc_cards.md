@@ -88,12 +88,82 @@ Responsibilities:
 Collaborators: Customer, DeliveryMan  
 
 # Controller:  
-### Class name: OrderSystem  
+### Class name: OrderSystem (Changed into a group of Activities in Phase 1)
 Sub-classes:  
 Responsibilities:  
 - Takes input from UI and identifies which command the user is trying to execute then calls the corresponding use case.
 
 Collaborators: All use cases
+
+### Interface: Activity  
+implementations: CustomerActivity, DeleveryManActivity, OrderCompletionActivity, OrderCreationActivity, OrderStatusActivity,
+RatingActivity, RegistrationActivity, ShoppingListActivity, SignInActivity
+Responsibilities:  
+- Representing different Activities in Android.
+- display(), and getData() methods to be implemented by child.
+
+### Class name: SignInActivity  
+interface implemented: Activity
+Responsibilities:  
+- Representing the page for logining in.
+- check user accounts and password, navigating to different homepages for customer or diliveryman.
+- navigating to registration page.
+
+### Class name: RegistrationActivity  
+interface implemented: Activity
+Responsibilities:  
+- Representing the page for registration.
+- registration.
+- navigating back to SignInActivity.
+
+### Class name: CustomerActivity  
+interface implemented: Activity
+Responsibilities:  
+- Representing homepage for customer's view.
+- distinguishing commands from customer to navigate to different activities.
+
+### Class name: DeleveryManActivity  
+interface implemented: Activity
+Responsibilities:  
+- Representing homepage for delivery man's view.
+- distinguishing commands from delivery man to navigate to different activities.
+
+### Class name: ShoppingListActivity  
+interface implemented: Activity
+Responsibilities:  
+- Representing the page for shopping list creation.
+- using user commands to build shoppingList.
+- navigating to IOrderCreationActivity
+
+### Class name: OrderCreationActivity  
+interface implemented: Activity
+Responsibilities:  
+- Representing the page for order creation.
+- build order according to user's choice of delivery man.
+- navigating back to customer's home page.
+
+### Class name: OrderStatusActivity  
+interface implemented: Activity
+Responsibilities:  
+- Representing the page for order status check.
+- presenting order information to customer.
+- navigating back to customer's home page.
+
+### Class name: OrderCompletionActivity  
+interface implemented: Activity
+Responsibilities:  
+- Representing the order completion page for customer.
+- presenting order completion information to customer.
+- end an order.
+- navigating back to customer's home page or RatingActivity.
+
+
+### Class name: RatingActivity  
+interface implemented: Activity
+Responsibilities:  
+- Representing the rating page.
+- allow customer to rate and leave comment to a deliveryman.
+- navigating back to customer's home page.
 
 # Text User Interface:
 ### Class name: SystemInOut (Tyner)
