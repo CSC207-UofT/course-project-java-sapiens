@@ -23,7 +23,7 @@
     - After accepting an order, the project generates the best route (google map package) from the delivery person’s location to the destination, while passing through all the stores in the order.
     - In the process of delivery, the delivery person and the customer will be able to contact each other via the contact information as provided on the order under its details. 
     - The system sends the order information to an available delivery person and estimates the delivery fee based on the distance and time of travelling.
-    - **(New)** The delivery person is responsible for updating the status of the order between on the way, out for delivery, and delivered - Order complete.
+    - The delivery person is responsible for updating the status of the order between on the way, out for delivery, and delivered - Order complete.
     - After the transaction is done, the delivery person is able to rate and comment on the customer.
 
 ## For the outlets who want to partner:
@@ -39,4 +39,4 @@
 - Provides a platform for delivering products.
 - Calculates cost of delivery (and in the case of buying things, total cost).
 - Outlets for customers to buy directly from the store.
-- **(New)** Has the order tracker capability.
+- Has the order tracker capability.
