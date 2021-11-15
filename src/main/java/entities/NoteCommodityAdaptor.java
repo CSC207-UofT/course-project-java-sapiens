@@ -2,7 +2,7 @@ package entities;
 
 public class NoteCommodityAdaptor implements Notable{
     /*
-     * An adapter class that allows additional information to be added to the commodity.
+     * An adapter object that allows additional information to be added to the commodity.
      */
     private final Commodity commodity;
     private Type type;
