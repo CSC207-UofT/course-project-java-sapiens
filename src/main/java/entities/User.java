@@ -12,7 +12,8 @@ public abstract class User {
     private ArrayList<Integer> location;
     private String number;
     private float rating;
-    private String comment;
+    private int noOfRatings;
+    private ArrayList<String> comments;
     private String uname;
     private String password;
 
@@ -30,15 +31,17 @@ public abstract class User {
         name = "";
         location = new ArrayList<>();
         number = "";
-        rating = 0;
-        comment = "";
+        rating = 0.0f;
+        noOfRatings = 0;
+        comments = new ArrayList<>();
         uname = "";
         password= "";
     }
 
-    public User(String name, int[] location, String phoneNum, String user, String pass, float rating){
+    public User(String name, int[] location, String phoneNum, String user, String pass, float rating, int noOfRatings){
         this(name, location, phoneNum, user, pass);
         this.rating = rating;
+        this.noOfRatings = noOfRatings;
     }
 
     // A set of getters and setters.
@@ -75,12 +78,20 @@ public abstract class User {
         this.rating = rating;
     }
 
-    public String getComment() {
-        return comment;
+    public int getNoOfRatings() {
+        return noOfRatings;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setNoOfRatings(int noOfRatings) {
+        this.noOfRatings = noOfRatings;
+    }
+
+    public ArrayList<String> getComments() {
+        return comments;
+    }
+
+    public void setComments(ArrayList<String> comments) {
+        this.comments = comments;
     }
 
     public String getUname() {
