@@ -22,3 +22,4 @@ This project structures the source code files into packages based on the clean a
 - We used a Factory to create the appropriate use case for the two type of users using our program. 
 - We used an Adaptor to wrap additional info to the Commodities such as a note to the delivery on how the commodity should be handled. 
 - We plan to use a Builder to create different types of ShoppingLists such as for stores and for outlets. 
+- we plan to implement a Memento to store the state of a ShoppingList so the customer can undo changes they make on a ShoppingList. 
