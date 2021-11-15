@@ -19,7 +19,15 @@ Dependency Inversion Principle: In our program the most abstract classes that di
 This project structures the source code files into packages based on the clean architecture layers of Model Controller View. Where View = ui package, Model = entities package, and Controller= anything that interacts directly with the entities and is used by the UI. This results in packages by layer with low cohesion modularity, but with high coupling between packages. This strategy also leads to a package for each technical group of classes. One disadvantage of using Clean Architecture by layer is that editing a feature involves editing files across different folders. But since most of our features is very losely related, we didn't need to seperate our packages by feature. 
 
 ## A summary of any design patterns your group has implemented (or plans to implement).
-- We used a Factory to create the appropriate use case for the two type of users using our program. 
+
+### Current Design Patters
+
+- We used a Factory to create the appropriate use case for the two type of users using our program. (UserManager.java)
+- We used Command to recreate UI activities in Android and with all managers that need to use database interactions. (DBManager.java)
+- We used Template in the registration of users into database as customers.
+- The Model-Controller-View design was used to allot roles for each class in the program.
+
+### Future additions
 - We used an Adaptor to wrap additional info to the Commodities such as a note to the delivery on how the commodity should be handled. 
 - We plan to use a Builder to create different types of ShoppingLists such as for stores and for outlets. 
 - we plan to implement a Memento to store the state of a ShoppingList so the customer can undo changes they make on a ShoppingList. 
