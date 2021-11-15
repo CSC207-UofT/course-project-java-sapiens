@@ -12,23 +12,6 @@ public class OrderStatusActivity implements Activity{
     private Customer customer;
     private Order order;
 
-//    private void displayOrder(Order order){
-//        sio.sendOutput("The Information of the Delivery Person completing your order is:");
-//        String delName = order.getDeliveryMan().getName();
-//        long delId = order.getDeliveryMan().getSin();
-//        String delContact = order.getDeliveryMan().getNumber();
-//        float delRate = order.getDeliveryMan().getRate();
-//        String displayName = "Name: " + delName;
-//        String displayId = "ID: " + delId;
-//        String displayContact = "Phone Number: " + delContact;
-//        String displayRate = "Rating: " + delRate;
-//
-//        sio.sendOutput(displayName);
-//        sio.sendOutput(displayId);
-//        sio.sendOutput(displayContact);
-//        sio.sendOutput(displayRate);
-//    }
-
     private void displayShoppingLists(Order order){
         sio.sendOutput("The commodities you asked for are:");
 

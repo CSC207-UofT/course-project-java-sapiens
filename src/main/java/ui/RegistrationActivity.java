@@ -1,6 +1,5 @@
 package ui;
 
-import controllers.SystemInOut;
 import controllers.use_cases.UserManager;
 import entities.User;
 

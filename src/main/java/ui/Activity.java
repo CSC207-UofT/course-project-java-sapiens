@@ -2,7 +2,7 @@ package ui;
 
 import controllers.SystemInOut;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 /**
  * Used to replicate the Activity class in Android
