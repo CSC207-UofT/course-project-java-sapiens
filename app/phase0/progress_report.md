@@ -10,9 +10,9 @@ We have entities for the users of our program, the shopping list and order that 
 We consider the scenario in which the user(Customer) logs into their account, chooses a store for the items they want to buy, gives information about the items, i.e., their name and price, and selects the delivery person they want to complete this service and transaction. It goes over the control flow by the crc cards from the ui to controllers, use cases, and entities, thus completing one run-through of the application.
 
 ## Summary of skeleton program:
-The transfer of control works its way from the Main.class, the entry of the program, which then creates a SystemInOut.class for i/o and a OrderSystem.class which serves as a controller, taking in the input and calling the classes in controllers.use_cases as required.
+The transfer of control works its way from the Main.class, the entry of the program, which then creates a SystemInOut.class for i/o and a OrderSystem.class which serves as a controller, taking in the input and calling the classes in use_cases as required.
 
-The controllers.use_cases classes are managers. These classes serve as factories for core entities such as Users ( DeliveryMan and Customers as per required ), Outlets, Commodities and ShoppingLists when an Order is being created. Since our application is intended to run on Android and serve live users, we have to rely on a database. All Managers thus implement DBManager.class that provides methods to store a key (Unique identification) and value (required object) onto the database, and retrieve as required.
+The use_cases classes are managers. These classes serve as factories for core entities such as Users ( DeliveryMan and Customers as per required ), Outlets, Commodities and ShoppingLists when an Order is being created. Since our application is intended to run on Android and serve live users, we have to rely on a database. All Managers thus implement DBManager.class that provides methods to store a key (Unique identification) and value (required object) onto the database, and retrieve as required.
 
 The Database link is currently not implemented but will be connected via the class in gateways package, DataGateway.
 
