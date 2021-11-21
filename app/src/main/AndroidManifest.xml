@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".UI.SignInActivity"
+            android:name=".ui.RegistrationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

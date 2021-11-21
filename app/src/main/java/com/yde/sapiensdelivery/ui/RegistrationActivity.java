@@ -1,14 +1,16 @@
-package com.yde.sapiensdelivery.UI;
+package com.yde.sapiensdelivery.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import com.yde.sapiensdelivery.R;
 
-public class SignInActivity extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.activity_registration);
     }
 }
