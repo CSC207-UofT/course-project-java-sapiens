@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.yde.sapiensdelivery.R;
+import com.yde.sapiensdelivery.controllers.UserManager;
+import com.yde.sapiensdelivery.controllers.database.OnDataReadListener;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -23,12 +25,49 @@ public class SignInActivity extends AppCompatActivity {
         CheckBox isCustomer = findViewById(R.id.is_customer);
         Button signIn = findViewById(R.id.button);
         TextView signUp = findViewById(R.id.sign_up);
+        TextView error = findViewById(R.id.error);
 
         signUp.setOnClickListener(view -> {
             Intent intent = new Intent(this, RegistrationActivity.class);
             startActivity(intent);
         });
 
+        signIn.setOnClickListener(view -> {
 
+            UserManager um;
+
+            if(isCustomer.isChecked()){
+                um = UserManager.getUserManager("CUSTOMER");
+            }
+            else{
+                um = UserManager.getUserManager("DELIVERYMAN");
+            }
+
+            String usernameStr = username.getText().toString();
+            String passwordStr = password.getText().toString();
+
+            um.authenticate(usernameStr, passwordStr, new OnDataReadListener() {
+                @Override
+                public void onSuccess(){
+
+                    error.setText(R.string.empty);
+                    Intent intent;
+
+                    if(isCustomer.isChecked()){
+                        intent = new Intent(SignInActivity.this, CustomerActivity.class);
+                    }
+                    else{
+                        intent = new Intent(SignInActivity.this, DeliveryManActivity.class);
+                    }
+
+                    startActivity(intent);
+                }
+
+                @Override
+                public void onFailure() {
+                    error.setText(R.string.wrong_auth);
+                }
+            });
+        });
     }
 }

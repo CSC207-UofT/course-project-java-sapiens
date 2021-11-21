@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
+            android:name=".ui.DeliveryManActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.CustomerActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.RegistrationActivity"
             android:exported="false" />
         <activity

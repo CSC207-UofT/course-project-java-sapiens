@@ -6,4 +6,6 @@
     <string name="are_you_a_customer">Are you a Customer?</string>
     <string name="logo">Logo</string>
     <string name="sign_in">Sign In</string>
+    <string name="wrong_auth">Wrong username or password</string>
+    <string name="empty" />
 </resources>
