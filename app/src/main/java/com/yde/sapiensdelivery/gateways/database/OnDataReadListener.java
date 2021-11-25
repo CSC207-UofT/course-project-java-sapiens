@@ -1,4 +1,4 @@
-package com.yde.sapiensdelivery.controllers.database;
+package com.yde.sapiensdelivery.gateways.database;
 
 public abstract class OnDataReadListener {
     Object savedObject = new Object();

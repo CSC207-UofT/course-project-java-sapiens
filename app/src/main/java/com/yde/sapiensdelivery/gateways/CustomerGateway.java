@@ -1,22 +1,22 @@
-package com.yde.sapiensdelivery.controllers;
+package com.yde.sapiensdelivery.gateways;
 
 import androidx.annotation.NonNull;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
-import com.yde.sapiensdelivery.controllers.database.OnDataReadListener;
-import com.yde.sapiensdelivery.entities.DeliveryMan;
+import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
+import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.User;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class DeliveryManController extends UserController {
+public class CustomerGateway extends UserGateway {
 
-    final String REF_PATH = "DeliveryMan";
+    final String REF_PATH = "Customer";
 
-    public DeliveryManController(String userType) {
+    public CustomerGateway(String userType) {
         super(userType);
         ref = database.getReference(REF_PATH);
     }
@@ -34,19 +34,19 @@ public class DeliveryManController extends UserController {
      * @param onDataReadListener  Action to be performed on authentication
      */
     @Override
-    public void authenticate(String uname, String password, OnDataReadListener onDataReadListener) {
+    public void authenticate(String uname, String password, final OnDataReadListener onDataReadListener) {
 
         ref.child(uname).addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                DeliveryMan deliveryMan = snapshot.getValue(DeliveryMan.class);
+                Customer customer = snapshot.getValue(Customer.class);
 
-                if(deliveryMan == null){
+                if(customer == null){
                     onDataReadListener.onFailure();
                 }
-                else if(deliveryMan.getPassword().equals(createHash(password))){
-                    onDataReadListener.setSavedObject(snapshot.getValue(DeliveryMan.class));
+                else if(customer.getPassword().equals(createHash(password))){
+                    onDataReadListener.setSavedObject(snapshot.getValue(Customer.class));
                     onDataReadListener.onSuccess();
                 }
                 else{
@@ -59,19 +59,18 @@ public class DeliveryManController extends UserController {
                 onDataReadListener.onFailure();
             }
         });
-
     }
 
     /**
      * All Manager classes in controllers.use_cases have some transactions to save.
      *
      * @param obj The username with which the database can be queried
-     * @param val The corresponding delivery man
+     * @param val The corresponding Customer
      */
     @Override
     public void save(String obj, User val) {
-        Map<String, DeliveryMan> toSave = new HashMap<>();
-        toSave.put(obj, (DeliveryMan) val);
+        Map<String, Customer> toSave = new HashMap<>();
+        toSave.put(obj, (Customer) val);
 
         ref.setValue(toSave);
     }
@@ -82,12 +81,11 @@ public class DeliveryManController extends UserController {
      * @param obj The username with which the database can be queried.
      */
     @Override
-    public void get(String obj, final OnDataReadListener onDataReadListener) {
-
+    public void get(String obj, final OnDataReadListener onDataReadListener){
         ref.child(obj).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                onDataReadListener.setSavedObject(snapshot.getValue(DeliveryMan.class));
+                onDataReadListener.setSavedObject(snapshot.getValue(Customer.class));
                 onDataReadListener.onSuccess();
             }
 
@@ -96,6 +94,7 @@ public class DeliveryManController extends UserController {
                 onDataReadListener.onFailure();
             }
         });
-
     }
+
 }
+
