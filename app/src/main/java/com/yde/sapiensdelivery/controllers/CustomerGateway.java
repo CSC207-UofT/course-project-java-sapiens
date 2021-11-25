@@ -12,11 +12,11 @@ import com.yde.sapiensdelivery.entities.User;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CustomerManager extends UserManager{
+public class CustomerGateway extends UserGateway {
 
     final String REF_PATH = "Customer";
 
-    public CustomerManager(String userType) {
+    public CustomerGateway(String userType) {
         super(userType);
         ref = database.getReference(REF_PATH);
     }
