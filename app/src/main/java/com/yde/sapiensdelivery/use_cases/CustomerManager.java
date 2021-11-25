@@ -60,5 +60,39 @@ public class CustomerManager extends UserManager {
         return this.customer.getPassword();
     }
 
+    /**
+     * set the Costumer's name
+     */
+    public void setName(String name){
+        this.customer.setName(name);
+    }
 
+    /**
+     * set the Costumer's location in the following format
+     * {longitude, latitude}
+     */
+    public void setLocation(ArrayList<Integer> location){
+        this.customer.setLocation(location);
+    }
+
+    /**
+     * set the Costumer's phone number
+     */
+    public void setPhoneNumber(String number){
+        this.customer.setNumber(number);
+    }
+
+    /**
+     * set the Costumer's username
+     */
+    public void setUsername(String username){
+        this.customer.setUname(username);
+    }
+
+    /**
+     * set the Costumer's password
+     */
+    public void setPassword(String password){
+        this.customer.setPassword(password);
+    }
 }
