@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.yde.sapiensdelivery.R;
-import com.yde.sapiensdelivery.controllers.UserManager;
+import com.yde.sapiensdelivery.controllers.UserGateway;
 import com.yde.sapiensdelivery.controllers.database.OnDataReadListener;
 
 public class SignInActivity extends AppCompatActivity {
@@ -34,13 +34,13 @@ public class SignInActivity extends AppCompatActivity {
 
         signIn.setOnClickListener(view -> {
 
-            UserManager um;
+            UserGateway um;
 
             if(isCustomer.isChecked()){
-                um = UserManager.getUserManager("CUSTOMER");
+                um = UserGateway.getUserManager("CUSTOMER");
             }
             else{
-                um = UserManager.getUserManager("DELIVERYMAN");
+                um = UserGateway.getUserManager("DELIVERYMAN");
             }
 
             String usernameStr = username.getText().toString();
