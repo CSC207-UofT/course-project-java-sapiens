@@ -30,18 +30,13 @@ public class Order {
         }
     }
 
-    public Order(DeliveryMan deliveryMan, Customer customer, int UID, ShoppingList shoppingList) {
-        this.deliveryMan  = deliveryMan;
-        this.customer = customer;
-        this.UID = UID;
-    }
 
     public String getStatusOTW() {
         return "On the Way to get your order.";
     }
 
     // An enum for different status of an Order
-    private enum OrderStatus {
+    public enum OrderStatus {
         OTW {
             @Override
             public String toString() {
