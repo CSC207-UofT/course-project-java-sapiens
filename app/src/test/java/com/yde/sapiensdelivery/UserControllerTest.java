@@ -1,6 +1,6 @@
 package com.yde.sapiensdelivery;
 
-import com.yde.sapiensdelivery.controllers.CustomerGateway;
+import com.yde.sapiensdelivery.controllers.CustomerController;
 import com.yde.sapiensdelivery.controllers.database.OnDataReadListener;
 import com.yde.sapiensdelivery.entities.Customer;
 
@@ -10,12 +10,12 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class UserGatewayTest {
-    CustomerGateway cm;
+public class UserControllerTest {
+    CustomerController cm;
 
     @Before
     public void setUp() throws InterruptedException {
-        cm = new CustomerGateway("CUSTOMER");
+        cm = new CustomerController("CUSTOMER");
 
         Customer kevin = new Customer("Kevin", new int[] {100, 200}, "4164449999", "kevin",
                 DigestUtils.sha256Hex("ilikesparrows123"));

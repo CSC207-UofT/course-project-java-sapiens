@@ -7,11 +7,11 @@ import com.yde.sapiensdelivery.entities.User;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-public abstract class UserGateway extends DBManager<String, User> {
+public abstract class UserController extends DBManager<String, User> {
 
     String userType;
 
-    public UserGateway(String userType){
+    public UserController(String userType){
         this.userType = userType;
     }
 
@@ -32,12 +32,12 @@ public abstract class UserGateway extends DBManager<String, User> {
      * @param userType Type of User being created
      * @return Required user manager
      */
-    public static UserGateway getUserManager(String userType){
+    public static UserController getUserManager(String userType){
 
         if(userType.equalsIgnoreCase("CUSTOMER")){
-            return new CustomerGateway(userType);
+            return new CustomerController(userType);
         } else {
-            return new DeliveryManGateway(userType);
+            return new DeliveryManController(userType);
         }
     }
 
