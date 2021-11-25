@@ -28,16 +28,17 @@
                 android:orientation="vertical"
                 android:paddingLeft="10dp">
 
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="10dp"
+                    android:text="User Type" />
+
                 <RadioGroup
+                    android:id="@+id/user_type"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:paddingBottom="10dp"
-                        android:text="User Type" />
 
                     <RadioButton
                         android:id="@+id/customer_sign_up"
@@ -50,6 +51,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Delivery Man" />
+
                 </RadioGroup>
 
             </LinearLayout>
@@ -152,12 +154,13 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/sin_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:visibility="gone"
                 android:orientation="vertical"
-                android:paddingLeft="10dp">
+                android:paddingLeft="10dp"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/textView7"
@@ -178,12 +181,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/rate_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:visibility="gone"
                 android:orientation="vertical"
-                android:paddingLeft="10dp">
+                android:paddingLeft="10dp"
+                android:visibility="gone">
+
 
                 <TextView
                     android:id="@+id/textView9"
@@ -201,15 +206,17 @@
                     android:ems="10"
                     android:inputType="textPersonName" />
 
+
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/transport_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:visibility="gone"
                 android:orientation="vertical"
-                android:paddingLeft="10dp">
+                android:paddingLeft="10dp"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/textView8"
