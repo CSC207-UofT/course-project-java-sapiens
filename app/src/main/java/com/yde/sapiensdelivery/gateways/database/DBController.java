@@ -3,12 +3,12 @@ package com.yde.sapiensdelivery.gateways.database;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public abstract class DBManager<K, V> {
+public abstract class DBController<K, V> {
 
     public FirebaseDatabase database;
     public DatabaseReference ref;
 
-    public DBManager(){
+    public DBController(){
         try {
             database = FirebaseDatabase.getInstance();
         }catch (Exception e){

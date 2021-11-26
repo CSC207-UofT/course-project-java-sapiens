@@ -1,5 +1,5 @@
 package com.yde.sapiensdelivery.gateways;
-import com.yde.sapiensdelivery.gateways.database.DBManager;
+import com.yde.sapiensdelivery.gateways.database.DBController;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
@@ -7,7 +7,7 @@ import com.yde.sapiensdelivery.entities.User;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-public abstract class UserGateway extends DBManager<String, User> {
+public abstract class UserGateway extends DBController<String, User> {
 
     String userType;
 
