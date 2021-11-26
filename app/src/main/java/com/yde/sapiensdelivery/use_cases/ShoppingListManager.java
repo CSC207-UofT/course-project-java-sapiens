@@ -6,17 +6,34 @@ import com.yde.sapiensdelivery.entities.ShoppingList;
 import java.util.ArrayList;
 
 public class ShoppingListManager {
-    final String REF_PATH = "ShoppingList";
+    ArrayList<ShoppingList> shoppingLists;
 
+    /**
+     * Creates an ShoppingListManager given a ArrayList of ShoppingLists
+     */
+    public ShoppingListManager(ArrayList<ShoppingList> shoppingLists){
+        this.shoppingLists = shoppingLists;
+    }
+
+    /**
+     * Creates an ShoppingListManager
+     */
     public ShoppingListManager(){
-//        super();
-//        ref = database.getReference(REF_PATH);
+    }
+
+    /**
+     * Get the List of ShoppingLists that this Manager stores
+     *
+     * @return the ShoppingLists that this Manager stores
+     */
+    public ArrayList<ShoppingList> getShoppingLists() {
+        return shoppingLists;
     }
 
     /**
      * Create and add a new store ShoppingList to shoppingLists.
      */
-    public void newShoppingList(String storeName, ArrayList<ShoppingList> shoppingLists){
+    public void newShoppingList(String storeName){
         ShoppingList shoppingList = new ShoppingList(storeName);
         shoppingLists.add(shoppingList);
     }
@@ -24,7 +41,7 @@ public class ShoppingListManager {
     /**
      * Create and add a new outlet ShoppingList to shoppingLists.
      */
-    public void newShoppingList(String outletName, String outletAddress, ArrayList<ShoppingList> shoppingLists){
+    public void newShoppingList(String outletName, String outletAddress){
         ShoppingList shoppingList = new ShoppingList(outletName);
         shoppingList.setOutletAddress(outletAddress);
         shoppingLists.add(shoppingList);
@@ -35,7 +52,7 @@ public class ShoppingListManager {
      *
      * @param index index of the ShoppingList is at in shoppingLists.
      */
-    public void deleteShoppingList(int index, ArrayList<ShoppingList> shoppingLists){
+    public void deleteShoppingList(int index){
         shoppingLists.remove(index);
     }
 
@@ -47,8 +64,7 @@ public class ShoppingListManager {
      * @param commodityPrice price of commodity.
      *
      */
-    public void setCommodity(int index, String commodityName, double commodityPrice, int quantity
-            , ArrayList<ShoppingList> shoppingLists){
+    public void setCommodity(int index, String commodityName, double commodityPrice, int quantity){
         Commodity commodity = new Commodity(commodityName, commodityPrice, quantity);
         shoppingLists.get(index).setCommodity(commodity, quantity);
 
@@ -62,7 +78,7 @@ public class ShoppingListManager {
      *
      * @return the ShoppingList after change
      */
-    public ShoppingList addCommodity(int index, String commName, ArrayList<ShoppingList> shoppingLists){
+    public ShoppingList addCommodity(int index, String commName){
         shoppingLists.get(index).addCommodity(commName);
         return shoppingLists.get(index);
     }
@@ -75,12 +91,12 @@ public class ShoppingListManager {
      *
      * @return the ShoppingList after change
      */
-    public ShoppingList removeCommodity(int index, String commName, ArrayList<ShoppingList> shoppingLists){
+    public ShoppingList removeCommodity(int index, String commName){
         shoppingLists.get(index).removeCommodity(commName);
         return shoppingLists.get(index);
     }
 
-//    /**
+    //    /**
 //     * All Manager classes in controllers.use_cases have some transactions to save.
 //     *
 //     * @param obj The 'key' with which the database can be queried

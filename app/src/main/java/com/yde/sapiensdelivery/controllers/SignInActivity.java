@@ -1,4 +1,4 @@
-package com.yde.sapiensdelivery.ui;
+package com.yde.sapiensdelivery.controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,8 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.yde.sapiensdelivery.R;
-import com.yde.sapiensdelivery.controllers.UserController;
-import com.yde.sapiensdelivery.controllers.database.OnDataReadListener;
+import com.yde.sapiensdelivery.gateways.UserGateway;
+import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -34,13 +34,13 @@ public class SignInActivity extends AppCompatActivity {
 
         signIn.setOnClickListener(view -> {
 
-            UserController um;
+            UserGateway um;
 
             if(isCustomer.isChecked()){
-                um = UserController.getUserManager("CUSTOMER");
+                um = UserGateway.getUserManager("CUSTOMER");
             }
             else{
-                um = UserController.getUserManager("DELIVERYMAN");
+                um = UserGateway.getUserManager("DELIVERYMAN");
             }
 
             String usernameStr = username.getText().toString();

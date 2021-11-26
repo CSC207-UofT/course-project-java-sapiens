@@ -1,4 +1,4 @@
-package com.yde.sapiensdelivery.controllers.database;
+package com.yde.sapiensdelivery.gateways.database;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

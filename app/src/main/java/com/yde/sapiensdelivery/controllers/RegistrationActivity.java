@@ -1,4 +1,4 @@
-package com.yde.sapiensdelivery.ui;
+package com.yde.sapiensdelivery.controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
 

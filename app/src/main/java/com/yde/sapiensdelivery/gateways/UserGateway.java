@@ -1,17 +1,17 @@
-package com.yde.sapiensdelivery.controllers;
-import com.yde.sapiensdelivery.controllers.database.DBManager;
-import com.yde.sapiensdelivery.controllers.database.OnDataReadListener;
+package com.yde.sapiensdelivery.gateways;
+import com.yde.sapiensdelivery.gateways.database.DBManager;
+import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.entities.User;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-public abstract class UserController extends DBManager<String, User> {
+public abstract class UserGateway extends DBManager<String, User> {
 
     String userType;
 
-    public UserController(String userType){
+    public UserGateway(String userType){
         this.userType = userType;
     }
 
@@ -32,12 +32,12 @@ public abstract class UserController extends DBManager<String, User> {
      * @param userType Type of User being created
      * @return Required user manager
      */
-    public static UserController getUserManager(String userType){
+    public static UserGateway getUserManager(String userType){
 
         if(userType.equalsIgnoreCase("CUSTOMER")){
-            return new CustomerController(userType);
+            return new CustomerGateway(userType);
         } else {
-            return new DeliveryManController(userType);
+            return new DeliveryManGateway(userType);
         }
     }
 

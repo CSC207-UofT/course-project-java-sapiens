@@ -13,12 +13,17 @@ public class OrderManager {
 //    final String REF_PATH;
 
     /**
-     * Creates an OrderManager on the basis of the current customer's username
+     * Creates an OrderManager given an already existing Order
      */
     public OrderManager(Order order) {
-//        this.order = order;
+        this.order = order;
     }
 
+    /**
+     * Creates an OrderManager
+     */
+    public OrderManager() {
+    }
 
     /**
      * Creates an Order

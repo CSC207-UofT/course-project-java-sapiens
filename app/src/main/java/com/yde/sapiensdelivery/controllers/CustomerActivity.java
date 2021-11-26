@@ -1,15 +1,15 @@
-package com.yde.sapiensdelivery.ui;
+package com.yde.sapiensdelivery.controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.yde.sapiensdelivery.R;
 
-public class DeliveryManActivity extends AppCompatActivity {
+public class CustomerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_delivery_man);
+        setContentView(R.layout.activity_customer);
     }
 }
