@@ -1,23 +1,17 @@
-plugins {
-    id 'java'
-}
-
-group 'org.example'
-version '1.0-SNAPSHOT'
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    implementation 'junit:junit:4.13.2'
-    implementation 'com.google.firebase:firebase-admin:8.1.0'
-    testImplementation('org.junit.jupiter:junit-jupiter:5.8.1')
-    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.14.1'
-}
-
-test {
-    testLogging {
-        events "passed", "skipped", "failed"
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
     }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.3"
+        classpath 'com.google.gms:google-services:4.3.10'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }

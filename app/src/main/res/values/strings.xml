@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Sapiens Delivery</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="not_registered_click_here"><u>Not Registered? Click Here!</u></string>
+    <string name="are_you_a_customer">Are you a Customer?</string>
+    <string name="logo">Logo</string>
+    <string name="sign_in">Sign In</string>
+    <string name="wrong_auth">Wrong username or password</string>
+    <string name="empty" />
+</resources>
