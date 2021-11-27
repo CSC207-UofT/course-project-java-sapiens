@@ -22,8 +22,8 @@ public class CustomerGateway extends UserGateway {
     }
 
     @Override
-    protected boolean discrepancyCheck(User currUser) {
-        return false;
+    protected void usernameRepetitionChecker(String user, OnDataReadListener onDataReadListener) {
+
     }
 
     /**

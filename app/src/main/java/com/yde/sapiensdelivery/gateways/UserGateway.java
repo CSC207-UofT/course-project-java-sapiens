@@ -1,12 +1,11 @@
 package com.yde.sapiensdelivery.gateways;
 import com.yde.sapiensdelivery.gateways.database.DBController;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
-import com.yde.sapiensdelivery.entities.Customer;
-import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.entities.User;
-import com.yde.sapiensdelivery.use_cases.UserManager;
 
 import org.apache.commons.codec.digest.DigestUtils;
+
+import java.util.HashMap;
 
 public abstract class UserGateway extends DBController<String, User> {
 
@@ -45,13 +44,29 @@ public abstract class UserGateway extends DBController<String, User> {
     /**
      * Register the user into database if possible
      */
-    public User registration(String n, int[] l, String num, String user, String pass, long sin, String transport, float rate){
+    public void registration(String n, int[] l, String num, String user, String pass, String sin, String transport, float rate,
+                             final OnDataReadListener onDataReadListener){
 
-        User currUser = UserManager.createUser(userType, n, l, num, user, pass, sin, transport, rate);
-        return discrepancyCheck(currUser) ? currUser : null; // Template of creating user and discrepancy check
+        HashMap<String, String> fieldToValue = new HashMap<>();
+        fieldToValue.put("PHONE NUMBER", num);
+
+        if(userType.equals("DELIVERYMAN")){
+            fieldToValue.put("SIN", sin);
+            fieldToValue.put("TRANSPORT", transport);
+        }
+
+        if(IsRegexInvalid(fieldToValue)){ // Template of regex checks.
+            onDataReadListener.onFailure();
+        }
+
+        usernameRepetitionChecker(user, onDataReadListener); // Template of username repeat checks.
     }
 
-    protected abstract boolean discrepancyCheck(User currUser);
+    protected abstract void usernameRepetitionChecker(String user, OnDataReadListener onDataReadListener);
+
+    protected boolean IsRegexInvalid(HashMap<String, String> fieldToValue){
+        return false;
+    }
 
     /**
      * Returns the user if existing in database

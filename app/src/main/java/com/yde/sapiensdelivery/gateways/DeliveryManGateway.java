@@ -22,8 +22,13 @@ public class DeliveryManGateway extends UserGateway {
     }
 
     @Override
-    protected boolean discrepancyCheck(User currUser) {
-        return false;
+    protected void usernameRepetitionChecker(String user, OnDataReadListener onDataReadListener) {
+
+    }
+
+    @Override
+    protected boolean IsRegexInvalid(HashMap<String, String> fieldToValue) {
+        return super.IsRegexInvalid(fieldToValue);
     }
 
     /**
