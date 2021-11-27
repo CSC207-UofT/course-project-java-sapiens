@@ -64,6 +64,13 @@ public abstract class UserGateway extends DBController<String, User> {
 
     protected abstract void usernameRepetitionChecker(String user, OnDataReadListener onDataReadListener);
 
+    /**
+     * Checks if the value for a certain field is a valid entry.
+     * The Base UserGateway (used by CustomerGateway) is only concerned with the field Phone Number.
+     *
+     * @param fieldToValue Hashmap of one KV pair: PHONE NUMBER -> input
+     * @return if the phone number is legal.
+     */
     protected boolean IsRegexInvalid(HashMap<String, String> fieldToValue){
         return false;
     }
