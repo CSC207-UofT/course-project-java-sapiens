@@ -34,19 +34,19 @@ public class SignInActivity extends AppCompatActivity {
 
         signIn.setOnClickListener(view -> {
 
-            UserGateway um;
+            UserGateway userGateway;
 
             if(isCustomer.isChecked()){
-                um = UserGateway.getUserManager("CUSTOMER");
+                userGateway = UserGateway.getUserGateway("CUSTOMER");
             }
             else{
-                um = UserGateway.getUserManager("DELIVERYMAN");
+                userGateway = UserGateway.getUserGateway("DELIVERYMAN");
             }
 
             String usernameStr = username.getText().toString();
             String passwordStr = password.getText().toString();
 
-            um.authenticate(usernameStr, passwordStr, new OnDataReadListener() {
+            userGateway.authenticate(usernameStr, passwordStr, new OnDataReadListener() {
                 @Override
                 public void onSuccess(){
 

@@ -1,4 +1,6 @@
 package com.yde.sapiensdelivery.entities;
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 
 /**
@@ -38,6 +40,7 @@ public class Order {
     // An enum for different status of an Order
     public enum OrderStatus {
         OTW {
+            @NonNull
             @Override
             public String toString() {
                 return "On the Way to get your order.";
@@ -45,6 +48,7 @@ public class Order {
         },
 
         REC {
+            @NonNull
             @Override
             public String toString() {
                 return "Order Received, Out for Delivery.";
@@ -52,6 +56,7 @@ public class Order {
         },
 
         COMP {
+            @NonNull
             @Override
             public String toString() {
                 return "Order Delivered and Complete.";
