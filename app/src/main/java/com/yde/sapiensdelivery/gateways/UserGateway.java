@@ -44,8 +44,7 @@ public abstract class UserGateway extends DBController<String, User> {
     /**
      * Register the user into database if possible
      */
-    public void registration(String n, int[] l, String num, String user, String pass, String sin, String transport, float rate,
-                             final OnDataReadListener onDataReadListener){
+    public void registration(String num, String user, String sin, String transport, final OnDataReadListener onDataReadListener){
 
         HashMap<String, String> fieldToValue = new HashMap<>();
         fieldToValue.put("PHONE NUMBER", num);

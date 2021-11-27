@@ -7,9 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.yde.sapiensdelivery.R;
+import com.yde.sapiensdelivery.gateways.UserGateway;
+import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -22,6 +25,11 @@ public class RegistrationActivity extends AppCompatActivity {
         LinearLayout[] optionalDelivery = {findViewById(R.id.rate_ll), findViewById(R.id.sin_ll), findViewById(R.id.transport_ll)};
         LinearLayout optionalCustomer = findViewById(R.id.address_ll);
 
+
+        RadioButton isCustomer = findViewById(R.id.customer_sign_up);
+        RadioButton isDeliveryMan = findViewById(R.id.delivery_man_sign_up);
+
+        EditText name = findViewById(R.id.name_register);
         EditText username = findViewById(R.id.username_register);
         EditText password = findViewById(R.id.password_register);
         EditText phoneNumber = findViewById(R.id.ph_num);
@@ -48,6 +56,27 @@ public class RegistrationActivity extends AppCompatActivity {
 
         register.setOnClickListener(view -> {
 
+            UserGateway userGateway;
+
+            if(isCustomer.isSelected()){
+                userGateway = UserGateway.getUserGateway("CUSTOMER");
+            }
+            else{
+                userGateway = UserGateway.getUserGateway("DELIVERYMAN");
+            }
+
+            userGateway.registration(phoneNumber.getText().toString(), username.getText().toString(), sin.getText().toString(),
+                    transport.getText().toString(), new OnDataReadListener() {
+                        @Override
+                        public void onSuccess() {
+
+                        }
+
+                        @Override
+                        public void onFailure() {
+
+                        }
+                    });
         });
     }
 }

@@ -38,6 +38,7 @@ public class DeliveryManGateway extends UserGateway {
 
                 if(deliveryMan == null){
                     onDataReadListener.onSuccess();
+                    onDataReadListener.ERROR_CODES.add(0); // Username Error
                 }
                 else{
                     onDataReadListener.onFailure();
@@ -47,6 +48,7 @@ public class DeliveryManGateway extends UserGateway {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 onDataReadListener.onFailure();
+                onDataReadListener.ERROR_CODES.add(1); // Database Error
             }
         });
     }

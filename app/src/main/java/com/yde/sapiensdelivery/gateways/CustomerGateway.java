@@ -39,12 +39,14 @@ public class CustomerGateway extends UserGateway {
                 }
                 else{
                     onDataReadListener.onFailure();
+                    onDataReadListener.ERROR_CODES.add(0); // Username Error
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 onDataReadListener.onFailure();
+                onDataReadListener.ERROR_CODES.add(1); // Database Error
             }
         });
     }
