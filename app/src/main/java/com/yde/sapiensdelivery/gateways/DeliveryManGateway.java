@@ -34,13 +34,13 @@ public class DeliveryManGateway extends UserGateway {
      * @return if all input fields are legal.
      */
     @Override
-    protected boolean IsRegexInvalid(HashMap<String, String> fieldToValue) {
+    protected boolean isRegexInvalid(HashMap<String, String> fieldToValue) {
         boolean exceptPhoneNumberLegal = false;
 
         HashMap<String, String> onlyPhoneNumber = new HashMap<>();
         onlyPhoneNumber.put("PHONE NUMBER", fieldToValue.get("PHONE NUMBER"));
 
-        return super.IsRegexInvalid(onlyPhoneNumber) && exceptPhoneNumberLegal;
+        return super.isRegexInvalid(onlyPhoneNumber) && exceptPhoneNumberLegal;
     }
 
     /**

@@ -55,7 +55,7 @@ public abstract class UserGateway extends DBController<String, User> {
             fieldToValue.put("TRANSPORT", transport);
         }
 
-        if(IsRegexInvalid(fieldToValue)){ // Template of regex checks.
+        if(isRegexInvalid(fieldToValue)){ // Template of regex checks.
             onDataReadListener.onFailure();
         }
 
@@ -71,7 +71,7 @@ public abstract class UserGateway extends DBController<String, User> {
      * @param fieldToValue Hashmap of one KV pair: PHONE NUMBER -> input
      * @return if the phone number is legal.
      */
-    protected boolean IsRegexInvalid(HashMap<String, String> fieldToValue){
+    protected boolean isRegexInvalid(HashMap<String, String> fieldToValue){
         return false;
     }
 
