@@ -22,6 +22,12 @@ public class DeliveryManGateway extends UserGateway {
         ref = database.getReference(REF_PATH);
     }
 
+    /**
+     * Checks if the username is already registered in the server.
+     *
+     * @param user The username to check
+     * @param onDataReadListener Describes what to do on success/failure
+     */
     @Override
     protected void usernameRepetitionChecker(String user, OnDataReadListener onDataReadListener) {
 

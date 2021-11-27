@@ -62,6 +62,12 @@ public abstract class UserGateway extends DBController<String, User> {
         usernameRepetitionChecker(user, onDataReadListener); // Template of username repeat checks.
     }
 
+    /**
+     * Checks if the username is already registered in the server.
+     *
+     * @param user The username to check
+     * @param onDataReadListener Describes what to do on success/failure
+     */
     protected abstract void usernameRepetitionChecker(String user, OnDataReadListener onDataReadListener);
 
     /**
