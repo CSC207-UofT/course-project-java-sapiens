@@ -23,7 +23,24 @@ public class CustomerGateway extends UserGateway {
 
     @Override
     protected void usernameRepetitionChecker(String user, OnDataReadListener onDataReadListener) {
+        ref.child(user).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Customer customer = snapshot.getValue(Customer.class);
 
+                if(customer == null){
+                    onDataReadListener.onSuccess();
+                }
+                else{
+                    onDataReadListener.onFailure();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                onDataReadListener.onFailure();
+            }
+        });
     }
 
     /**

@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.entities.User;
@@ -24,6 +25,24 @@ public class DeliveryManGateway extends UserGateway {
     @Override
     protected void usernameRepetitionChecker(String user, OnDataReadListener onDataReadListener) {
 
+        ref.child(user).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Customer deliveryMan = snapshot.getValue(Customer.class);
+
+                if(deliveryMan == null){
+                    onDataReadListener.onSuccess();
+                }
+                else{
+                    onDataReadListener.onFailure();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                onDataReadListener.onFailure();
+            }
+        });
     }
 
     /**
