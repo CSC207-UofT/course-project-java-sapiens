@@ -15,49 +15,49 @@ public class CustomerManager extends UserManager {
     }
 
     /**
-     * return the Costumer's name
+     * return the Customer's name
      */
     public String getName(){
         return this.customer.getName();
     }
 
     /**
-     * return the Costumer's Location
+     * return the Customer's Location
      */
     public ArrayList<Integer> getLocation(){
         return this.customer.getLocation();
     }
 
     /**
-     * return the Costumer's PhoneNumber
+     * return the Customer's PhoneNumber
      */
     public String getPhoneNumber(){
         return this.customer.getNumber();
     }
 
     /**
-     * return the Costumer's user name
+     * return the Customer's user name
      */
     public String getUsername(){
         return this.customer.getUname();
     }
 
     /**
-     * return the Costumer's password
+     * return the Customer's password
      */
     public String getPassword(){
         return this.customer.getPassword();
     }
 
     /**
-     * set the Costumer's name
+     * set the Customer's name
      */
     public void setName(String name){
         this.customer.setName(name);
     }
 
     /**
-     * set the Costumer's location in the following format
+     * set the Customer's location in the following format
      * {longitude, latitude}
      */
     public void setLocation(ArrayList<Integer> location){
@@ -65,21 +65,21 @@ public class CustomerManager extends UserManager {
     }
 
     /**
-     * set the Costumer's phone number
+     * set the Customer's phone number
      */
     public void setPhoneNumber(String number){
         this.customer.setNumber(number);
     }
 
     /**
-     * set the Costumer's username
+     * set the Customer's username
      */
     public void setUsername(String username){
         this.customer.setUname(username);
     }
 
     /**
-     * set the Costumer's password
+     * set the Customer's password
      */
     public void setPassword(String password){
         this.customer.setPassword(password);
