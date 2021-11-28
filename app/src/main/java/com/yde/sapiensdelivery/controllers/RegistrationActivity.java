@@ -2,6 +2,7 @@ package com.yde.sapiensdelivery.controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import android.widget.RadioGroup;
 import com.yde.sapiensdelivery.R;
 import com.yde.sapiensdelivery.gateways.UserGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
+import com.yde.sapiensdelivery.use_cases.UserManager;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -65,11 +67,32 @@ public class RegistrationActivity extends AppCompatActivity {
                 userGateway = UserGateway.getUserGateway("DELIVERYMAN");
             }
 
+            String nameStr = name.getText().toString();
+            String phNumStr = phoneNumber.getText().toString();
+            String usernameStr = username.getText().toString();
+            int[] location = new int[]{0, 0};
+            long sinVal = Long.parseLong(sin.getText().toString());
+            String passwordStr = password.getText().toString();
+            String transportStr = transport.getText().toString();
+            float rateVal = Float.parseFloat(rate.getText().toString());
+
             userGateway.registration(phoneNumber.getText().toString(), username.getText().toString(), sin.getText().toString(),
                     transport.getText().toString(), new OnDataReadListener() {
                         @Override
                         public void onSuccess() {
+                            Intent intent;
+                            String userType = isCustomer.isChecked() ? "CUSTOMER" : "DELIVERYMAN";
 
+                            if(isCustomer.isChecked()){
+                                intent = new Intent(RegistrationActivity.this, CustomerActivity.class);
+                            }
+                            else{
+                                intent = new Intent(RegistrationActivity.this, DeliveryManActivity.class);
+                            }
+
+                            userGateway.save(usernameStr, UserManager.createUser(userType, nameStr, location, phNumStr, usernameStr, passwordStr, sinVal,
+                                    transportStr, rateVal));
+                            startActivity(intent);
                         }
 
                         @Override
