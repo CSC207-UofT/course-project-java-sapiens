@@ -38,15 +38,15 @@ public class CustomerGateway extends UserGateway {
                     onDataReadListener.onSuccess();
                 }
                 else{
-                    onDataReadListener.onFailure();
                     onDataReadListener.ERROR_CODES.add(0); // Username Error
+                    onDataReadListener.onFailure();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                onDataReadListener.onFailure();
                 onDataReadListener.ERROR_CODES.add(1); // Database Error
+                onDataReadListener.onFailure();
             }
         });
     }
@@ -94,10 +94,10 @@ public class CustomerGateway extends UserGateway {
      */
     @Override
     public void save(String obj, User val) {
-        Map<String, Customer> toSave = new HashMap<>();
-        toSave.put(obj, (Customer) val);
+        Map<String, Object> toSave = new HashMap<>();
+        toSave.put(obj, val);
 
-        ref.setValue(toSave);
+        ref.updateChildren(toSave);
     }
 
     /**
