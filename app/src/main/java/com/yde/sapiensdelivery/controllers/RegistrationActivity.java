@@ -101,6 +101,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
             float finalRateVal = rateVal;
             long finalSinVal = sinVal;
+
             userGateway.registration(phoneNumber.getText().toString(), username.getText().toString(), sin.getText().toString(),
                     transport.getText().toString(), new OnDataReadListener() {
                         @Override
@@ -116,8 +117,8 @@ public class RegistrationActivity extends AppCompatActivity {
                                 intent = new Intent(RegistrationActivity.this, DeliveryManActivity.class);
                             }
 
-                            userGateway.save(usernameStr, UserManager.createUser(userChosen, nameStr, location, phNumStr, usernameStr, passwordStr, finalSinVal,
-                                    transportStr, finalRateVal));
+                            userGateway.save(usernameStr, UserManager.createUser(userChosen, nameStr, location, phNumStr, usernameStr,
+                                    userGateway.createHash(passwordStr), finalSinVal, transportStr, finalRateVal));
                             startActivity(intent);
                         }
 

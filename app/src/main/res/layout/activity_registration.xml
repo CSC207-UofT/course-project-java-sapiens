@@ -148,7 +148,7 @@
                     android:layout_height="50dp"
                     android:background="@drawable/border"
                     android:ems="10"
-                    android:inputType="numberPassword" />
+                    android:inputType="number" />
 
             </LinearLayout>
 
@@ -201,7 +201,7 @@
                     android:layout_marginRight="10dp"
                     android:background="@drawable/border"
                     android:ems="10"
-                    android:inputType="numberPassword" />
+                    android:inputType="number" />
 
             </LinearLayout>
 
@@ -229,7 +229,7 @@
                     android:layout_marginRight="10dp"
                     android:background="@drawable/border"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="numberDecimal" />
 
 
             </LinearLayout>

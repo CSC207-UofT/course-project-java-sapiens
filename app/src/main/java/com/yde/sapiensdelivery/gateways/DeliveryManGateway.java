@@ -113,10 +113,10 @@ public class DeliveryManGateway extends UserGateway {
      */
     @Override
     public void save(String obj, User val) {
-        Map<String, DeliveryMan> toSave = new HashMap<>();
-        toSave.put(obj, (DeliveryMan) val);
+        Map<String, Object> toSave = new HashMap<>();
+        toSave.put(obj, val);
 
-        ref.setValue(toSave);
+        ref.updateChildren(toSave);
     }
 
     /**
