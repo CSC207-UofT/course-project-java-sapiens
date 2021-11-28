@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +12,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.yde.sapiensdelivery.R;
-import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.gateways.UserGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 import com.yde.sapiensdelivery.use_cases.UserManager;
@@ -130,7 +128,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                         username.setError("Username is already taken");
                                         break;
                                     default:
-                                        Log.i("HA", "HAAA");
+                                        break;
                                 }
                             }
                         }
