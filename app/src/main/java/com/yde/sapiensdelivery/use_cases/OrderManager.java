@@ -32,9 +32,9 @@ public class OrderManager {
      * @param customer Customer of new order
      * @param shoppingLists The shoppingLists that the customer has added
      */
-    public void createOrder(DeliveryMan deliveryMan, Customer customer, ArrayList<ShoppingList> shoppingLists){
+    public Order createOrder(DeliveryMan deliveryMan, Customer customer, ArrayList<ShoppingList> shoppingLists){
         int currUID = generateUID(shoppingLists);
-        this.order = new Order(deliveryMan, customer, ++currUID ,shoppingLists);
+        return new Order(deliveryMan, customer, ++currUID ,shoppingLists);
     }
 
     /**
