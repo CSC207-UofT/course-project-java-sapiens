@@ -4,35 +4,43 @@ import java.util.HashMap;
 
 public class InfoValidityChecker {
     /**
-     * Checks if the value for a certain field is a valid entry.
-     * Concerned with fields: Phone Number, SIN and License Plate (transport)
+     * Checks if phoneNum is in valid phone number format.
      *
-     * @param fieldToValue Hashmap containing the above fields.
-     * @return if all input fields are legal.
+     * @param phoneNum a sting representing a phone number
+     * @return whether phoneNum is in valid phone number format
      */
-    public static boolean isDeliveryManInfoInvalid(HashMap<String, String> fieldToValue) {
-        String phoneNum = fieldToValue.get("PHONE NUMBER");
+    public static boolean isPhoneNumValid(String phoneNum) {
         if (phoneNum == null) {
             return false;
         }
-        else if (!phoneNum.matches("[0-9]{10}")) {
-            return false;
-        }
+        else return phoneNum.matches("[0-9]{10}");
+    }
 
-        String sinNum = fieldToValue.get("SIN");
-        if (sinNum == null) {
+    /**
+     * Checks if sin is in valid SIN number format.
+     *
+     * @param sin a sting representing a SIN number
+     * @return whether sin is in valid SIN number format
+     */
+    public static boolean isSinValid(String sin) {
+        if (sin == null) {
             return false;
         }
-        else if (!sinNum.matches("[0-9]{9}")) {
-            return false;
-        }
+        else return sin.matches("[0-9]{9}");
+    }
 
-        String plateVal = fieldToValue.get("TRANSPORT");
-        // Canadian plates
-        if (plateVal == null) {
+    /**
+     * Checks if plate is in valid Canadian license plate format.
+     * Canadian license plate allows for 2-8 characters in capital letters and numbers.
+     *
+     * @param plate a sting representing a car license plate number
+     * @return whether plate is in valid SIN number format
+     */
+    public static boolean isLicensePlateValid(String plate) {
+        if (plate == null) {
             return false;
         }
         // Canadian license plates can be 2-8 characters in capital letters and numbers
-        else return plateVal.matches("[A-Z|0-9]{2,8}");
+        else return plate.matches("[A-Z|0-9]{2,8}");
     }
 }

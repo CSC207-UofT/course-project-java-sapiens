@@ -3,6 +3,7 @@ import com.yde.sapiensdelivery.gateways.database.DBController;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 import com.yde.sapiensdelivery.entities.User;
 
+import com.yde.sapiensdelivery.regex_checkers.InfoValidityChecker;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.util.HashMap;
@@ -77,7 +78,8 @@ public abstract class UserGateway extends DBController<String, User> {
      * @return if the phone number is legal.
      */
     protected boolean isRegexInvalid(HashMap<String, String> fieldToValue){
-        return false;
+        String phoneNum = fieldToValue.get("PHONE NUMBER");
+        return InfoValidityChecker.isPhoneNumValid(phoneNum);
     }
 
     /**

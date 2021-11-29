@@ -62,7 +62,15 @@ public class DeliveryManGateway extends UserGateway {
      */
     @Override
     protected boolean isRegexInvalid(HashMap<String, String> fieldToValue) {
-        return InfoValidityChecker.isDeliveryManInfoInvalid(fieldToValue);
+        boolean isPhoneNumValid = super.isRegexInvalid(fieldToValue);
+
+        String sin = fieldToValue.get("SIN");
+        boolean isSinValid = InfoValidityChecker.isSinValid(sin);
+
+        String plate = fieldToValue.get("TRANSPORT");
+        boolean isPlateValid = InfoValidityChecker.isLicensePlateValid(plate);
+
+        return isPhoneNumValid && isSinValid && isPlateValid;
     }
 
     /**
