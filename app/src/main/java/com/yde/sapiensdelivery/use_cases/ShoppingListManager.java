@@ -33,7 +33,7 @@ public class ShoppingListManager {
     /**
      * Create and add a new store ShoppingList to shoppingLists.
      */
-    public void newShoppingList(String storeName){
+    public void newShoppingList(String storeName, ArrayList<ShoppingList> shoppingLists){
         ShoppingList shoppingList = new ShoppingList(storeName);
         shoppingLists.add(shoppingList);
     }
@@ -41,7 +41,7 @@ public class ShoppingListManager {
     /**
      * Create and add a new outlet ShoppingList to shoppingLists.
      */
-    public void newShoppingList(String outletName, String outletAddress){
+    public void newShoppingList(String outletName, String outletAddress, ArrayList<ShoppingList> shoppingLists){
         ShoppingList shoppingList = new ShoppingList(outletName);
         shoppingList.setOutletAddress(outletAddress);
         shoppingLists.add(shoppingList);
@@ -52,7 +52,7 @@ public class ShoppingListManager {
      *
      * @param index index of the ShoppingList is at in shoppingLists.
      */
-    public void deleteShoppingList(int index){
+    public void deleteShoppingList(int index, ArrayList<ShoppingList> shoppingLists){
         shoppingLists.remove(index);
     }
 
@@ -64,7 +64,7 @@ public class ShoppingListManager {
      * @param commodityPrice price of commodity.
      *
      */
-    public void setCommodity(int index, String commodityName, double commodityPrice, int quantity){
+    public void setCommodity(int index, String commodityName, double commodityPrice, int quantity, ArrayList<ShoppingList> shoppingLists){
         Commodity commodity = new Commodity(commodityName, commodityPrice, quantity);
         shoppingLists.get(index).setCommodity(commodity, quantity);
 
@@ -78,7 +78,7 @@ public class ShoppingListManager {
      *
      * @return the ShoppingList after change
      */
-    public ShoppingList addCommodity(int index, String commName){
+    public ShoppingList addCommodity(int index, String commName, ArrayList<ShoppingList> shoppingLists){
         shoppingLists.get(index).addCommodity(commName);
         return shoppingLists.get(index);
     }
@@ -91,7 +91,7 @@ public class ShoppingListManager {
      *
      * @return the ShoppingList after change
      */
-    public ShoppingList removeCommodity(int index, String commName){
+    public ShoppingList removeCommodity(int index, String commName, ArrayList<ShoppingList> shoppingLists){
         shoppingLists.get(index).removeCommodity(commName);
         return shoppingLists.get(index);
     }
