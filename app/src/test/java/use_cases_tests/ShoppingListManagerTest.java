@@ -22,10 +22,10 @@ public class ShoppingListManagerTest{
     public void testAddCommodity() {
         shoppingListManager.setCommodity(0, "iPad",700, 2, shoppingLists);
         // Creates a Commodity iPad in Best Buy's shopping list at index 0
-        shoppingListManager.setCommodity(0, "Charger",30, 1, shoppingLists);
+        shoppingListManager.setCommodity(0, "Charger",50, 1, shoppingLists);
         ShoppingList shoppingList = shoppingListManager.addCommodity(0, "iPad", shoppingLists);
         // Adds a commodity iPad in Best Buy's shopping list at index 0
-        assertEquals(2130, shoppingList.getTotalPrice(), 0);
+        assertEquals(2150, shoppingList.getTotalPrice(), 0);
     }
 
     @Test(timeout = 50)
