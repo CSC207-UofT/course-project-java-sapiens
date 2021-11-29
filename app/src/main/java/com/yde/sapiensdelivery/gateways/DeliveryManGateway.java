@@ -61,12 +61,29 @@ public class DeliveryManGateway extends UserGateway {
      */
     @Override
     protected boolean isRegexInvalid(HashMap<String, String> fieldToValue) {
-        boolean exceptPhoneNumberLegal = false;
+        String phoneNum = fieldToValue.get("PHONE NUMBER");
+        if (phoneNum == null) {
+            return false;
+        }
+        else if (!phoneNum.matches("[0-9]{10}")) {
+            return false;
+        }
 
-        HashMap<String, String> onlyPhoneNumber = new HashMap<>();
-        onlyPhoneNumber.put("PHONE NUMBER", fieldToValue.get("PHONE NUMBER"));
+        String sinNum = fieldToValue.get("SIN");
+        if (sinNum == null) {
+            return false;
+        }
+        else if (!sinNum.matches("[0-9]{9}")) {
+            return false;
+        }
 
-        return super.isRegexInvalid(onlyPhoneNumber) && exceptPhoneNumberLegal;
+        String plateVal = fieldToValue.get("TRANSPORT");
+        // Canadian plates
+        if (plateVal == null) {
+            return false;
+        }
+        // Canadian license plates can be 2-8 characters in capital letters and numbers
+        else return plateVal.matches("[A-Z|0-9]{2,8}");
     }
 
     /**
