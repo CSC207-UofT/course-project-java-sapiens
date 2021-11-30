@@ -1,7 +1,5 @@
 package com.yde.sapiensdelivery.regex_checkers;
 
-import java.util.HashMap;
-
 public class InfoValidityChecker {
     /**
      * Checks if phoneNum is in valid phone number format.

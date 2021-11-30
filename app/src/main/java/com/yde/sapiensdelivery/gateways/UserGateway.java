@@ -6,6 +6,7 @@ import com.yde.sapiensdelivery.entities.User;
 import com.yde.sapiensdelivery.regex_checkers.InfoValidityChecker;
 import org.apache.commons.codec.digest.DigestUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class UserGateway extends DBController<String, User> {
@@ -55,8 +56,9 @@ public abstract class UserGateway extends DBController<String, User> {
             fieldToValue.put("TRANSPORT", transport);
         }
 
-        if(isRegexInvalid(fieldToValue)){ // Template of regex checks.
+        if(isRegexInvalid(fieldToValue, onDataReadListener.ERROR_CODES)){ // Template of regex checks.
             onDataReadListener.onFailure();
+            return;
         }
 
         usernameRepetitionChecker(user, onDataReadListener); // Template of username repeat checks.
@@ -77,9 +79,14 @@ public abstract class UserGateway extends DBController<String, User> {
      * @param fieldToValue Hashmap of one KV pair: PHONE NUMBER -> input
      * @return if the phone number is legal.
      */
-    protected boolean isRegexInvalid(HashMap<String, String> fieldToValue){
+    protected boolean isRegexInvalid(HashMap<String, String> fieldToValue, ArrayList<Integer> errorCodes){
         String phoneNum = fieldToValue.get("PHONE NUMBER");
-        return InfoValidityChecker.isPhoneNumValid(phoneNum);
+        boolean isPhoneValid = InfoValidityChecker.isPhoneNumValid(phoneNum);
+
+        if(!isPhoneValid){
+            errorCodes.add(2); // Error Code for phone num
+        }
+        return !isPhoneValid;
     }
 
     /**

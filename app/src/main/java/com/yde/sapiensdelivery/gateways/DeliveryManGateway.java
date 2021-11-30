@@ -10,6 +10,7 @@ import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.entities.User;
 import com.yde.sapiensdelivery.regex_checkers.InfoValidityChecker;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,19 +59,24 @@ public class DeliveryManGateway extends UserGateway {
      * Concerned with fields: Phone Number, SIN and License Plate (transport)
      *
      * @param fieldToValue Hashmap containing the above fields.
-     * @return if all input fields are legal.
      */
     @Override
-    protected boolean isRegexInvalid(HashMap<String, String> fieldToValue) {
-        boolean isPhoneNumValid = super.isRegexInvalid(fieldToValue);
+    protected boolean isRegexInvalid(HashMap<String, String> fieldToValue, ArrayList<Integer> errorCodes) {
+        boolean isPhoneValid = super.isRegexInvalid(fieldToValue, errorCodes);
 
         String sin = fieldToValue.get("SIN");
         boolean isSinValid = InfoValidityChecker.isSinValid(sin);
+        if(!isSinValid){
+            errorCodes.add(3); // Error Code for SIN
+        }
 
         String plate = fieldToValue.get("TRANSPORT");
         boolean isPlateValid = InfoValidityChecker.isLicensePlateValid(plate);
+        if(!isPlateValid){
+            errorCodes.add(4); // Error Code for transport
+        }
 
-        return isPhoneNumValid && isSinValid && isPlateValid;
+        return !isPhoneValid || !isSinValid || !isPlateValid;
     }
 
     /**

@@ -127,8 +127,14 @@ public class RegistrationActivity extends AppCompatActivity {
                                     case 0:
                                         username.setError("Username is already taken");
                                         break;
-                                    default:
+                                    case 2:
+                                        phoneNumber.setError("Not a phone number");
                                         break;
+                                    case 3:
+                                        sin.setError("Not a SIN");
+                                        break;
+                                    case 4:
+                                        transport.setError("Not a License Plate");
                                 }
                             }
                         }
