@@ -19,6 +19,10 @@ public class CustomerGateway extends UserGateway {
     public CustomerGateway(String userType) {
         super(userType);
         ref = database.getReference(REF_PATH);
+        String a = "testing commits";
+        String b = "testing commits";
+        String c = "testing commits";
+        String d = "testing commits";
     }
 
     @Override
