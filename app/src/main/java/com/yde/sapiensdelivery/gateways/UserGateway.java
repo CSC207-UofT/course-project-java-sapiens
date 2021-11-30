@@ -1,12 +1,13 @@
 package com.yde.sapiensdelivery.gateways;
 import com.yde.sapiensdelivery.gateways.database.DBController;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
-import com.yde.sapiensdelivery.entities.Customer;
-import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.entities.User;
-import com.yde.sapiensdelivery.use_cases.UserManager;
 
+import com.yde.sapiensdelivery.regex_checkers.InfoValidityChecker;
 import org.apache.commons.codec.digest.DigestUtils;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public abstract class UserGateway extends DBController<String, User> {
 
@@ -45,13 +46,48 @@ public abstract class UserGateway extends DBController<String, User> {
     /**
      * Register the user into database if possible
      */
-    public User registration(String n, int[] l, String num, String user, String pass, long sin, String transport, float rate){
+    public void registration(String num, String user, String sin, String transport, final OnDataReadListener onDataReadListener){
 
-        User currUser = UserManager.createUser(userType, n, l, num, user, pass, sin, transport, rate);
-        return discrepancyCheck(currUser) ? currUser : null; // Template of creating user and discrepancy check
+        HashMap<String, String> fieldToValue = new HashMap<>();
+        fieldToValue.put("PHONE NUMBER", num);
+
+        if(userType.equals("DELIVERYMAN")){
+            fieldToValue.put("SIN", sin);
+            fieldToValue.put("TRANSPORT", transport);
+        }
+
+        if(isRegexInvalid(fieldToValue, onDataReadListener.ERROR_CODES)){ // Template of regex checks.
+            onDataReadListener.onFailure();
+            return;
+        }
+
+        usernameRepetitionChecker(user, onDataReadListener); // Template of username repeat checks.
     }
 
-    protected abstract boolean discrepancyCheck(User currUser);
+    /**
+     * Checks if the username is already registered in the server.
+     *
+     * @param user The username to check
+     * @param onDataReadListener Describes what to do on success/failure
+     */
+    protected abstract void usernameRepetitionChecker(String user, OnDataReadListener onDataReadListener);
+
+    /**
+     * Checks if the value for a certain field is a valid entry.
+     * The Base UserGateway (used by CustomerGateway) is only concerned with the field Phone Number.
+     *
+     * @param fieldToValue Hashmap of one KV pair: PHONE NUMBER -> input
+     * @return if the phone number is legal.
+     */
+    protected boolean isRegexInvalid(HashMap<String, String> fieldToValue, ArrayList<Integer> errorCodes){
+        String phoneNum = fieldToValue.get("PHONE NUMBER");
+        boolean isPhoneValid = InfoValidityChecker.isPhoneNumValid(phoneNum);
+
+        if(!isPhoneValid){
+            errorCodes.add(2); // Error Code for phone num
+        }
+        return !isPhoneValid;
+    }
 
     /**
      * Returns the user if existing in database

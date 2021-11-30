@@ -8,7 +8,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.entities.User;
+import com.yde.sapiensdelivery.regex_checkers.InfoValidityChecker;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,9 +23,60 @@ public class DeliveryManGateway extends UserGateway {
         ref = database.getReference(REF_PATH);
     }
 
+    /**
+     * Checks if the username is already registered in the server.
+     *
+     * @param user The username to check
+     * @param onDataReadListener Describes what to do on success/failure
+     */
     @Override
-    protected boolean discrepancyCheck(User currUser) {
-        return false;
+    protected void usernameRepetitionChecker(String user, OnDataReadListener onDataReadListener) {
+
+        ref.child(user).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                DeliveryMan deliveryMan = snapshot.getValue(DeliveryMan.class);
+
+                if(deliveryMan == null){
+                    onDataReadListener.onSuccess();
+                    onDataReadListener.ERROR_CODES.add(0); // Username Error
+                }
+                else{
+                    onDataReadListener.onFailure();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                onDataReadListener.onFailure();
+                onDataReadListener.ERROR_CODES.add(1); // Database Error
+            }
+        });
+    }
+
+    /**
+     * Checks if the value for a certain field is a valid entry.
+     * Concerned with fields: Phone Number, SIN and License Plate (transport)
+     *
+     * @param fieldToValue Hashmap containing the above fields.
+     */
+    @Override
+    protected boolean isRegexInvalid(HashMap<String, String> fieldToValue, ArrayList<Integer> errorCodes) {
+        boolean isPhoneValid = super.isRegexInvalid(fieldToValue, errorCodes);
+
+        String sin = fieldToValue.get("SIN");
+        boolean isSinValid = InfoValidityChecker.isSinValid(sin);
+        if(!isSinValid){
+            errorCodes.add(3); // Error Code for SIN
+        }
+
+        String plate = fieldToValue.get("TRANSPORT");
+        boolean isPlateValid = InfoValidityChecker.isLicensePlateValid(plate);
+        if(!isPlateValid){
+            errorCodes.add(4); // Error Code for transport
+        }
+
+        return !isPhoneValid || !isSinValid || !isPlateValid;
     }
 
     /**
@@ -70,10 +123,10 @@ public class DeliveryManGateway extends UserGateway {
      */
     @Override
     public void save(String obj, User val) {
-        Map<String, DeliveryMan> toSave = new HashMap<>();
-        toSave.put(obj, (DeliveryMan) val);
+        Map<String, Object> toSave = new HashMap<>();
+        toSave.put(obj, val);
 
-        ref.setValue(toSave);
+        ref.updateChildren(toSave);
     }
 
     /**

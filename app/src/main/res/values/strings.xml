@@ -8,4 +8,5 @@
     <string name="sign_in">Sign In</string>
     <string name="wrong_auth">Wrong username or password</string>
     <string name="empty" />
+    <string name="name">Name</string>
 </resources>
