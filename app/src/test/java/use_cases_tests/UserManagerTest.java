@@ -1,6 +1,8 @@
 package use_cases_tests;
 
 import com.yde.sapiensdelivery.entities.Customer;
+import com.yde.sapiensdelivery.entities.DeliveryMan;
+import com.yde.sapiensdelivery.entities.User;
 import com.yde.sapiensdelivery.use_cases.CustomerManager;
 import com.yde.sapiensdelivery.use_cases.UserManager;
 import org.junit.*;
@@ -25,7 +27,7 @@ public class UserManagerTest {
         userType = "customer";
 
         User c1 = UserManager.createUser(userType, "Patrick", new int[]{10, 20}, "647", "pz", "password1", 1234, "moto-bike", (float) 4.5);
-        
+
         Customer customer1 = new Customer("Patrick", new int[] {4,20}, "647", "Pat", "password1");
 
         assertEquals(customer1.getPassword(), c1.getName());
