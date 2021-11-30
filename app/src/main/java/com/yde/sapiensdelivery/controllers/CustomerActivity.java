@@ -25,24 +25,24 @@ public class CustomerActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent( CustomerActivity.this, ProfileActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent( CustomerActivity.this, ProfileActivity.class);
+//                startActivity(intent);
             }
         });
 
         button2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent( CustomerActivity.this, OrderStatusActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent( CustomerActivity.this, OrderStatusActivity.class);
+//                startActivity(intent);
             }
         });
 
         button3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent( CustomerActivity.this, OrderCreationActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent( CustomerActivity.this, OrderCreationActivity.class);
+//                startActivity(intent);
             }
         });
     }
