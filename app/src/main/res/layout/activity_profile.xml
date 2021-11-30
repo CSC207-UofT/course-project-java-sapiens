@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controllers.ProfileActivity">
+
+
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="6479999999"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.888"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.41" />
+
+    <TextView
+        android:id="@+id/phoneTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone Number:"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.41" />
+
+    <TextView
+        android:id="@+id/UserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.329" />
+
+    <TextView
+        android:id="@+id/FullNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="56dp"
+        android:text="Full Name:"
+        android:textSize="25dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:ignore="MissingConstraints,NotSibling"
+        tools:layout_editor_absoluteY="177dp" />
+
+    <TextView
+        android:id="@+id/FullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:layout_marginBottom="4dp"
+        android:text="11"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/FullNameTitle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:ignore="NotSibling" />
+
+    <TextView
+        android:id="@+id/UserNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Name:"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.199"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.329" />
+
+    <Button
+        android:id="@+id/main"
+        android:layout_width="143dp"
+        android:layout_height="70dp"
+        android:text="Main Page"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="123dp"
+        tools:layout_editor_absoluteY="405dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
