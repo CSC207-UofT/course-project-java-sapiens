@@ -1,6 +1,7 @@
 package com.yde.sapiensdelivery.entities;
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -8,7 +9,7 @@ import java.util.ArrayList;
  * Order relates a Customer, a deliveryMan, and a ShoppingList
  */
 
-public class Order {
+public class Order implements Serializable {
     private OrderStatus status;
 
     private DeliveryMan deliveryMan;

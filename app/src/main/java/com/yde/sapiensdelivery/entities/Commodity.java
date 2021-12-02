@@ -1,10 +1,12 @@
 package com.yde.sapiensdelivery.entities;
 
+import java.io.Serializable;
+
 /**
  * An entity class that represents a commodity.
  * Contains relative information about a commodity.
  */
-public class Commodity {
+public class Commodity implements Serializable {
     private final String name;
     private final double price;
     private int quantity;
