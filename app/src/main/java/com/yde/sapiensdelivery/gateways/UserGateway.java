@@ -4,6 +4,8 @@ import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 import com.yde.sapiensdelivery.entities.User;
 
 import com.yde.sapiensdelivery.regex_checkers.InfoValidityChecker;
+
+import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.util.ArrayList;
@@ -25,7 +27,7 @@ public abstract class UserGateway extends DBController<String, User> {
      * @return hashed password
      */
     public String createHash(String password){
-        return DigestUtils.sha256Hex(password);
+        return new String(Hex.encodeHex(DigestUtils.sha256(password)));
     }
 
     /**
