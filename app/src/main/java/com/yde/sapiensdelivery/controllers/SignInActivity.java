@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.yde.sapiensdelivery.R;
+import com.yde.sapiensdelivery.entities.Customer;
+import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.gateways.UserGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 
@@ -55,9 +57,11 @@ public class SignInActivity extends AppCompatActivity {
 
                     if(isCustomer.isChecked()){
                         intent = new Intent(SignInActivity.this, CustomerActivity.class);
+                        intent.putExtra("CUSTOMER", (Customer) getSavedObject());
                     }
                     else{
                         intent = new Intent(SignInActivity.this, DeliveryManActivity.class);
+                        intent.putExtra("DELIVERYMAN", (DeliveryMan) getSavedObject());
                     }
 
                     startActivity(intent);
