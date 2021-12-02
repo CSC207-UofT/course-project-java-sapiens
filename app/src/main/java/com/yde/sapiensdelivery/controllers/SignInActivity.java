@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.yde.sapiensdelivery.R;
 import com.yde.sapiensdelivery.entities.Customer;
+import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.gateways.UserGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 
@@ -60,6 +61,7 @@ public class SignInActivity extends AppCompatActivity {
                     }
                     else{
                         intent = new Intent(SignInActivity.this, DeliveryManActivity.class);
+                        intent.putExtra("DELIVERYMAN", (DeliveryMan) getSavedObject());
                     }
 
                     startActivity(intent);

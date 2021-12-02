@@ -6,8 +6,11 @@ import android.widget.Button;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.yde.sapiensdelivery.R;
+import com.yde.sapiensdelivery.entities.Customer;
+import com.yde.sapiensdelivery.use_cases.CustomerManager;
 
 public class CustomerActivity extends AppCompatActivity {
     private Button button1;
@@ -21,6 +24,9 @@ public class CustomerActivity extends AppCompatActivity {
         button1 = (Button) findViewById(R.id.profile);
         button2 = (Button) findViewById(R.id.status);
         button3 = (Button) findViewById(R.id.placeOrder);
+        TextView welcome = findViewById(R.id.welcome);
+        CustomerManager cm = new CustomerManager((Customer) getIntent().getSerializableExtra("CUSTOMER"));
+        welcome.setText(cm.getName());
 
         button1.setOnClickListener(new View.OnClickListener(){
             @Override
