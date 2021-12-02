@@ -1,4 +1,4 @@
-package Gateway_tests;
+package com.yde.sapiensdelivery.Gateway_tests;
 
 import com.yde.sapiensdelivery.gateways.CustomerGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;

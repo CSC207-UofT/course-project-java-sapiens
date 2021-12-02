@@ -1,10 +1,10 @@
-package entities_tests;
+package com.yde.sapiensdelivery.entities_tests;
 
 import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.entities.User;
 import org.junit.*;
-import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 public class UserTest {

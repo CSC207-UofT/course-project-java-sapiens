@@ -1,4 +1,4 @@
-package use_cases_tests;
+package com.yde.sapiensdelivery.use_cases_tests;
 
 import com.yde.sapiensdelivery.entities.ShoppingList;
 import com.yde.sapiensdelivery.use_cases.ShoppingListManager;
