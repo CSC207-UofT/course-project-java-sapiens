@@ -16,6 +16,12 @@
             android:name=".controllers.CustomerActivity"
             android:exported="false" />
         <activity
+            android:name=".controllers.ChooseDeliveryManActivity"
+            android:exported="false" />
+        <activity
+            android:name=".controllers.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".controllers.RegistrationActivity"
             android:exported="false" />
         <activity

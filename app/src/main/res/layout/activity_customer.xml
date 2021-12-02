@@ -22,7 +22,9 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_margin="20dp"
-            android:text="profile"
+            android:background="@drawable/rounded_button"
+            android:text="@string/profile"
+            android:textColor="#ffffff"
             tools:ignore="MissingConstraints" />
 
         <Button
@@ -30,7 +32,9 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_margin="20dp"
-            android:text="Place Order"
+            android:background="@drawable/rounded_button"
+            android:text="@string/place_order"
+            android:textColor="#ffffff"
             tools:ignore="MissingConstraints" />
 
         <Button
@@ -38,7 +42,9 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_margin="20dp"
-            android:text="Order Status"
+            android:background="@drawable/rounded_button"
+            android:text="@string/order_status"
+            android:textColor="#ffffff"
             tools:ignore="MissingConstraints" />
     </LinearLayout>
 
@@ -47,6 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
