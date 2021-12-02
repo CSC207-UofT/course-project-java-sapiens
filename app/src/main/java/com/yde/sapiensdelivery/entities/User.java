@@ -1,12 +1,13 @@
 package com.yde.sapiensdelivery.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * An abstract class that represents a user,
  * extended by Customer and DeliveryMan.
  */
-public abstract class User {
+public abstract class User implements Serializable {
 
     private String name;
     private ArrayList<Integer> location;
