@@ -7,18 +7,23 @@ import java.util.ArrayList;
 
 public class ShoppingListManager {
     ShoppingList shoppingList;
+    // TODO replace outletName with an Outlet OBJ
+    String outletName;
 
     /**
      * Creates a ShoppingListManager given a ShoppingList.
      *
      * @param shoppingList a ShoppingList Object
      */
-    public ShoppingListManager(ShoppingList shoppingList) {
+    public ShoppingListManager(ShoppingList shoppingList, String outletName) {
+        // TODO change outletName to an Outlet OBJ
+        this.outletName = outletName;
         this.shoppingList = shoppingList;
     }
 
     /**
-     * Creates an empty ShoppingListManager
+     * Creates an empty ShoppingListManager, used to create an empty SL
+     * to be edited in EditShoppingListActivity
      *
      * @param outletName the Name of the Outlet object
      */
@@ -96,5 +101,9 @@ public class ShoppingListManager {
 
     public int getCommodityQuantity(int index) {
         return shoppingList.getShoppingList().get(index).getQuantity();
+    }
+
+    public int getSize(){
+        return shoppingList.size();
     }
 }

@@ -18,11 +18,12 @@
         android:id="@+id/outlet_name_top_TV"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/comm_RV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/outlet_name_top_TV"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:nestedScrollingEnabled="true"/>
+        android:nestedScrollingEnabled="true"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/refresh_fab"

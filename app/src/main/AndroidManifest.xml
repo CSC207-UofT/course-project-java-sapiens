@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
+            android:name=".controllers.EditShoppingListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".controllers.ShoppingListCreationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".controllers.ChooseDeliveryManActivity"
+            android:exported="false" />
+        <activity
             android:name=".controllers.DeliveryManActivity"
             android:exported="false" />
         <activity
