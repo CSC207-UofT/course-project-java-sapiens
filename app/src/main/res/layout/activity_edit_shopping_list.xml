@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditShoppingListActivity">
+    tools:context=".controllers.EditShoppingListActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -17,10 +17,22 @@
         android:layout_marginBottom="10dp"
         android:id="@+id/outlet_name_top_TV"/>
 
-    <ListView
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/outlet_name_top_TV"/>
+        android:layout_below="@id/outlet_name_top_TV"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:nestedScrollingEnabled="true"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/refresh_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="32dp"
+        android:backgroundTint="@color/cardview_dark_background"
+        android:src="@drawable/plus_vector"/>
 
 
 </RelativeLayout>

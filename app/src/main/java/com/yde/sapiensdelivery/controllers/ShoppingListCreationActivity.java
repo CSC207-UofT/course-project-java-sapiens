@@ -1,8 +1,10 @@
-package com.yde.sapiensdelivery;
+package com.yde.sapiensdelivery.controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.yde.sapiensdelivery.R;
 
 public class ShoppingListCreationActivity extends AppCompatActivity {
 

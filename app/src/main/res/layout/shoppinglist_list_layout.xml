@@ -20,10 +20,10 @@
             />
 
         <TextView
+            android:id="@+id/comm_LV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/comm_LV"
-            android:layout_below="@+id/outlet_name_TV"/>
+            android:layout_below="@+id/outlet_name_TV" />
 
     </RelativeLayout>
 
