@@ -8,14 +8,14 @@ import java.util.HashMap;
  * Contains relative information about a shopping list and
  * a list of Commodities.
  */
-public class ShoppingList implements Serializable {
+public class ShoppingListOld implements Serializable {
     private final String outletName;
     private String outletAddress; // optional
     private HashMap<String, Commodity> shoppingList;
     // a Hashmap of commodity name to Commodity object
     private double totalPrice;
 
-    public ShoppingList(String outletName){
+    public ShoppingListOld(String outletName){
         this.outletName = outletName;
         this.shoppingList = new HashMap<>();
         this.totalPrice = 0.0;

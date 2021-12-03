@@ -1,24 +1,24 @@
 package com.yde.sapiensdelivery.use_cases;
 
 import com.yde.sapiensdelivery.entities.Commodity;
-import com.yde.sapiensdelivery.entities.ShoppingList;
+import com.yde.sapiensdelivery.entities.ShoppingListOld;
 
 import java.util.ArrayList;
 
-public class ShoppingListManager {
-    ArrayList<ShoppingList> shoppingLists;
+public class ShoppingListManagerOld {
+    ArrayList<ShoppingListOld> shoppingListOlds;
 
     /**
      * Creates an ShoppingListManager given a ArrayList of ShoppingLists
      */
-    public ShoppingListManager(ArrayList<ShoppingList> shoppingLists){
-        this.shoppingLists = shoppingLists;
+    public ShoppingListManagerOld(ArrayList<ShoppingListOld> shoppingListOlds){
+        this.shoppingListOlds = shoppingListOlds;
     }
 
     /**
      * Creates an ShoppingListManager
      */
-    public ShoppingListManager(){
+    public ShoppingListManagerOld(){
     }
 
     /**
@@ -26,25 +26,25 @@ public class ShoppingListManager {
      *
      * @return the ShoppingLists that this Manager stores
      */
-    public ArrayList<ShoppingList> getShoppingLists() {
-        return shoppingLists;
+    public ArrayList<ShoppingListOld> getShoppingLists() {
+        return shoppingListOlds;
     }
 
     /**
      * Create and add a new store ShoppingList to shoppingLists.
      */
-    public void newShoppingList(String storeName, ArrayList<ShoppingList> shoppingLists){
-        ShoppingList shoppingList = new ShoppingList(storeName);
-        shoppingLists.add(shoppingList);
+    public void newShoppingList(String storeName, ArrayList<ShoppingListOld> shoppingListOlds){
+        ShoppingListOld shoppingListOld = new ShoppingListOld(storeName);
+        shoppingListOlds.add(shoppingListOld);
     }
 
     /**
      * Create and add a new outlet ShoppingList to shoppingLists.
      */
-    public void newShoppingList(String outletName, String outletAddress, ArrayList<ShoppingList> shoppingLists){
-        ShoppingList shoppingList = new ShoppingList(outletName);
-        shoppingList.setOutletAddress(outletAddress);
-        shoppingLists.add(shoppingList);
+    public void newShoppingList(String outletName, String outletAddress, ArrayList<ShoppingListOld> shoppingListOlds){
+        ShoppingListOld shoppingListOld = new ShoppingListOld(outletName);
+        shoppingListOld.setOutletAddress(outletAddress);
+        shoppingListOlds.add(shoppingListOld);
     }
 
     /**
@@ -52,8 +52,8 @@ public class ShoppingListManager {
      *
      * @param index index of the ShoppingList is at in shoppingLists.
      */
-    public void deleteShoppingList(int index, ArrayList<ShoppingList> shoppingLists){
-        shoppingLists.remove(index);
+    public void deleteShoppingList(int index, ArrayList<ShoppingListOld> shoppingListOlds){
+        shoppingListOlds.remove(index);
     }
 
     /**
@@ -64,9 +64,9 @@ public class ShoppingListManager {
      * @param commodityPrice price of commodity.
      *
      */
-    public void setCommodity(int index, String commodityName, double commodityPrice, int quantity, ArrayList<ShoppingList> shoppingLists){
+    public void setCommodity(int index, String commodityName, double commodityPrice, int quantity, ArrayList<ShoppingListOld> shoppingListOlds){
         Commodity commodity = new Commodity(commodityName, commodityPrice, quantity);
-        shoppingLists.get(index).setCommodity(commodity, quantity);
+        shoppingListOlds.get(index).setCommodity(commodity, quantity);
 
     }
 
@@ -78,9 +78,9 @@ public class ShoppingListManager {
      *
      * @return the ShoppingList after change
      */
-    public ShoppingList addCommodity(int index, String commName, ArrayList<ShoppingList> shoppingLists){
-        shoppingLists.get(index).addCommodity(commName);
-        return shoppingLists.get(index);
+    public ShoppingListOld addCommodity(int index, String commName, ArrayList<ShoppingListOld> shoppingListOlds){
+        shoppingListOlds.get(index).addCommodity(commName);
+        return shoppingListOlds.get(index);
     }
 
     /**
@@ -91,9 +91,9 @@ public class ShoppingListManager {
      *
      * @return the ShoppingList after change
      */
-    public ShoppingList removeCommodity(int index, String commName, ArrayList<ShoppingList> shoppingLists){
-        shoppingLists.get(index).removeCommodity(commName);
-        return shoppingLists.get(index);
+    public ShoppingListOld removeCommodity(int index, String commName, ArrayList<ShoppingListOld> shoppingListOlds){
+        shoppingListOlds.get(index).removeCommodity(commName);
+        return shoppingListOlds.get(index);
     }
 
     //    /**

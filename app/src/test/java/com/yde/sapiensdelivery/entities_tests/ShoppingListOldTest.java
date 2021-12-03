@@ -1,18 +1,19 @@
 package com.yde.sapiensdelivery.entities_tests;
 
 import com.yde.sapiensdelivery.entities.Commodity;
-import com.yde.sapiensdelivery.entities.ShoppingList;
+import com.yde.sapiensdelivery.entities.ShoppingListOld;
+
 import org.junit.*;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.Objects;
 
-public class ShoppingListTest {
-    ShoppingList walmartList;
+public class ShoppingListOldTest {
+    ShoppingListOld walmartList;
     @Before
     public void setUp() {
-        walmartList = new ShoppingList("Walmart");
+        walmartList = new ShoppingListOld("Walmart");
         Commodity apple = new Commodity("Apple", 3.5, 1);
         walmartList.setCommodity(apple, 1); // Apple #1
     }
