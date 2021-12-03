@@ -14,7 +14,13 @@ public class Commodity implements Serializable {
     public Commodity(String name, double price, int quantity){
         this.name = name;
         this.price = price;
-        this.quantity = quantity;
+
+        // Initial quantity can't be 0
+        if (quantity ==  0) {
+            this.quantity = 1;
+        } else {
+            this.quantity = quantity;
+        }
     }
 
     // A set of getters and setters.
