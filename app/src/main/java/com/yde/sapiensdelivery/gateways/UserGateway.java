@@ -1,11 +1,15 @@
 package com.yde.sapiensdelivery.gateways;
 import com.yde.sapiensdelivery.gateways.database.DBController;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
-import com.yde.sapiensdelivery.entities.Customer;
-import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.entities.User;
 
+import com.yde.sapiensdelivery.regex_checkers.InfoValidityChecker;
+
+import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public abstract class UserGateway extends DBController<String, User> {
 
@@ -23,7 +27,7 @@ public abstract class UserGateway extends DBController<String, User> {
      * @return hashed password
      */
     public String createHash(String password){
-        return DigestUtils.sha256Hex(password);
+        return new String(Hex.encodeHex(DigestUtils.sha256(password)));
     }
 
     /**
@@ -32,7 +36,7 @@ public abstract class UserGateway extends DBController<String, User> {
      * @param userType Type of User being created
      * @return Required user manager
      */
-    public static UserGateway getUserManager(String userType){
+    public static UserGateway getUserGateway(String userType){
 
         if(userType.equalsIgnoreCase("CUSTOMER")){
             return new CustomerGateway(userType);
@@ -42,33 +46,50 @@ public abstract class UserGateway extends DBController<String, User> {
     }
 
     /**
-     * Creates a user as per the user type found
-     *
-     * All parameters are the arguments for creating DeliveryMan and Customer.
-     * Any extraneous values entered not used by customer are ignored if userType
-     * is customer.
-     *
-     * @return User created.
+     * Register the user into database if possible
      */
-    public User createUser(String n, int[] l, String num, String user, String pass, long sin, String transport, float rate){
-        if(userType.equalsIgnoreCase("DELIVERYMAN")){
-            return new DeliveryMan(n, l, num, user, pass, sin, transport, rate);
+    public void registration(String num, String user, String sin, String transport, final OnDataReadListener onDataReadListener){
+
+        HashMap<String, String> fieldToValue = new HashMap<>();
+        fieldToValue.put("PHONE NUMBER", num);
+
+        if(userType.equals("DELIVERYMAN")){
+            fieldToValue.put("SIN", sin);
+            fieldToValue.put("TRANSPORT", transport);
         }
-        else{
-            return new Customer(n, l, num, user, pass);
+
+        if(isRegexInvalid(fieldToValue, onDataReadListener.ERROR_CODES)){ // Template of regex checks.
+            onDataReadListener.onFailure();
+            return;
         }
+
+        usernameRepetitionChecker(user, onDataReadListener); // Template of username repeat checks.
     }
 
     /**
-     * Register the user into database if possible
-     * @return User if registered successfully, null if not so.
+     * Checks if the username is already registered in the server.
+     *
+     * @param user The username to check
+     * @param onDataReadListener Describes what to do on success/failure
      */
-    public User registration(String n, int[] l, String num, String user, String pass, long sin, String transport, float rate){
-        User currUser = createUser(n, l, num, user, pass, sin, transport, rate);
-        return discrepancyCheck(currUser) ? currUser : null; // Template of creating user and discrepancy check
-    }
+    protected abstract void usernameRepetitionChecker(String user, OnDataReadListener onDataReadListener);
 
-    protected abstract boolean discrepancyCheck(User currUser);
+    /**
+     * Checks if the value for a certain field is a valid entry.
+     * The Base UserGateway (used by CustomerGateway) is only concerned with the field Phone Number.
+     *
+     * @param fieldToValue Hashmap of one KV pair: PHONE NUMBER -> input
+     * @return if the phone number is legal.
+     */
+    protected boolean isRegexInvalid(HashMap<String, String> fieldToValue, ArrayList<Integer> errorCodes){
+        String phoneNum = fieldToValue.get("PHONE NUMBER");
+        boolean isPhoneValid = InfoValidityChecker.isPhoneNumValid(phoneNum);
+
+        if(!isPhoneValid){
+            errorCodes.add(2); // Error Code for phone num
+        }
+        return !isPhoneValid;
+    }
 
     /**
      * Returns the user if existing in database

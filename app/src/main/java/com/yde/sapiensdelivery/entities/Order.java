@@ -1,4 +1,7 @@
 package com.yde.sapiensdelivery.entities;
+import androidx.annotation.NonNull;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -6,7 +9,7 @@ import java.util.ArrayList;
  * Order relates a Customer, a deliveryMan, and a ShoppingList
  */
 
-public class Order {
+public class Order implements Serializable {
     private OrderStatus status;
 
     private DeliveryMan deliveryMan;
@@ -38,6 +41,7 @@ public class Order {
     // An enum for different status of an Order
     public enum OrderStatus {
         OTW {
+            @NonNull
             @Override
             public String toString() {
                 return "On the Way to get your order.";
@@ -45,6 +49,7 @@ public class Order {
         },
 
         REC {
+            @NonNull
             @Override
             public String toString() {
                 return "Order Received, Out for Delivery.";
@@ -52,6 +57,7 @@ public class Order {
         },
 
         COMP {
+            @NonNull
             @Override
             public String toString() {
                 return "Order Delivered and Complete.";

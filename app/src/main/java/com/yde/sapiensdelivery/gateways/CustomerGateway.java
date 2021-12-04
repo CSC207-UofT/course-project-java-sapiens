@@ -21,9 +21,34 @@ public class CustomerGateway extends UserGateway {
         ref = database.getReference(REF_PATH);
     }
 
+    /**
+     * Checks if the username is already registered in the server.
+     *
+     * @param user The username to check
+     * @param onDataReadListener Describes what to do on success/failure
+     */
     @Override
-    protected boolean discrepancyCheck(User currUser) {
-        return false;
+    protected void usernameRepetitionChecker(String user, OnDataReadListener onDataReadListener) {
+        ref.child(user).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Customer customer = snapshot.getValue(Customer.class);
+
+                if(customer == null){
+                    onDataReadListener.onSuccess();
+                }
+                else{
+                    onDataReadListener.ERROR_CODES.add(0); // Username Error
+                    onDataReadListener.onFailure();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                onDataReadListener.ERROR_CODES.add(1); // Database Error
+                onDataReadListener.onFailure();
+            }
+        });
     }
 
     /**
@@ -69,10 +94,10 @@ public class CustomerGateway extends UserGateway {
      */
     @Override
     public void save(String obj, User val) {
-        Map<String, Customer> toSave = new HashMap<>();
-        toSave.put(obj, (Customer) val);
+        Map<String, Object> toSave = new HashMap<>();
+        toSave.put(obj, val);
 
-        ref.setValue(toSave);
+        ref.updateChildren(toSave);
     }
 
     /**

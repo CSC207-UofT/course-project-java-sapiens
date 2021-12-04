@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.yde.sapiensdelivery.R;
+import com.yde.sapiensdelivery.entities.Customer;
+import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.gateways.UserGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 
@@ -34,19 +36,19 @@ public class SignInActivity extends AppCompatActivity {
 
         signIn.setOnClickListener(view -> {
 
-            UserGateway um;
+            UserGateway userGateway;
 
             if(isCustomer.isChecked()){
-                um = UserGateway.getUserManager("CUSTOMER");
+                userGateway = UserGateway.getUserGateway("CUSTOMER");
             }
             else{
-                um = UserGateway.getUserManager("DELIVERYMAN");
+                userGateway = UserGateway.getUserGateway("DELIVERYMAN");
             }
 
             String usernameStr = username.getText().toString();
             String passwordStr = password.getText().toString();
 
-            um.authenticate(usernameStr, passwordStr, new OnDataReadListener() {
+            userGateway.authenticate(usernameStr, passwordStr, new OnDataReadListener() {
                 @Override
                 public void onSuccess(){
 
@@ -55,9 +57,11 @@ public class SignInActivity extends AppCompatActivity {
 
                     if(isCustomer.isChecked()){
                         intent = new Intent(SignInActivity.this, CustomerActivity.class);
+                        intent.putExtra("CUSTOMER", (Customer) getSavedObject());
                     }
                     else{
                         intent = new Intent(SignInActivity.this, DeliveryManActivity.class);
+                        intent.putExtra("DELIVERYMAN", (DeliveryMan) getSavedObject());
                     }
 
                     startActivity(intent);

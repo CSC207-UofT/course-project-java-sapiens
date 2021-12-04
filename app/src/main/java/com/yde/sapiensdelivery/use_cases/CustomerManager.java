@@ -4,8 +4,8 @@ import com.yde.sapiensdelivery.entities.Customer;
 import java.util.ArrayList;
 
 
-public class CustomerManager extends UserManager {
-    private Customer customer;
+public class CustomerManager {
+    private final Customer customer;
 
     /**
      * Creates an CustomerManager given an already existing Customer

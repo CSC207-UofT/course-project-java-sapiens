@@ -1,5 +1,6 @@
 package com.yde.sapiensdelivery.entities;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
@@ -7,7 +8,7 @@ import java.util.HashMap;
  * Contains relative information about a shopping list and
  * a list of Commodities.
  */
-public class ShoppingList {
+public class ShoppingList implements Serializable {
     private final String outletName;
     private String outletAddress; // optional
     private HashMap<String, Commodity> shoppingList;

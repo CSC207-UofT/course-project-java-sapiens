@@ -1,4 +1,4 @@
-package com.yde.sapiensdelivery;
+package com.yde.sapiensdelivery.gateways;
 
 import com.yde.sapiensdelivery.gateways.CustomerGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
