@@ -1,4 +1,4 @@
-package com.yde.sapiensdelivery.controllers;
+package com.yde.sapiensdelivery.controllers.delivery;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.yde.sapiensdelivery.R;
+import com.yde.sapiensdelivery.controllers.delivery.ChooseCustomerActivity;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
 
@@ -18,9 +19,9 @@ import java.util.List;
 public class DeliveryManRVAdapter extends RecyclerView.Adapter<DeliveryManRVAdapter.ViewHolder> {
 
     private List<DeliveryMan> deliveryManList;
-    private ChooseDeliveryManActivity cdActivity;
+    private ChooseCustomerActivity cdActivity;
 
-    public DeliveryManRVAdapter(ChooseDeliveryManActivity activity) {
+    public DeliveryManRVAdapter(ChooseCustomerActivity activity) {
         this.cdActivity = activity;
     }
 

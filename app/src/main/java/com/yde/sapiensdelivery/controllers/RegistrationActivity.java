@@ -12,6 +12,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.yde.sapiensdelivery.R;
+import com.yde.sapiensdelivery.controllers.customer.CustomerActivity;
+import com.yde.sapiensdelivery.controllers.delivery.DeliveryManActivity;
 import com.yde.sapiensdelivery.gateways.UserGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 import com.yde.sapiensdelivery.use_cases.UserManager;
