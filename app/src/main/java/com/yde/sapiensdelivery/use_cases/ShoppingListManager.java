@@ -99,6 +99,10 @@ public class ShoppingListManager {
         return shoppingList.size();
     }
 
+    public double getTotalPrice(){
+        return this.shoppingList.getTotalPrice();
+    }
+
 
     /**
      * Get the total price of the Commodity, for displaying purposes

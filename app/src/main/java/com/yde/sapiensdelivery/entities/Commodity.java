@@ -47,8 +47,9 @@ public class Commodity implements Serializable {
         this.quantity -= 1;
     }
 
+
     @NonNull
     public String toString() {
-        return this.getName();
+        return this.getName() + ": $ " + this.getPrice();
     }
 }

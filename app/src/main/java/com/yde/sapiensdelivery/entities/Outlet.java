@@ -1,5 +1,7 @@
 package com.yde.sapiensdelivery.entities;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 
 public class Outlet {
@@ -39,5 +41,10 @@ public class Outlet {
 
     public ArrayList<Commodity> getCommodities() {
         return commodities;
+    }
+
+    @NonNull
+    public String toString() {
+        return this.getName();
     }
 }
