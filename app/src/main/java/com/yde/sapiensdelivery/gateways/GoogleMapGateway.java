@@ -20,16 +20,32 @@ import java.util.Scanner;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * A gateway method that gets data from the GoogleMap Direction API
+ *
+ * Implements the Locator Interface.
+ */
 public class GoogleMapGateway implements Locator {
     //    private FusedLocationProviderClient fusedLocationClient;
-    public enum infoType{
-        duration, distance, endAddress, startAddress
-    }
 
     public GoogleMapGateway() {
     }
 
+    // Private enum for different types of information
+    private enum infoType{
+        duration, distance, endAddress, startAddress
+    }
 
+
+
+    /**
+     * Return a hashmap of the duration and the distance of the route between origin and
+     * destination according to the specified transportation.
+     *
+     * @param origin The starting location of the route
+     * @param destination the ending location of the route
+     * @param transportation the type of transportation used.
+     */
     @Override
     public HashMap<String, String> findRouteInfo(String origin,
                                                  String destination,
@@ -41,12 +57,14 @@ public class GoogleMapGateway implements Locator {
         String url = urlFactory(origin, destination, transportation);
         JSONObject json = this.readJsonFromUrl(url);
 
-
         routeInfo.put("Duation", routeInfoParser(json, infoType.duration));
         routeInfo.put("Distance", routeInfoParser(json, infoType.distance));
         return routeInfo;
     }
 
+    /**
+     * Return a string representation of the specified information type for findRouteInfo.
+     */
     private String routeInfoParser(JSONObject infoJson, infoType type) throws JSONException{
         String returnInfo = "";
         JSONObject info = infoJson.getJSONArray("routes").
@@ -71,6 +89,9 @@ public class GoogleMapGateway implements Locator {
         return returnInfo;
     }
 
+    /**
+     * A factory method for building different types of url required for findRouteInfo.
+     */
     private String urlFactory(String origin,
                               String destination,
                               transportation transportation){
@@ -104,6 +125,9 @@ public class GoogleMapGateway implements Locator {
         return url;
     }
 
+    /**
+     * read the content in a json file.
+     */
     private String readAll(Reader reader) throws IOException {
         StringBuilder builder = new StringBuilder();
         int line;
@@ -113,6 +137,9 @@ public class GoogleMapGateway implements Locator {
         return builder.toString();
     }
 
+    /**
+     * Return a JSONObject representing the json file get from url.
+     */
     private JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
 
         try (InputStream is = new URL(url).openStream()) {
@@ -121,12 +148,4 @@ public class GoogleMapGateway implements Locator {
             return new JSONObject(jsonText);
         }
     }
-
-//    public static void main(String[] args) throws IOException, JSONException {
-//        GoogleMapGateway gmg = new GoogleMapGateway();
-//        HashMap<String,String> routeInfo = gmg.findRouteInfo("DundasWest",
-//                "UniversityofToronto");
-//        System.out.println(routeInfo);
-//    }
-
 }
