@@ -1,5 +1,9 @@
 package com.yde.sapiensdelivery.gateways;
 
+import android.os.Bundle;
+
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.yde.sapiensdelivery.use_cases.Locator;
 
 import java.io.BufferedReader;
@@ -18,8 +22,14 @@ import org.json.JSONObject;
 
 public class GoogleMapGateway implements Locator {
 
+//    private FusedLocationProviderClient fusedLocationClient;
+    public enum infoType{
+        duration, distance, endAddress, startAddress
+    }
+
     public GoogleMapGateway() {
     }
+
 
     @Override
     public HashMap<String, String> findRouteInfo(String origin,
@@ -30,18 +40,32 @@ public class GoogleMapGateway implements Locator {
         HashMap<String, String> routeInfo = new HashMap<String, String>();
 
         String url = urlFactory(origin, destination, transportation);
-
         JSONObject json = this.readJsonFromUrl(url);
-        JSONObject info = json.getJSONArray("routes").
+
+
+        routeInfo.put("Duation", routeInfoParser(json, infoType.duration));
+        routeInfo.put("Distance", routeInfoParser(json, infoType.distance));
+        return routeInfo;
+    }
+
+    private String routeInfoParser(JSONObject infoJson, infoType type) throws JSONException{
+        String returnInfo = "";
+        JSONObject info = infoJson.getJSONArray("routes").
                 getJSONObject(0).
                 getJSONArray("legs").
                 getJSONObject(0);
 
-        String duration = info.getJSONObject("duration").getString("text");
-        String distance = info.getJSONObject("distance").getString("text");
-        routeInfo.put("Duation", duration);
-        routeInfo.put("Distance", distance);
-        return routeInfo;
+        switch (type){
+            case duration:
+                returnInfo = info.getJSONObject("duration").getString("text");
+            case distance:
+                returnInfo = info.getJSONObject("distance").getString("text");
+            case startAddress:
+                returnInfo = info.getString("start_address");
+            case endAddress:
+                returnInfo = info.getString("end_address");
+        }
+        return returnInfo;
     }
 
     private String urlFactory(String origin,
