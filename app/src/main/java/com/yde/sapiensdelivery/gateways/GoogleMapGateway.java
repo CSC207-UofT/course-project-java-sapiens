@@ -1,5 +1,7 @@
 package com.yde.sapiensdelivery.gateways;
 
+import com.yde.sapiensdelivery.use_cases.Locator;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,7 +16,7 @@ import java.util.Scanner;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class GoogleMapGateway {
+public class GoogleMapGateway implements Locator {
 
 
     public GoogleMapGateway() {
