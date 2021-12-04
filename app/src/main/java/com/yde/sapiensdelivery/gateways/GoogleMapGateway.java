@@ -28,16 +28,10 @@ public class GoogleMapGateway implements Locator {
                                                  throws IOException, JSONException {
 
         HashMap<String, String> routeInfo = new HashMap<String, String>();
-        String url = "https://maps.googleapis.com/maps/api/directions/json?origin=" +
-                origin +
-                "&destination=" +
-                destination +
-                "&mode=" +
-                transportation +
-                "&key=AIzaSyAxeqdWPsIhW7KXVSef1uH0OmAX8Pnqb2M";
+
+        String url = urlFactory(origin, destination, transportation);
 
         JSONObject json = this.readJsonFromUrl(url);
-
         JSONObject info = json.getJSONArray("routes").
                 getJSONObject(0).
                 getJSONArray("legs").
@@ -50,13 +44,46 @@ public class GoogleMapGateway implements Locator {
         return routeInfo;
     }
 
-    private String readAll(Reader rd) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        int cp;
-        while ((cp = rd.read()) != -1) {
-            sb.append((char) cp);
+    private String urlFactory(String origin,
+                              String destination,
+                              transportation transportation){
+        String url = "";
+        switch (transportation){
+            case walking:
+                 url = "https://maps.googleapis.com/maps/api/directions/json?origin=" +
+                        origin +
+                        "&destination=" +
+                        destination +
+                        "&mode=walking" +
+                        transportation +
+                        "&key=AIzaSyAxeqdWPsIhW7KXVSef1uH0OmAX8Pnqb2M";
+            case driving:
+                 url = "https://maps.googleapis.com/maps/api/directions/json?origin=" +
+                        origin +
+                        "&destination=" +
+                        destination +
+                        "&mode=driving" +
+                        transportation +
+                        "&key=AIzaSyAxeqdWPsIhW7KXVSef1uH0OmAX8Pnqb2M";
+            case bicycling:
+                url = "https://maps.googleapis.com/maps/api/directions/json?origin=" +
+                        origin +
+                        "&destination=" +
+                        destination +
+                        "&mode=bicycling" +
+                        transportation +
+                        "&key=AIzaSyAxeqdWPsIhW7KXVSef1uH0OmAX8Pnqb2M";
         }
-        return sb.toString();
+        return url;
+    }
+
+    private String readAll(Reader reader) throws IOException {
+        StringBuilder builder = new StringBuilder();
+        int line;
+        while ((line = reader.read()) != -1) {
+            builder.append((char) line);
+        }
+        return builder.toString();
     }
 
     private JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
