@@ -1,7 +1,5 @@
 package com.yde.sapiensdelivery.gateways;
 
-import android.os.Bundle;
-
 //import com.google.android.gms.location.FusedLocationProviderClient;
 //import com.google.android.gms.location.LocationServices;
 import com.yde.sapiensdelivery.use_cases.Locator;
@@ -12,12 +10,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
+        import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
-import java.util.Scanner;
 
-import org.json.JSONException;
+        import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -39,20 +35,21 @@ public class GoogleMapGateway implements Locator {
 
 
     /**
-     * Return a hashmap of the duration and the distance of the route between origin and
-     * destination according to the specified transportation.
-     *
-     * @param origin The starting location of the route
+     * Return a hashmap of the duration (in hours) and the distance (in km) of the route
+     * between origin and destination according to the specified transportation.
+     *  @param origin The starting location of the route
      * @param destination the ending location of the route
      * @param transportation the type of transportation used.
+     * @return a hashMap of the following structure:
+     * {"Distance": double, "Duration": double}
      */
     @Override
-    public HashMap<String, String> findRouteInfo(String origin,
-                                                 String destination,
-                                                 transportation transportation)
+    public HashMap<String, Double> findRouteInfo(String origin,
+                                                String destination,
+                                                transportation transportation)
                                                  throws IOException, JSONException {
 
-        HashMap<String, String> routeInfo = new HashMap<String, String>();
+        HashMap<String, Double> routeInfo = new HashMap<String, Double>();
 
         String url = urlFactory(origin, destination, transportation);
         JSONObject json = this.readJsonFromUrl(url);
@@ -65,8 +62,8 @@ public class GoogleMapGateway implements Locator {
     /**
      * Return a string representation of the specified information type for findRouteInfo.
      */
-    private String routeInfoParser(JSONObject infoJson, infoType type) throws JSONException{
-        String returnInfo = "";
+    private double routeInfoParser(JSONObject infoJson, infoType type) throws JSONException{
+        double returnInfo = 0;
         JSONObject info = infoJson.getJSONArray("routes").
                 getJSONObject(0).
                 getJSONArray("legs").
@@ -74,16 +71,12 @@ public class GoogleMapGateway implements Locator {
 
         switch (type){
             case duration:
-                returnInfo = info.getJSONObject("duration").getString("text");
+                returnInfo = info.getJSONObject("duration").getDouble("value");
+                returnInfo = Math.round(returnInfo / 3600 * 100 / 100);
                 break;
             case distance:
-                returnInfo = info.getJSONObject("distance").getString("text");
-                break;
-            case startAddress:
-                returnInfo = info.getString("start_address");
-                break;
-            case endAddress:
-                returnInfo = info.getString("end_address");
+                returnInfo = info.getJSONObject("distance").getDouble("value");
+                returnInfo = Math.round(returnInfo / 1000 * 100 / 100);
                 break;
         }
         return returnInfo;

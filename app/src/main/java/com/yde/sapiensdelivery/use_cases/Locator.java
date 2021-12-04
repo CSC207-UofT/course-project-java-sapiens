@@ -16,14 +16,14 @@ public interface Locator {
     }
 
     /**
-     * Return a hashmap of the duration and the distance of the route between origin and
-     * destination according to the specified transportation.
+     * Return a hashmap of the duration (in hours) and the distance (in km) of the route
+     * between origin and destination according to the specified transportation.
      *
      * @param origin The starting location of the route
      * @param destination the ending location of the route
      * @param transportation the type of transportation used.
      */
-    HashMap<String,String> findRouteInfo(String origin,
+    HashMap<String, Double> findRouteInfo(String origin,
                                          String destination,
                                          transportation transportation)
                                          throws IOException, JSONException;
