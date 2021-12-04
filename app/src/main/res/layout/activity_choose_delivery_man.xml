@@ -10,10 +10,12 @@
         android:id="@+id/delivery_men_sign_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:text="Delivery men who are willing to accept your order"
+        android:text="@string/accepting_delivery_men"
         android:textColor="@color/cardview_dark_background"
         android:textSize="15sp"
         android:textStyle="bold" />
@@ -24,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/delivery_men_sign_top"
         android:nestedScrollingEnabled="true"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/refresh_fab"

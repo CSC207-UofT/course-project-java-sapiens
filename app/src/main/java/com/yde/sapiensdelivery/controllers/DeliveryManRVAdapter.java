@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.yde.sapiensdelivery.R;
@@ -23,6 +24,7 @@ public class DeliveryManRVAdapter extends RecyclerView.Adapter<DeliveryManRVAdap
         this.cdActivity = activity;
     }
 
+    @NonNull
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.delivery_man_layout, parent, false);
         return new ViewHolder(itemView);
