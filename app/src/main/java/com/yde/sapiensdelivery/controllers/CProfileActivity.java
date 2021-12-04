@@ -26,7 +26,7 @@ public class CProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_cprofile);
 
         main = (Button) findViewById(R.id.main);
 
