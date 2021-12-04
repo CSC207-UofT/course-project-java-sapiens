@@ -18,12 +18,13 @@ import org.json.JSONObject;
 
 public class GoogleMapGateway implements Locator {
 
-
     public GoogleMapGateway() {
     }
 
+    @Override
     public HashMap<String, String> findRouteInfo(String origin,
-                                                 String destination)
+                                                 String destination,
+                                                 transportation transportation)
                                                  throws IOException, JSONException {
 
         HashMap<String, String> routeInfo = new HashMap<String, String>();
@@ -31,6 +32,8 @@ public class GoogleMapGateway implements Locator {
                 origin +
                 "&destination=" +
                 destination +
+                "&mode=" +
+                transportation +
                 "&key=AIzaSyAxeqdWPsIhW7KXVSef1uH0OmAX8Pnqb2M";
 
         JSONObject json = this.readJsonFromUrl(url);

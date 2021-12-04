@@ -5,7 +5,11 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public interface Locator {
+    enum transportation{
+        walking, driving, bicycling
+    }
     HashMap<String,String> findRouteInfo(String customerLocation,
-                                         String deliverymanLocation)
+                                         String deliverymanLocation,
+                                         transportation transportation)
                                          throws IOException, JSONException;
 }
