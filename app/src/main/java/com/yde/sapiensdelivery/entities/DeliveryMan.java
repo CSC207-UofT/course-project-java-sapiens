@@ -10,7 +10,7 @@ public class DeliveryMan extends User{
     private String transport;
     private float rate;
 
-    public DeliveryMan(String name, int[] location, String phoneNumber, String userName, String password, long sin, String transport, float rate) {
+    public DeliveryMan(String name, String location, String phoneNumber, String userName, String password, long sin, String transport, float rate) {
         super(name, location, phoneNumber, userName, password);
         this.transport = transport;
         this.rate = rate;

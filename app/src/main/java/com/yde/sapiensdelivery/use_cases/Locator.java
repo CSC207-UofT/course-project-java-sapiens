@@ -4,8 +4,27 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * A interface that represents a locator.
+ *
+ * can be used to get route information between two location.
+ */
 public interface Locator {
-    HashMap<String,String> findRouteInfo(String customerLocation,
-                                         String deliverymanLocation)
+    // enum for different types of transportation.
+    enum transportation{
+        walking, driving, bicycling
+    }
+
+    /**
+     * Return a hashmap of the duration and the distance of the route between origin and
+     * destination according to the specified transportation.
+     *
+     * @param origin The starting location of the route
+     * @param destination the ending location of the route
+     * @param transportation the type of transportation used.
+     */
+    HashMap<String,String> findRouteInfo(String origin,
+                                         String destination,
+                                         transportation transportation)
                                          throws IOException, JSONException;
 }
