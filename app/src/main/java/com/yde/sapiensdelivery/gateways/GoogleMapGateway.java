@@ -2,8 +2,8 @@ package com.yde.sapiensdelivery.gateways;
 
 import android.os.Bundle;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
+//import com.google.android.gms.location.FusedLocationProviderClient;
+//import com.google.android.gms.location.LocationServices;
 import com.yde.sapiensdelivery.use_cases.Locator;
 
 import java.io.BufferedReader;
