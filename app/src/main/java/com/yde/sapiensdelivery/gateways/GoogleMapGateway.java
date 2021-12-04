@@ -55,7 +55,6 @@ public class GoogleMapGateway implements Locator {
                         "&destination=" +
                         destination +
                         "&mode=walking" +
-                        transportation +
                         "&key=AIzaSyAxeqdWPsIhW7KXVSef1uH0OmAX8Pnqb2M";
             case driving:
                  url = "https://maps.googleapis.com/maps/api/directions/json?origin=" +
@@ -63,7 +62,6 @@ public class GoogleMapGateway implements Locator {
                         "&destination=" +
                         destination +
                         "&mode=driving" +
-                        transportation +
                         "&key=AIzaSyAxeqdWPsIhW7KXVSef1uH0OmAX8Pnqb2M";
             case bicycling:
                 url = "https://maps.googleapis.com/maps/api/directions/json?origin=" +
@@ -71,7 +69,6 @@ public class GoogleMapGateway implements Locator {
                         "&destination=" +
                         destination +
                         "&mode=bicycling" +
-                        transportation +
                         "&key=AIzaSyAxeqdWPsIhW7KXVSef1uH0OmAX8Pnqb2M";
         }
         return url;
