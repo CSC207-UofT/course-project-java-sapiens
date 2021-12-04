@@ -1,121 +1,114 @@
 package com.yde.sapiensdelivery.use_cases;
 
 import com.yde.sapiensdelivery.entities.Commodity;
+import com.yde.sapiensdelivery.entities.Outlet;
 import com.yde.sapiensdelivery.entities.ShoppingList;
 
 import java.util.ArrayList;
 
 public class ShoppingListManager {
-    ArrayList<ShoppingList> shoppingLists;
+
+    private Outlet outlet;
+    private ShoppingList shoppingList;
 
     /**
-     * Creates an ShoppingListManager given a ArrayList of ShoppingLists
-     */
-    public ShoppingListManager(ArrayList<ShoppingList> shoppingLists){
-        this.shoppingLists = shoppingLists;
-    }
-
-    /**
-     * Creates an ShoppingListManager
-     */
-    public ShoppingListManager(){
-    }
-
-    /**
-     * Get the List of ShoppingLists that this Manager stores
+     * Creates a ShoppingListManager given a ShoppingList.
      *
-     * @return the ShoppingLists that this Manager stores
+     * @param shoppingList a ShoppingList Object
      */
-    public ArrayList<ShoppingList> getShoppingLists() {
-        return shoppingLists;
+    public ShoppingListManager(ShoppingList shoppingList, Outlet outlet) {
+        this.outlet = outlet;
+        this.shoppingList = shoppingList;
     }
 
     /**
-     * Create and add a new store ShoppingList to shoppingLists.
+     * Creates an empty ShoppingListManager, used to create an empty SL in ShoppingListCreationActivity
+     * to be edited in EditShoppingListActivity
+     *
+     * @param outlet the Outlet user selects
      */
-    public void newShoppingList(String storeName, ArrayList<ShoppingList> shoppingLists){
-        ShoppingList shoppingList = new ShoppingList(storeName);
-        shoppingLists.add(shoppingList);
+    public ShoppingListManager(Outlet outlet) {
+        shoppingList = new ShoppingList(outlet.getName(), outlet.getAddress());
     }
 
     /**
-     * Create and add a new outlet ShoppingList to shoppingLists.
+     * @return the ShoppingList that this Manager stores
      */
-    public void newShoppingList(String outletName, String outletAddress, ArrayList<ShoppingList> shoppingLists){
-        ShoppingList shoppingList = new ShoppingList(outletName);
-        shoppingList.setOutletAddress(outletAddress);
-        shoppingLists.add(shoppingList);
+    public ShoppingList getShoppingList() {
+        return this.shoppingList;
     }
 
     /**
-     * Remove the user's ShoppingList from shoppingLists.
+     * Set a new commodity to the ShoppingList
      *
-     * @param index index of the ShoppingList is at in shoppingLists.
+     * @param commodity a Commodity that the user selected
      */
-    public void deleteShoppingList(int index, ArrayList<ShoppingList> shoppingLists){
-        shoppingLists.remove(index);
+    public void setCommodity(Commodity commodity) {
+        this.shoppingList.setCommodity(commodity);
     }
 
     /**
-     * Set a new commodity to the ShoppingList in the index in shoppingLists.
+     * A method that allows the addition of one quantity of a commodity
      *
-     * @param index index of the ShoppingList is at in shoppingLists
-     * @param commodityName name of commodity.
-     * @param commodityPrice price of commodity.
-     *
+     * @param index the index the Commodity is at
      */
-    public void setCommodity(int index, String commodityName, double commodityPrice, int quantity, ArrayList<ShoppingList> shoppingLists){
-        Commodity commodity = new Commodity(commodityName, commodityPrice, quantity);
-        shoppingLists.get(index).setCommodity(commodity, quantity);
-
+    public void add1Commodity(int index){
+        this.shoppingList.add1Commodity(index);
     }
 
     /**
-     * Add commodity quantity to the ShoppingList in the index in shoppingLists.
+     * A method that allows the removal of one quantity of a commodity
      *
-     * @param index index of the ShoppingList is at in shoppingLists
-     * @param commName name of commodity.
-     *
-     * @return the ShoppingList after change
+     * @param index the index the Commodity is at
      */
-    public ShoppingList addCommodity(int index, String commName, ArrayList<ShoppingList> shoppingLists){
-        shoppingLists.get(index).addCommodity(commName);
-        return shoppingLists.get(index);
+    public void remove1Commodity(int index){
+        this.shoppingList.remove1Commodity(index);
     }
 
     /**
-     * Remove commodity quantity to the ShoppingList in the index in shoppingLists.
-     *
-     * @param index index of the ShoppingList is at in shoppingLists
-     * @param commName name of commodity.
-     *
-     * @return the ShoppingList after change
+     * @return the name of the outlet
      */
-    public ShoppingList removeCommodity(int index, String commName, ArrayList<ShoppingList> shoppingLists){
-        shoppingLists.get(index).removeCommodity(commName);
-        return shoppingLists.get(index);
+    public String getOutletName() {
+        return shoppingList.getOutletName();
     }
 
-    //    /**
-//     * All Manager classes in controllers.use_cases have some transactions to save.
-//     *
-//     * @param obj The 'key' with which the database can be queried
-//     * @param val The corresponding object
-//     */
-//    @Override
-//    public void save(String obj, ArrayList<ShoppingList> val) {
-//        Map<String, ArrayList<ShoppingList>> toSave = new HashMap<>();
-//        toSave.put(obj, val);
-//
-//        ref.setValueAsync(toSave);
-//    }
-//
-//    /**
-//     * All Manager classes query the database for a specific object type that it is managing.
-//     *
-//     * @param obj The 'key' with which the database can be queried.
-//     */
-//    @Override
-//    public void get(String obj, final OnDataReadListener onDataReadListener) {
-//    }
+    /**
+     * @return the address of the outlet
+     */
+    public String getOutletAddress() {
+        return shoppingList.getOutletAddress();
+    }
+
+    public String getCommodityName(int index) {
+        return shoppingList.getShoppingList().get(index).getName();
+    }
+
+    public double getCommodityPrice(int index) {
+        return shoppingList.getShoppingList().get(index).getPrice();
+    }
+
+    public int getCommodityQuantity(int index) {
+        return shoppingList.getShoppingList().get(index).getQuantity();
+    }
+
+    public Outlet getOutlet() {
+        return outlet;
+    }
+
+    public int getSize(){
+        return shoppingList.size();
+    }
+
+
+    /**
+     * Get the total price of the Commodity, for displaying purposes
+     * Total price = quantity * price
+     *
+     * @param index index of the Commodity
+     * @return the total price of the Commodity
+     */
+    public double getCommodityTotalPrice(int index) {
+        Commodity commodity = shoppingList.getShoppingList().get(index);
+        return commodity.getQuantity() * commodity.getPrice();
+    }
 }

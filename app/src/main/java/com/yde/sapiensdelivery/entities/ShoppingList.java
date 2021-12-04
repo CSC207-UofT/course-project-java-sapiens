@@ -1,7 +1,7 @@
 package com.yde.sapiensdelivery.entities;
 
 import java.io.Serializable;
-import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * An entity class that represents a shopping list.
@@ -10,66 +10,84 @@ import java.util.HashMap;
  */
 public class ShoppingList implements Serializable {
     private final String outletName;
-    private String outletAddress; // optional
-    private HashMap<String, Commodity> shoppingList;
+    private final String outletAddress;
+    private ArrayList<Commodity> shoppingList;
     // a Hashmap of commodity name to Commodity object
     private double totalPrice;
 
-    public ShoppingList(String outletName){
+    public ShoppingList(String outletName, String outletAddress){
         this.outletName = outletName;
-        this.shoppingList = new HashMap<>();
+        this.shoppingList = new ArrayList<>();
         this.totalPrice = 0.0;
+        this.outletAddress = outletAddress;
     }
 
-    //A set of getters and setters.
-
+    /**
+     * @return the name of the outlet
+     */
     public String getOutletName() {
         return this.outletName;
     }
 
+    /**
+     * @return the address of the outlet
+     */
     public String getOutletAddress() {
         return this.outletAddress;
     }
 
+    /**
+     * @return the total price of all the Commodities in this ShoppingList
+     */
     public double getTotalPrice() {
         return this.totalPrice;
     }
 
-    public HashMap<String, Commodity> getShoppingList(){
+    /**
+     * @return this ShoppingList
+     */
+    public ArrayList<Commodity> getShoppingList(){
         return this.shoppingList;
     }
 
-    public void setOutletAddress(String address) {
-        this.outletAddress = address;
+    /**
+     * @param commodity the Commodity to be added
+     */
+    public void setCommodity(Commodity commodity){
+        this.shoppingList.add(commodity);
+        this.totalPrice += commodity.getPrice() * commodity.getQuantity();
     }
 
-    public int setCommodity(Commodity commodity, int quantity){
-        this.shoppingList.put(commodity.getName(), commodity);
-        this.totalPrice += commodity.getPrice()*quantity;
-        return 1;
-    }
 
-    // A method that allows the addition of a commodity
-    public int addCommodity(String commName){
-        //if the commodity is already in shoppingList
-        Commodity commodity = this.shoppingList.get(commName);
+    /**
+     * A method that allows the addition of one quantity of a commodity
+     *
+     * @param index the index the Commodity is at
+     */
+    public void add1Commodity(int index){
+        Commodity commodity = shoppingList.get(index);
         commodity.addQuantity();
         this.totalPrice += commodity.getPrice();
-        return commodity.getQuantity();
     }
 
-    // A method that allows the deletion of a commodity
-    public int removeCommodity(String commName){
-        Commodity commodity = this.shoppingList.get(commName);
-        if(commodity.getQuantity() == 1){
-            this.totalPrice -= commodity.getPrice();
-            this.shoppingList.remove(commName);
-            return 0; // Also remove the Commodity from UI
+    /**
+     * A method that allows the removal of one quantity of a commodity
+     *
+     * @param index the index the Commodity is at
+     */
+    public void remove1Commodity(int index){
+        Commodity commodity = shoppingList.get(index);
+        commodity.removeQuantity();
+        if (commodity.getQuantity() == 0) {
+            this.shoppingList.remove(index);
         }
-        else {
-            commodity.removeQuantity();
-            this.totalPrice -= commodity.getPrice();
-            return commodity.getQuantity();
-        }
+        this.totalPrice -= commodity.getPrice();
+    }
+
+    /**
+     * @return size of this ShoppingList
+     */
+    public int size(){
+        return shoppingList.size();
     }
 }
