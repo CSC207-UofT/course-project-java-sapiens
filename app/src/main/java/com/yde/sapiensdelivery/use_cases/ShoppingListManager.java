@@ -1,37 +1,34 @@
 package com.yde.sapiensdelivery.use_cases;
 
 import com.yde.sapiensdelivery.entities.Commodity;
+import com.yde.sapiensdelivery.entities.Outlet;
 import com.yde.sapiensdelivery.entities.ShoppingList;
 
 import java.util.ArrayList;
 
 public class ShoppingListManager {
-    ShoppingList shoppingList;
-    // TODO replace outletName with an Outlet OBJ
-    String outletName;
+
+    private Outlet outlet;
+    private ShoppingList shoppingList;
 
     /**
      * Creates a ShoppingListManager given a ShoppingList.
      *
      * @param shoppingList a ShoppingList Object
      */
-    public ShoppingListManager(ShoppingList shoppingList, String outletName) {
-        // TODO change outletName to an Outlet OBJ
-        this.outletName = outletName;
+    public ShoppingListManager(ShoppingList shoppingList, Outlet outlet) {
+        this.outlet = outlet;
         this.shoppingList = shoppingList;
     }
 
     /**
-     * Creates an empty ShoppingListManager, used to create an empty SL
+     * Creates an empty ShoppingListManager, used to create an empty SL in ShoppingListCreationActivity
      * to be edited in EditShoppingListActivity
      *
-     * @param outletName the Name of the Outlet object
+     * @param outlet the Outlet user selects
      */
-    public ShoppingListManager(String outletName) {
-        // TODO pass in an Outlet Object and change the params
-        String address = "NO ADDRESS, TO BE IMPLEMENTED IN OUTLET CLASS";
-        // TODO change this address to use the Outlet's address
-        shoppingList = new ShoppingList(outletName, address);
+    public ShoppingListManager(Outlet outlet) {
+        shoppingList = new ShoppingList(outlet.getName(), outlet.getAddress());
     }
 
     /**
@@ -44,19 +41,10 @@ public class ShoppingListManager {
     /**
      * Set a new commodity to the ShoppingList
      *
-     * @param commodityName  name of Commodity
-     * @param commodityPrice price of Commodity
-     * @param quantity       the quantity of Commodity
-     * // TODO @param commodity     a Commodity object
-     *                       and then remove the above parameters except index
+     * @param commodity a Commodity that the user selected
      */
-    public void setCommodity(String commodityName, double commodityPrice, int quantity) {
-        Commodity commodity = new Commodity(commodityName, commodityPrice, quantity);
+    public void setCommodity(Commodity commodity) {
         this.shoppingList.setCommodity(commodity);
-
-        // TODO after outlet keeps track of a list of Commodities it stores,
-        //  have the User select and get a Commodity,
-        //  then directly pass the Commodity object into this method.
     }
 
     /**
@@ -103,7 +91,24 @@ public class ShoppingListManager {
         return shoppingList.getShoppingList().get(index).getQuantity();
     }
 
+    public Outlet getOutlet() {
+        return outlet;
+    }
+
     public int getSize(){
         return shoppingList.size();
+    }
+
+
+    /**
+     * Get the total price of the Commodity, for displaying purposes
+     * Total price = quantity * price
+     *
+     * @param index index of the Commodity
+     * @return the total price of the Commodity
+     */
+    public double getCommodityTotalPrice(int index) {
+        Commodity commodity = shoppingList.getShoppingList().get(index);
+        return commodity.getQuantity() * commodity.getPrice();
     }
 }

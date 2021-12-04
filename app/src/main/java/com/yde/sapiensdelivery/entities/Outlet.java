@@ -3,11 +3,11 @@ package com.yde.sapiensdelivery.entities;
 import java.util.ArrayList;
 
 public class Outlet {
-    String address;
-    String name;
-    ArrayList<Commodity> commodities;
+    private String address;
+    private String name;
+    private ArrayList<Commodity> commodities;
 
-    public Outlet(String address, String name, ArrayList<Commodity> commodities) {
+    public Outlet( String name, String address, ArrayList<Commodity> commodities) {
         this.address = address;
         this.name = name;
         this.commodities = commodities;
@@ -29,11 +29,15 @@ public class Outlet {
         this.name = name;
     }
 
-    public ArrayList<Commodity> getCommodities() {
-        return commodities;
+    public Commodity getCommodityAtIndex(int index) {
+        return commodities.get(index);
     }
 
     public void setCommodities(ArrayList<Commodity> commodities) {
         this.commodities = commodities;
+    }
+
+    public ArrayList<Commodity> getCommodities() {
+        return commodities;
     }
 }

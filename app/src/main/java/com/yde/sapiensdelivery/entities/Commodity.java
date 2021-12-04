@@ -1,5 +1,7 @@
 package com.yde.sapiensdelivery.entities;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 /**
@@ -43,5 +45,10 @@ public class Commodity implements Serializable {
 
     public void removeQuantity(){
         this.quantity -= 1;
+    }
+
+    @NonNull
+    public String toString() {
+        return this.getName();
     }
 }
