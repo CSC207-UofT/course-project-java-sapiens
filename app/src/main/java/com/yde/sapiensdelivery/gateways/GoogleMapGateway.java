@@ -57,7 +57,7 @@ public class GoogleMapGateway implements Locator {
         String url = urlFactory(origin, destination, transportation);
         JSONObject json = this.readJsonFromUrl(url);
 
-        routeInfo.put("Duation", routeInfoParser(json, infoType.duration));
+        routeInfo.put("Duration", routeInfoParser(json, infoType.duration));
         routeInfo.put("Distance", routeInfoParser(json, infoType.distance));
         return routeInfo;
     }
@@ -96,6 +96,10 @@ public class GoogleMapGateway implements Locator {
                               String destination,
                               transportation transportation){
         String url = "";
+
+        origin = origin.replaceAll(" ", "%");
+        destination = destination.replaceAll(" ", "%");
+
         switch (transportation){
             case walking:
                 url = "https://maps.googleapis.com/maps/api/directions/json?origin=" +
