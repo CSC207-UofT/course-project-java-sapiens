@@ -8,8 +8,8 @@ public interface Locator {
     enum transportation{
         walking, driving, bicycling
     }
-    HashMap<String,String> findRouteInfo(String customerLocation,
-                                         String deliverymanLocation,
+    HashMap<String,String> findRouteInfo(String origin,
+                                         String destination,
                                          transportation transportation)
                                          throws IOException, JSONException;
 }
