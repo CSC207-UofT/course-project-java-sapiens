@@ -16,7 +16,7 @@ import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.gateways.UserGateway;
 import com.yde.sapiensdelivery.use_cases.CustomerManager;
 
-public class CProfileActivity extends AppCompatActivity {
+public class CustomerProfileActivity extends AppCompatActivity {
     private Button main;
     private FirebaseDatabase user;
     private DatabaseReference ref;
@@ -26,31 +26,32 @@ public class CProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cprofile);
+        setContentView(R.layout.activity_customer_profile);
 
         main = (Button) findViewById(R.id.main);
 
         main.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( CProfileActivity.this, CustomerActivity.class);
+                Intent intent = new Intent( CustomerProfileActivity.this, CustomerActivity.class);
                 startActivity(intent);
             }
         });
 
         CustomerManager cm = new CustomerManager((Customer) getIntent().getSerializableExtra("CUSTOMER"));
 
-        TextView fullName = (TextView) findViewById(R.id.FullName);
-        TextView userName = (TextView) findViewById(R.id.UserName);
-        TextView phone = (TextView) findViewById(R.id.phone);
+        TextView fullNameView = (TextView) findViewById(R.id.FullName);
+        TextView userNameView = (TextView) findViewById(R.id.UserName);
+        TextView phoneView = (TextView) findViewById(R.id.phone);
 
 
         String Fullname = cm.getName();
         String Username = cm.getUsername();
         String Phone  = cm.getPhoneNumber();
-        fullName.setText(Fullname);
-        userName.setText(Username);
-        phone.setText(Integer.parseInt(Phone));
+
+        fullNameView.setText(Fullname);
+        userNameView.setText(Username);
+        phoneView.setText(Integer.parseInt(Phone));
 
 
     }
