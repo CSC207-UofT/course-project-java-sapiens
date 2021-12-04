@@ -21,12 +21,13 @@ public class CustomerActivity extends AppCompatActivity {
         Button status = findViewById(R.id.status);
         Button placeOrder = findViewById(R.id.placeOrder);
         TextView welcome = findViewById(R.id.welcome);
+
         CustomerManager cm = new CustomerManager((Customer) getIntent().getSerializableExtra("CUSTOMER"));
         String welcomeMessage = "Welcome " + cm.getName() + "!";
         welcome.setText(welcomeMessage);
 
         profile.setOnClickListener(v -> {
-                Intent intent = new Intent( CustomerActivity.this, ProfileActivity.class);
+                Intent intent = new Intent( CustomerActivity.this, CustomerProfileActivity.class);
                 startActivity(intent);
         });
 
