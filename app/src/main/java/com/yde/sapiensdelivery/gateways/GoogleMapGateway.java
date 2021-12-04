@@ -72,11 +72,11 @@ public class GoogleMapGateway implements Locator {
         switch (type){
             case duration:
                 returnInfo = info.getJSONObject("duration").getDouble("value");
-                returnInfo = Math.round(returnInfo / 3600 * 100 / 100);
+                returnInfo = Math.round(returnInfo / 3600 * 100) / 100.0;
                 break;
             case distance:
                 returnInfo = info.getJSONObject("distance").getDouble("value");
-                returnInfo = Math.round(returnInfo / 1000 * 100 / 100);
+                returnInfo = Math.round(returnInfo / 1000 * 100) / 100.0;
                 break;
         }
         return returnInfo;
