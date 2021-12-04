@@ -22,15 +22,15 @@ public class GoogleMapGateway implements Locator {
     public GoogleMapGateway() {
     }
 
-    public HashMap<String, String> findRouteInfo(String customerLocation,
-                                                 String deliverymanLocation)
+    public HashMap<String, String> findRouteInfo(String origin,
+                                                 String destination)
                                                  throws IOException, JSONException {
 
         HashMap<String, String> routeInfo = new HashMap<String, String>();
         String url = "https://maps.googleapis.com/maps/api/directions/json?origin=" +
-                customerLocation +
+                origin +
                 "&destination=" +
-                deliverymanLocation +
+                destination +
                 "&key=AIzaSyAxeqdWPsIhW7KXVSef1uH0OmAX8Pnqb2M";
 
         JSONObject json = this.readJsonFromUrl(url);
