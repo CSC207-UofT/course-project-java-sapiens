@@ -21,8 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class GoogleMapGateway implements Locator {
-
-//    private FusedLocationProviderClient fusedLocationClient;
+    //    private FusedLocationProviderClient fusedLocationClient;
     public enum infoType{
         duration, distance, endAddress, startAddress
     }
@@ -58,12 +57,16 @@ public class GoogleMapGateway implements Locator {
         switch (type){
             case duration:
                 returnInfo = info.getJSONObject("duration").getString("text");
+                break;
             case distance:
                 returnInfo = info.getJSONObject("distance").getString("text");
+                break;
             case startAddress:
                 returnInfo = info.getString("start_address");
+                break;
             case endAddress:
                 returnInfo = info.getString("end_address");
+                break;
         }
         return returnInfo;
     }
@@ -74,19 +77,21 @@ public class GoogleMapGateway implements Locator {
         String url = "";
         switch (transportation){
             case walking:
-                 url = "https://maps.googleapis.com/maps/api/directions/json?origin=" +
+                url = "https://maps.googleapis.com/maps/api/directions/json?origin=" +
                         origin +
                         "&destination=" +
                         destination +
                         "&mode=walking" +
                         "&key=AIzaSyAxeqdWPsIhW7KXVSef1uH0OmAX8Pnqb2M";
+                break;
             case driving:
-                 url = "https://maps.googleapis.com/maps/api/directions/json?origin=" +
+                url = "https://maps.googleapis.com/maps/api/directions/json?origin=" +
                         origin +
                         "&destination=" +
                         destination +
                         "&mode=driving" +
                         "&key=AIzaSyAxeqdWPsIhW7KXVSef1uH0OmAX8Pnqb2M";
+                break;
             case bicycling:
                 url = "https://maps.googleapis.com/maps/api/directions/json?origin=" +
                         origin +
@@ -94,6 +99,7 @@ public class GoogleMapGateway implements Locator {
                         destination +
                         "&mode=bicycling" +
                         "&key=AIzaSyAxeqdWPsIhW7KXVSef1uH0OmAX8Pnqb2M";
+                break;
         }
         return url;
     }
