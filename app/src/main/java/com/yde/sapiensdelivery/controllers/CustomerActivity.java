@@ -41,8 +41,8 @@ public class CustomerActivity extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent( CustomerActivity.this, ShoppingListCreationActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent( CustomerActivity.this, OrderStatusActivity.class);
+//                startActivity(intent);
             }
         });
     }

@@ -16,10 +16,7 @@
             android:name=".controllers.EditShoppingListActivity"
             android:exported="false" />
         <activity
-            android:name=".controllers.DeliveryManActivity"
-            android:exported="false" />
-        <activity
-            android:name=".controllers.CustomerActivity"
+            android:name=".controllers.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".controllers.RegistrationActivity"
