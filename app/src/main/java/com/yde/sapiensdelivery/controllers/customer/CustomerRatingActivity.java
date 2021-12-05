@@ -24,18 +24,15 @@ public class CustomerRatingActivity extends AppCompatActivity {
         main = (Button) findViewById(R.id.main);
         Rating = findViewById(R.id.ratingBar);
 
-        /**
+        /*
          * after click the main button, it goes back to CustomerActivity page
          */
-        main.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent( CustomerRatingActivity.this, CustomerActivity.class);
-                startActivity(intent);
-            }
+        main.setOnClickListener(v -> {
+            Intent intent = new Intent( CustomerRatingActivity.this, CustomerActivity.class);
+            startActivity(intent);
         });
 
-        /**
+        /*
          * send different message based on a customer input
          */
         Rating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
