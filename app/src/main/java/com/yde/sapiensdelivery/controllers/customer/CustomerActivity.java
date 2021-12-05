@@ -7,6 +7,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.yde.sapiensdelivery.R;
+import com.yde.sapiensdelivery.controllers.ShoppingListCreationActivity;
 import com.yde.sapiensdelivery.controllers.delivery.ChooseCustomerActivity;
 import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.use_cases.CustomerManager;
@@ -33,7 +34,7 @@ public class CustomerActivity extends AppCompatActivity {
         });
 
         placeOrder.setOnClickListener(v -> {
-            Intent intent = new Intent( CustomerActivity.this, ChooseCustomerActivity.class);
+            Intent intent = new Intent( CustomerActivity.this, ShoppingListCreationActivity.class);
             startActivity(intent);
         });
 

@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.yde.sapiensdelivery.R;
-import com.yde.sapiensdelivery.controllers.delivery.ChooseCustomerActivity;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
 
