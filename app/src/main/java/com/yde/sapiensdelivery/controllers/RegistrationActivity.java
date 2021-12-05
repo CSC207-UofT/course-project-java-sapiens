@@ -1,7 +1,5 @@
 package com.yde.sapiensdelivery.controllers;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -42,8 +40,8 @@ public class RegistrationActivity extends AppCompatActivity {
         name = findViewById(R.id.name_register);
         username = findViewById(R.id.username_register);
         password = findViewById(R.id.password_register);
-        phoneNumber = findViewById(R.id.ph_num);
-        address = findViewById(R.id.address);
+        phoneNumber = findViewById(R.id.ph_num_register);
+        address = findViewById(R.id.address_register);
         sin = findViewById(R.id.sin_sign_up);
         rate = findViewById(R.id.rate_sign_up);
         transport = findViewById(R.id.transport_sign_up);

@@ -71,7 +71,7 @@
                     android:text="@string/name" />
 
                 <EditText
-                    android:id="@+id/name_view"
+                    android:id="@+id/name_register"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:background="@drawable/border"
@@ -143,7 +143,7 @@
                     android:text="Phone Number" />
 
                 <EditText
-                    android:id="@+id/ph_num_view"
+                    android:id="@+id/ph_num_register"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:background="@drawable/border"
@@ -168,7 +168,7 @@
                     android:text="Address" />
 
                 <EditText
-                    android:id="@+id/address_view"
+                    android:id="@+id/address_register"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginRight="10dp"
@@ -262,7 +262,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/ret"
+                android:id="@+id/register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
