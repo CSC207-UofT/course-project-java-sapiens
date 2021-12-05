@@ -4,11 +4,9 @@ import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.entities.Order;
 import com.yde.sapiensdelivery.entities.ShoppingList;
-import com.yde.sapiensdelivery.entities.ShoppingListOld;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
 public class OrderManager{
     private Order order;
@@ -35,7 +33,7 @@ public class OrderManager{
      * @param customer Customer of new order
      * @param shoppingLists The shoppingLists that the customer has added
      */
-    public Order createOrder(DeliveryMan deliveryMan, Customer customer, ArrayList<ShoppingListOld> shoppingLists){
+    public Order createOrder(DeliveryMan deliveryMan, Customer customer, ArrayList<ShoppingList> shoppingLists){
         int currUID = generateUID(shoppingLists);
         return new Order(deliveryMan, customer, ++currUID ,shoppingLists);
     }
@@ -46,9 +44,9 @@ public class OrderManager{
      * @param shoppingLists The shoppingLists that the customer has added
      * @return unique ID based on.
      */
-    private int generateUID(ArrayList<ShoppingListOld> shoppingLists) {
+    private int generateUID(ArrayList<ShoppingList> shoppingLists) {
         double totalPrice = 0;
-        for (ShoppingListOld shoppingList : shoppingLists) {
+        for (ShoppingList shoppingList : shoppingLists) {
             totalPrice += shoppingList.getTotalPrice();
         }
         return (int) (totalPrice + Math.floor(Math.random()*(Math.pow(10,(int) (Math.log10(totalPrice) + 1)))));

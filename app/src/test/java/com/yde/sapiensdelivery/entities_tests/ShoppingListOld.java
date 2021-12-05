@@ -1,4 +1,6 @@
-package com.yde.sapiensdelivery.entities;
+package com.yde.sapiensdelivery.entities_tests;
+
+import com.yde.sapiensdelivery.entities.Commodity;
 
 import java.io.Serializable;
 import java.util.HashMap;

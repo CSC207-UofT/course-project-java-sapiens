@@ -25,6 +25,9 @@
             android:name=".controllers.customer.CustomerProfileActivity"
             android:exported="false" />
         <activity
+            android:name=".controllers.customer.CustomerActivity"
+            android:exported="false" />
+        <activity
             android:name=".controllers.RegistrationActivity"
             android:exported="false" />
         <activity
