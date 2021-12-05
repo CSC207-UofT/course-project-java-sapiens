@@ -24,24 +24,24 @@ public class GoogleMapGatewayTest {
 
     @Test
     public void testFindRouteInfoDriving() throws IOException, JSONException {
-        HashMap<String, String> result = gmg.findRouteInfo("Dundas West",
+        HashMap<String, Double> result = gmg.findRouteInfo("Dundas West",
                                                 "University of Toronto",
                                                            Locator.transportation.driving);
-        HashMap<String, String> expected = new HashMap<String, String>();
-        expected.put("Duration", "32 mins");
-        expected.put("Distance", "28.2 km");
+        HashMap<String, Double> expected = new HashMap<String, Double>();
+        expected.put("Duration", 0.53);
+        expected.put("Distance", 28.2);
 
         assertEquals(expected, result);
     }
 
     @Test
     public void testFindRouteInfoWalking() throws IOException, JSONException {
-        HashMap<String, String> result = gmg.findRouteInfo("Dundas West",
+        HashMap<String, Double> result = gmg.findRouteInfo("Dundas West",
                                                 "University of Toronto",
                                                            Locator.transportation.walking);
-        HashMap<String, String> expected = new HashMap<String, String>();
-        expected.put("Duration", "5 hours 7 mins");
-        expected.put("Distance", "24.4 km");
+        HashMap<String, Double> expected = new HashMap<String, Double>();
+        expected.put("Duration", 5.11);
+        expected.put("Distance", 24.44);
 
         assertEquals(expected, result);
     }
