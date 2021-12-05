@@ -32,6 +32,10 @@ public class Outlet implements Serializable {
         this.name = name;
     }
 
+    /**
+     * @param index index that the Commodity is at
+     * @return Commodity at index
+     */
     public Commodity getCommodityAtIndex(int index) {
         return commodities.get(index);
     }

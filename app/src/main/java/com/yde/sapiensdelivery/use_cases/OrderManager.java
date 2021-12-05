@@ -11,8 +11,6 @@ import java.util.HashMap;
 public class OrderManager{
     private Order order;
 
-//    final String REF_PATH;
-
     /**
      * Creates an OrderManager given an already existing Order
      */
@@ -150,40 +148,4 @@ public class OrderManager{
 
         return journey;
     }
-
-//    /**
-//     * All Manager classes in controllers.use_cases have some transactions to save.
-//     *
-//     * @param customerUsername The username with which the database can be queried
-//     * @param order The corresponding Order
-//     */
-//    @Override
-//    public void save(String customerUsername, Order order) {
-//        Map<String, Order> toSave = new HashMap<>();
-//        toSave.put(customerUsername, (Order) order);
-//
-//        ref.setValueAsync(toSave);
-//    }
-//
-//    /**
-//     * All Manager classes query the database for a specific Order type that it is managing.
-//     *
-//     * @param customerUsername The username with which the database can be queried
-//     */
-//    @Override
-//    public void get(String customerUsername, final OnDataReadListener onDataReadListener) {
-//        ref.child(customerUsername).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot snapshot) {
-//                onDataReadListener.setSavedObject(snapshot.getValue(Order.class));
-//                onDataReadListener.onSuccess();
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError error) {
-//                onDataReadListener.onFailure();
-//            }
-//        });
-//    }
-
 }

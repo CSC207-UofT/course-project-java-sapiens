@@ -1,4 +1,4 @@
-package com.yde.sapiensdelivery.Gateway_tests;
+package com.yde.sapiensdelivery.gateways;
 
 import com.yde.sapiensdelivery.gateways.GoogleMapGateway;
 import com.yde.sapiensdelivery.use_cases.Locator;

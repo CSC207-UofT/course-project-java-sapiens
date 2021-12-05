@@ -15,17 +15,6 @@ public class ShoppingListManager implements Serializable {
     private Outlet outlet;
 
     /**
-     * Creates a ShoppingListManager given a ShoppingList and Outlet.
-     *
-     * @param shoppingList a ShoppingList Object
-     * @param outlet the outlet of this ShoppingList
-     */
-    public ShoppingListManager(ShoppingList shoppingList, Outlet outlet) {
-        this.shoppingList = shoppingList;
-        this.outlet = outlet;
-    }
-
-    /**
      * Creates a ShoppingListManager given an Outlet.
      *
      * @param outlet the outlet of this ShoppingList
@@ -99,10 +88,6 @@ public class ShoppingListManager implements Serializable {
 
     public ShoppingList newShoppingList(Outlet outlet) {
         return new ShoppingList(outlet.getName(), outlet.getAddress());
-    }
-
-    public double getCommodityPrice(int index) {
-        return shoppingList.getShoppingList().get(index).getPrice();
     }
 
     public int getCommodityQuantity(int index) {

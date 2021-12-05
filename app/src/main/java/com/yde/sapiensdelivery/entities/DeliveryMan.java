@@ -30,6 +30,9 @@ public class DeliveryMan extends User{
         super();
     }
 
+    public DeliveryMan(String samuel, int[] ints, String phoneNumber, String samuel1, String password, int sin, String transport, float rate) {
+    }
+
     public void setSin(long sin) {
         this.sin = sin;
     }
