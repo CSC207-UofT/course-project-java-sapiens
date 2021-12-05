@@ -6,7 +6,7 @@ package com.yde.sapiensdelivery.entities;
  */
 public class Customer extends User{
 
-    public Customer(String name, int[] location, String phoneNumber, String userName, String password){
+    public Customer(String name, String location, String phoneNumber, String userName, String password){
         super(name, location, phoneNumber, userName, password);
     }
 

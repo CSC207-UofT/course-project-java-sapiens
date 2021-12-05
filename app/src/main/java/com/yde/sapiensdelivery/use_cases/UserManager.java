@@ -15,7 +15,7 @@ public class UserManager{
      *
      * @return User created.
      */
-    public static User createUser(String userType, String n, int[] l, String num, String user, String pass, long sin,
+    public static User createUser(String userType, String n, String l, String num, String user, String pass, long sin,
                                   String transport, float rate){
         if(userType.equalsIgnoreCase("DELIVERYMAN")){
             return new DeliveryMan(n, l, num, user, pass, sin, transport, rate);

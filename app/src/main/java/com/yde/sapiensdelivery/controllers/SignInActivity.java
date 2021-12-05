@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.yde.sapiensdelivery.R;
+import com.yde.sapiensdelivery.controllers.customer.CustomerActivity;
+import com.yde.sapiensdelivery.controllers.delivery.DeliveryManActivity;
 import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.gateways.UserGateway;

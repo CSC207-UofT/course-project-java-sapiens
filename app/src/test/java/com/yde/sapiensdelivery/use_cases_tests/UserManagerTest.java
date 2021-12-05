@@ -14,9 +14,9 @@ public class UserManagerTest {
     public void DeliveryManTest() {
         userType = "deliveryman";
 
-        User d1 = UserManager.createUser(userType, "Samuel P", new int[]{10, 20}, "648", "Samuel", "password", 1234, "moto-bike", (float) 4.5);
+        User d1 = UserManager.createUser(userType, "Samuel P", "location1", "648", "Samuel", "password", 1234, "moto-bike", (float) 4.5);
 
-        DeliveryMan deliveryMan1 = new DeliveryMan("Samuel P", new int[]{10, 20}, "648", "Samuel", "password", 1234, "moto-bike", (float) 4.5);
+        DeliveryMan deliveryMan1 = new DeliveryMan("Samuel P", "location1", "648", "Samuel", "password", 1234, "moto-bike", (float) 4.5);
 
         assertEquals(deliveryMan1.getName(), d1.getName());
     }
@@ -25,9 +25,9 @@ public class UserManagerTest {
     public void CustomerTest() {
         userType = "customer";
 
-        User c1 = UserManager.createUser(userType, "Patrick", new int[]{10, 20}, "647", "pz", "password1", 1234, "moto-bike", (float) 4.5);
+        User c1 = UserManager.createUser(userType, "Patrick", "location1", "647", "pz", "password1", 1234, "moto-bike", (float) 4.5);
 
-        Customer customer1 = new Customer("Patrick", new int[] {4,20}, "647", "Pat", "password1");
+        Customer customer1 = new Customer("Patrick", "location1", "647", "Pat", "password1");
 
         assertEquals(customer1.getPassword(), c1.getName());
     }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public abstract class User implements Serializable {
 
     private String name;
-    private ArrayList<Integer> location;
+    private String location;
     private String number;
     private float rating;
     private int noOfRatings;
@@ -18,11 +18,9 @@ public abstract class User implements Serializable {
     private String uname;
     private String password;
 
-    public User(String n, int[] l, String num, String user, String pass){
-        location = new ArrayList<>();
+    public User(String n, String l, String num, String user, String pass){
         this.name = n;
-        this.location.add(l[0]);
-        this.location.add(l[1]);
+        this.location = l;
         this.number = num;
         this.uname = user;
         this.password = pass;
@@ -30,7 +28,7 @@ public abstract class User implements Serializable {
 
     public User(){
         name = "";
-        location = new ArrayList<>();
+        location = "";
         number = "";
         rating = 0.0f;
         noOfRatings = 0;
@@ -39,7 +37,7 @@ public abstract class User implements Serializable {
         password= "";
     }
 
-    public User(String name, int[] location, String phoneNum, String user, String pass, float rating, int noOfRatings){
+    public User(String name, String location, String phoneNum, String user, String pass, float rating, int noOfRatings){
         this(name, location, phoneNum, user, pass);
         this.rating = rating;
         this.noOfRatings = noOfRatings;
@@ -55,11 +53,11 @@ public abstract class User implements Serializable {
         this.name = name;
     }
 
-    public ArrayList<Integer> getLocation() {
+    public String getLocation() {
         return location;
     }
 
-    public void setLocation(ArrayList<Integer> location) {
+    public void setLocation(String location) {
         this.location = location;
     }
 
