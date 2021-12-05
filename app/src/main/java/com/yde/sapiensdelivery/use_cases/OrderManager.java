@@ -116,10 +116,10 @@ public class OrderManager{
 
         for(int i = 0; i < stops.size(); i++){
             try {
-                HashMap<String, String> info = locator.findRouteInfo
+                HashMap<String, Double> info = locator.findRouteInfo
                         (stops.get(i), stops.get(i + 1), Locator.transportation.valueOf(transport));
-                float distance = Float.parseFloat(Objects.requireNonNull(info.get("Distance")));
-                float duration = Float.parseFloat(Objects.requireNonNull(info.get("Duration")));
+                double distance = info.get("Distance");
+                double duration = info.get("Duration");
 
                 total_distance += distance;
                 total_duration += duration;
