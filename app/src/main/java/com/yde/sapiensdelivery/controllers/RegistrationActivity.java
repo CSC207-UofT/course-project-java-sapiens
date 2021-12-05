@@ -37,15 +37,15 @@ public class RegistrationActivity extends AppCompatActivity {
         LinearLayout optionalCustomer = findViewById(R.id.address_ll);
         ((RadioButton) userType.getChildAt(0)).setChecked(true);
 
-        name = findViewById(R.id.name_register);
+        name = findViewById(R.id.name_view);
         username = findViewById(R.id.username_register);
         password = findViewById(R.id.password_register);
-        phoneNumber = findViewById(R.id.ph_num);
-        address = findViewById(R.id.address);
+        phoneNumber = findViewById(R.id.ph_num_view);
+        address = findViewById(R.id.address_view);
         sin = findViewById(R.id.sin_sign_up);
         rate = findViewById(R.id.rate_sign_up);
         transport = findViewById(R.id.transport_sign_up);
-        Button register = findViewById(R.id.register);
+        Button register = findViewById(R.id.ret);
 
         userType.setOnCheckedChangeListener((radioGroup, i) -> {
             if(i == R.id.customer_sign_up){
