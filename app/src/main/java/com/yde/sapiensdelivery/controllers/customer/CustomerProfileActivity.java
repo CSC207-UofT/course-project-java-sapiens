@@ -2,6 +2,7 @@ package com.yde.sapiensdelivery.controllers.customer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,13 +19,11 @@ import com.yde.sapiensdelivery.use_cases.CustomerManager;
 
 public class CustomerProfileActivity extends AppCompatActivity {
     private Button main;
-    private FirebaseDatabase user;
-    private DatabaseReference ref;
 
-    UserGateway userGateway;
-
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // call the information from previous activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_profile);
 
@@ -39,22 +38,21 @@ public class CustomerProfileActivity extends AppCompatActivity {
             }
         });
 
-        CustomerManager cm = new CustomerManager((Customer) getIntent().getSerializableExtra("CUSTOMER"));
-
-        TextView fullNameView = (TextView) findViewById(R.id.FullName);
-        TextView userNameView = (TextView) findViewById(R.id.UserName);
-        TextView phoneView = (TextView) findViewById(R.id.phone);
+        Intent intent = getIntent();
 
         // get information from use-cases
-        String Fullname = cm.getName();
-        String Username = cm.getUsername();
-        String Phone  = cm.getPhoneNumber();
+        String Fullname = intent.getStringExtra(CustomerActivity.fullName);
+        String Username = intent.getStringExtra(CustomerActivity.userName);
+        String Phone  = intent.getStringExtra(CustomerActivity.phone);
+
+        // set TextView of three variables
+        TextView fullNameView = (TextView) findViewById(R.id.FullNameTitle);
+        TextView userNameView = (TextView) findViewById(R.id.UserNameTitle);
+        TextView phoneView = (TextView) findViewById(R.id.phoneTitle);
 
         // Update there variables of TextView
-        fullNameView.setText(Fullname);
-        userNameView.setText(Username);
-        phoneView.setText(Integer.parseInt(Phone));
-
-
+        fullNameView.setText(" full name: " +Fullname);
+        userNameView.setText(" user name: " + Username);
+        phoneView.setText(" phone number: "+ Phone);
     }
 }
