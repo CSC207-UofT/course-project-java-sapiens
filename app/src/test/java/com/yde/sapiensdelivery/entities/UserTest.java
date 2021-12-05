@@ -1,8 +1,5 @@
-package com.yde.sapiensdelivery.entities_tests;
+package com.yde.sapiensdelivery.entities;
 
-import com.yde.sapiensdelivery.entities.Customer;
-import com.yde.sapiensdelivery.entities.DeliveryMan;
-import com.yde.sapiensdelivery.entities.User;
 import org.junit.*;
 
 import static org.junit.Assert.assertEquals;

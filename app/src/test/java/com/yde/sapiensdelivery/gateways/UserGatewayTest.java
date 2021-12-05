@@ -17,7 +17,7 @@ public class UserGatewayTest {
     public void setUp() throws InterruptedException {
         cm = new CustomerGateway("CUSTOMER");
 
-        Customer kevin = new Customer("Kevin", new int[] {100, 200}, "4164449999", "kevin",
+        Customer kevin = new Customer("Kevin", "ADDRESS", "4164449999", "kevin",
                 DigestUtils.sha256Hex("ilikesparrows123"));
 
         cm.save(kevin.getUname(), kevin);

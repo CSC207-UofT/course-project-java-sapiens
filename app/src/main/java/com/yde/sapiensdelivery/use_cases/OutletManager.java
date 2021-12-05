@@ -15,7 +15,7 @@ public class OutletManager {
     public Commodity newCommodityAtIndex(int index) {
         // Need to make a copy of whatever Commodity is in the Store rather than to return it
         Commodity outletComm = outlet.getCommodityAtIndex(index);
-        return new Commodity(outletComm.getName(), outletComm.getPrice(),outletComm.getQuantity());
+        return new Commodity(outletComm.getName(), outletComm.getPrice(), outletComm.getQuantity());
     }
 
     public ArrayList<Commodity> getCommList(){

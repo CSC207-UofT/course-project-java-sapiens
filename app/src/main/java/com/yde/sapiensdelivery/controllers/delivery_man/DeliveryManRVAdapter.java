@@ -1,4 +1,4 @@
-package com.yde.sapiensdelivery.controllers.delivery;
+package com.yde.sapiensdelivery.controllers.delivery_man;
 
 import android.view.LayoutInflater;
 import android.view.View;

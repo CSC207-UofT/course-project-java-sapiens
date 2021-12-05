@@ -1,4 +1,4 @@
-package com.yde.sapiensdelivery.controllers.delivery;
+package com.yde.sapiensdelivery.controllers.delivery_man;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
