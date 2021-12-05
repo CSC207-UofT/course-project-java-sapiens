@@ -1,7 +1,7 @@
-package com.yde.sapiensdelivery.use_cases;
+package com.yde.sapiensdelivery.use_cases_tests;
 
 import com.yde.sapiensdelivery.entities.Commodity;
-import com.yde.sapiensdelivery.entities.ShoppingListOld;
+import com.yde.sapiensdelivery.entities_tests.ShoppingListOld;
 
 import java.util.ArrayList;
 
