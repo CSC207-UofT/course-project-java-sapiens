@@ -14,8 +14,12 @@ import android.widget.RadioGroup;
 import com.yde.sapiensdelivery.R;
 import com.yde.sapiensdelivery.controllers.customer.CustomerActivity;
 import com.yde.sapiensdelivery.controllers.delivery.DeliveryManActivity;
+import com.yde.sapiensdelivery.entities.Customer;
+import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.gateways.UserGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
+import com.yde.sapiensdelivery.use_cases.CustomerManager;
+import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
 import com.yde.sapiensdelivery.use_cases.UserManager;
 
 public class RegistrationActivity extends AppCompatActivity {
@@ -110,12 +114,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             boolean isCustomer = userType.getCheckedRadioButtonId() == R.id.customer_sign_up;
                             String userChosen = isCustomer ? "CUSTOMER" : "DELIVERYMAN";
 
-                            if(isCustomer){
-                                intent = new Intent(RegistrationActivity.this, CustomerActivity.class);
-                            }
-                            else{
-                                intent = new Intent(RegistrationActivity.this, DeliveryManActivity.class);
-                            }
+                            intent = new Intent(RegistrationActivity.this, SignInActivity.class);
 
                             userGateway.save(usernameStr, UserManager.createUser(userChosen, nameStr, location, phNumStr, usernameStr,
                                     userGateway.createHash(passwordStr), finalSinVal, transportStr, finalRateVal));

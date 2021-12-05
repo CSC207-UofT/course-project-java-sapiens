@@ -16,6 +16,8 @@ import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.gateways.UserGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
+import com.yde.sapiensdelivery.use_cases.CustomerManager;
+import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -59,11 +61,13 @@ public class SignInActivity extends AppCompatActivity {
 
                     if(isCustomer.isChecked()){
                         intent = new Intent(SignInActivity.this, CustomerActivity.class);
-                        intent.putExtra("CUSTOMER", (Customer) getSavedObject());
+                        CustomerManager cm = new CustomerManager((Customer) getSavedObject());
+                        cm.passValue(intent);
                     }
                     else{
                         intent = new Intent(SignInActivity.this, DeliveryManActivity.class);
-                        intent.putExtra("DELIVERYMAN", (DeliveryMan) getSavedObject());
+                        DeliveryManManager dm = new DeliveryManManager((DeliveryMan) getSavedObject());
+                        dm.passValue(intent);
                     }
 
                     startActivity(intent);
