@@ -28,11 +28,13 @@ public class CustomerActivity extends AppCompatActivity {
 
         profile.setOnClickListener(v -> {
                 Intent intent = new Intent( CustomerActivity.this, CustomerProfileActivity.class);
+                cm.passValue(intent);
                 startActivity(intent);
         });
 
         placeOrder.setOnClickListener(v -> {
             Intent intent = new Intent( CustomerActivity.this, ShoppingListCreationActivity.class);
+            cm.passValue(intent);
             startActivity(intent);
         });
 

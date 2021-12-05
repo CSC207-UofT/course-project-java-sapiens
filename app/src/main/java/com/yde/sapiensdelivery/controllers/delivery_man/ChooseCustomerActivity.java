@@ -1,11 +1,10 @@
-package com.yde.sapiensdelivery.controllers.delivery;
+package com.yde.sapiensdelivery.controllers.delivery_man;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.yde.sapiensdelivery.R;
 

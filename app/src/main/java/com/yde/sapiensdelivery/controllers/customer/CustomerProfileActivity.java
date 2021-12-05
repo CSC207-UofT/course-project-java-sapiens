@@ -17,43 +17,35 @@ import com.yde.sapiensdelivery.gateways.UserGateway;
 import com.yde.sapiensdelivery.use_cases.CustomerManager;
 
 public class CustomerProfileActivity extends AppCompatActivity {
-    private Button main;
-    private FirebaseDatabase user;
-    private DatabaseReference ref;
-
-    UserGateway userGateway;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_profile);
 
-        main = (Button) findViewById(R.id.main);
+        Button main = (Button) findViewById(R.id.ret);
 
-        main.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                // go back to the customer Activity after click the main button
-                Intent intent = new Intent( CustomerProfileActivity.this, CustomerActivity.class);
-                startActivity(intent);
-            }
+        main.setOnClickListener(v -> {
+            // go back to the customer Activity after click the main button
+            Intent intent = new Intent( CustomerProfileActivity.this, CustomerActivity.class);
+            startActivity(intent);
         });
 
         CustomerManager cm = new CustomerManager((Customer) getIntent().getSerializableExtra("CUSTOMER"));
 
-        TextView fullNameView = (TextView) findViewById(R.id.FullName);
-        TextView userNameView = (TextView) findViewById(R.id.UserName);
-        TextView phoneView = (TextView) findViewById(R.id.phone);
+        TextView name = (TextView) findViewById(R.id.name_view);
+        TextView phoneView = (TextView) findViewById(R.id.ph_num_view);
+        TextView address = (TextView) findViewById(R.id.address_view);
 
         // get information from use-cases
-        String Fullname = cm.getName();
-        String Username = cm.getUsername();
-        String Phone  = cm.getPhoneNumber();
+        String nameStr = cm.getName();
+        String addressStr = cm.getLocation();
+        String phoneStr  = cm.getPhoneNumber();
 
         // Update there variables of TextView
-        fullNameView.setText(Fullname);
-        userNameView.setText(Username);
-        phoneView.setText(Integer.parseInt(Phone));
+        name.setText(nameStr);
+        address.setText(addressStr);
+        phoneView.setText(phoneStr);
 
 
     }

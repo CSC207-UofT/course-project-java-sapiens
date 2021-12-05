@@ -1,11 +1,16 @@
 package com.yde.sapiensdelivery.use_cases;
 
+import android.content.Intent;
 import com.yde.sapiensdelivery.entities.Customer;
-import java.util.ArrayList;
 
 
-public class CustomerManager {
+public class CustomerManager implements Manager{
     private final Customer customer;
+
+    @Override
+    public void passValue(Intent intent){
+        intent.putExtra("CUSTOMER", customer);
+    }
 
     /**
      * Creates an CustomerManager given an already existing Customer

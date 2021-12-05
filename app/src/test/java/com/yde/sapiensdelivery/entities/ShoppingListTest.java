@@ -1,9 +1,6 @@
-package com.yde.sapiensdelivery.entities_tests;
+package com.yde.sapiensdelivery.entities;
 
 import static org.junit.Assert.assertEquals;
-
-import com.yde.sapiensdelivery.entities.Commodity;
-import com.yde.sapiensdelivery.entities.ShoppingList;
 
 import org.junit.Before;
 import org.junit.Test;
