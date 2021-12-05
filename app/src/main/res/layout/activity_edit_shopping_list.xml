@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controllers.EditShoppingListActivity">
+    tools:context=".controllers.customer.EditShoppingListActivity">
 
     <TextView
         android:id="@+id/outlet_name_top_TV"
