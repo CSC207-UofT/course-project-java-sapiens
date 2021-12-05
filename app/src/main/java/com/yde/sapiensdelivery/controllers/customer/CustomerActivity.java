@@ -7,8 +7,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.yde.sapiensdelivery.R;
-import com.yde.sapiensdelivery.controllers.ShoppingListCreationActivity;
-import com.yde.sapiensdelivery.controllers.delivery.ChooseCustomerActivity;
 import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.use_cases.CustomerManager;
 

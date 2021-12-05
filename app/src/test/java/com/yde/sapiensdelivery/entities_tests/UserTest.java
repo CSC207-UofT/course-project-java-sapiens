@@ -8,9 +8,9 @@ import org.junit.*;
 import static org.junit.Assert.assertEquals;
 
 public class UserTest {
-    User user1 = new DeliveryMan("Samuel", new int[] {10,20}, "648", "Samuel", "12", 1234, "moto-bike", (float) 4.5);
+    User user1 = new DeliveryMan("Samuel", "new int[] {10,20}", "648", "Samuel", "12", 1234, "moto-bike", (float) 4.5);
 
-    User user2 = new Customer("Kevin", new int[] {4,20}, "647", "Kevin", "123");
+    User user2 = new Customer("Kevin", "new int[] {4,20}", "647", "Kevin", "123");
 
     @Test
     public void DeliveryMan_Test1() {

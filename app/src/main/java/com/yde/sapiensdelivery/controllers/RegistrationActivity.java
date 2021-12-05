@@ -84,7 +84,7 @@ public class RegistrationActivity extends AppCompatActivity {
             String nameStr = name.getText().toString();
             String phNumStr = phoneNumber.getText().toString();
             String usernameStr = username.getText().toString();
-            int[] location = new int[]{0, 0};
+            String location = "";
 
             long sinVal = 0;
             if(!sin.getText().toString().equals("")){

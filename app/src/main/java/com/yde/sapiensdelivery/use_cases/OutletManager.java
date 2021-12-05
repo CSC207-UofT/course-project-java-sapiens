@@ -26,4 +26,11 @@ public class OutletManager {
         // Need to show the name in Spinner
         return outlet.getCommodityAtIndex(index).getName();
     }
+    public String getOutletName(){
+        return this.outlet.getName();
+    }
+
+    public String getOutletAddress(){
+        return this.outlet.getAddress();
+    }
 }

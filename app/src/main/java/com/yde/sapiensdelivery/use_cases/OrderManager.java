@@ -3,11 +3,14 @@ package com.yde.sapiensdelivery.use_cases;
 import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.entities.Order;
+import com.yde.sapiensdelivery.entities.ShoppingList;
 import com.yde.sapiensdelivery.entities.ShoppingListOld;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
 
-public class OrderManager {
+public class OrderManager{
     private Order order;
 
 //    final String REF_PATH;
@@ -61,6 +64,22 @@ public class OrderManager {
         return UID; // Get order from database which matches UID. DB connection not implemented so currently null.
     }
 
+    /**
+     * Name of Order
+     * @return Order name using UID
+     */
+    public String getName(){
+        return "Order#" + order.getUID();
+    }
+
+    /**
+     * Get contact info for order
+     * @return Contact information of deliveryman
+     */
+    public String getContact(){
+        return order.getDeliveryMan().getName() + " : " + order.getDeliveryMan().getNumber();
+    }
+
     public void setStatusOTW() {
         this.order.setStatusOTW();
     }
@@ -91,6 +110,47 @@ public class OrderManager {
 
     public double getTotalPrice() {
         return this.order.getTotalPrice();
+    }
+
+    public HashMap<String, Float> calculateJourney(Locator locator){
+        float total_distance = 0;
+        float total_duration = 0;
+
+        // String start = TODO: Delivery man's current location
+        String end = this.order.getCustomer().getLocation();
+
+        ArrayList<String> stops = new ArrayList<>();
+        stops.add("start"); // TODO: The Delivery man's location. (Maybe from the time he accepts the order)
+
+        for(ShoppingList o: this.order.getShoppingLists()){
+            stops.add(o.getOutletAddress());
+        }
+        stops.add(end);
+
+        String transport = order.getDeliveryMan().getTransport();
+
+
+        for(int i = 0; i < stops.size(); i++){
+            try {
+                HashMap<String, Double> info = locator.findRouteInfo
+                        (stops.get(i), stops.get(i + 1), Locator.transportation.valueOf(transport));
+                double distance = info.get("Distance");
+                double duration = info.get("Duration");
+
+                total_distance += distance;
+                total_duration += duration;
+            } catch (Exception e){
+                // TODO: Error cuz either wrong address or internet issues.
+            }
+
+        }
+
+        HashMap<String, Float> journey= new HashMap<>();
+
+        journey.put("Total Distance", total_distance);
+        journey.put("Total Duration", total_duration);
+
+        return journey;
     }
 
 //    /**

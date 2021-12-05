@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controllers.EditShoppingListActivity">
+    tools:context=".controllers.customer.EditShoppingListActivity">
 
     <TextView
         android:id="@+id/outlet_name_top_TV"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
@@ -22,8 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/outlet_name_top_TV"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="138dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="2dp"
         android:layout_toEndOf="@+id/outlet_name_top_TV"
         android:text="Total: $"
         android:textSize="20sp" />
@@ -43,10 +43,23 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@id/done_editing_BT"
         android:hint="Select a Commodity"
         android:padding="10dp"
         android:textSize="20sp"
         app:drawableEndCompat="@drawable/drop_up_arrow" />
+
+    <Button
+        android:id="@+id/done_editing_BT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/teal_700"
+        android:text="done editing"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
 
 
 </RelativeLayout>

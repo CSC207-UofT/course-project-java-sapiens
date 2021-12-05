@@ -47,8 +47,10 @@ public class Commodity implements Serializable {
         this.quantity -= 1;
     }
 
+
     @NonNull
+    @Override
     public String toString() {
-        return this.getName();
+        return this.getName() + ": $ " + this.getPrice();
     }
 }
