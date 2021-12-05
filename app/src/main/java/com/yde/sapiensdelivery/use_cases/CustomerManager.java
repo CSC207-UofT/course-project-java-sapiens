@@ -24,7 +24,7 @@ public class CustomerManager {
     /**
      * return the Customer's Location
      */
-    public ArrayList<Integer> getLocation(){
+    public String getLocation(){
         return this.customer.getLocation();
     }
 
@@ -57,10 +57,9 @@ public class CustomerManager {
     }
 
     /**
-     * set the Customer's location in the following format
-     * {longitude, latitude}
+     * set the Customer's location.
      */
-    public void setLocation(ArrayList<Integer> location){
+    public void setLocation(String location){
         this.customer.setLocation(location);
     }
 

@@ -24,7 +24,7 @@ public class DeliveryManManager {
     /**
      * return the Delivery man's Location
      */
-    public ArrayList<Integer> getLocation(){
+    public String getLocation(){
         return this.deliveryMan.getLocation();
     }
 
@@ -81,7 +81,7 @@ public class DeliveryManManager {
      * set the Delivery man's location in the following format
      * {longitude, latitude}
      */
-    public void setLocation(ArrayList<Integer> location){
+    public void setLocation(String location){
         this.deliveryMan.setLocation(location);
     }
 

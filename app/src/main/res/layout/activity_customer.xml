@@ -4,41 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controllers.CustomerActivity">
+    tools:context=".controllers.customer.CustomerActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome">
+
+        <Button
+            android:id="@+id/profile"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/profile"
+            android:textColor="#ffffff"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/placeOrder"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/place_order"
+            android:textColor="#ffffff"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/order_status"
+            android:textColor="#ffffff"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
 
     <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CustomerActivity"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintVertical_bias="0.265"/>
-    <Button
-            android:text="profile"
-            android:layout_width="143dp"
-            android:layout_height="70dp"
-            android:id="@+id/profile"
-            tools:layout_editor_absoluteY="242dp"
-            tools:layout_editor_absoluteX="134dp"
-            tools:ignore="MissingConstraints"/>
-
-    <Button
-            android:text="Order Status"
-            android:layout_width="143dp"
-            android:layout_height="70dp"
-            android:id="@+id/status"
-            tools:layout_editor_absoluteY="444dp"
-            tools:layout_editor_absoluteX="134dp"
-            tools:ignore="MissingConstraints"/>
-    <Button
-            android:text="Place Order"
-            android:layout_width="143dp"
-            android:layout_height="70dp"
-            android:id="@+id/placeOrder"
-            tools:layout_editor_absoluteY="344dp"
-            tools:layout_editor_absoluteX="134dp"
-            tools:ignore="MissingConstraints"/>
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
