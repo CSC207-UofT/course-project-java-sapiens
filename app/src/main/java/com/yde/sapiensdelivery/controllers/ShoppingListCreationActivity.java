@@ -1,27 +1,24 @@
 package com.yde.sapiensdelivery.controllers;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.icu.text.Edits;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.yde.sapiensdelivery.R;
-import com.yde.sapiensdelivery.controllers.adapters.CommodityListAdapter;
 import com.yde.sapiensdelivery.controllers.adapters.OutletListAdapter;
 import com.yde.sapiensdelivery.entities.Commodity;
 import com.yde.sapiensdelivery.entities.Outlet;
@@ -29,6 +26,7 @@ import com.yde.sapiensdelivery.entities.ShoppingList;
 import com.yde.sapiensdelivery.use_cases.OutletManager;
 import com.yde.sapiensdelivery.use_cases.ShoppingListManager;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ShoppingListCreationActivity extends AppCompatActivity implements OutletListAdapter.OnOutletClickListener {
@@ -47,13 +45,17 @@ public class ShoppingListCreationActivity extends AppCompatActivity implements O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_shopping_list);
+        setContentView(R.layout.activity_shopping_list_creation);
 
         // Get what's passed through Intent
         useIntent();
 
+        // Get Outlets from the Database
+        getOutletsFromDB();
+
         // Initialize the environment
-        setup();
+        setLayout();
+        setOnClick();
         setSpinner();
 
         // Display ShoppingListManagers through Adapter
@@ -64,79 +66,94 @@ public class ShoppingListCreationActivity extends AppCompatActivity implements O
      * User selects a Outlet stored in through a Spinner
      */
     @SuppressLint("SetTextI18n")
-    private void newShoppingList(Outlet outlet, int position) {
+    private void newShoppingList(Outlet outlet) {
         // Add an empty ShoppingList at the end and pass it to be edited
 
         ShoppingListManager shoppingListManager = new ShoppingListManager(outlet);
+
         shoppingListManagers.add(shoppingListManager);
         outletListAdapter.setOutletListManager(shoppingListManagers);
 
         Intent i = new Intent(ShoppingListCreationActivity.this, EditShoppingListActivity.class);
-        i.putExtra("sl_managers", shoppingListManagers);
-        i.putExtra("sl_position", position);
+        i.putExtra("sl_managers", (Serializable) shoppingListManagers);
+        i.putExtra("sl_position", shoppingListManagers.size() - 1);
         startActivity(i);
     }
 
-    private void useIntent(){
+    private void useIntent() {
         Bundle extras = getIntent().getExtras();
 
-        // Get the ShoppingList needed to be displayed
-        if (extras.getSerializable("sl_managers") != null) {
-
+        // Get the ShoppingLists needed to be displayed
+        if (extras != null) {
+            if (extras.getSerializable("sl_managers") != null) {
+                this.shoppingListManagers =
+                        (ArrayList<ShoppingListManager>) extras.getSerializable("sl_managers");
+            } else {
+                // Create a new ShoppingList
+                this.shoppingListManagers = new ArrayList<>();
+            }
+        } else {
+            this.shoppingListManagers = new ArrayList<>();
         }
-        ArrayList<ShoppingListManager> shoppingListsManagers =
-                (ArrayList<ShoppingListManager>) extras.getSerializable("sl_managers");
-        this.shoppingListManagers = shoppingListsManagers;
+    }
 
+    private void getOutletsFromDB() {
         // TODO get a List of Outlets from the Database and remove the hardcoded ones below
         ArrayList<Outlet> outlets = new ArrayList<>();
 
         ArrayList<Commodity> list = new ArrayList<>();
-        list.add(new Commodity("Apple", 2.5, 1) );
-        list.add(new Commodity("Banana", 3, 1) );
+        list.add(new Commodity("Apple", 2.5, 1));
+        list.add(new Commodity("Banana", 3, 1));
         Outlet walmart = new Outlet("Walmart", "NO ADDRESS", list);
 
         ArrayList<Commodity> house = new ArrayList<>();
-        house.add(new Commodity("TV", 1000, 1) );
-        house.add(new Commodity("Couch", 200, 1) );
+        house.add(new Commodity("TV", 1000, 1));
+        house.add(new Commodity("Couch", 200, 1));
         Outlet friend = new Outlet("Friend's House", "NO ADDRESS", house);
 
         outlets.add(friend);
         outlets.add(walmart);
-        // TODO remove above
 
         this.outlets = outlets;
     }
 
-    private void setup() {
+    @SuppressLint("SetTextI18n")
+    private void setLayout() {
         topPriceTV = findViewById(R.id.total_outlet_top_TV);
         RecyclerView outletRV = findViewById(R.id.outlets_RV);
-        outletSpinnerTV = findViewById(R.id.comm_spinner_TV);
-        createOrderBT = findViewById(R.id.done_editing_BT);
+        outletSpinnerTV = findViewById(R.id.outlet_spinner_TV);
+        createOrderBT = findViewById(R.id.create_order_BT);
 
 
         outletRV.setLayoutManager(new LinearLayoutManager(this));
 
-        outletListAdapter = new OutletListAdapter(this, shoppingListManagers, this);
+        outletListAdapter = new OutletListAdapter(shoppingListManagers, this);
         outletRV.setAdapter(outletListAdapter);
 
-        TextView outletTV = findViewById(R.id.outlet_name_top_TV);
-        outletTV.setText(shoppingListManagers.size());
+        TextView outletTV = findViewById(R.id.shopL_top_TV);
+        outletTV.setText("Your Order");
+    }
 
-        createOrderBT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO pass to create order and pass around the Customer
+    private void setOnClick() {
+        createOrderBT.setOnClickListener(v -> {
+            // Take all the ShoppingLists out of their Managers and save to the DataBase
+            ArrayList<ShoppingList> shoppingLists = new ArrayList<>();
+            for (ShoppingListManager shoppingListManager: shoppingListManagers) {
+                shoppingLists.add(shoppingListManager.getShoppingList());
             }
+            // TODO save shoppingLists to the DataBase
+
+            // TODO pass the Intent
         });
     }
 
+    @SuppressLint("SetTextI18n")
     private void setSpinner() {
         outletSpinnerTV.setOnClickListener(v -> {
             // Set dialog
             dialog = new Dialog(ShoppingListCreationActivity.this);
-            dialog.setContentView(R.layout.dialog_searchable_spinner);
-            dialog.getWindow().setLayout(650,800);
+            dialog.setContentView(R.layout.outlet_dialog_searchable_spinner);
+            dialog.getWindow().setLayout(650, 800);
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             dialog.show();
 
@@ -177,11 +194,12 @@ public class ShoppingListCreationActivity extends AppCompatActivity implements O
                 // Use OutletManager to the name of the Outlet at the position
                 OutletManager outletManager = new OutletManager(this.outlets.get(position));
                 String outletName = outletManager.getOutletName();
-                outletSpinnerTV.setText(outletName);
+                String outletAddress = outletManager.getOutletAddress();
+                outletSpinnerTV.setText(outletName + " at " + outletAddress);
 
                 // Get the Outlet from this position
                 Outlet outlet = outlets.get(position);
-                newShoppingList(outlet, position);
+                newShoppingList(outlet);
 
                 // Dismiss dialog
                 dialog.dismiss();
@@ -189,8 +207,12 @@ public class ShoppingListCreationActivity extends AppCompatActivity implements O
         });
     }
 
+    @SuppressLint("SetTextI18n")
     public void displayManagers() {
         outletListAdapter.initializeOutletListManager(shoppingListManagers);
+
+        ShoppingListManager slManager = new ShoppingListManager();
+        topPriceTV.setText("Total: $ " + slManager.calculateManagersTotal(shoppingListManagers));
     }
 
     // Models all the on clicks that could happen to the Adapter
@@ -198,7 +220,7 @@ public class ShoppingListCreationActivity extends AppCompatActivity implements O
     public void onEditClick(int position) {
         // Pass shoppingLists and the index that it needs to be edited on and Intent to be edited
         Intent i = new Intent(ShoppingListCreationActivity.this, EditShoppingListActivity.class);
-        i.putExtra("sl_managers", shoppingListManagers);
+        i.putExtra("sl_managers", (Serializable) shoppingListManagers);
         i.putExtra("sl_position", position);
         startActivity(i);
     }
@@ -206,9 +228,9 @@ public class ShoppingListCreationActivity extends AppCompatActivity implements O
     @SuppressLint("SetTextI18n")
     @Override
     public void onRemoveClick(int position) {
-        // TODO add a confirmation prompt
+        // TODO (Optional if have time) add a confirmation prompt for removing a ShoppingList
         // Update total price
         ShoppingListManager slManager = new ShoppingListManager();
-        topPriceTV.setText("Total: $ "+ slManager.calculateManagersTotal(shoppingListManagers));
+        topPriceTV.setText("Total: $ " + slManager.calculateManagersTotal(shoppingListManagers));
     }
 }

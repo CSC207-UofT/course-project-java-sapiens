@@ -98,9 +98,9 @@ public class ShoppingList implements Serializable {
     public String toString(){
         StringBuilder toDisplay = new StringBuilder();
         for (Commodity commodity: this.shoppingList){
-            String toAdd = commodity.getName() + String.format("$%15s",
+            String toAdd = String.format("%30s", commodity.getName() + "  $" +
                     commodity.getPrice() + " x " + commodity.getQuantity() + "\n");
-            toDisplay.append(toDisplay).append(toAdd);
+            toDisplay.append(toAdd);
         }
         return toDisplay.toString();
     }

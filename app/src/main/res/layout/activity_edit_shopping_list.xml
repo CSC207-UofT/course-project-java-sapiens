@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/outlet_name_top_TV"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/outlet_name_top_TV"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="138dp"
+        android:layout_marginBottom="2dp"
         android:layout_toEndOf="@+id/outlet_name_top_TV"
         android:text="Total: $"
         android:textSize="20sp" />

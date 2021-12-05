@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/outlet_name_TV"
+            android:id="@+id/creation_outlet_name_TV"
             android:layout_width="285dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -21,7 +21,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="6dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:layout_toStartOf="@+id/edit_outlet_BT"
             android:text="Outlet Name"
             android:textColor="@color/teal_700"
@@ -42,7 +42,7 @@
             android:id="@+id/outlet_address_TV"
             android:layout_width="253dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/outlet_name_TV"
+            android:layout_below="@id/creation_outlet_name_TV"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="3dp"
             android:text="Address"

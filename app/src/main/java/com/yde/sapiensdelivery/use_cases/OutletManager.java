@@ -29,4 +29,8 @@ public class OutletManager {
     public String getOutletName(){
         return this.outlet.getName();
     }
+
+    public String getOutletAddress(){
+        return this.outlet.getAddress();
+    }
 }

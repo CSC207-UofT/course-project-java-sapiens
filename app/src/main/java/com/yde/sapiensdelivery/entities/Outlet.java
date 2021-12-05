@@ -2,9 +2,10 @@ package com.yde.sapiensdelivery.entities;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Outlet {
+public class Outlet implements Serializable {
     private String address;
     private String name;
     private ArrayList<Commodity> commodities;

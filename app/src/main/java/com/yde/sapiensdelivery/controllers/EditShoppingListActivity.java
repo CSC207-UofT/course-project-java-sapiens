@@ -8,7 +8,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,8 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.yde.sapiensdelivery.R;
 import com.yde.sapiensdelivery.controllers.adapters.CommodityListAdapter;
 import com.yde.sapiensdelivery.entities.Commodity;
-import com.yde.sapiensdelivery.entities.Outlet;
-import com.yde.sapiensdelivery.entities.ShoppingList;
 import com.yde.sapiensdelivery.use_cases.OutletManager;
 import com.yde.sapiensdelivery.use_cases.ShoppingListManager;
 
@@ -52,19 +49,12 @@ public class EditShoppingListActivity extends AppCompatActivity implements Commo
         setContentView(R.layout.activity_edit_shopping_list);
 
         // Get what's passed through Intent
-        Bundle extras = getIntent().getExtras();
-
-        ArrayList<ShoppingListManager> shoppingListsManagers =
-                (ArrayList<ShoppingListManager>) extras.getSerializable("sl_managers");
-        positionOfThis = (int) extras.get("sl_position");
-        shoppingListManager = shoppingListManagers.get(positionOfThis);
-        outletManager = new OutletManager(shoppingListManager.getOutlet());
+        useIntent();
 
         // Initialize the environment
-        setup();
+        setLayout();
+        setOnClick();
         setSpinner();
-        // Display Commodity
-
     }
 
     /**
@@ -79,10 +69,22 @@ public class EditShoppingListActivity extends AppCompatActivity implements Commo
         commodityListAdapter.setCommList(shoppingListManager);
 
         // Update the total Price TextView
-        topPriceTV.setText("Total: $ "+ shoppingListManager.getTotalPrice());
+        topPriceTV.setText("Total: $ " + shoppingListManager.getTotalPrice());
     }
 
-    private void setup() {
+    private void useIntent() {
+        Bundle extras = getIntent().getExtras();
+
+        ArrayList<ShoppingListManager> shoppingListManagers =
+                (ArrayList<ShoppingListManager>) extras.getSerializable("sl_managers");
+        this.positionOfThis = (int) extras.get("sl_position");
+        this.shoppingListManagers = shoppingListManagers;
+        this.shoppingListManager = shoppingListManagers.get(this.positionOfThis);
+        this.outletManager = new OutletManager(this.shoppingListManager.getOutlet());
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void setLayout() {
         topPriceTV = findViewById(R.id.total_price_top_TV);
         RecyclerView commRV = findViewById(R.id.comm_RV);
         commSpinnerTV = findViewById(R.id.comm_spinner_TV);
@@ -96,19 +98,19 @@ public class EditShoppingListActivity extends AppCompatActivity implements Commo
 
         TextView outletTV = findViewById(R.id.outlet_name_top_TV);
         outletTV.setText(shoppingListManager.getOutletName());
+        topPriceTV.setText("Total: $ " + shoppingListManager.getTotalPrice());
+    }
 
-        doneEditingBT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(EditShoppingListActivity.this, ShoppingListCreationActivity.class);
+    private void setOnClick() {
+        doneEditingBT.setOnClickListener(v -> {
+            Intent i = new Intent(EditShoppingListActivity.this, ShoppingListCreationActivity.class);
 
-                // Update the ShoppingListManager that's edited through this Activity before passing back
-                shoppingListManagers.set(positionOfThis, shoppingListManager);
+            // Update the ShoppingListManager that's edited through this Activity before passing back
+            shoppingListManagers.set(positionOfThis, shoppingListManager);
 
-                i.putExtra("sl_managers", shoppingListManagers);
-                // TODO pass round the Customer
-                startActivity(i);
-            }
+            i.putExtra("sl_managers", shoppingListManagers);
+            // TODO pass round the Customer
+            startActivity(i);
         });
     }
 
@@ -117,7 +119,7 @@ public class EditShoppingListActivity extends AppCompatActivity implements Commo
             // Set dialog
             dialog = new Dialog(EditShoppingListActivity.this);
             dialog.setContentView(R.layout.dialog_searchable_spinner);
-            dialog.getWindow().setLayout(650,800);
+            dialog.getWindow().setLayout(650, 800);
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             dialog.show();
 
@@ -173,13 +175,13 @@ public class EditShoppingListActivity extends AppCompatActivity implements Commo
     @Override
     public void onAdd1Click(int position) {
         //Update the total price TextView
-        topPriceTV.setText("Total: $ "+ shoppingListManager.getTotalPrice());
+        topPriceTV.setText("Total: $ " + shoppingListManager.getTotalPrice());
     }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void onRemove1Click(int position) {
         //Update the total price TextView
-        topPriceTV.setText("Total: $ "+ shoppingListManager.getTotalPrice());
+        topPriceTV.setText("Total: $ " + shoppingListManager.getTotalPrice());
     }
 }

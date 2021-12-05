@@ -82,7 +82,6 @@ public class CommodityListAdapter extends RecyclerView.Adapter<CommodityListAdap
 
                 // Update Activity
                 onCommClickListener.onRemove1Click(position1);
-
             }
             else {
                 // Else when the Commodity count hits zero,
@@ -92,7 +91,6 @@ public class CommodityListAdapter extends RecyclerView.Adapter<CommodityListAdap
 
                 // Update Activity
                 onCommClickListener.onRemove1Click(position1);
-
             }
 
         });

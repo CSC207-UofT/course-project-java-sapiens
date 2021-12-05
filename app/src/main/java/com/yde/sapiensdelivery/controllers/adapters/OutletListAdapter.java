@@ -11,9 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.yde.sapiensdelivery.R;
-import com.yde.sapiensdelivery.controllers.EditShoppingListActivity;
-import com.yde.sapiensdelivery.controllers.ShoppingListCreationActivity;
-import com.yde.sapiensdelivery.entities.ShoppingList;
 import com.yde.sapiensdelivery.use_cases.ShoppingListManager;
 
 import java.util.ArrayList;
@@ -25,12 +22,10 @@ import java.util.ArrayList;
  */
 public class OutletListAdapter extends RecyclerView.Adapter<OutletListAdapter.ViewHolder>{
     private ArrayList<ShoppingListManager> shoppingListManagers;
-    private ShoppingListCreationActivity activity;
     private final OutletListAdapter.OnOutletClickListener onOutletClickListener;
 
-    public OutletListAdapter (ShoppingListCreationActivity activity, ArrayList<ShoppingListManager>
-            shoppingListManagers, OnOutletClickListener onOutletClickListener){
-        this.activity = activity;
+    public OutletListAdapter(ArrayList<ShoppingListManager> shoppingListManagers,
+                             OnOutletClickListener onOutletClickListener){
         this.shoppingListManagers = shoppingListManagers;
         this.onOutletClickListener = onOutletClickListener;
     }
@@ -45,13 +40,13 @@ public class OutletListAdapter extends RecyclerView.Adapter<OutletListAdapter.Vi
         TextView outletAddress;
         TextView commList;
 
-        OutletListAdapter.OnOutletClickListener onOutletClickListener;
+        OnOutletClickListener onOutletClickListener;
 
-        public ViewHolder(View view, OutletListAdapter.OnOutletClickListener onOutletClickListener) {
+        public ViewHolder(View view, OnOutletClickListener onOutletClickListener) {
             super(view);
-            this.removeBT = view.findViewById(R.id.edit_outlet_BT);
-            this.editBT = view.findViewById(R.id.remove_outlet_BT);
-            this.outletName = view.findViewById(R.id.outlet_name_TV);
+            this.editBT = view.findViewById(R.id.edit_outlet_BT);
+            this.removeBT = view.findViewById(R.id.remove_outlet_BT);
+            this.outletName = view.findViewById(R.id.creation_outlet_name_TV);
             this.outletAddress = view.findViewById(R.id.outlet_address_TV);
             this.commList = view.findViewById(R.id.comm_list_TV);
 
@@ -63,7 +58,7 @@ public class OutletListAdapter extends RecyclerView.Adapter<OutletListAdapter.Vi
     @Override
     public OutletListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View commView = LayoutInflater.from((parent.getContext())).
-                inflate(R.layout.commodity_list,parent,false);
+                inflate(R.layout.shoppinglist_list_layout,parent,false);
 
         return new OutletListAdapter.ViewHolder(commView, onOutletClickListener);
     }
