@@ -1,4 +1,4 @@
-package com.yde.sapiensdelivery.controllers;
+package com.yde.sapiensdelivery.controllers.customer;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -144,8 +144,8 @@ public class ShoppingListCreationActivity extends AppCompatActivity implements O
             // TODO save shoppingLists to the DataBase
 
             // TODO pass the Customer
-            Intent intent = new Intent( ShoppingListCreationActivity.this, CustomerActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent( ShoppingListCreationActivity.this, CustomerActivity.class);
+//            startActivity(intent);
         });
     }
 

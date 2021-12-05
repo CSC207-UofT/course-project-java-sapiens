@@ -1,4 +1,4 @@
-package com.yde.sapiensdelivery.controllers;
+package com.yde.sapiensdelivery.controllers.customer;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
