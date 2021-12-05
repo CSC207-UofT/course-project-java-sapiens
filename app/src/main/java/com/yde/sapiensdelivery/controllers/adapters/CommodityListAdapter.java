@@ -11,20 +11,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.yde.sapiensdelivery.R;
-import com.yde.sapiensdelivery.controllers.EditShoppingListActivity;
 import com.yde.sapiensdelivery.use_cases.ShoppingListManager;
 
 /**
- * An Adapter that connects  to display on the UI
+ * An Adapter that connects ShoppingList model to display on the UI.
+ * This Adapter doesn't depend on the Activity that's using it through dependency inversion using
+ * an Interface.
  */
 public class CommodityListAdapter extends RecyclerView.Adapter<CommodityListAdapter.ViewHolder> {
 
     private ShoppingListManager slManager;
-    private EditShoppingListActivity activity;
     private final OnCommClickListener onCommClickListener;
 
-    public CommodityListAdapter (EditShoppingListActivity activity, ShoppingListManager slManager, OnCommClickListener onCommClickListener){
-        this.activity = activity;
+    public CommodityListAdapter (ShoppingListManager slManager, OnCommClickListener onCommClickListener){
         this.slManager = slManager;
         this.onCommClickListener = onCommClickListener;
     }

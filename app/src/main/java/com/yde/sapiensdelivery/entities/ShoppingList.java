@@ -1,5 +1,7 @@
 package com.yde.sapiensdelivery.entities;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -76,7 +78,7 @@ public class ShoppingList implements Serializable {
      * @param index the index the Commodity is at
      */
     public void remove1Commodity(int index){
-        Commodity commodity = shoppingList.get(index);
+        Commodity commodity = this.shoppingList.get(index);
         commodity.removeQuantity();
         if (commodity.getQuantity() == 0) {
             this.shoppingList.remove(index);
@@ -88,6 +90,18 @@ public class ShoppingList implements Serializable {
      * @return size of this ShoppingList
      */
     public int size(){
-        return shoppingList.size();
+        return this.shoppingList.size();
+    }
+
+    @NonNull
+    @Override
+    public String toString(){
+        StringBuilder toDisplay = new StringBuilder();
+        for (Commodity commodity: this.shoppingList){
+            String toAdd = commodity.getName() + String.format("$%15s",
+                    commodity.getPrice() + " x " + commodity.getQuantity() + "\n");
+            toDisplay.append(toDisplay).append(toAdd);
+        }
+        return toDisplay.toString();
     }
 }

@@ -2,6 +2,7 @@ package com.yde.sapiensdelivery.controllers;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -36,33 +37,28 @@ public class EditShoppingListActivity extends AppCompatActivity implements Commo
     private Dialog dialog;
     private Button doneEditingBT;
 
+    // Since this Activity only needs one Outlet and ShoppingList so initialize with instances
+    // of both managers
     private ShoppingListManager shoppingListManager;
     private OutletManager outletManager;
+
+    // Info that need to be passed back
+    private ArrayList<ShoppingListManager> shoppingListManagers;
+    private int positionOfThis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_shopping_list);
 
-        // Get values that's been passed from the previous Intent
+        // Get what's passed through Intent
         Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            Outlet outlet = (Outlet) extras.getSerializable("outlet");
 
-            ShoppingList shoppingList = (ShoppingList) extras.getSerializable("shopping_list");
-            shoppingListManager = new ShoppingListManager(shoppingList, outlet);
-        }
-        else {
-            // TODO get outlet from previous Activity and remove this else statement
-            ArrayList<Commodity> list = new ArrayList<>();
-            list.add(new Commodity("Apple", 2.5, 1) );
-            list.add(new Commodity("Banana", 3, 1) );
-            Outlet outlet = new Outlet("Walmart", "NO ADDRESS", list);
-
-            ShoppingList shoppingList = new ShoppingList(outlet.getName(), outlet.getAddress());
-            shoppingListManager = new ShoppingListManager(shoppingList, outlet);
-            outletManager = new OutletManager(outlet);
-        }
+        ArrayList<ShoppingListManager> shoppingListsManagers =
+                (ArrayList<ShoppingListManager>) extras.getSerializable("sl_managers");
+        positionOfThis = (int) extras.get("sl_position");
+        shoppingListManager = shoppingListManagers.get(positionOfThis);
+        outletManager = new OutletManager(shoppingListManager.getOutlet());
 
         // Initialize the environment
         setup();
@@ -95,7 +91,7 @@ public class EditShoppingListActivity extends AppCompatActivity implements Commo
 
         commRV.setLayoutManager(new LinearLayoutManager(this));
 
-        commodityListAdapter = new CommodityListAdapter(this, shoppingListManager, this);
+        commodityListAdapter = new CommodityListAdapter(shoppingListManager, this);
         commRV.setAdapter(commodityListAdapter);
 
         TextView outletTV = findViewById(R.id.outlet_name_top_TV);
@@ -104,7 +100,14 @@ public class EditShoppingListActivity extends AppCompatActivity implements Commo
         doneEditingBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO pass intent back
+                Intent i = new Intent(EditShoppingListActivity.this, ShoppingListCreationActivity.class);
+
+                // Update the ShoppingListManager that's edited through this Activity before passing back
+                shoppingListManagers.set(positionOfThis, shoppingListManager);
+
+                i.putExtra("sl_managers", shoppingListManagers);
+                // TODO pass round the Customer
+                startActivity(i);
             }
         });
     }

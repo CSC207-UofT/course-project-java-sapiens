@@ -31,11 +31,21 @@
         <TextView
             android:id="@+id/comm_list_TV"
             android:layout_width="253dp"
-            android:layout_height="47dp"
-            android:layout_below="@id/outlet_name_TV"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/outlet_address_TV"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="3dp"
             android:text="Commodity List"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/outlet_address_TV"
+            android:layout_width="253dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/outlet_name_TV"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="3dp"
+            android:text="Address"
             android:textSize="15sp" />
 
 
