@@ -10,10 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".controllers.delivery.DeliveryManActivity"
+            android:name=".controllers.ShoppingListCreationActivity"
             android:exported="false" />
         <activity
-            android:name=".controllers.customer.CustomerActivity"
+            android:name=".controllers.EditShoppingListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".controllers.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".controllers.RegistrationActivity"
