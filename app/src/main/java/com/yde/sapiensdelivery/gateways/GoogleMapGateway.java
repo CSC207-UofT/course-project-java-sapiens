@@ -1,27 +1,12 @@
 package com.yde.sapiensdelivery.gateways;
 
-import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationManager;
-
-import androidx.core.app.ActivityCompat;
 
 import com.yde.sapiensdelivery.use_cases.Locator;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 /**
@@ -37,6 +22,12 @@ public class GoogleMapGateway implements Locator {
     public GoogleMapGateway() {
     }
 
+    /**
+     * Return a String representation of the coordinates of current location
+     * @param activity The activity that is calling this method.
+     * @return a String of the following structure:
+     * "Latitude,Longitude"
+     */
     public String findCurrentLocation(Activity activity) {
         return currentLocationFinder.findCurrentLocation(activity);
     }
