@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".controllers.SignInActivity"
+            android:name=".controllers.ShoppingListCreationActivity"
             android:exported="false" />
         <activity
             android:name=".controllers.EditShoppingListActivity"
@@ -25,7 +25,7 @@
             android:name=".controllers.RegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".controllers.ShoppingListCreationActivity"
+            android:name=".controllers.SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

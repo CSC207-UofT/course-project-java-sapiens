@@ -143,7 +143,9 @@ public class ShoppingListCreationActivity extends AppCompatActivity implements O
             }
             // TODO save shoppingLists to the DataBase
 
-            // TODO pass the Intent
+            // TODO pass the Customer
+            Intent intent = new Intent( ShoppingListCreationActivity.this, CustomerActivity.class);
+            startActivity(intent);
         });
     }
 
