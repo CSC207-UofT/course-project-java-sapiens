@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controllers.delivery.ChooseDeliveryManActivity">
+    tools:context=".controllers.delivery_man.ChooseCustomerActivity">
 
     <TextView
         android:id="@+id/delivery_men_sign_top"
@@ -15,27 +15,17 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/accepting_delivery_men"
+        android:text="Customers With an Open Order"
         android:textColor="@color/cardview_dark_background"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/delivery_men_rv"
+        android:id="@+id/customers_rv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/delivery_men_sign_top"
         android:nestedScrollingEnabled="true"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/refresh_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="30dp"
-        android:backgroundTint="@color/cardview_dark_background"
-        android:src="@drawable/ic_baseline_refresh_24"/>
 
 </RelativeLayout>

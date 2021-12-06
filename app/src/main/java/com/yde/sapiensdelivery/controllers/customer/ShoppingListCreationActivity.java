@@ -8,7 +8,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -133,6 +132,7 @@ public class ShoppingListCreationActivity extends AppCompatActivity implements O
 
         outletRV.setLayoutManager(new LinearLayoutManager(this));
 
+        // new Adapter with a custom onClickListener Interface
         outletListAdapter = new OutletListAdapter(shoppingListManagers, this);
         outletRV.setAdapter(outletListAdapter);
 

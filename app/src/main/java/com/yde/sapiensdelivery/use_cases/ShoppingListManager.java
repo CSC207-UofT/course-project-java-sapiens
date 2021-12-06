@@ -27,6 +27,13 @@ public class ShoppingListManager implements Serializable {
     /**
      * Creates an empty ShoppingListManager
      */
+    public ShoppingListManager(ShoppingList shoppingList) {
+        this.shoppingList = shoppingList;
+    }
+
+    /**
+     * Creates an empty ShoppingListManager
+     */
     public ShoppingListManager() {
     }
 
@@ -122,6 +129,10 @@ public class ShoppingListManager implements Serializable {
     @Override
     public String toString() {
         return shoppingList.toString();
+    }
+
+    public String displayEntire(){
+        return shoppingList.displayEntire();
     }
 
     /**
