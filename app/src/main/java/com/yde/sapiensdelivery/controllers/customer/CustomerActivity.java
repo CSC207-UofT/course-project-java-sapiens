@@ -10,8 +10,11 @@ import com.yde.sapiensdelivery.R;
 import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.use_cases.CustomerManager;
 
-public class CustomerActivity extends AppCompatActivity {
 
+public class CustomerActivity extends AppCompatActivity {
+    public static final String fullName = "full";
+    public static final String userName = "user";
+    public static final String phone = "phone";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,20 +30,21 @@ public class CustomerActivity extends AppCompatActivity {
         welcome.setText(welcomeMessage);
 
         profile.setOnClickListener(v -> {
-                Intent intent = new Intent( CustomerActivity.this, CustomerProfileActivity.class);
-                cm.passValue(intent);
-                startActivity(intent);
+            Intent intent = new Intent( CustomerActivity.this, CustomerProfileActivity.class);
+            intent.putExtra(fullName,cm.getName());
+            intent.putExtra(userName,cm.getUsername());
+            intent.putExtra(phone,cm.getPhoneNumber());
+            startActivity(intent);
         });
 
         placeOrder.setOnClickListener(v -> {
             Intent intent = new Intent( CustomerActivity.this, ShoppingListCreationActivity.class);
-            cm.passValue(intent);
             startActivity(intent);
         });
 
         status.setOnClickListener(v -> {
-//                Intent intent = new Intent( CustomerActivity.this, OrderStatusActivity.class);
-//                startActivity(intent);
+            Intent intent = new Intent( CustomerActivity.this, OrderStatusActivity.class);
+            startActivity(intent);
         });
     }
 }
