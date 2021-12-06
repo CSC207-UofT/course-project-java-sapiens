@@ -26,6 +26,8 @@ This project structures the source code files into packages based on the clean a
 - We used Command to recreate UI activities in Android and with all managers that need to use database interactions. (DBManager.java)
 - We used Template in the registration of users into database as customers.
 - The Model-Controller-View design was used to allot roles for each class in the program.
+- A Factory method is added in the RouteInfoFinder class to build different URLs corresponding to different choice of mode of transportation.
+- We made GoogleMapGateway a façade in adherence to the Single Responsibility Principle because the two methods in the gateway, FindRouteInfo and FindCurrentLocation, uses different approach to fetch data from different APIs. Thus, we decided to make GoogleMapGateway become a façade to lower the coupling.
 
 ### Future additions
 - We used an Adaptor to wrap additional info to the Commodities such as a note to the delivery on how the commodity should be handled.
