@@ -22,9 +22,7 @@ import com.yde.sapiensdelivery.R;
 import com.yde.sapiensdelivery.controllers.adapters.OutletListAdapter;
 import com.yde.sapiensdelivery.entities.Commodity;
 import com.yde.sapiensdelivery.entities.Customer;
-import com.yde.sapiensdelivery.entities.Order;
 import com.yde.sapiensdelivery.entities.Outlet;
-import com.yde.sapiensdelivery.entities.ShoppingList;
 import com.yde.sapiensdelivery.use_cases.CustomerManager;
 import com.yde.sapiensdelivery.use_cases.OutletManager;
 import com.yde.sapiensdelivery.use_cases.ShoppingListManager;
@@ -132,6 +130,7 @@ public class ShoppingListCreationActivity extends AppCompatActivity implements O
 
         outletRV.setLayoutManager(new LinearLayoutManager(this));
 
+        // new Adapter with a custom onClickListener Interface
         outletListAdapter = new OutletListAdapter(shoppingListManagers, this);
         outletRV.setAdapter(outletListAdapter);
 

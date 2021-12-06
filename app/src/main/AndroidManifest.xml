@@ -19,7 +19,7 @@
             android:name=".controllers.delivery_man.OrderStatusDeliveryManActivity"
             android:exported="false" />
         <activity
-            android:name=".ShoppingListDisplayActivity"
+            android:name=".controllers.delivery_man.ShoppingListDisplayActivity"
             android:exported="false" />
         <activity
             android:name=".controllers.customer.OrderCompletionActivity"
@@ -41,6 +41,9 @@
             android:exported="false" />
         <activity
             android:name=".controllers.RegistrationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".controllers.delivery_man.ChooseCustomerActivity"
             android:exported="false" />
         <activity
             android:name=".controllers.SignInActivity"
