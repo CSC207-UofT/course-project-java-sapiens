@@ -21,6 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.yde.sapiensdelivery.R;
 import com.yde.sapiensdelivery.controllers.adapters.CommodityListAdapter;
 import com.yde.sapiensdelivery.entities.Commodity;
+import com.yde.sapiensdelivery.entities.Customer;
+import com.yde.sapiensdelivery.use_cases.CustomerManager;
 import com.yde.sapiensdelivery.use_cases.OutletManager;
 import com.yde.sapiensdelivery.use_cases.ShoppingListManager;
 
@@ -38,6 +40,7 @@ public class EditShoppingListActivity extends AppCompatActivity implements Commo
     // of both managers
     private ShoppingListManager shoppingListManager;
     private OutletManager outletManager;
+    private CustomerManager customerManager;
 
     // Info that need to be passed back
     private ArrayList<ShoppingListManager> shoppingListManagers;
@@ -74,6 +77,7 @@ public class EditShoppingListActivity extends AppCompatActivity implements Commo
 
     private void useIntent() {
         Bundle extras = getIntent().getExtras();
+        customerManager = new CustomerManager((Customer) extras.getSerializable("CUSTOMER"));
 
         ArrayList<ShoppingListManager> shoppingListManagers =
                 (ArrayList<ShoppingListManager>) extras.getSerializable("sl_managers");
@@ -109,7 +113,7 @@ public class EditShoppingListActivity extends AppCompatActivity implements Commo
             shoppingListManagers.set(positionOfThis, shoppingListManager);
 
             i.putExtra("sl_managers", shoppingListManagers);
-            // TODO pass round the Customer
+            customerManager.passValue(i);
             startActivity(i);
         });
     }

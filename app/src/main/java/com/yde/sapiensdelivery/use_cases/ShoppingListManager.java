@@ -139,6 +139,20 @@ public class ShoppingListManager implements Serializable {
     }
 
     /**
+     * Get the shopping lists being monitored by managers
+     *
+     * @param shoppingListManagers  a list of ShoppingListManager objects
+     * @return the shopping list arraylist
+     */
+    public static ArrayList<ShoppingList> getShoppingLists(ArrayList<ShoppingListManager> shoppingListManagers){
+        ArrayList<ShoppingList> shoppingLists = new ArrayList<>();
+        for (ShoppingListManager shoppingListManager: shoppingListManagers) {
+            shoppingLists.add(shoppingListManager.getShoppingList());
+        }
+        return shoppingLists;
+    }
+
+    /**
      * Get the total price from this to be created order
      *
      * @param shoppingLists a list of ShoppingList objects
