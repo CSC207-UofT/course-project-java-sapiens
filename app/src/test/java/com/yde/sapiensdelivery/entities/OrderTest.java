@@ -14,15 +14,12 @@ public class OrderTest {
 
     @Before
     public void setUp() {
-        ShoppingListManager shoppingListManager = new ShoppingListManager();
-
         ArrayList<Commodity> house = new ArrayList<>();
         house.add(new Commodity("TV", 1000, 1));
         house.add(new Commodity("Couch", 200, 1));
         Outlet friend = new Outlet("Friend's House", "NO ADDRESS", house);
 
-        shoppingListManager.newShoppingList(friend);
-        this.shoppingListManager = shoppingListManager;
+        this.shoppingListManager = new ShoppingListManager(friend);
         System.out.println(shoppingListManager.getOutletName());
     }
 
@@ -40,8 +37,6 @@ public class OrderTest {
 
         s.add(shoppingList);
         order = new Order(null,null,17,s);
-
-
     }
 
 

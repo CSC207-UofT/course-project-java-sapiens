@@ -16,19 +16,18 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 
 public class OrderManagerTest {
-    OrderManager orderManager = new OrderManager();
+    OrderManager orderManager;
     ShoppingListManager shoppingListManager;
 
     @Before
     public void setUp() {
-        shoppingListManager = new ShoppingListManager();
-
         ArrayList<Commodity> house = new ArrayList<>();
         house.add(new Commodity("TV", 1000, 1));
         house.add(new Commodity("Couch", 200, 1));
         Outlet friend = new Outlet("Friend's House", "NO ADDRESS", house);
 
-        shoppingListManager.newShoppingList(friend);
+        this.shoppingListManager = new ShoppingListManager(friend);
+        this.orderManager = new OrderManager();
     }
 
     @Test(timeout = 50)
@@ -52,6 +51,6 @@ public class OrderManagerTest {
         s.add(shoppingList);
         Order order = orderManager.createOrder(deliveryMan1, customer1, s);
 
-        assertEquals("647", order.getDeliveryMan().getNumber());
+        assertEquals("648", order.getDeliveryMan().getNumber());
     }
 }
