@@ -1,4 +1,6 @@
 package com.yde.sapiensdelivery.gateways;
+import android.util.Log;
+
 import com.yde.sapiensdelivery.gateways.database.DBController;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 import com.yde.sapiensdelivery.entities.User;
@@ -59,10 +61,12 @@ public abstract class UserGateway extends DBController<String, User> {
         }
 
         if(isRegexInvalid(fieldToValue, onDataReadListener.ERROR_CODES)){ // Template of regex checks.
+            Log.i("1", "WHERE");
             onDataReadListener.onFailure();
             return;
         }
 
+        Log.i("2", "WHERE");
         usernameRepetitionChecker(user, onDataReadListener); // Template of username repeat checks.
     }
 
