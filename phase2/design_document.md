@@ -39,8 +39,8 @@ This project structures the source code files into packages based on the clean a
 - In phase1, We used Command design pattern in (DBManager.java) to recreate UI activities in Android and with all managers that need to use database interactions. We have created an interface DBManager which is acting as a command. We have created DBController class which acts as a request. We have concrete command classes setData and getData implementing DBManager interface which will do actual command processing. 
 - In phase1, We used Template in the registration of users into database as customers. We break down the algorithm into a series of steps, turn those steps into methods, and put a series of calls to these methods inside a single template method.
 - In phase1, we implemented Model-Controller-View design was used to allot roles for each class in the program. First, we grouped UI classes as view package. Similarly, all entities class group into a Model package, and Controller package responds to the user input and performs interactions and used by UI. This strategy can lead to a package for each layer group of classes with high coupling between packages. One inconvenient thing is that editing a feature involves editing files across different folders. However, most of our features is not very closely related, we didn't need to separate our packages by feature.
-- In phase2, a Factory method is added in the RouteInfoFinder class to build different URLs corresponding to different choice of mode of transportation.
-- In phase2, We made GoogleMapGateway a façade in adherence to the Single Responsibility Principle because the two methods in the gateway, FindRouteInfo and FindCurrentLocation, uses different approach to fetch data from different APIs. Thus, we decided to make GoogleMapGateway become a façade to lower the coupling.
+- In phase2, a Factory method is added in the RouteInfoFinder class to build different URLs corresponding to different choice of mode of transportation. [Linke to Factory](https://github.com/CSC207-UofT/course-project-java-sapiens/blob/main/app/src/main/java/com/yde/sapiensdelivery/gateways/RouteInfoFinder.java) - line 69
+- In phase2, We made GoogleMapGateway a façade in adherence to the Single Responsibility Principle because the two methods in the gateway, FindRouteInfo and FindCurrentLocation, uses different approach to fetch data from different APIs. Thus, we decided to make GoogleMapGateway become a façade to lower the coupling. [Linke to Locator](https://github.com/CSC207-UofT/course-project-java-sapiens/blob/main/app/src/main/java/com/yde/sapiensdelivery/use_cases/Locator.java)
 - In phase2, We have used 3 Adapters one for each of the RecyclerViews we used for our UI. These adapters are responsible for connecting our backend ArrayList data into data that could be displayed in the UI. Through this, they can also get the positions that the Users can click on the UI, and calls an interface that the Controllers is implemented on in order to use Controller methods to switch between activities or change backend data. One example of our Adapters can be found here: https://git.io/JMpsf. 
 
 ## Our Use of GitHub Features: 
@@ -50,18 +50,18 @@ We made our own branches whenever we implemented a new feature, and the branches
 ## Summary of each group member's contributions in phase 2 and a link to their significant pull requests. 
 - Kevin: Completed 4 Activities and fixed Clean Architecture violations from Phase 1. 
 
-Significant pull request: https://git.io/JMpZR, this pull request included the creation to completion of two Activities that allows the User to create and modify their shopping list. Each Activity also uses a custom RecyclerView Adapter.
+  Significant pull request: https://git.io/JMpZR, this pull request included the creation to completion of two Activities that allows the User to create and modify their shopping list. Each Activity also uses a custom RecyclerView Adapter.
 
 - Patrick: Completed three activities and add JUnit tests. 
 
-The first major request (https://git.io/JMpZd) is to finish Customer Profile Activity that when a user clicks button of profile from Customer Activity, they can display user’s information from previous activity. 
+  The first major request (https://git.io/JMpZd) is to finish Customer Profile Activity that when a user clicks button of profile from Customer Activity, they can display user’s information from previous activity. 
 
-The second major request (https://git.io/JMpGZ) is to work on DeliveryMan Rating Activity that delivery man can rate their customer and the purpose of the rate is to sort the customer based on it. Therefore, Deliverymen can choose a customer's order next time based on the rating score and distance.
+  The second major request (https://git.io/JMpGZ) is to work on DeliveryMan Rating Activity that delivery man can rate their customer and the purpose of the rate is to sort the customer based on it. Therefore, Deliverymen can choose a customer's order next time based on the rating score and distance.
 
 - Junsong Guo (Tyner): Completed GoogleMapGateway and its corresponding unit tests. Helped implementations relevant to GoogleMapGateway. Created DeliveryManActivity and OrderStatusDeliveryManActivity and their corresponding layout files. 
 
-Significant Pull Requests: [Link to the Activities](https://github.com/CSC207-UofT/course-project-java-sapiens/pull/50) This pull request consists of two activities, one of them is the homepage of delivery man, the other one is where the delivery man changes the status of an accepted order.
+  Significant Pull Requests: \[[Link](https://github.com/CSC207-UofT/course-project-java-sapiens/pull/50)\] This pull request consists of two activities, one of them is the homepage of delivery man, the other one is where the delivery man changes the status of an accepted order.
 
-[Link to the Gateway](https://github.com/CSC207-UofT/course-project-java-sapiens/pull/41),[Link to the Gateway](https://github.com/CSC207-UofT/course-project-java-sapiens/pull/48) These two pull requests together form the complete GoogleMapGateway. This gateway is in charge of getting information from the Google Map API, and it also demonstrates my understanding of design patterns since it implements the façade and factory.
+  \[[Link](https://github.com/CSC207-UofT/course-project-java-sapiens/pull/41),[Link](https://github.com/CSC207-UofT/course-project-java-sapiens/pull/48)\] These two pull requests together form the complete GoogleMapGateway. This gateway is in charge of getting information from the Google Map API, and it also demonstrates my understanding of design patterns since it implements the façade and factory.
 
 
