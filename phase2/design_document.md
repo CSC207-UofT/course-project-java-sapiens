@@ -20,6 +20,21 @@ Please see the rest of the file to get detailed description.
 ## How Our Project Follows Clean Architecture: 
 Our project follows Clean Architecture layers with Entities for the different types of Users, and the data the Users can create and manipulate. We also have a separate UI (Android Studio layouts) for display and taking in user inputs, our Controllers gets that info from the UI and decides which Use Cases to call to interact with the Entities. Controllers also calls Gateways to get and set changes to our Fire Base database. Whenever our Controller, and Gateways want to manipulate, create, and get data from an Entity, we have used Our Use Cases to do so, so that they never directly interact with any of our Entity classes and are not dependent on the Entities.
 
+Entities:
+![image](https://media.discordapp.net/attachments/888599563257122851/917544110611632168/entities.png)
+
+Use Cases:
+![image](https://media.discordapp.net/attachments/888599563257122851/917544110179614720/use_cases.png)
+
+Controllers
+![image](https://media.discordapp.net/attachments/888599563257122851/917544110880096286/Controllers.png)
+
+Adapters:
+![image](https://media.discordapp.net/attachments/888599563257122851/917544111186276442/adapters.png)
+
+Gateways:
+![image](https://media.discordapp.net/attachments/888599563257122851/917544110389350450/Gateway.png)
+
 ## How Our Project Follows SOLID Design Principles: 
 Single Responsibility Principle: In phase 0, we had a huge controller OrderSystem that does all the things, which violated the single responsibility principle. In phase 1, we separated the OrderSystem and made it become a group of smaller activities so that each of them are responsible for only one part of the original controller. This made the process easier to code and clearer to understand.
 
