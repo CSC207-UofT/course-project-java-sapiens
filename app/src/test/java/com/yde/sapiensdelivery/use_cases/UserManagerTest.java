@@ -1,4 +1,4 @@
-package com.yde.sapiensdelivery.use_cases_tests;
+package com.yde.sapiensdelivery.use_cases;
 
 import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;

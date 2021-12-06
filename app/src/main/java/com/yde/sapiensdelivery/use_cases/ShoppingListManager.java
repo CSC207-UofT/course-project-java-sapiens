@@ -15,17 +15,6 @@ public class ShoppingListManager implements Serializable {
     private Outlet outlet;
 
     /**
-     * Creates a ShoppingListManager given a ShoppingList and Outlet.
-     *
-     * @param shoppingList a ShoppingList Object
-     * @param outlet the outlet of this ShoppingList
-     */
-    public ShoppingListManager(ShoppingList shoppingList, Outlet outlet) {
-        this.shoppingList = shoppingList;
-        this.outlet = outlet;
-    }
-
-    /**
      * Creates a ShoppingListManager given an Outlet.
      *
      * @param outlet the outlet of this ShoppingList
@@ -33,6 +22,13 @@ public class ShoppingListManager implements Serializable {
     public ShoppingListManager(Outlet outlet) {
         this.shoppingList = newShoppingList(outlet);
         this.outlet = outlet;
+    }
+
+    /**
+     * Creates an empty ShoppingListManager
+     */
+    public ShoppingListManager(ShoppingList shoppingList) {
+        this.shoppingList = shoppingList;
     }
 
     /**
@@ -101,10 +97,6 @@ public class ShoppingListManager implements Serializable {
         return new ShoppingList(outlet.getName(), outlet.getAddress());
     }
 
-    public double getCommodityPrice(int index) {
-        return shoppingList.getShoppingList().get(index).getPrice();
-    }
-
     public int getCommodityQuantity(int index) {
         return shoppingList.getShoppingList().get(index).getQuantity();
     }
@@ -137,6 +129,10 @@ public class ShoppingListManager implements Serializable {
     @Override
     public String toString() {
         return shoppingList.toString();
+    }
+
+    public String displayEntire(){
+        return shoppingList.displayEntire();
     }
 
     /**

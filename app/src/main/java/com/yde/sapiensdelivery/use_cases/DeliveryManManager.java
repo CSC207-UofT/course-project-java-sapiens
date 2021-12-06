@@ -1,10 +1,12 @@
 package com.yde.sapiensdelivery.use_cases;
 
+import android.content.Intent;
+
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 
 import java.util.ArrayList;
 
-public class DeliveryManManager {
+public class DeliveryManManager implements Manager{
     private DeliveryMan deliveryMan;
 
     /**
@@ -125,5 +127,10 @@ public class DeliveryManManager {
      */
     public void setRate(float rate){
         this.deliveryMan.setRate(rate);
+    }
+
+    @Override
+    public void passValue(Intent intent) {
+        intent.putExtra("DELIVERYMAN", deliveryMan);
     }
 }

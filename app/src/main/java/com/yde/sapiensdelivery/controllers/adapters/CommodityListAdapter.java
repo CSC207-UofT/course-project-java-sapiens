@@ -31,7 +31,7 @@ public class CommodityListAdapter extends RecyclerView.Adapter<CommodityListAdap
     /**
      * A class that holds the View for each individual index of the RecyclerView
      */
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder implements CustomersRVAdapter.OnCustomerClickListener {
         Button add1BT;
         Button remove1BT;
         TextView commName;
@@ -49,6 +49,16 @@ public class CommodityListAdapter extends RecyclerView.Adapter<CommodityListAdap
             this.commQuantity = view.findViewById(R.id.comm_quant_TV);
 
             this.onCommClickListener = onCommClickListener;
+        }
+
+        @Override
+        public void onDetailsClick(int position) {
+
+        }
+
+        @Override
+        public void onAcceptClick(int position) {
+
         }
     }
 

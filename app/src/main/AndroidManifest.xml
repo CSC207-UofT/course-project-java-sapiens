@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yde.sapiensdelivery">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name=".controllers.delivery_man.DeliveryManActivity"
+            android:exported="false" />
+        <activity
+            android:name=".controllers.delivery_man.OrderStatusDeliveryManActivity"
+            android:exported="false" />
+        <activity
+            android:name=".controllers.delivery_man.ShoppingListDisplayActivity"
+            android:exported="false" />
         <activity
             android:name=".controllers.customer.OrderCompletionActivity"
             android:exported="false" />
@@ -25,7 +37,13 @@
             android:name=".controllers.customer.CustomerProfileActivity"
             android:exported="false" />
         <activity
+            android:name=".controllers.customer.CustomerActivity"
+            android:exported="false" />
+        <activity
             android:name=".controllers.RegistrationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".controllers.delivery_man.ChooseCustomerActivity"
             android:exported="false" />
         <activity
             android:name=".controllers.SignInActivity"
@@ -37,8 +55,5 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 </manifest>

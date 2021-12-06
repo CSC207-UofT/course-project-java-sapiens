@@ -21,8 +21,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.yde.sapiensdelivery.R;
 import com.yde.sapiensdelivery.controllers.adapters.OutletListAdapter;
 import com.yde.sapiensdelivery.entities.Commodity;
+import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.Outlet;
-import com.yde.sapiensdelivery.entities.ShoppingList;
+import com.yde.sapiensdelivery.use_cases.CustomerManager;
 import com.yde.sapiensdelivery.use_cases.OutletManager;
 import com.yde.sapiensdelivery.use_cases.ShoppingListManager;
 
@@ -41,11 +42,13 @@ public class ShoppingListCreationActivity extends AppCompatActivity implements O
     // track of which Outlet belongs to which ShoppingList.
     private ArrayList<ShoppingListManager> shoppingListManagers;
     private ArrayList<Outlet> outlets;
+    CustomerManager customerManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_list_creation);
+        customerManager = new CustomerManager((Customer) getIntent().getSerializableExtra("CUSTOMER"));
 
         // Get what's passed through Intent
         useIntent();
@@ -127,6 +130,7 @@ public class ShoppingListCreationActivity extends AppCompatActivity implements O
 
         outletRV.setLayoutManager(new LinearLayoutManager(this));
 
+        // new Adapter with a custom onClickListener Interface
         outletListAdapter = new OutletListAdapter(shoppingListManagers, this);
         outletRV.setAdapter(outletListAdapter);
 
@@ -136,16 +140,10 @@ public class ShoppingListCreationActivity extends AppCompatActivity implements O
 
     private void setOnClick() {
         createOrderBT.setOnClickListener(v -> {
-            // Take all the ShoppingLists out of their Managers and save to the DataBase
-            ArrayList<ShoppingList> shoppingLists = new ArrayList<>();
-            for (ShoppingListManager shoppingListManager: shoppingListManagers) {
-                shoppingLists.add(shoppingListManager.getShoppingList());
-            }
-            // TODO save shoppingLists to the DataBase
 
-            // TODO pass the Customer
-//            Intent intent = new Intent( ShoppingListCreationActivity.this, CustomerActivity.class);
-//            startActivity(intent);
+            Intent intent = new Intent( ShoppingListCreationActivity.this, OrderStatusActivity.class);
+            customerManager.passValue(intent);
+            startActivity(intent);
         });
     }
 

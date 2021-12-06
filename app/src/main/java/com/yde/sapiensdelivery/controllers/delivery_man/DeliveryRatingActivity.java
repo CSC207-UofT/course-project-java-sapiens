@@ -1,4 +1,4 @@
-package com.yde.sapiensdelivery.controllers.customer;
+package com.yde.sapiensdelivery.controllers.delivery_man;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,10 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.Toast;
-
 import com.yde.sapiensdelivery.R;
 
-public class CustomerRatingActivity extends AppCompatActivity {
+public class DeliveryRatingActivity extends AppCompatActivity {
+
     private Button main;
     private RatingBar Rating;
     float myRating  = 0;
@@ -22,7 +22,7 @@ public class CustomerRatingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rating);
 
         main = (Button) findViewById(R.id.main);
-        Rating = findViewById(R.id.ratingBar);
+        Rating = findViewById(R.id.ratingBarD);
 
         /**
          * after click the main button, it goes back to CustomerActivity page
@@ -30,7 +30,7 @@ public class CustomerRatingActivity extends AppCompatActivity {
         main.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( CustomerRatingActivity.this, CustomerActivity.class);
+                Intent intent = new Intent( DeliveryRatingActivity.this, DeliveryManActivity.class);
                 startActivity(intent);
             }
         });
@@ -40,10 +40,10 @@ public class CustomerRatingActivity extends AppCompatActivity {
          */
         Rating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+            public void onRatingChanged(RatingBar ratingBarD, float rating, boolean fromUser) {
                 int value = (int) rating;
                 String message = null;
-                myRating  = ratingBar.getRating();
+                myRating  = ratingBarD.getRating();
 
                 switch(value){
                     case 1:
@@ -62,7 +62,7 @@ public class CustomerRatingActivity extends AppCompatActivity {
                         message = "great enough :)";
                         break;
                 }
-                Toast.makeText(CustomerRatingActivity.this, message, Toast.LENGTH_LONG).show();
+                Toast.makeText(DeliveryRatingActivity.this, message, Toast.LENGTH_LONG).show();
 
             }
         });

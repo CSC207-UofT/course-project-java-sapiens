@@ -104,4 +104,8 @@ public class ShoppingList implements Serializable {
         }
         return toDisplay.toString();
     }
+
+    public String displayEntire(){
+        return getOutletName() + "\n Address: " + getOutletAddress()  + "\n" + toString();
+    }
 }

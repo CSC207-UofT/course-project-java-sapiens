@@ -1,7 +1,5 @@
 package com.yde.sapiensdelivery.controllers;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,9 +9,9 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.yde.sapiensdelivery.R;
-import com.yde.sapiensdelivery.controllers.customer.CustomerActivity;
-import com.yde.sapiensdelivery.controllers.delivery.DeliveryManActivity;
 import com.yde.sapiensdelivery.gateways.UserGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 import com.yde.sapiensdelivery.use_cases.UserManager;
@@ -42,8 +40,8 @@ public class RegistrationActivity extends AppCompatActivity {
         name = findViewById(R.id.name_register);
         username = findViewById(R.id.username_register);
         password = findViewById(R.id.password_register);
-        phoneNumber = findViewById(R.id.ph_num);
-        address = findViewById(R.id.address);
+        phoneNumber = findViewById(R.id.ph_num_register);
+        address = findViewById(R.id.address_register);
         sin = findViewById(R.id.sin_sign_up);
         rate = findViewById(R.id.rate_sign_up);
         transport = findViewById(R.id.transport_sign_up);
@@ -112,12 +110,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             boolean isCustomer = userType.getCheckedRadioButtonId() == R.id.customer_sign_up;
                             String userChosen = isCustomer ? "CUSTOMER" : "DELIVERYMAN";
 
-                            if(isCustomer){
-                                intent = new Intent(RegistrationActivity.this, CustomerActivity.class);
-                            }
-                            else{
-                                intent = new Intent(RegistrationActivity.this, DeliveryManActivity.class);
-                            }
+                            intent = new Intent(RegistrationActivity.this, SignInActivity.class);
 
                             userGateway.save(usernameStr, UserManager.createUser(userChosen, nameStr, location, phNumStr, usernameStr,
                                     userGateway.createHash(passwordStr), finalSinVal, transportStr, finalRateVal));
