@@ -4,14 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controllers.delivery_man.DeliveryManActivity">
+    tools:context=".controllers.customer.CustomerActivity">
+
+    <LinearLayout
+        android:id="@+id/delivery_man_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome">
+
+        <Button
+            android:id="@+id/profileD"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/profile"
+            android:textColor="#ffffff"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/takeOrderD"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/take_order"
+            android:textColor="#ffffff"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/statusD"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/order_status"
+            android:textColor="#ffffff"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/welcomeD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DeliveryManActivity"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="50dp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

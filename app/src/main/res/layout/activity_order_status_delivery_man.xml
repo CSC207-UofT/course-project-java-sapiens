@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controllers.delivery_man.OrderStatusDeliveryManActivity">
+
+    <TextView
+        android:id="@+id/titleOSD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="20dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/ccontact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleOSD"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/ostatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ccontact"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:text="TextView" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@+id/ostatus"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="257dp" />
+
+    <Button
+        android:id="@+id/dcompleteOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="162dp"
+        android:layout_marginBottom="111dp"
+        android:text="Button" />
+
+</RelativeLayout>

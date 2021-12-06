@@ -72,8 +72,16 @@ public class OrderManager{
      * Get contact info for order
      * @return Contact information of deliveryman
      */
-    public String getContact(){
+    public String getDeliveryManContact(){
         return order.getDeliveryMan().getName() + " : " + order.getDeliveryMan().getNumber();
+    }
+
+    /**
+     * Get contact info for order
+     * @return Contact information of customer
+     */
+    public String getCustomerContact(){
+        return order.getCustomer().getName() + " : " + order.getDeliveryMan().getNumber();
     }
 
     public void setStatusOTW() {
@@ -108,44 +116,44 @@ public class OrderManager{
         return this.order.getTotalPrice();
     }
 
-    public HashMap<String, Float> calculateJourney(Locator locator){
-        float total_distance = 0;
-        float total_duration = 0;
-
-        // String start = TODO: Delivery man's current location
-        String end = this.order.getCustomer().getLocation();
-
-        ArrayList<String> stops = new ArrayList<>();
-        stops.add("start"); // TODO: The Delivery man's location. (Maybe from the time he accepts the order)
-
-        for(ShoppingList o: this.order.getShoppingLists()){
-            stops.add(o.getOutletAddress());
-        }
-        stops.add(end);
-
-        String transport = order.getDeliveryMan().getTransport();
-
-
-        for(int i = 0; i < stops.size(); i++){
-            try {
-                HashMap<String, Double> info = locator.findRouteInfo
-                        (stops.get(i), stops.get(i + 1), Locator.transportation.valueOf(transport));
-                double distance = info.get("Distance");
-                double duration = info.get("Duration");
-
-                total_distance += distance;
-                total_duration += duration;
-            } catch (Exception e){
-                // TODO: Error cuz either wrong address or internet issues.
-            }
-
-        }
-
-        HashMap<String, Float> journey= new HashMap<>();
-
-        journey.put("Total Distance", total_distance);
-        journey.put("Total Duration", total_duration);
-
-        return journey;
-    }
+//    public HashMap<String, Float> calculateJourney(Locator locator){
+//        float total_distance = 0;
+//        float total_duration = 0;
+//
+//        // String start = TODO: Delivery man's current location
+//        String end = this.order.getCustomer().getLocation();
+//
+//        ArrayList<String> stops = new ArrayList<>();
+//        stops.add("start"); // TODO: The Delivery man's location. (Maybe from the time he accepts the order)
+//
+//        for(ShoppingList o: this.order.getShoppingLists()){
+//            stops.add(o.getOutletAddress());
+//        }
+//        stops.add(end);
+//
+//        String transport = order.getDeliveryMan().getTransport();
+//
+//
+//        for(int i = 0; i < stops.size(); i++){
+//            try {
+//                HashMap<String, Double> info = locator.findRouteInfo
+//                        (stops.get(i), stops.get(i + 1), Locator.transportation.valueOf(transport));
+//                double distance = info.get("Distance");
+//                double duration = info.get("Duration");
+//
+//                total_distance += distance;
+//                total_duration += duration;
+//            } catch (Exception e){
+//                // TODO: Error cuz either wrong address or internet issues.
+//            }
+//
+//        }
+//
+//        HashMap<String, Float> journey= new HashMap<>();
+//
+//        journey.put("Total Distance", total_distance);
+//        journey.put("Total Duration", total_duration);
+//
+//        return journey;
+//    }
 }

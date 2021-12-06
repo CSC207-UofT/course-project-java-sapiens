@@ -51,7 +51,7 @@ public class OrderStatusActivity extends AppCompatActivity {
                         String name = orderManager.getName();
                         cardView.setVisibility(View.VISIBLE);
                         orderName.setText(name);
-                        String contactInfo = orderManager.getContact();
+                        String contactInfo = orderManager.getDeliveryManContact();
                         contact.setText(contactInfo);
                         String statusInfo = orderManager.getStatus().toString();
                         statusOrder.setText(statusInfo);
