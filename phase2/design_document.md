@@ -1,4 +1,14 @@
-## A description of any major design decisions your group has made (along with brief explanations of why you made them).
+### Design Document 
+
+## About our app
+
+Our app is a delivery service app named Sapiens Delivery that allows shoppinglists 
+
+## Major changes we made in Phase 2. 
+
+
+
+
 We decided to continue with a text-based UI for phase 1 since most of our group members are still learning Android Studio. But we implemented our text UI completely differently from phase 0. We modelled our text UI based on how we plan to implement the UI in Android Studio, with different activities classes in the UI layer of our program and with the controlls being passed around from one activity to another. This way when we work in Android, we re-use most of the code we used in phase 1 for the text UI.
 
 ## A brief description of how your project adheres to Clean Architecture (if you notice a violation and aren't sure how to fix it, talk about that too!)
@@ -18,9 +28,7 @@ Dependency Inversion Principle: In our program the most abstract classes that di
 ## A brief description of which packaging strategies you considered, which you decided to use, and why. (see slide 7 from the packages slides)
 This project structures the source code files into packages based on the clean architecture layers of Model Controller View. Where View = ui package, Model = entities package, and Controller= anything that interacts directly with the entities and is used by the UI. This results in packages by layer with low cohesion modularity, but with high coupling between packages. This strategy also leads to a package for each technical group of classes. One disadvantage of using Clean Architecture by layer is that editing a feature involves editing files across different folders. But since most of our features is very losely related, we didn't need to seperate our packages by feature.
 
-## A summary of any design patterns your group has implemented (or plans to implement).
-
-### Current Design Patters
+## Design Patters We Implemented
 
 - We used a Factory to create the appropriate use case for the two type of users using our program. (UserManager.java)
 - We used Command to recreate UI activities in Android and with all managers that need to use database interactions. (DBManager.java)
@@ -28,9 +36,4 @@ This project structures the source code files into packages based on the clean a
 - The Model-Controller-View design was used to allot roles for each class in the program.
 - A Factory method is added in the RouteInfoFinder class to build different URLs corresponding to different choice of mode of transportation.
 - We made GoogleMapGateway a façade in adherence to the Single Responsibility Principle because the two methods in the gateway, FindRouteInfo and FindCurrentLocation, uses different approach to fetch data from different APIs. Thus, we decided to make GoogleMapGateway become a façade to lower the coupling.
-
-### Future additions
-- We used an Adaptor to wrap additional info to the Commodities such as a note to the delivery on how the commodity should be handled.
-- We plan to use a Builder to create different types of ShoppingLists such as for stores and for outlets.
-- we plan to implement a Memento to store the state of a ShoppingList so the customer can undo changes they make on a ShoppingList. 
-
+- 
