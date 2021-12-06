@@ -3,7 +3,12 @@ We decided to continue with a text-based UI for phase 1 since most of our group 
 
 ## A brief description of how your project adheres to Clean Architecture (if you notice a violation and aren't sure how to fix it, talk about that too!)
 Our project follows Clean Architecture layers with Entities for the different types of Users, and the data the Users can create and manipulate. We also have usecases that uses dependency inversion to call the controller interface to save data remotely. We also have a seperate UI for display and taking in user inputs. We violated the clean architecture only a little since our UI is using the methods of Entities on rare occassions. We are not sure weither having duplicate methods inside the use cases is necessary since a lot of the methods the UI uses from the Entities is implemented in the Entities. So if we want follow clean architecture then we have to have a lot of duplicate methods which we're not sure is the best solution. 
+
+![image](https://media.discordapp.net/attachments/888599563257122851/917544110611632168/entities.png)
 ![image](https://media.discordapp.net/attachments/888599563257122851/917544110179614720/use_cases.png)
+![image](https://media.discordapp.net/attachments/888599563257122851/917544110880096286/Controllers.png)
+![image](https://media.discordapp.net/attachments/888599563257122851/917544111186276442/adapters.png)
+![image](https://media.discordapp.net/attachments/888599563257122851/917544110389350450/Gateway.png)
 
 ## A brief description of how your project is consistent with the SOLID design principles (if you notice a violation and aren't sure how to fix it, talk about that too!)
 Single Responsibility Principle: In phase 0, we had a huge controller OrderSystem that does all the things, which violated the single responsibility principle. In phase 1, we separated the OrderSystem and made it become a group of smaller activities so that each of them are responsible for only one part of the original controller. This made the process easier to code and clearer to understand.
