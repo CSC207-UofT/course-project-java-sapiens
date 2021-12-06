@@ -4,17 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.yde.sapiensdelivery.R;
 import com.yde.sapiensdelivery.entities.Customer;
+import com.yde.sapiensdelivery.gateways.OrderGateway;
+import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 import com.yde.sapiensdelivery.use_cases.CustomerManager;
 
-
 public class CustomerActivity extends AppCompatActivity {
-    public static final String fullName = "full";
-    public static final String userName = "user";
-    public static final String phone = "phone";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,21 +31,39 @@ public class CustomerActivity extends AppCompatActivity {
         welcome.setText(welcomeMessage);
 
         profile.setOnClickListener(v -> {
-            Intent intent = new Intent( CustomerActivity.this, CustomerProfileActivity.class);
-            intent.putExtra(fullName,cm.getName());
-            intent.putExtra(userName,cm.getUsername());
-            intent.putExtra(phone,cm.getPhoneNumber());
-            startActivity(intent);
+                Intent intent = new Intent( CustomerActivity.this, CustomerProfileActivity.class);
+                cm.passValue(intent);
+                startActivity(intent);
         });
 
         placeOrder.setOnClickListener(v -> {
             Intent intent = new Intent( CustomerActivity.this, ShoppingListCreationActivity.class);
+            cm.passValue(intent);
             startActivity(intent);
         });
 
         status.setOnClickListener(v -> {
-            Intent intent = new Intent( CustomerActivity.this, OrderStatusActivity.class);
-            startActivity(intent);
+            OrderGateway orderGateway = new OrderGateway();
+
+            orderGateway.get(cm.getUsername(), new OnDataReadListener() {
+                @Override
+                public void onSuccess() {
+                    if(getSavedObject() == null){
+                        String message = "You have no active orders right now.";
+                        Toast.makeText(CustomerActivity.this, message, Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        Intent intent = new Intent( CustomerActivity.this, OrderStatusActivity.class);
+                        startActivity(intent);// Order is available to display
+                    }
+                }
+
+                @Override
+                public void onFailure() {
+                    String message = "Error in database Connection. Please check connection";
+                    Toast.makeText(CustomerActivity.this, message, Toast.LENGTH_LONG).show();
+                }
+            });
         });
     }
 }
