@@ -8,8 +8,11 @@ For more details, please check our [specification.md file](https://git.io/JMpmy)
 
 ## Major Changes We Made in Phase 2:  
 The most fundamental change we made in phase 2 was the transition from a command-line text UI to an Android application. Our controllers are changed to a number of android activities ([Link to the activities](https://github.com/CSC207-UofT/course-project-java-sapiens/tree/main/app/src/main/java/com/yde/sapiensdelivery/controllers)), each of them and their layout files corresponding to a specific page in our program.
+
 Secondly, we completed the implementation of delivery man’s side and made the app usable both to customers and delivery men. In order to achieve the real-time interaction between two different device, all information that is relevant are fetched from or saved into the database.
+
 Also, we used Google Map’s Direction and Location API ([Link to the gateway](https://github.com/CSC207-UofT/course-project-java-sapiens/blob/main/app/src/main/java/com/yde/sapiensdelivery/gateways/GoogleMapGateway.java)) to get real-time real-world data to calculate the distance and duration of the route required to complete an order and present the results to users. 
+
 Lastly but not the least, we modified our program according to the phase 1 feedback, including adjusting code organization, increasing test coverage, increasing use of GitHub feature, adding design patterns... and most importantly, adhering to the Clean Architecture.
 Please see the rest of the file to get detailed description.
 
@@ -45,8 +48,20 @@ We made our own branches whenever we implemented a new feature, and the branches
 
 
 ## Summary of each group member's contributions in phase 2 and a link to their significant pull requests. 
-- Kevin: Completed 4 Activities and fixed Clean Architecture violations from Phase 1. Significant pull request: https://git.io/JMpZR, this pull request included the creation to completion of two Activities that allows the User to create and modify their shopping list. Each Activity also uses a custom RecyclerView Adapter. 
-- Patrick: Completed three activities and add JUnit tests. The first major request (https://git.io/JMpZd) is to finish Customer Profile Activity that when a user clicks button of profile from Customer Activity, they can display user’s information from previous activity. The second major request (https://git.io/JMpGZ) is to work on DeliveryMan Rating Activity that delivery man can rate their customer and the purpose of the rate is to sort the customer based on it. Therefore, Deliverymen can choose a customer's order next time based on the rating score and distance.
-- Junsong Guo (Tyner): Completed GoogleMapGateway and its corresponding unit tests. Helped implementations relevant to GoogleMapGateway. Created DeliveryManActivity and OrderStatusDeliveryManActivity and their corresponding layout files. Significant Pull Requests: [Link to the Activities](https://github.com/CSC207-UofT/course-project-java-sapiens/pull/50),[Link to the Gateway](https://github.com/CSC207-UofT/course-project-java-sapiens/pull/41),[Link to the Gateway](https://github.com/CSC207-UofT/course-project-java-sapiens/pull/48)
+- Kevin: Completed 4 Activities and fixed Clean Architecture violations from Phase 1. 
+
+Significant pull request: https://git.io/JMpZR, this pull request included the creation to completion of two Activities that allows the User to create and modify their shopping list. Each Activity also uses a custom RecyclerView Adapter.
+
+- Patrick: Completed three activities and add JUnit tests. 
+
+The first major request (https://git.io/JMpZd) is to finish Customer Profile Activity that when a user clicks button of profile from Customer Activity, they can display user’s information from previous activity. 
+
+The second major request (https://git.io/JMpGZ) is to work on DeliveryMan Rating Activity that delivery man can rate their customer and the purpose of the rate is to sort the customer based on it. Therefore, Deliverymen can choose a customer's order next time based on the rating score and distance.
+
+- Junsong Guo (Tyner): Completed GoogleMapGateway and its corresponding unit tests. Helped implementations relevant to GoogleMapGateway. Created DeliveryManActivity and OrderStatusDeliveryManActivity and their corresponding layout files. 
+
+Significant Pull Requests: [Link to the Activities](https://github.com/CSC207-UofT/course-project-java-sapiens/pull/50) This pull request consists of two activities, one of them is the homepage of delivery man, the other one is where the delivery man changes the status of an accepted order.
+
+[Link to the Gateway](https://github.com/CSC207-UofT/course-project-java-sapiens/pull/41),[Link to the Gateway](https://github.com/CSC207-UofT/course-project-java-sapiens/pull/48) These two pull requests together form the complete GoogleMapGateway. This gateway is in charge of getting information from the Google Map API, and it also demonstrates my understanding of design patterns since it implements the façade and factory.
 
 
