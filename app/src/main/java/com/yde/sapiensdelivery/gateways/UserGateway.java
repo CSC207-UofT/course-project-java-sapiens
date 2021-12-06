@@ -1,4 +1,5 @@
 package com.yde.sapiensdelivery.gateways;
+
 import com.yde.sapiensdelivery.gateways.database.DBController;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 import com.yde.sapiensdelivery.entities.User;
