@@ -14,6 +14,8 @@ import com.yde.sapiensdelivery.controllers.customer.CustomerActivity;
 import com.yde.sapiensdelivery.controllers.delivery_man.DeliveryManActivity;
 import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
+import com.yde.sapiensdelivery.gateways.CurrentLocationFinder;
+import com.yde.sapiensdelivery.gateways.GoogleMapGateway;
 import com.yde.sapiensdelivery.gateways.UserGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 import com.yde.sapiensdelivery.use_cases.CustomerManager;
@@ -47,6 +49,7 @@ public class SignInActivity extends AppCompatActivity {
             }
             else{
                 userGateway = UserGateway.getUserGateway("DELIVERYMAN");
+
             }
 
             String usernameStr = username.getText().toString();
@@ -67,6 +70,8 @@ public class SignInActivity extends AppCompatActivity {
                     else{
                         intent = new Intent(SignInActivity.this, DeliveryManActivity.class);
                         DeliveryManManager dm = new DeliveryManManager((DeliveryMan) getSavedObject());
+                        GoogleMapGateway googleMapGateway = new GoogleMapGateway();
+                        dm.setLocation(googleMapGateway.findCurrentLocation( SignInActivity.this));
                         dm.passValue(intent);
                     }
 

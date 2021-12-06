@@ -116,15 +116,57 @@ public class OrderManager{
         return this.order.getTotalPrice();
     }
 
-//    public HashMap<String, Float> calculateJourney(Locator locator){
-//        float total_distance = 0;
-//        float total_duration = 0;
-//
-//        // String start = TODO: Delivery man's current location
-//        String end = this.order.getCustomer().getLocation();
-//
-//        ArrayList<String> stops = new ArrayList<>();
-//        stops.add("start"); // TODO: The Delivery man's location. (Maybe from the time he accepts the order)
+    public HashMap<String, Float> calculateJourney(Locator locator){
+        float total_distance = 0;
+        float total_duration = 0;
+
+        String start = this.order.getDeliveryMan().getLocation();
+        String end = this.order.getCustomer().getLocation();
+
+        ArrayList<String> stops = new ArrayList<>();
+        stops.add(start);
+
+        for(ShoppingList s: this.order.getShoppingLists()){
+            stops.add(s.getOutletAddress());
+        }
+        stops.add(end);
+
+        String transport = order.getDeliveryMan().getTransport();
+
+
+        for(int i = 0; i < stops.size(); i++){
+            try {
+                HashMap<String, Double> info = locator.findRouteInfo
+                        (stops.get(i), stops.get(i + 1), Locator.transportation.valueOf(transport));
+                double distance = info.get("Distance");
+                double duration = info.get("Duration");
+
+                total_distance += distance;
+                total_duration += duration;
+            } catch (Exception e){
+                // TODO: Error cuz either wrong address or internet issues.
+            }
+
+        }
+
+        HashMap<String, Float> journey= new HashMap<>();
+
+        journey.put("Total Distance", total_distance);
+        journey.put("Total Duration", total_duration);
+
+        return journey;
+    }
+
+//    /**
+//     * All Manager classes in controllers.use_cases have some transactions to save.
+//     *
+//     * @param customerUsername The username with which the database can be queried
+//     * @param order The corresponding Order
+//     */
+//    @Override
+//    public void save(String customerUsername, Order order) {
+//        Map<String, Order> toSave = new HashMap<>();
+//        toSave.put(customerUsername, (Order) order);
 //
 //        for(ShoppingList o: this.order.getShoppingLists()){
 //            stops.add(o.getOutletAddress());

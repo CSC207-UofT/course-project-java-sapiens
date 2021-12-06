@@ -80,8 +80,7 @@ public class DeliveryManManager implements Manager{
     }
 
     /**
-     * set the Delivery man's location in the following format
-     * {longitude, latitude}
+     * set the Delivery man's location.
      */
     public void setLocation(String location){
         this.deliveryMan.setLocation(location);

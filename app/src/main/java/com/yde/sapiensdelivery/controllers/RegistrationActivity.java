@@ -12,9 +12,17 @@ import android.widget.RadioGroup;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.yde.sapiensdelivery.R;
+import com.yde.sapiensdelivery.controllers.delivery_man.DeliveryManActivity;
+import com.yde.sapiensdelivery.gateways.GoogleMapGateway;
 import com.yde.sapiensdelivery.gateways.UserGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
+import com.yde.sapiensdelivery.use_cases.Locator;
 import com.yde.sapiensdelivery.use_cases.UserManager;
+
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.util.HashMap;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -65,10 +73,17 @@ public class RegistrationActivity extends AppCompatActivity {
         register.setOnClickListener(view -> {
 
             UserGateway userGateway;
+            GoogleMapGateway googleMapGateway = new GoogleMapGateway();
+            DeliveryManActivity deliveryManActivity;
+
+            String nameStr = name.getText().toString();
+            String phNumStr = phoneNumber.getText().toString();
+            String usernameStr = username.getText().toString();
+            String location = address.getText().toString();
 
             if(userType.getCheckedRadioButtonId() == R.id.customer_sign_up){
                 userGateway = UserGateway.getUserGateway("CUSTOMER");
-                if(checkEmptyCustomer()){
+                if(checkEmptyCustomer() || !verifyAddress(location, googleMapGateway)){
                     return;
                 }
             }
@@ -79,12 +94,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
             }
 
-            String nameStr = name.getText().toString();
-            String phNumStr = phoneNumber.getText().toString();
-            String usernameStr = username.getText().toString();
-            String location = "";
-//            int[] location = new int[]{0, 0};
-            String location = address.getText().toString();
 
             long sinVal = 0;
             if(!sin.getText().toString().equals("")){
@@ -197,7 +206,22 @@ public class RegistrationActivity extends AppCompatActivity {
             address.setError("This field is missing");
             isEmpty = true;
         }
-
         return isEmpty;
+    }
+
+    private boolean verifyAddress(String location, Locator loc){
+        boolean wrong_address = false;
+
+        HashMap<String, Double> check = new HashMap<>();
+
+        try{
+            check = loc.findRouteInfo("M5T1R5", location, Locator.transportation.walking);
+            wrong_address = true;
+        } catch (IOException e){
+            address.setError("Connection Issue, Please try again.");
+        } catch (JSONException e){
+            address.setError("Wrong Address. Enter again.");
+        }
+        return wrong_address;
     }
 }
