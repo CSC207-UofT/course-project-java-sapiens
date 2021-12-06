@@ -4,7 +4,7 @@
 
 Our app is a delivery service app named Sapiens Delivery that allows customers who use our app to create a delivery order from different stores, each with a list of items the customer wants to buy. Our app will then pair the customer with a deliveryman who delivery the customer's order. After the order has been delivered and completed, the customer will be prompted to pay the deliveryman, and then both the deliveryman and the customer can provide a rating for each other.  
 
-For more details, please check our specification.md file (git.io/JMpmy). 
+For more details, please check our specification.md file: https://git.io/JMpmy. 
 
 ## Major changes we made in Phase 2:  
 We decided to continue with a text-based UI for phase 1 since most of our group members are still learning Android Studio. But we implemented our text UI completely differently from phase 0. We modelled our text UI based on how we plan to implement the UI in Android Studio, with different activities classes in the UI layer of our program and with the controlls being passed around from one activity to another. This way when we work in Android, we re-use most of the code we used in phase 1 for the text UI.
