@@ -1,19 +1,11 @@
 package com.yde.sapiensdelivery.controllers.customer;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import com.yde.sapiensdelivery.R;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import com.yde.sapiensdelivery.entities.Customer;
-import com.yde.sapiensdelivery.gateways.UserGateway;
 import com.yde.sapiensdelivery.use_cases.CustomerManager;
 
 public class CustomerProfileActivity extends AppCompatActivity {
@@ -38,7 +30,6 @@ public class CustomerProfileActivity extends AppCompatActivity {
         name.setText(nameStr);
         address.setText(addressStr);
         phoneView.setText(phoneStr);
-
 
     }
 }

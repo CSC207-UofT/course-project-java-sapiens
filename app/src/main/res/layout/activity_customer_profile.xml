@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controllers.RegistrationActivity">
+    tools:context=".controllers.customer.CustomerProfileActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,7 +18,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
-            android:gravity="center"
             android:orientation="vertical">
 
             <LinearLayout
@@ -90,7 +89,7 @@
                     android:id="@+id/address_view"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
                     android:background="@drawable/border_ro"
                     android:ems="10"
                     android:gravity="center"
