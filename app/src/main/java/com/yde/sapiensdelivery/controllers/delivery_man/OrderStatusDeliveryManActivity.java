@@ -35,6 +35,7 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
         TextView addressTV = findViewById(R.id.deli_os_cus_address);
         TextView totalTV = findViewById(R.id.deli_os_total_tv);
         Button completeOrder = findViewById(R.id.complete_order_bt);
+        Button otwOrderBT = findViewById(R.id.order_OTW_bt);
         ListView shoppingLists = findViewById(R.id.delivery_o_status_lv);
 
         DeliveryMan deliveryMan = (DeliveryMan) getIntent().getSerializableExtra("DELIVERYMAN");
@@ -83,6 +84,10 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
                                                      DeliveryManActivity.class);
             intent.putExtra("DELIVERYMAN", (Serializable) deliveryMan);
             startActivity(intent);
+        });
+
+        otwOrderBT.setOnClickListener(v -> {
+            //TODO: update order's status to OTW in the DB
         });
 
     }

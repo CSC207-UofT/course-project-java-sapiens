@@ -20,4 +20,5 @@
     <string name="total">Total</string>
     <string name="phone_number_deli_Ostatus">phone number</string>
     <string name="customer_name_deli_Ostatus">Customer Name</string>
+    <string name="order_on_the_way">Order On The Way</string>
 </resources>
