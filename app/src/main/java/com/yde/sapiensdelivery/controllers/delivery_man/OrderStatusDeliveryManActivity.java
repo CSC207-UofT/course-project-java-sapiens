@@ -2,6 +2,9 @@ package com.yde.sapiensdelivery.controllers.delivery_man;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -57,49 +60,11 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
             }
         });
 
-//        completeOrder.setOnClickListener(view -> {
-//            Intent intent = new Intent( OrderStatusActivity.this, OrderCompletionActivity.class);
-//            startActivity(intent);
-//        });
+        completeOrder.setOnClickListener(view -> {
+            Intent intent = new Intent( OrderStatusDeliveryManActivity.this,
+                                                     DeliveryManActivity.class);
+            startActivity(intent);
+        });
 
-//        ProgressBar progressBar = findViewById(R.id.progressBar);
-//        Button completeOrder = findViewById(R.id.button);
-//        TextView orderName = findViewById(R.id.order_name);
-//        TextView statusOrder = findViewById(R.id.status_order);
-//        TextView contact = findViewById(R.id.contact);
-
-//        CustomerManager customerManager = new CustomerManager((Customer)
-//                getIntent().getSerializableExtra("CUSTOMER"));
-//
-//        OrderGateway orderGateway = new OrderGateway();
-//        orderGateway.get(customerManager.getName(), new OnDataReadListener() {
-//
-//            @Override
-//            public void onSuccess() {
-//                OrderManager orderManager = new OrderManager((Order) getSavedObject());
-//
-//                if(orderManager.getStatus() == Order.OrderStatus.COMP){
-//                    progressBar.setVisibility(View.INVISIBLE);
-//                    completeOrder.setVisibility(View.VISIBLE);
-//                }
-//                else if(orderManager.getStatus() == Order.OrderStatus.REC){
-//                    String name = orderManager.getName();
-//                    orderName.setText(name);
-//                    String contactInfo = orderManager.getContact();
-//                    contact.setText(contactInfo);
-//                    String statusInfo = orderManager.getStatus().toString();
-//                    statusOrder.setText(statusInfo);
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure() {
-//            }
-//        });
-
-//        completeOrder.setOnClickListener(view -> {
-//            Intent intent = new Intent( OrderStatusActivity.this, OrderCompletionActivity.class);
-//            startActivity(intent);
-//        });
     }
 }
