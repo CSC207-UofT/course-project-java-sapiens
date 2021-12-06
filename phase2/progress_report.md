@@ -10,11 +10,6 @@
 - Customers can choose their favoriate delivery man based on delivery man's rating and distance.
 - display google map to a customer, so the customer can show the current location of deliveryman.
 
-## Each member’s contributions:
-- Kevin: ShoppingListAtivity class and added a new features of remove and adding Entities to ShoppingList after it's been created.
-- Patrick: OrderCreationAtivity class and Junit tests for OrderTest and OrderManagerTest.
-- Nikhil: DBManager.class, OrderManager.class, Order.class, and implemented FireBase.
-- Sidharth Sachdev: Added the feature to check order status with OrderStatusActivity class
-- Tyner: CustomerActivity class, UserTest, and contributed to check order status feature.
-- Ansh: RatingActivity and related changes to enable the rating and review system.
-
+## Summary of each group member's contributions in phase 2 and a link to their significant pull requests. 
+- Kevin: Completed 4 Activities and fixed Clean Architecture violations from Phase 1. Significant pull request: https://git.io/JMpZR, this pull request included the creation to completion of two Activities that allows the User to create and modify their shopping list. Each Activity also uses a custom RecyclerView Adapter. 
+- 
