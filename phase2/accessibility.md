@@ -14,7 +14,7 @@
 
 - 6. Low Physical Effort: In our program, most operations only require the user to click or type on the screen, which are very commons way of using an android phone. So, users are unlikely to get uncomfortable when using the app. However, there are some improvements we can implement. For example, when creating a shopping list, if a user wants to delete a item that has a quantity larger than 1, they need to click the “-” button multiple times to remove all of them. This could be annoying if the quantity of the item is very large. Thus, we can add a feature to allow users to delete a certain quantity of items at once to reduce the repetitive click actions.
 
--7. Size and Space for Approach and Use: We designed a simple and memorable Logo without much detail, so users can easily recognize the App no matter their body position. In addition, we leave enough space among buttons and notifications such that users can reach all components comfortably for any seated or standing user.
+- 7. Size and Space for Approach and Use: We designed a simple and memorable Logo without much detail, so users can easily recognize the App no matter their body position. In addition, we leave enough space among buttons and notifications such that users can reach all components comfortably for any seated or standing user.
 
 ### Our target users that we could market our program toward. 
 
