@@ -1,13 +1,14 @@
 package com.yde.sapiensdelivery.controllers.customer;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.yde.sapiensdelivery.R;
 import com.yde.sapiensdelivery.entities.Customer;
@@ -25,32 +26,36 @@ public class OrderStatusActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_status);
 
         ProgressBar progressBar = findViewById(R.id.progressBar);
-        Button completeOrder = findViewById(R.id.button);
+        Button completeOrder = findViewById(R.id.complete_order);
         TextView orderName = findViewById(R.id.order_name);
         TextView statusOrder = findViewById(R.id.status_order);
         TextView contact = findViewById(R.id.contact);
+        CardView cardView = findViewById(R.id.cardView);
 
         CustomerManager customerManager = new CustomerManager((Customer)
                 getIntent().getSerializableExtra("CUSTOMER"));
 
         OrderGateway orderGateway = new OrderGateway();
-        orderGateway.get(customerManager.getName(), new OnDataReadListener() {
+        orderGateway.get(customerManager.getUsername(), new OnDataReadListener() {
 
             @Override
             public void onSuccess() {
-                OrderManager orderManager = new OrderManager((Order) getSavedObject());
 
-                if(orderManager.getStatus() == Order.OrderStatus.COMP){
+                if(getSavedObject() != null) {
+                    OrderManager orderManager = new OrderManager((Order) getSavedObject());
                     progressBar.setVisibility(View.INVISIBLE);
-                    completeOrder.setVisibility(View.VISIBLE);
-                }
-                else if(orderManager.getStatus() == Order.OrderStatus.REC){
-                    String name = orderManager.getName();
-                    orderName.setText(name);
-                    String contactInfo = orderManager.getContact();
-                    contact.setText(contactInfo);
-                    String statusInfo = orderManager.getStatus().toString();
-                    statusOrder.setText(statusInfo);
+
+                    if (orderManager.getStatus() == Order.OrderStatus.COMP) {
+                        completeOrder.setVisibility(View.VISIBLE);
+                    } else if(orderManager.getStatus() == Order.OrderStatus.REC) {
+                        String name = orderManager.getName();
+                        cardView.setVisibility(View.VISIBLE);
+                        orderName.setText(name);
+                        String contactInfo = orderManager.getContact();
+                        contact.setText(contactInfo);
+                        String statusInfo = orderManager.getStatus().toString();
+                        statusOrder.setText(statusInfo);
+                    }
                 }
             }
 

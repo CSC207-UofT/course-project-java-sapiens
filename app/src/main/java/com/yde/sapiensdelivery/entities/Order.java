@@ -27,10 +27,15 @@ public class Order implements Serializable {
         this.UID = UID;
         this.shoppingLists = shoppingLists;
         this.totalPrice = 0;
+        setStatusREC();
 
         for (ShoppingList shoppingList : shoppingLists) {
             this.totalPrice += shoppingList.getTotalPrice();
         }
+    }
+
+    public Order(){
+        setStatusREC();
     }
 
 
