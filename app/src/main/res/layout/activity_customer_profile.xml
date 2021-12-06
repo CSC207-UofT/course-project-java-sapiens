@@ -7,13 +7,13 @@
     tools:context=".controllers.customer.CustomerProfileActivity">
 
     <ScrollView
-        android:layout_width="418dp"
-        android:layout_height="571dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
@@ -26,20 +26,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:orientation="vertical"
+                android:gravity="center"
+                android:orientation="horizontal"
                 android:paddingLeft="10dp">
 
                 <TextView
                     android:id="@+id/textView11"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.75"
+                    android:gravity="center"
                     android:paddingBottom="10dp"
                     android:text="@string/name" />
 
                 <TextView
                     android:id="@+id/name_view"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.25"
                     android:background="@drawable/border_ro"
                     android:ems="10"
                     android:gravity="center"
@@ -51,20 +57,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:paddingLeft="10dp">
 
                 <TextView
                     android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.75"
+                    android:gravity="center"
                     android:paddingBottom="10dp"
                     android:text="Phone Number" />
 
                 <TextView
                     android:id="@+id/ph_num_view"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.25"
                     android:background="@drawable/border_ro"
                     android:ems="10"
                     android:gravity="center"
@@ -77,21 +89,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:paddingLeft="10dp">
 
                 <TextView
                     android:id="@+id/textView6"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.75"
+                    android:gravity="center"
                     android:paddingBottom="10dp"
                     android:text="Address" />
 
                 <TextView
                     android:id="@+id/address_view"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.25"
                     android:background="@drawable/border_ro"
                     android:ems="10"
                     android:gravity="center"
@@ -118,12 +134,12 @@
         android:id="@+id/imageView"
         android:layout_width="142dp"
         android:layout_height="123dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="20dp"
         android:contentDescription="@string/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.524"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
         app:srcCompat="@drawable/potriat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
