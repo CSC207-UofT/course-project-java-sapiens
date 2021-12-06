@@ -31,10 +31,10 @@ Dependency Inversion Principle: In our program the most abstract classes that di
 ## A Brief Description Of Our Packaging Strategies:
 This project structures the source code files into packages based on the clean architecture layers, with each layer having it's own package. Helper classes and design patterns that belong to a particular layer are also inside that layer's package but has their own packages that classify them, for example, Adapters of Controllers have their own package under the "controller" package. This results in packages by layer with low cohesion modularity, but with high coupling between packages. This strategy also leads to a package for each technical group of classes. One disadvantage of using Clean Architecture by layer is that editing a feature involves editing files across different folders. But since most of our features is very losely related, we didn't need to seperate our packages by feature. 
 
-## Design Patters We Implemented
-- In phase1, We used a Factory to create the appropriate use case for the two type of users using our program. (UserManager.java)
+## Design Patterns We Implemented
+- In phase1, We used a Factory method in (UserManager.java) to create the appropriate use case for the two type of users using our program. 
 - In phase1, We used Command to recreate UI activities in Android and with all managers that need to use database interactions. (DBManager.java)
-- In phase1, We used Template in the registration of users into database as customers.
+- In phase1, We used Template in the registration of users into database as customers. We break down the algorithm into a series of steps, turn those steps into methods, and put a series of calls to these methods inside a single template method.
 - In phase1, we implemented Model-Controller-View design was used to allot roles for each class in the program. First, we grouped UI classes as view package. Similarly, all entities class group into a Model package, and Controller package responds to the user input and performs interactions and used by UI. This strategy can lead to a package for each layer group of classes with high coupling between packages. One inconvenient thing is that editing a feature involves editing files across different folders. However, most of our features is not very closely related, we didn't need to separate our packages by feature.
 - In phase2, a Factory method is added in the RouteInfoFinder class to build different URLs corresponding to different choice of mode of transportation.
 - In phase2, We made GoogleMapGateway a façade in adherence to the Single Responsibility Principle because the two methods in the gateway, FindRouteInfo and FindCurrentLocation, uses different approach to fetch data from different APIs. Thus, we decided to make GoogleMapGateway become a façade to lower the coupling.
@@ -46,5 +46,6 @@ We made our own branches whenever we implemented a new feature, and the branches
 
 ## Summary of each group member's contributions in phase 2 and a link to their significant pull requests. 
 - Kevin: Completed 4 Activities and fixed Clean Architecture violations from Phase 1. Significant pull request: https://git.io/JMpZR, this pull request included the creation to completion of two Activities that allows the User to create and modify their shopping list. Each Activity also uses a custom RecyclerView Adapter. 
-- 
+- Patrick: Completed three activities and add JUnit tests. The first major request (https://git.io/JMpZd) is to finish Customer Profile Activity that when a user clicks button of profile from Customer Activity, they can display user’s information from previous activity. The second major request (https://git.io/JMpGZ) is to work on DeliveryMan Rating Activity that delivery man can rate their customer and the purpose of the rate is to sort the customer based on it. Therefore, Deliverymen can choose a customer's order next time based on the rating score and distance.
+
 
