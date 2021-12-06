@@ -26,7 +26,7 @@ Entities:
 Use Cases:
 ![image](https://media.discordapp.net/attachments/888599563257122851/917544110179614720/use_cases.png)
 
-Controllers
+Controllers:
 ![image](https://media.discordapp.net/attachments/888599563257122851/917544110880096286/Controllers.png)
 
 Adapters:
