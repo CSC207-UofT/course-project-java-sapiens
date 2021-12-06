@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
+            android:name=".controllers.delivery_man.DeliveryManActivity"
+            android:exported="false" />
+        <activity
             android:name=".controllers.delivery_man.OrderStatusDeliveryManActivity"
             android:exported="false" />
         <activity
