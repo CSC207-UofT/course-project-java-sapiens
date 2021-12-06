@@ -11,7 +11,7 @@ The most fundamental change we made in phase 2 was the transition from a command
 
 Secondly, we completed the implementation of delivery man’s side and made the app usable both to customers and delivery men. In order to achieve the real-time interaction between two different device, all information that is relevant are fetched from or saved into the database.
 
-Also, we used Google Map’s Direction and Location API ([Link to the gateway](https://github.com/CSC207-UofT/course-project-java-sapiens/blob/main/app/src/main/java/com/yde/sapiensdelivery/gateways/GoogleMapGateway.java) to get real-time real-world data to calculate the distance and duration of the route required to complete an order and present the results to users. 
+Also, we used Google Map’s Direction and Location API ([Link to the gateway](https://github.com/CSC207-UofT/course-project-java-sapiens/blob/main/app/src/main/java/com/yde/sapiensdelivery/gateways/GoogleMapGateway.java)) to get real-time real-world data to calculate the distance and duration of the route required to complete an order and present the results to users. 
 
 Lastly but not the least, we modified our program according to the phase 1 feedback, including adjusting code organization, increasing test coverage, increasing use of GitHub feature, adding design patterns... and most importantly, adhering to the Clean Architecture.
 Please see the rest of the file to get detailed description.
