@@ -2,7 +2,9 @@
 
 ## About our app
 
-Our app is a delivery service app named Sapiens Delivery that allows shoppinglists 
+Our app is a delivery service app named Sapiens Delivery that allows customers who use our app to create a delivery order from different stores, each with a list of items the customer wants to buy. Our app will then pair the customer with a deliveryman who delivery the customer's order. After the order has been delivered and completed, the customer will be prompted to pay the deliveryman, and then both the deliveryman and the customer can provide a rating for each other.  
+
+For more details, please check our specification.md file. 
 
 ## Major changes we made in Phase 2. 
 
