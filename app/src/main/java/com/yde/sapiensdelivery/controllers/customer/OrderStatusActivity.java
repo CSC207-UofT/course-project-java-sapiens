@@ -47,7 +47,7 @@ public class OrderStatusActivity extends AppCompatActivity {
                 else if(orderManager.getStatus() == Order.OrderStatus.REC){
                     String name = orderManager.getName();
                     orderName.setText(name);
-                    String contactInfo = orderManager.getContact();
+                    String contactInfo = orderManager.getDeliveryManContact();
                     contact.setText(contactInfo);
                     String statusInfo = orderManager.getStatus().toString();
                     statusOrder.setText(statusInfo);
