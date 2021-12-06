@@ -84,6 +84,18 @@ public class OrderManager{
         return order.getCustomer().getName() + " : " + order.getDeliveryMan().getNumber();
     }
 
+    public String getCustomerName(){
+        return order.getCustomer().getName();
+    }
+
+    public String getCustomerAddress(){
+        return order.getCustomer().getLocation();
+    }
+
+    public String getCustomerPhoneNum(){
+        return order.getCustomer().getNumber();
+    }
+
     public void setStatusOTW() {
         this.order.setStatusOTW();
     }
@@ -96,12 +108,12 @@ public class OrderManager{
         this.order.setStatusCOMP();
     }
 
-    public Order.OrderStatus getStatus() {
-        return this.order.getStatus();
+    public ArrayList<ShoppingList> getShoppingLists(){
+        return order.getShoppingLists();
     }
 
-    public String getDeliverManDisplay(){
-        return this.order.getDeliverManDisplay();
+    public Order.OrderStatus getStatus() {
+        return this.order.getStatus();
     }
 
     public void setDeliveryMan(DeliveryMan deliveryMan){
