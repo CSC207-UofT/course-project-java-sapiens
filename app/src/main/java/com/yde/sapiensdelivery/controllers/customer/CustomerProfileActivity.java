@@ -33,6 +33,7 @@ public class CustomerProfileActivity extends AppCompatActivity {
         main.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                // go back to the customer Activity after click the main button
                 Intent intent = new Intent( CustomerProfileActivity.this, CustomerActivity.class);
                 startActivity(intent);
             }
@@ -44,11 +45,12 @@ public class CustomerProfileActivity extends AppCompatActivity {
         TextView userNameView = (TextView) findViewById(R.id.UserName);
         TextView phoneView = (TextView) findViewById(R.id.phone);
 
-
+        // get information from use-cases
         String Fullname = cm.getName();
         String Username = cm.getUsername();
         String Phone  = cm.getPhoneNumber();
 
+        // Update there variables of TextView
         fullNameView.setText(Fullname);
         userNameView.setText(Username);
         phoneView.setText(Integer.parseInt(Phone));

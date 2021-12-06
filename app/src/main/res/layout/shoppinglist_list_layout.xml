@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="4dp"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginVertical="10dp"
+    app:cardCornerRadius="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/creation_outlet_name_TV"
+            android:layout_width="285dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toStartOf="@+id/edit_outlet_BT"
+            android:text="Outlet Name"
+            android:textColor="@color/teal_700"
+            android:textSize="20sp"
+            android:textStyle="" />
+
+        <TextView
+            android:id="@+id/comm_list_TV"
+            android:layout_width="253dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/outlet_address_TV"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="3dp"
+            android:text="Commodity List"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/outlet_address_TV"
+            android:layout_width="253dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/creation_outlet_name_TV"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="3dp"
+            android:text="Address"
+            android:textSize="15sp" />
+
+
+        <Button
+            android:id="@+id/edit_outlet_BT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="@color/cardview_dark_background"
+            android:text="Edit"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/remove_outlet_BT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edit_outlet_BT"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:text="Remove"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

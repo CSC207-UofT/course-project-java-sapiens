@@ -132,7 +132,7 @@ Responsibilities:
 interface implemented: Activity
 Responsibilities:  
 - Representing the page for shopping list creation.
-- using user commands to build shoppingList.
+- using user commands to build shoppingListOld.
 - navigating to IOrderCreationActivity
 
 ### Class name: OrderCreationActivity  

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginVertical="10dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/comm_name_TV"
+            android:layout_width="285dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toStartOf="@+id/add_comm_BT"
+            android:text="Commodity Name"
+            android:textColor="@color/teal_700"
+            android:textSize="20sp"
+            android:textStyle="" />
+
+        <TextView
+            android:id="@+id/comm_price_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/comm_name_TV"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="3dp"
+            android:text="Commodity Price"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/comm_quant_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/comm_price_TV"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="5dp"
+            android:text="Commodity Quantity"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/add_comm_BT"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="@color/cardview_dark_background"
+            android:text="+ 1"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/remove_comm_BT"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/add_comm_BT"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:text="- 1"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+
+

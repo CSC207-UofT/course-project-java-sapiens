@@ -10,16 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".controllers.delivery.DeliveryManActivity"
+            android:name=".controllers.customer.OrderCompletionActivity"
             android:exported="false" />
         <activity
-            android:name=".controllers.customer.CustomerActivity"
+            android:name=".controllers.customer.ShoppingListCreationActivity"
             android:exported="false" />
         <activity
-            android:name=".controllers.delivery.ChooseDeliveryManActivity"
+            android:name=".controllers.customer.OrderStatusActivity"
             android:exported="false" />
         <activity
-            android:name=".controllers.ProfileActivity"
+            android:name=".controllers.customer.EditShoppingListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".controllers.customer.CustomerProfileActivity"
             android:exported="false" />
         <activity
             android:name=".controllers.RegistrationActivity"
@@ -34,5 +37,8 @@
             </intent-filter>
         </activity>
     </application>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 </manifest>
