@@ -20,6 +20,7 @@ import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
 import com.yde.sapiensdelivery.use_cases.OrderManager;
 import com.yde.sapiensdelivery.use_cases.ShoppingListManager;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class OrderStatusDeliveryManActivity extends AppCompatActivity {
@@ -36,8 +37,8 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
         Button completeOrder = findViewById(R.id.complete_order_bt);
         ListView shoppingLists = findViewById(R.id.delivery_o_status_lv);
 
-        DeliveryManManager dm = new DeliveryManManager((DeliveryMan)
-                getIntent().getSerializableExtra("DELIVERYMAN"));
+        DeliveryMan deliveryMan = (DeliveryMan) getIntent().getSerializableExtra("DELIVERYMAN");
+        DeliveryManManager dm = new DeliveryManManager(deliveryMan);
 
         OrderGateway orderGateway = new OrderGateway();
         orderGateway.get(dm.getName(), new OnDataReadListener() {
@@ -77,8 +78,10 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
 
         completeOrder.setOnClickListener(view -> {
             //TODO: update order's status to Complete in the DB
+
             Intent intent = new Intent( OrderStatusDeliveryManActivity.this,
                                                      DeliveryManActivity.class);
+            intent.putExtra("DELIVERYMAN", (Serializable) deliveryMan);
             startActivity(intent);
         });
 
