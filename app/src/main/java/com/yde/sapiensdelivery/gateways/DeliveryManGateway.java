@@ -1,7 +1,5 @@
 package com.yde.sapiensdelivery.gateways;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 
 import com.google.firebase.database.DataSnapshot;
@@ -65,7 +63,6 @@ public class DeliveryManGateway extends UserGateway {
     @Override
     protected boolean isRegexInvalid(HashMap<String, String> fieldToValue, ArrayList<Integer> errorCodes) {
         boolean isPhoneInValid = super.isRegexInvalid(fieldToValue, errorCodes);
-        Log.i("3", "WHERE");
 
         String sin = fieldToValue.get("SIN");
         boolean isSinValid = InfoValidityChecker.isSinValid(sin);
