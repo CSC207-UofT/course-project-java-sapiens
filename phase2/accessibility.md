@@ -1,6 +1,6 @@
 # Project Accessibility Report
 
-### Our current implementation and plan for future implementation for each principle of universal design.
+## Our current implementation and plan for future implementation for each principle of universal design.
 
 - 1. Equitable Use: The two of users using our app, both the delivery man and customer all have similar looking UIs so that there doesn't exist any discrimination. There's also no advantages provided if you choose to spend extra money in our app, so this allows all the users to be on equal playing field. We also provide password hashing to all users in the Database, so all users have the same level of privacy. 
 
@@ -16,10 +16,10 @@
 
 - 7. Size and Space for Approach and Use: We designed a simple and memorable Logo without much detail, so users can easily recognize the App regardless of their body position. In addition, we left enough space among buttons and notifications such that users can reach all components comfortably for any seated or standing user.
 
-### Our target users that we could market our program toward. 
+## Our target users that we could market our program toward. 
 
 Our program allows for a delivery men to buy and delivery anything to you. The types of users who could benefit from this are people who are too lazy or don't have time to go outside and buy things for themselves, and people with can't go outside due to either being stuck in quarantine or having disabilities. They can benefit from the simplicity of using our program and also that our app allows items from multiple stores to be bought in one order, which in turn saves them time and trouble.  
 
-### Why our program is less likely to be used by certain demographics. 
+## Why our program is less likely to be used by certain demographics. 
 
-Since due limitations of our program and the limitations of our connects, we can't get stores and outlets to partner with our app. This means that delivery men using our program having to physically go to each store to buy each item from the customer's shopping list. This would makes the delivery fee to be very high, which would limit our users.
+Since due limitations of our program and the limitations of our connects, we can't get stores and outlets to partner with our app. This means that delivery men using our program having to physically go to each store to buy each item from the customer's shopping list. This would makes the delivery fee to be very high, which would limit our users. So, our app would not likely appeal to students and minimal wage workers. 
