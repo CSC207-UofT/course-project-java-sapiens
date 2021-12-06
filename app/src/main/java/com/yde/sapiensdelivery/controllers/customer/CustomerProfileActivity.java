@@ -2,6 +2,7 @@ package com.yde.sapiensdelivery.controllers.customer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,8 +19,11 @@ import com.yde.sapiensdelivery.use_cases.CustomerManager;
 
 public class CustomerProfileActivity extends AppCompatActivity {
 
+
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // call the information from previous activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_profile);
 
@@ -31,22 +35,14 @@ public class CustomerProfileActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        CustomerManager cm = new CustomerManager((Customer) getIntent().getSerializableExtra("CUSTOMER"));
-
-        TextView name = (TextView) findViewById(R.id.name_view);
-        TextView phoneView = (TextView) findViewById(R.id.ph_num_view);
-        TextView address = (TextView) findViewById(R.id.address_view);
-
-        // get information from use-cases
-        String nameStr = cm.getName();
-        String addressStr = cm.getLocation();
-        String phoneStr  = cm.getPhoneNumber();
+        // set TextView of three variables
+        TextView fullNameView = (TextView) findViewById(R.id.FullNameTitle);
+        TextView userNameView = (TextView) findViewById(R.id.UserNameTitle);
+        TextView phoneView = (TextView) findViewById(R.id.phoneTitle);
 
         // Update there variables of TextView
-        name.setText(nameStr);
-        address.setText(addressStr);
-        phoneView.setText(phoneStr);
-
-
+        fullNameView.setText(" full name: " +Fullname);
+        userNameView.setText(" user name: " + Username);
+        phoneView.setText(" phone number: "+ Phone);
     }
 }
