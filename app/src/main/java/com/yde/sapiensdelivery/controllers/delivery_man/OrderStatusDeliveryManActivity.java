@@ -1,26 +1,17 @@
 package com.yde.sapiensdelivery.controllers.delivery_man;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.yde.sapiensdelivery.R;
-import com.yde.sapiensdelivery.controllers.customer.OrderCompletionActivity;
-import com.yde.sapiensdelivery.controllers.customer.OrderStatusActivity;
-import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.entities.Order;
 import com.yde.sapiensdelivery.gateways.OrderGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
-import com.yde.sapiensdelivery.use_cases.CustomerManager;
 import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
 import com.yde.sapiensdelivery.use_cases.OrderManager;
 
@@ -61,6 +52,7 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
         });
 
         completeOrder.setOnClickListener(view -> {
+            //TODO: update order's status in the DB
             Intent intent = new Intent( OrderStatusDeliveryManActivity.this,
                                                      DeliveryManActivity.class);
             startActivity(intent);
