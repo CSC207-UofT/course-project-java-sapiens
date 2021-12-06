@@ -23,14 +23,6 @@ public class CustomerProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_profile);
 
-        Button main = (Button) findViewById(R.id.ret);
-
-        main.setOnClickListener(v -> {
-            // go back to the customer Activity after click the main button
-            Intent intent = new Intent( CustomerProfileActivity.this, CustomerActivity.class);
-            startActivity(intent);
-        });
-
         CustomerManager cm = new CustomerManager((Customer) getIntent().getSerializableExtra("CUSTOMER"));
 
         TextView name = (TextView) findViewById(R.id.name_view);
