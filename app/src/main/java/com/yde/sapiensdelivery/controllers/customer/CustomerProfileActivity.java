@@ -34,7 +34,9 @@ public class CustomerProfileActivity extends AppCompatActivity {
             Intent intent = new Intent( CustomerProfileActivity.this, CustomerActivity.class);
             startActivity(intent);
         });
-
+        
+        Intent intent = getIntent();
+        
         // set TextView of three variables
         TextView fullNameView = (TextView) findViewById(R.id.FullNameTitle);
         TextView userNameView = (TextView) findViewById(R.id.UserNameTitle);
