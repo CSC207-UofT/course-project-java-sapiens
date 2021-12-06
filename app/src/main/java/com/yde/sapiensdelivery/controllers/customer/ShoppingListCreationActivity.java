@@ -23,6 +23,7 @@ import com.yde.sapiensdelivery.controllers.adapters.OutletListAdapter;
 import com.yde.sapiensdelivery.entities.Commodity;
 import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.Outlet;
+import com.yde.sapiensdelivery.gateways.ShoppingListGateway;
 import com.yde.sapiensdelivery.use_cases.CustomerManager;
 import com.yde.sapiensdelivery.use_cases.OutletManager;
 import com.yde.sapiensdelivery.use_cases.ShoppingListManager;
@@ -80,6 +81,7 @@ public class ShoppingListCreationActivity extends AppCompatActivity implements O
         Intent i = new Intent(ShoppingListCreationActivity.this, EditShoppingListActivity.class);
         i.putExtra("sl_managers", (Serializable) shoppingListManagers);
         i.putExtra("sl_position", shoppingListManagers.size() - 1);
+        customerManager.passValue(i);
         startActivity(i);
     }
 
@@ -140,6 +142,9 @@ public class ShoppingListCreationActivity extends AppCompatActivity implements O
 
     private void setOnClick() {
         createOrderBT.setOnClickListener(v -> {
+
+            ShoppingListGateway shoppingListGateway = new ShoppingListGateway();
+            shoppingListGateway.save(customerManager.getUsername(), ShoppingListManager.getShoppingLists(shoppingListManagers));
 
             Intent intent = new Intent( ShoppingListCreationActivity.this, OrderStatusActivity.class);
             customerManager.passValue(intent);
@@ -222,13 +227,13 @@ public class ShoppingListCreationActivity extends AppCompatActivity implements O
         Intent i = new Intent(ShoppingListCreationActivity.this, EditShoppingListActivity.class);
         i.putExtra("sl_managers", (Serializable) shoppingListManagers);
         i.putExtra("sl_position", position);
+        customerManager.passValue(i);
         startActivity(i);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void onRemoveClick(int position) {
-        // TODO (Optional if have time) add a confirmation prompt for removing a ShoppingList
         // Update total price
         ShoppingListManager slManager = new ShoppingListManager();
         topPriceTV.setText("Total: $ " + slManager.calculateManagersTotal(shoppingListManagers));

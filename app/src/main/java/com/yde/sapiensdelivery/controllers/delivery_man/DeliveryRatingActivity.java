@@ -25,7 +25,7 @@ public class DeliveryRatingActivity extends AppCompatActivity {
         Rating = findViewById(R.id.ratingBarD);
 
         /**
-         * after click the main button, it goes back to CustomerActivity page
+         * after click the main button, it goes back to DeliveryActivity page
          */
         main.setOnClickListener(new View.OnClickListener(){
             @Override
