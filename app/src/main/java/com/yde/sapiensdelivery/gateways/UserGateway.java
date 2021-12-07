@@ -1,5 +1,6 @@
 package com.yde.sapiensdelivery.gateways;
-import com.yde.sapiensdelivery.gateways.database.DBController;
+
+import com.yde.sapiensdelivery.gateways.database.DBGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 import com.yde.sapiensdelivery.entities.User;
 
@@ -11,7 +12,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public abstract class UserGateway extends DBController<String, User> {
+public abstract class UserGateway extends DBGateway<String, User> {
 
     String userType;
 

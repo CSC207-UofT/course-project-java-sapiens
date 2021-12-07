@@ -15,4 +15,10 @@
     <string name="accepting_delivery_men">Delivery men who are willing to accept your order</string>
     <string name="phone_number">Phone Number:</string>
     <string name="take_order">Take Order</string>
+    <string name="complete_order">Complete Order</string>
+    <string name="address">address</string>
+    <string name="total">Total</string>
+    <string name="phone_number_deli_Ostatus">phone number</string>
+    <string name="customer_name_deli_Ostatus">Customer Name</string>
+    <string name="order_on_the_way">Order On The Way</string>
 </resources>

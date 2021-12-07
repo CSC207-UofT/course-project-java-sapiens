@@ -6,13 +6,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.yde.sapiensdelivery.entities.Order;
-import com.yde.sapiensdelivery.gateways.database.DBController;
+import com.yde.sapiensdelivery.gateways.database.DBGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class OrderGateway extends DBController<String, Order> {
+public class OrderGateway extends DBGateway<String, Order> {
 
     final String REF_PATH = "Order";
 
