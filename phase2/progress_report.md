@@ -12,5 +12,18 @@
 - Display the google map to a customer, so the customer can know the current location of deliveryman.
 
 ## Summary of each group member's contributions in phase 2 and a link to their significant pull requests. 
-- Kevin: Completed 4 Activities and fixed Clean Architecture violations from Phase 1. Significant pull request: https://git.io/JMpZR, this pull request included the creation to completion of two Activities that allows the User to create and modify their shopping list. Each Activity also uses a custom RecyclerView Adapter. 
-- Patrick: Completed three activities and add JUnit tests. The first major request (https://git.io/JMpZd) is to finish Customer Profile Activity that when a user clicks button of profile from Customer Activity, they can display user’s information from previous activity. The second major request (https://git.io/JMpGZ) is to work on DeliveryMan Rating Activity that delivery man can rate their customer and the purpose of the rate is to sort the customer based on it. Therefore, Deliverymen can choose a customer's order next time based on the rating score and distance.
+- Kevin: Completed 4 Activities and fixed Clean Architecture violations from Phase 1. 
+
+  Significant pull request: https://git.io/JMpZR, this pull request included the creation to completion of two Activities that allows the User to create and modify their shopping list. Each Activity also uses a custom RecyclerView Adapter.
+
+- Patrick: Completed three activities and add JUnit tests. 
+
+  The first major request (https://git.io/JMpZd) is to finish Customer Profile Activity that when a user clicks button of profile from Customer Activity, they can display user’s information from previous activity. 
+
+  The second major request (https://git.io/JMpGZ) is to work on DeliveryMan Rating Activity that delivery man can rate their customer and the purpose of the rate is to sort the customer based on it. Therefore, Deliverymen can choose a customer's order next time based on the rating score and distance.
+
+- Junsong Guo (Tyner): Completed GoogleMapGateway and its corresponding unit tests. Helped implementations relevant to GoogleMapGateway. Created DeliveryManActivity and OrderStatusDeliveryManActivity and their corresponding layout files. 
+
+  Significant Pull Requests: \[[Link](https://github.com/CSC207-UofT/course-project-java-sapiens/pull/50)\] This pull request consists of two activities, one of them is the homepage of delivery man, the other one is where the delivery man changes the status of an accepted order.
+
+  \[[Link](https://github.com/CSC207-UofT/course-project-java-sapiens/pull/41),[Link](https://github.com/CSC207-UofT/course-project-java-sapiens/pull/48)\] These two pull requests together form the complete GoogleMapGateway. This gateway is in charge of getting information from the Google Map API, and it also demonstrates my understanding of design patterns since it implements the façade and factory.
