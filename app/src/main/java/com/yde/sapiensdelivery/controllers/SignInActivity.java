@@ -15,6 +15,7 @@ import com.yde.sapiensdelivery.controllers.delivery_man.DeliveryManActivity;
 import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.gateways.CurrentLocationFinder;
+import com.yde.sapiensdelivery.gateways.DeliveryManGateway;
 import com.yde.sapiensdelivery.gateways.GoogleMapGateway;
 import com.yde.sapiensdelivery.gateways.UserGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;

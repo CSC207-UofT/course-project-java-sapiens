@@ -3,6 +3,7 @@ package com.yde.sapiensdelivery.use_cases;
 import android.content.Intent;
 
 import com.yde.sapiensdelivery.entities.DeliveryMan;
+import com.yde.sapiensdelivery.gateways.DeliveryManGateway;
 
 import java.util.ArrayList;
 
@@ -83,7 +84,9 @@ public class DeliveryManManager implements Manager{
      * set the Delivery man's location.
      */
     public void setLocation(String location){
+        DeliveryManGateway deliveryManGateway = new DeliveryManGateway("DELIVERYMAN");
         this.deliveryMan.setLocation(location);
+        deliveryManGateway.save(getName(), deliveryMan);
     }
 
     /**

@@ -2,7 +2,6 @@ package com.yde.sapiensdelivery.controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,16 +12,9 @@ import android.widget.RadioGroup;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.yde.sapiensdelivery.R;
-import com.yde.sapiensdelivery.gateways.GoogleMapGateway;
 import com.yde.sapiensdelivery.gateways.UserGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
-import com.yde.sapiensdelivery.use_cases.Locator;
 import com.yde.sapiensdelivery.use_cases.UserManager;
-
-import org.json.JSONException;
-
-import java.io.IOException;
-import java.util.HashMap;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -30,9 +22,7 @@ public class RegistrationActivity extends AppCompatActivity {
     EditText username;
     EditText password;
     EditText phoneNumber;
-    HashMap<String, Double> check;
     EditText address;
-    Intent intent;
     EditText sin;
     EditText rate;
     EditText transport;
@@ -46,7 +36,6 @@ public class RegistrationActivity extends AppCompatActivity {
         LinearLayout[] optionalDelivery = {findViewById(R.id.rate_ll), findViewById(R.id.sin_ll), findViewById(R.id.transport_ll)};
         LinearLayout optionalCustomer = findViewById(R.id.address_ll);
         ((RadioButton) userType.getChildAt(0)).setChecked(true);
-        check = new HashMap<>();
 
         name = findViewById(R.id.name_register);
         username = findViewById(R.id.username_register);
@@ -76,12 +65,6 @@ public class RegistrationActivity extends AppCompatActivity {
         register.setOnClickListener(view -> {
 
             UserGateway userGateway;
-            GoogleMapGateway googleMapGateway = new GoogleMapGateway();
-
-            String nameStr = name.getText().toString();
-            String phNumStr = phoneNumber.getText().toString();
-            String usernameStr = username.getText().toString();
-            String location = address.getText().toString();
 
             if(userType.getCheckedRadioButtonId() == R.id.customer_sign_up){
                 userGateway = UserGateway.getUserGateway("CUSTOMER");
@@ -96,6 +79,10 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
             }
 
+            String nameStr = name.getText().toString();
+            String phNumStr = phoneNumber.getText().toString();
+            String usernameStr = username.getText().toString();
+            String location = "";
 
             long sinVal = 0;
             if(!sin.getText().toString().equals("")){
@@ -115,27 +102,17 @@ public class RegistrationActivity extends AppCompatActivity {
 
             userGateway.registration(phoneNumber.getText().toString(), username.getText().toString(), sin.getText().toString(),
                     transport.getText().toString(), new OnDataReadListener() {
-
                         @Override
                         public void onSuccess() {
-
+                            Intent intent;
                             boolean isCustomer = userType.getCheckedRadioButtonId() == R.id.customer_sign_up;
                             String userChosen = isCustomer ? "CUSTOMER" : "DELIVERYMAN";
 
-                            Thread thread = new Thread(() -> {
-                                try  {
-                                    RegistrationActivity.this.verifyAddress(location, googleMapGateway, check);
-                                    intent = new Intent(RegistrationActivity.this, SignInActivity.class);
-                                    Log.i("CHECK", " Duration: " + check.get("Duration") + " Distance: " + check.get("Distance"));
-                                    userGateway.save(usernameStr, UserManager.createUser(userChosen, nameStr, location, phNumStr, usernameStr,
-                                            userGateway.createHash(passwordStr), finalSinVal, transportStr, finalRateVal));
-                                    startActivity(intent);
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                            });
+                            intent = new Intent(RegistrationActivity.this, SignInActivity.class);
 
-                            thread.start();
+                            userGateway.save(usernameStr, UserManager.createUser(userChosen, nameStr, location, phNumStr, usernameStr,
+                                    userGateway.createHash(passwordStr), finalSinVal, transportStr, finalRateVal));
+                            startActivity(intent);
                         }
 
                         @Override
@@ -219,18 +196,5 @@ public class RegistrationActivity extends AppCompatActivity {
             isEmpty = true;
         }
         return isEmpty;
-    }
-
-    private void verifyAddress(String location, Locator loc, HashMap<String, Double> check){
-
-        try{
-            HashMap<String, Double> foundVal = loc.findRouteInfo("M5T1R5", location, Locator.transportation.walking);
-            check.put("Duration", foundVal.get("Duration"));
-            check.put("Distance", foundVal.get("Distance"));
-        } catch (IOException e){
-            address.setError("Connection Issue, Please try again.");
-        } catch (JSONException e){
-            address.setError("Wrong Address. Enter again.");
-        }
     }
 }
