@@ -1,8 +1,13 @@
 package com.yde.sapiensdelivery.controllers;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -24,6 +29,7 @@ import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
 
 public class SignInActivity extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +41,22 @@ public class SignInActivity extends AppCompatActivity {
         Button signIn = findViewById(R.id.button);
         TextView signUp = findViewById(R.id.sign_up);
         TextView error = findViewById(R.id.error);
+
+        ActivityResultLauncher<String[]> locationPermissionRequest =
+                registerForActivityResult(new ActivityResultContracts
+                                .RequestMultiplePermissions(), result -> {
+                            Boolean fineLocationGranted = result.getOrDefault(
+                                    Manifest.permission.ACCESS_FINE_LOCATION, false);
+                            if (!(fineLocationGranted != null && fineLocationGranted)) {
+                                finishAffinity();
+                                System.exit(0);
+                            }
+                        }
+                );
+
+        locationPermissionRequest.launch(new String[] {
+                Manifest.permission.ACCESS_FINE_LOCATION
+        });
 
         signUp.setOnClickListener(view -> {
             Intent intent = new Intent(this, RegistrationActivity.class);
@@ -57,6 +79,7 @@ public class SignInActivity extends AppCompatActivity {
             String passwordStr = password.getText().toString();
 
             userGateway.authenticate(usernameStr, passwordStr, new OnDataReadListener() {
+                @RequiresApi(api = Build.VERSION_CODES.N)
                 @Override
                 public void onSuccess(){
 
@@ -71,6 +94,7 @@ public class SignInActivity extends AppCompatActivity {
                     else{
                         intent = new Intent(SignInActivity.this, DeliveryManActivity.class);
                         DeliveryManManager dm = new DeliveryManManager((DeliveryMan) getSavedObject());
+
                         GoogleMapGateway googleMapGateway = new GoogleMapGateway();
                         dm.setLocation(googleMapGateway.findCurrentLocation( SignInActivity.this));
                         dm.passValue(intent);
