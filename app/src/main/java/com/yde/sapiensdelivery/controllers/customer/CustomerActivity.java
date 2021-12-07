@@ -54,6 +54,7 @@ public class CustomerActivity extends AppCompatActivity {
                     }
                     else{
                         Intent intent = new Intent( CustomerActivity.this, OrderStatusActivity.class);
+                        cm.passValue(intent);
                         startActivity(intent);// Order is available to display
                     }
                 }
