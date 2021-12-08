@@ -56,8 +56,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp" />
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="20dp" />
 
     <Button
         android:id="@+id/order_OTW_bt"
@@ -79,6 +80,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
