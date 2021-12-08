@@ -17,9 +17,9 @@ public class DeliveryRatingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rating);
+        setContentView(R.layout.activity_delivery_rating);
 
-        Button main = findViewById(R.id.main);
+        Button main = findViewById(R.id.mainD);
         RatingBar rating = findViewById(R.id.ratingBarD);
 
         /*

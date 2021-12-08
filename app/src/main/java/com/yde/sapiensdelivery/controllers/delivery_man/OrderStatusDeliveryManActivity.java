@@ -3,7 +3,6 @@ package com.yde.sapiensdelivery.controllers.delivery_man;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -78,7 +77,6 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
 
             @Override
             public void onFailure() {
-                Log.i("HAHA", "HAHA");
             }
         });
 
@@ -91,9 +89,7 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        otwOrderBT.setOnClickListener(v -> {
-            orderManager.updateStatusOTW(customerName);
-        });
+        otwOrderBT.setOnClickListener(v -> orderManager.updateStatusOTW(customerName));
 
     }
 }
