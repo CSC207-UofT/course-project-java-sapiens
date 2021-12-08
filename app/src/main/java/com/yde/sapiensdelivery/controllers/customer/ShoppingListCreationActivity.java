@@ -27,6 +27,8 @@ import com.yde.sapiensdelivery.gateways.ShoppingListGateway;
 import com.yde.sapiensdelivery.use_cases.CustomerManager;
 import com.yde.sapiensdelivery.use_cases.OutletManager;
 import com.yde.sapiensdelivery.use_cases.ShoppingListManager;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ShoppingListCreationActivity extends AppCompatActivity implements OutletListAdapter.OnOutletClickListener {

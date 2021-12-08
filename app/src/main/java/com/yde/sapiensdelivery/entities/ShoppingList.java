@@ -24,6 +24,11 @@ public class ShoppingList implements Serializable {
         this.outletAddress = outletAddress;
     }
 
+    public ShoppingList(){
+        outletAddress = "";
+        outletName = "";
+    }
+
     /**
      * @return the name of the outlet
      */

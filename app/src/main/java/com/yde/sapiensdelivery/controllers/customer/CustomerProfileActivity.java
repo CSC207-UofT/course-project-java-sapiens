@@ -19,7 +19,7 @@ public class CustomerProfileActivity extends AppCompatActivity {
 
         TextView name = findViewById(R.id.name_view);
         TextView phoneView = findViewById(R.id.ph_num_view);
-        TextView address = findViewById(R.id.license_view);
+        TextView address = findViewById(R.id.address_view);
 
         // get information from use-cases
         String nameStr = cm.getName();

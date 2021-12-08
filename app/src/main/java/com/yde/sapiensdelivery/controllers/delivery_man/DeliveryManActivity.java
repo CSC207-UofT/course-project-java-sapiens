@@ -37,11 +37,13 @@ public class DeliveryManActivity extends AppCompatActivity {
 
         takeOrder.setOnClickListener(v -> {
             Intent intent = new Intent( DeliveryManActivity.this, ChooseCustomerActivity.class);
+            dm.passValue(intent);
             startActivity(intent);
         });
 
         status.setOnClickListener(v -> {
             Intent intent = new Intent( DeliveryManActivity.this, OrderStatusDeliveryManActivity.class);
+            dm.passValue(intent);
             startActivity(intent);
         });
     }

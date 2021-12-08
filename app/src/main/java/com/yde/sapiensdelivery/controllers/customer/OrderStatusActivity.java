@@ -43,15 +43,18 @@ public class OrderStatusActivity extends AppCompatActivity {
                 if(getSavedObject() != null) {
                     OrderManager orderManager = new OrderManager((Order) getSavedObject());
                     progressBar.setVisibility(View.INVISIBLE);
+                    cardView.setVisibility(View.VISIBLE);
+
+                    String name = orderManager.getName();
+                    orderName.setText(name);
+                    String contactInfo = orderManager.getDeliveryManContact();
+                    contact.setText(contactInfo);
+                    String statusInfo = orderManager.getStatus().toString();
+                    statusOrder.setText(statusInfo);
 
                     if (orderManager.getStatus() == Order.OrderStatus.COMP) {
                         completeOrder.setVisibility(View.VISIBLE);
-                    } else if(orderManager.getStatus() == Order.OrderStatus.REC) {
-                        cardView.setVisibility(View.VISIBLE);
-                        String contactInfo = orderManager.getDeliveryManContact();
-                        contact.setText(contactInfo);
-                        String statusInfo = orderManager.getStatus().toString();
-                        statusOrder.setText(statusInfo);
+                    }
                     }
                 }
             }

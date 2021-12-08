@@ -12,6 +12,7 @@ import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class OrderGateway extends DBGateway<String, Order> {
 
@@ -23,17 +24,18 @@ public class OrderGateway extends DBGateway<String, Order> {
 
     /**
      * Another getter function, although here,
-     * @param obj Name of delivery man
+     * @param delStr Name of delivery man
      * @param onDataReadListener Define onSuccess and onFailure actions
      */
-    public void getByDeliveryman(String obj, OnDataReadListener onDataReadListener) {
+    public void getByDeliveryman(String delStr, OnDataReadListener onDataReadListener) {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot childSnapshot : snapshot.getChildren()) {
-                    if(childSnapshot.hasChild(obj)){
+                    if((Objects.requireNonNull(childSnapshot.child("deliveryMan").child("uname").getValue(String.class)))
+                            .equals(delStr)){
                         ArrayList<Object> doubleData =  new ArrayList<>();
-                        doubleData.add(snapshot.getValue(Order.class));
+                        doubleData.add(childSnapshot.getValue(Order.class));
                         doubleData.add(childSnapshot.getKey());
 
                         onDataReadListener.setSavedObject(doubleData);

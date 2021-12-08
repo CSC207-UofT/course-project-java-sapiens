@@ -3,6 +3,7 @@ package com.yde.sapiensdelivery.controllers.delivery_man;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -20,7 +21,6 @@ import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
 import com.yde.sapiensdelivery.use_cases.OrderManager;
 import com.yde.sapiensdelivery.use_cases.ShoppingListManager;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class OrderStatusDeliveryManActivity extends AppCompatActivity {
@@ -44,7 +44,7 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
         DeliveryManManager dm = new DeliveryManManager((DeliveryMan) getIntent().getSerializableExtra("DELIVERYMAN"));
         OrderGateway orderGateway = new OrderGateway();
 
-        orderGateway.getByDeliveryman(dm.getName(), new OnDataReadListener() {
+        orderGateway.getByDeliveryman(dm.getUsername(), new OnDataReadListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onSuccess() {
@@ -78,6 +78,7 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
 
             @Override
             public void onFailure() {
+                Log.i("HAHA", "HAHA");
             }
         });
 
@@ -92,11 +93,6 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
 
         otwOrderBT.setOnClickListener(v -> {
             orderManager.updateStatusOTW(customerName);
-
-            Intent intent = new Intent( OrderStatusDeliveryManActivity.this,
-                    DeliveryManActivity.class);
-            dm.passValue(intent);
-            startActivity(intent);
         });
 
     }
