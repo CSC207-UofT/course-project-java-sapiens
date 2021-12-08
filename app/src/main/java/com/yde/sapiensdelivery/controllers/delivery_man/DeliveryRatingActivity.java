@@ -12,8 +12,6 @@ import com.yde.sapiensdelivery.R;
 
 public class DeliveryRatingActivity extends AppCompatActivity {
 
-    private Button main;
-    private RatingBar Rating;
     float myRating  = 0;
 
     @Override
@@ -21,10 +19,10 @@ public class DeliveryRatingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating);
 
-        main = (Button) findViewById(R.id.main);
-        Rating = findViewById(R.id.ratingBarD);
+        Button main = findViewById(R.id.main);
+        RatingBar rating = findViewById(R.id.ratingBarD);
 
-        /**
+        /*
          * after click the main button, it goes back to DeliveryActivity page
          */
         main.setOnClickListener(new View.OnClickListener(){
@@ -35,10 +33,10 @@ public class DeliveryRatingActivity extends AppCompatActivity {
             }
         });
 
-        /**
+        /*
          * send different message based on a customer input
          */
-        Rating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+        rating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBarD, float rating, boolean fromUser) {
                 int value = (int) rating;

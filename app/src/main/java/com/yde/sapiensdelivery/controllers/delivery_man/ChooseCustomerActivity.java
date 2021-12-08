@@ -88,7 +88,10 @@ public class ChooseCustomerActivity extends AppCompatActivity implements Custome
 
             @Override
             public void onSuccess() {
+                ShoppingListGateway shoppingListGateway = new ShoppingListGateway();
+
                 deliveryManManager.createOrder(orderManager, (Customer) getSavedObject(), shoppingLists);
+                shoppingListGateway.delete(customer);
                 Intent intent = new Intent( ChooseCustomerActivity.this, OrderStatusDeliveryManActivity.class);
                 deliveryManManager.passValue(intent);
                 startActivity(intent);// Order is available to display
