@@ -34,7 +34,6 @@ public class ShoppingListDisplayActivity extends AppCompatActivity {
         TextView totalTV = findViewById(R.id.deli_dis_total_top);
 
         ShoppingListManager slm = new ShoppingListManager();
-
         totalTV.setText("Total: $ "+ slm.calculateListsTotal(shoppingLists));
 
         ArrayList<String> slStrings = new ArrayList<>();

@@ -25,6 +25,11 @@ public class Commodity implements Serializable {
         }
     }
 
+    public Commodity(){
+        name = "";
+        price = 0;
+    }
+
     // A set of getters and setters.
 
     public double getPrice() {

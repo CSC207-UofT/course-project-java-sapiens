@@ -33,7 +33,7 @@ public class OrderGateway extends DBGateway<String, Order> {
                 for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                     if(childSnapshot.hasChild(obj)){
                         ArrayList<Object> doubleData =  new ArrayList<>();
-                        doubleData.add(snapshot.getValue(Order.class));
+                        doubleData.add(childSnapshot.getValue(Order.class));
                         doubleData.add(childSnapshot.getKey());
 
                         onDataReadListener.setSavedObject(doubleData);
