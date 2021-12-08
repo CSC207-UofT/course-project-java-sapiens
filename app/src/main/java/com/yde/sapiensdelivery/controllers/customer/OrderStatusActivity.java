@@ -53,7 +53,10 @@ public class OrderStatusActivity extends AppCompatActivity {
                     String statusInfo = orderManager.getStatus().toString();
                     statusOrder.setText(statusInfo);
 
-                    if (orderManager.getStatus() == Order.OrderStatus.COMP) {
+//                    if (orderManager.getStatus() == Order.OrderStatus.COMP) {
+//                        completeOrder.setVisibility(View.VISIBLE);
+//                    }
+                    if (orderManager.isStatusCOMP(orderManager.getStatus())) {
                         completeOrder.setVisibility(View.VISIBLE);
                     }
                 }

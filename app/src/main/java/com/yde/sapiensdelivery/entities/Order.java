@@ -88,6 +88,10 @@ public class Order implements Serializable {
         this.status = OrderStatus.COMP;
     }
 
+    public boolean isStatusCOMP(Order.OrderStatus orderStatus) {
+        return orderStatus == OrderStatus.COMP;
+    }
+
     public DeliveryMan getDeliveryMan() {
         return deliveryMan;
     }
@@ -114,17 +118,6 @@ public class Order implements Serializable {
 
     public int getUID(){
         return this.UID;
-    }
-
-    public String getDeliverManDisplay() {
-        String start = "The Information of the Delivery Person completing your order is: \n";
-        String delName = this.deliveryMan.getName();
-        String delContact = this.deliveryMan.getNumber();
-        double delRate = this.deliveryMan.getRate();
-        String displayName = "Name: " + delName + "\n";
-        String displayContact = "Phone Number: " + delContact + "\n";
-        String displayRate = "Rating: " + delRate  + "\n";
-        return (start + displayName + displayContact + displayRate);
     }
 }
 

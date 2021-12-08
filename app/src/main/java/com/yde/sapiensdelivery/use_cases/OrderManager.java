@@ -117,6 +117,10 @@ public class OrderManager{
         return this.order.getStatus();
     }
 
+    public boolean isStatusCOMP(Order.OrderStatus orderStatus){
+        return order.isStatusCOMP(orderStatus);
+    }
+
     public void setDeliveryMan(DeliveryMan deliveryMan){
         this.order.setDeliveryMan(deliveryMan);
     }
