@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.yde.sapiensdelivery.R;
+import com.yde.sapiensdelivery.controllers.customer.CustomerActivity;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
 
@@ -42,9 +44,8 @@ public class DeliveryManActivity extends AppCompatActivity {
         });
 
         status.setOnClickListener(v -> {
-            Intent intent = new Intent( DeliveryManActivity.this, OrderStatusDeliveryManActivity.class);
-            dm.passValue(intent);
-            startActivity(intent);
+            String message = "You have no active orders right now.";
+            Toast.makeText(DeliveryManActivity.this, message, Toast.LENGTH_LONG).show();
         });
     }
 }
