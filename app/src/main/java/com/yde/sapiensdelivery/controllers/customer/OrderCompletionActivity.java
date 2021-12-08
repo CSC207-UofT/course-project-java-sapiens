@@ -61,8 +61,8 @@ public class OrderCompletionActivity extends AppCompatActivity {
                             OrderCompletionActivity.this, android.R.layout.simple_list_item_1, slStrings);
                     shoppingLists.setAdapter(adapter);
 
-                    totalTV.setText("Total: $ " + orderManager.getTotalPrice() +
-                            orderManager.calculateJourney().get("Total Cost"));
+                    totalTV.setText("Total: $ " + orderManager.getTotalPrice()); //+
+                            //orderManager.calculateJourney().get("Total Cost"));
                     }
                 }
 

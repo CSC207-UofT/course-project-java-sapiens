@@ -133,7 +133,7 @@ public class OrderManager{
         return this.order.getTotalPrice();
     }
 
-    public HashMap<String, Double> calculateJourney(Locator locator){
+    public double calculateJourney(Locator locator){
         double total_distance = 0;
         double total_duration = 0;
         double total_cost = 0;
@@ -167,15 +167,11 @@ public class OrderManager{
 
         }
 
-        total_cost = total_distance * 10;
+        total_cost = total_distance * 0.75;
 
-        HashMap<String, Double> journey= new HashMap<>();
+        order.setTotalDistance(total_distance);
 
-        journey.put("Total Distance", total_distance);
-        journey.put("Total Duration", total_duration);
-        journey.put("Total Cost", total_cost);
-
-        return journey;
+        return total_cost;
     }
 
     public void updateStatusComp(String customerName) {
