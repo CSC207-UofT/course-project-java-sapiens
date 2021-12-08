@@ -8,23 +8,20 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.yde.sapiensdelivery.R;
+import com.yde.sapiensdelivery.controllers.customer.CustomerActivity;
+import com.yde.sapiensdelivery.controllers.customer.CustomerProfileActivity;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
 
 
 public class DeliveryManActivity extends AppCompatActivity {
 
-    //Commented portion belongs to DeliveryManProfileActivity, which may or may not be added
-
-//    public static final String fullName = "full";
-    public static final String userName = "user";
-    public static final String phone = "phone";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery_man);
 
-//        Button profile = findViewById(R.id.profileD);
+        Button profile = findViewById(R.id.profileD);
         Button status = findViewById(R.id.statusD);
         Button takeOrder = findViewById(R.id.takeOrderD);
         TextView welcome = findViewById(R.id.welcomeD);
@@ -34,13 +31,11 @@ public class DeliveryManActivity extends AppCompatActivity {
         String welcomeMessage = "Welcome " + dm.getName() + "!";
         welcome.setText(welcomeMessage);
 
-//        profile.setOnClickListener(v -> {
-////            Intent intent = new Intent( DeliveryManActivity.this, CustomerProfileActivity.class);
-////            intent.putExtra(fullName,dm.getName());
-////            intent.putExtra(userName,dm.getUsername());
-////            intent.putExtra(phone,dm.getPhoneNumber());
-////            startActivity(intent);
-//        });
+        profile.setOnClickListener(v -> {
+            Intent intent = new Intent( DeliveryManActivity.this, DeliveryManProfileActivity.class);
+            dm.passValue(intent);
+            startActivity(intent);
+        });
 
         takeOrder.setOnClickListener(v -> {
             Intent intent = new Intent( DeliveryManActivity.this, ChooseCustomerActivity.class);
