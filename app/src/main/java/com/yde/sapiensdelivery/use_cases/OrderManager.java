@@ -133,9 +133,10 @@ public class OrderManager{
         return this.order.getTotalPrice();
     }
 
-    public HashMap<String, Float> calculateJourney(Locator locator){
-        float total_distance = 0;
-        float total_duration = 0;
+    public HashMap<String, Double> calculateJourney(Locator locator){
+        double total_distance = 0;
+        double total_duration = 0;
+        double total_cost = 0;
 
         String start = this.order.getDeliveryMan().getLocation();
         String end = this.order.getCustomer().getLocation();
@@ -166,10 +167,13 @@ public class OrderManager{
 
         }
 
-        HashMap<String, Float> journey= new HashMap<>();
+        total_cost = total_distance * 10;
+
+        HashMap<String, Double> journey= new HashMap<>();
 
         journey.put("Total Distance", total_distance);
         journey.put("Total Duration", total_duration);
+        journey.put("Total Cost", total_cost);
 
         return journey;
     }
