@@ -9,8 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.yde.sapiensdelivery.R;
 import com.yde.sapiensdelivery.controllers.adapters.CustomersRVAdapter;
+import com.yde.sapiensdelivery.controllers.customer.CustomerActivity;
+import com.yde.sapiensdelivery.controllers.customer.OrderStatusActivity;
+import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.entities.ShoppingList;
+import com.yde.sapiensdelivery.gateways.CustomerGateway;
 import com.yde.sapiensdelivery.gateways.ShoppingListGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
@@ -33,6 +37,8 @@ public class ChooseCustomerActivity extends AppCompatActivity implements Custome
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_customer);
 
+        customerToSL = new HashMap<>();
+
         // Get data from Intent
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -42,8 +48,6 @@ public class ChooseCustomerActivity extends AppCompatActivity implements Custome
 
         customersRV = findViewById(R.id.customers_rv);
         customersRV.setLayoutManager(new LinearLayoutManager(this));
-
-        HashMap<String, ArrayList<ShoppingList>> customerToSL = new HashMap<>();
 
         ShoppingListGateway shoppingListGateway = new ShoppingListGateway();
         shoppingListGateway.getAll(customerToSL, new OnDataReadListener() {
@@ -78,11 +82,24 @@ public class ChooseCustomerActivity extends AppCompatActivity implements Custome
     public void onAcceptClick(int position) {
         OrderManager orderManager = new OrderManager();
 
-        // TODO get Customer from DB to create an order
         String customer = customers.get(position);
         ArrayList<ShoppingList> shoppingLists = customerToSL.get(customer);
-//        orderManager.createOrder(deliveryMan, customer, shoppingLists);
 
-        // TODO pass the intent
+        CustomerGateway customerGateway = new CustomerGateway("CUSTOMER");
+        customerGateway.get(customer, new OnDataReadListener() {
+
+            @Override
+            public void onSuccess() {
+                deliveryManManager.createOrder(orderManager, (Customer) getSavedObject(), shoppingLists);
+                Intent intent = new Intent( ChooseCustomerActivity.this, OrderStatusDeliveryManActivity.class);
+                deliveryManManager.passValue(intent);
+                startActivity(intent);// Order is available to display
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
     }
 }

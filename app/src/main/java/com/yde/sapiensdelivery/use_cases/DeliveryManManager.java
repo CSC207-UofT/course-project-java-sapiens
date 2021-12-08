@@ -2,13 +2,16 @@ package com.yde.sapiensdelivery.use_cases;
 
 import android.content.Intent;
 
+import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
+import com.yde.sapiensdelivery.entities.ShoppingList;
 import com.yde.sapiensdelivery.gateways.DeliveryManGateway;
+import com.yde.sapiensdelivery.gateways.OrderGateway;
 
 import java.util.ArrayList;
 
 public class DeliveryManManager implements Manager{
-    private DeliveryMan deliveryMan;
+    private final DeliveryMan deliveryMan;
 
     /**
      * Creates an OrderManager given an already existing deliveryMan
@@ -134,5 +137,10 @@ public class DeliveryManManager implements Manager{
     @Override
     public void passValue(Intent intent) {
         intent.putExtra("DELIVERYMAN", deliveryMan);
+    }
+
+    public void createOrder(OrderManager orderManager, Customer customer, ArrayList<ShoppingList> shoppingLists) {
+        OrderGateway orderGateway = new OrderGateway();
+        orderGateway.save(customer.getUname(), orderManager.createOrder(deliveryMan, customer, shoppingLists));
     }
 }

@@ -9,7 +9,7 @@ import com.yde.sapiensdelivery.entities.ShoppingList;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ShoppingListManager implements Serializable {
+public class ShoppingListManager {
 
     private ShoppingList shoppingList;
     private Outlet outlet;
