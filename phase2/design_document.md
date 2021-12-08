@@ -68,4 +68,6 @@ This project structures the source code files into packages based on the clean a
 ## Our Use of GitHub Features: 
 We made our own branches whenever we implemented a new feature, and the branches are merged through Pull Requests after they had been completed. We also marked errors in our code following the feedbacks given in Phase 1 through using GitHub Issues, and assigned these issues in GitHub. The Project feature has been used to keep track of the progress of a list of features we needed to implement. 
 
+## Our Test Coverage:
+We covered all the key methods in all of our backend Use Cases and Entity classes, since they are essential to our program and we want to ensure their correctness. The only methods we haven't covered are some getter and setter methods that simply set or return the value of instance attributes stored in the Use Case or Entity object. 
 

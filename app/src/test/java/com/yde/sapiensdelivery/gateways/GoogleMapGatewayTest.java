@@ -45,4 +45,19 @@ public class GoogleMapGatewayTest {
 
         assertEquals(expected, result);
     }
+
+
+    @Test
+    public void testFindMultiRouteInfoDriving() throws IOException, JSONException {
+        String[] waypoints = {"High Park,Canada", "M4P2K1"};
+        HashMap<String, Double> result = gmg.findMultiRouteInfo("Dundas West",
+                "University of Toronto",
+                waypoints,
+                Locator.transportation.driving);
+        HashMap<String, Double> expected = new HashMap<String, Double>();
+        expected.put("Duration", 1.12);
+        expected.put("Distance", 48.34);
+
+        assertEquals(expected, result);
+    }
 }
