@@ -1,20 +1,16 @@
 package com.yde.sapiensdelivery.controllers.customer;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.yde.sapiensdelivery.R;
-import com.yde.sapiensdelivery.controllers.delivery_man.OrderStatusDeliveryManActivity;
 import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.Order;
 import com.yde.sapiensdelivery.entities.ShoppingList;
@@ -25,7 +21,6 @@ import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
 import com.yde.sapiensdelivery.use_cases.OrderManager;
 import com.yde.sapiensdelivery.use_cases.ShoppingListManager;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class OrderCompletionActivity extends AppCompatActivity {

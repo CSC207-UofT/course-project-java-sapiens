@@ -1,10 +1,5 @@
 package com.yde.sapiensdelivery.controllers;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.Manifest;
 import android.content.Intent;
 import android.os.Build;
@@ -14,13 +9,16 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.yde.sapiensdelivery.R;
 import com.yde.sapiensdelivery.controllers.customer.CustomerActivity;
 import com.yde.sapiensdelivery.controllers.delivery_man.DeliveryManActivity;
 import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
-import com.yde.sapiensdelivery.gateways.CurrentLocationFinder;
-import com.yde.sapiensdelivery.gateways.DeliveryManGateway;
 import com.yde.sapiensdelivery.gateways.GoogleMapGateway;
 import com.yde.sapiensdelivery.gateways.UserGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
