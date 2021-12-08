@@ -54,13 +54,23 @@ public class GoogleMapGateway implements Locator {
 
     }
 
+    /**
+     * Return a hashmap of the duration (in hours) and the distance (in km) of the route
+     * between origin and destination according to the specified transportation.
+     * @param origin The starting location of the route
+     * @param destination the ending location of the route
+     * @param waypoints The location of stopovers between the origin and destination.
+     * @param transportation the type of transportation used.
+     * @return a hashMap of the following structure:
+     * {"Distance": double, "Duration": double}
+     */
     public HashMap<String, Double> findMultiRouteInfo(String origin,
                                                  String destination,
                                                  String[] waypoints,
                                                  transportation transportation)
                                                  throws IOException, JSONException {
 
-        return routeInfoFinder.findRouteInfo(origin, destination, transportation);
+        return routeInfoFinder.findMultiRouteInfo(origin, destination, waypoints,transportation);
 
     }
 
