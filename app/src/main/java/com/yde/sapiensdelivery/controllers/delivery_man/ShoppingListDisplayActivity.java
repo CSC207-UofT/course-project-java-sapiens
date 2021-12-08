@@ -29,7 +29,6 @@ public class ShoppingListDisplayActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         ArrayList<ShoppingList> shoppingLists = (ArrayList<ShoppingList>) extras.getSerializable("shopping_lists");
 
-        Button backButton = findViewById(R.id.deli_dis_back_BT);
         ListView listView = findViewById(R.id.LV_deli_display);
         TextView totalTV = findViewById(R.id.deli_dis_total_top);
 
@@ -45,11 +44,5 @@ public class ShoppingListDisplayActivity extends AppCompatActivity {
         // Set ListView adapter
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, slStrings);
         listView.setAdapter(adapter);
-
-        backButton.setOnClickListener(v -> {
-            Log.d(shoppingLists.get(0).displayEntire(), "SHOW THIS");
-            Intent intent = new Intent(ShoppingListDisplayActivity.this, ChooseCustomerActivity.class);
-            startActivity(intent);
-        });
     }
 }
