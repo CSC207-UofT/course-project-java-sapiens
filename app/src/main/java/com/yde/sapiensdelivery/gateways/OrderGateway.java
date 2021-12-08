@@ -8,6 +8,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.yde.sapiensdelivery.entities.Order;
 import com.yde.sapiensdelivery.gateways.database.DBGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
+import com.yde.sapiensdelivery.use_cases.OrderManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,6 +36,11 @@ public class OrderGateway extends DBGateway<String, Order> {
                     if((Objects.requireNonNull(childSnapshot.child("deliveryMan").child("uname").getValue(String.class)))
                             .equals(delStr)){
                         ArrayList<Object> doubleData =  new ArrayList<>();
+                        OrderManager orderManager = new OrderManager(childSnapshot.getValue(Order.class));
+                        if(orderManager.getStatus() == Order.OrderStatus.COMP){
+                            continue;
+                        }
+
                         doubleData.add(childSnapshot.getValue(Order.class));
                         doubleData.add(childSnapshot.getKey());
 

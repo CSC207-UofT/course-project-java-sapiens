@@ -10,16 +10,10 @@
         android:id="@+id/LV_deli_display"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/deli_dis_back_BT"
+        android:layout_below="@+id/deli_dis_total_top"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp" />
 
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        android:id="@+id/deli_dis_back_BT" />
 
     <TextView
         android:id="@+id/deli_dis_total_top"

@@ -9,9 +9,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.yde.sapiensdelivery.R;
-import com.yde.sapiensdelivery.controllers.customer.CustomerActivity;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
+import com.yde.sapiensdelivery.entities.Order;
+import com.yde.sapiensdelivery.gateways.OrderGateway;
+import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
+import com.yde.sapiensdelivery.use_cases.OrderManager;
+
+import java.util.ArrayList;
 
 
 public class DeliveryManActivity extends AppCompatActivity {
@@ -44,8 +49,31 @@ public class DeliveryManActivity extends AppCompatActivity {
         });
 
         status.setOnClickListener(v -> {
-            String message = "You have no active orders right now.";
-            Toast.makeText(DeliveryManActivity.this, message, Toast.LENGTH_LONG).show();
+            OrderGateway orderGateway = new OrderGateway();
+
+            orderGateway.getByDeliveryman(dm.getUsername(), new OnDataReadListener() {
+                @Override
+                public void onSuccess() {
+                    Intent intent = new Intent( DeliveryManActivity.this, OrderStatusDeliveryManActivity.class);
+                    ArrayList<Object> doubleData = (ArrayList<Object>) getSavedObject();
+                    OrderManager orderManager = new OrderManager((Order) doubleData.get(0));
+
+                    if(orderManager.getStatus() == Order.OrderStatus.COMP){
+                        String message = "You have no active orders right now.";
+                        Toast.makeText(DeliveryManActivity.this, message, Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        dm.passValue(intent);
+                        startActivity(intent);
+                    }
+                }
+
+                @Override
+                public void onFailure() {
+                    String message = "You have no active orders right now.";
+                    Toast.makeText(DeliveryManActivity.this, message, Toast.LENGTH_LONG).show();
+                }
+            });
         });
     }
 }
