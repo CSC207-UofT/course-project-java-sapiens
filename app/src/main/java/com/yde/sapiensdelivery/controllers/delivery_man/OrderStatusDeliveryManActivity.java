@@ -14,6 +14,7 @@ import com.yde.sapiensdelivery.R;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.entities.Order;
 import com.yde.sapiensdelivery.entities.ShoppingList;
+import com.yde.sapiensdelivery.gateways.GoogleMapGateway;
 import com.yde.sapiensdelivery.gateways.OrderGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
@@ -42,6 +43,7 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
 
         DeliveryManManager dm = new DeliveryManManager((DeliveryMan) getIntent().getSerializableExtra("DELIVERYMAN"));
         OrderGateway orderGateway = new OrderGateway();
+        GoogleMapGateway googleMapGateway = new GoogleMapGateway();
 
         orderGateway.getByDeliveryman(dm.getUsername(), new OnDataReadListener() {
             @SuppressLint("SetTextI18n")
@@ -72,7 +74,8 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
                 nameTV.setText(cusName);
                 addressTV.setText(address);
                 phoneNumTV.setText(phoneNum);
-                totalTV.setText("Total: $ " + orderManager.getTotalPrice());
+                double travel_cost = orderManager.calculateJourney(googleMapGateway);
+                totalTV.setText("Total: $ " + (orderManager.getTotalPrice() + travel_cost));
             }
 
             @Override
