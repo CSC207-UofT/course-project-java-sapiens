@@ -2,6 +2,8 @@ package com.yde.sapiensdelivery.gateways;
 
 import android.app.Activity;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.yde.sapiensdelivery.use_cases.Locator;
 
 import org.json.JSONException;

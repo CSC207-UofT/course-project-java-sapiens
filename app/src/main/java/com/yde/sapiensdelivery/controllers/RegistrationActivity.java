@@ -195,7 +195,6 @@ public class RegistrationActivity extends AppCompatActivity {
             address.setError("This field is missing");
             isEmpty = true;
         }
-
         return isEmpty;
     }
 }
