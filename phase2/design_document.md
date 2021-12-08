@@ -71,3 +71,6 @@ We made our own branches whenever we implemented a new feature, and the branches
 ## Our Test Coverage:
 We covered all the key methods in all of our backend Use Cases and Entity classes, since they are essential to our program and we want to ensure their correctness. The only methods we haven't covered are some getter and setter methods that simply set or return the value of instance attributes stored in the Use Case or Entity object. 
 
+## Progress Report:
+Fore more details on our progress report and individual contributions, please check this seperate [markdown file](https://github.com/CSC207-UofT/course-project-java-sapiens/blob/main/phase2/progress_report.md).
+
