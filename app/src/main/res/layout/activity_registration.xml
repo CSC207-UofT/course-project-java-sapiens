@@ -206,35 +206,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/rate_ll"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:orientation="vertical"
-                android:paddingLeft="10dp"
-                android:visibility="gone">
-
-
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:paddingBottom="10dp"
-                    android:text="Rate" />
-
-                <EditText
-                    android:id="@+id/rate_sign_up"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/border"
-                    android:ems="10"
-                    android:inputType="numberDecimal" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/transport_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

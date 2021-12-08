@@ -9,12 +9,12 @@ import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.Toast;
 import com.yde.sapiensdelivery.R;
+import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
+import com.yde.sapiensdelivery.use_cases.CustomerManager;
 import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
 
 public class DeliveryRatingActivity extends AppCompatActivity {
-
-    float myRating  = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +24,20 @@ public class DeliveryRatingActivity extends AppCompatActivity {
         Button main = findViewById(R.id.mainD);
         RatingBar rating = findViewById(R.id.ratingBarD);
 
+        CustomerManager customerManager = new CustomerManager((Customer)
+                getIntent().getSerializableExtra("CUSTOMER"));
+
         /*
          * after click the main button, it goes back to DeliveryActivity page
          */
         main.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                DeliveryManManager dm = new DeliveryManManager((DeliveryMan)
-                        getIntent().getSerializableExtra("DELIVERYMAN"));
+                float myRating = rating.getRating();
+                customerManager.updateRating(myRating);
+
                 Intent intent = new Intent( DeliveryRatingActivity.this, DeliveryManActivity.class);
-                dm.passValue(intent);
+                customerManager.passValue(intent);
                 startActivity(intent);
             }
         });
@@ -46,7 +50,6 @@ public class DeliveryRatingActivity extends AppCompatActivity {
             public void onRatingChanged(RatingBar ratingBarD, float rating, boolean fromUser) {
                 int value = (int) rating;
                 String message = null;
-                myRating  = ratingBarD.getRating();
 
                 switch(value){
                     case 1:

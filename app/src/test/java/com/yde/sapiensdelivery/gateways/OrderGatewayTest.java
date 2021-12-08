@@ -21,12 +21,12 @@ public class OrderGatewayTest {
         og = new OrderGateway();
 
         DeliveryMan kevin = new DeliveryMan("Kevin", "ADDRESS", "4164449999", "kevin",
-                DigestUtils.sha256Hex("ilikesparrows123"), (long) 1111, "MX-245", (float) 2.4);
+                DigestUtils.sha256Hex("ilikesparrows123"), (long) 1111, "MX-245");
 
         Customer ke = new Customer("Kevin", "ADDRESS", "4164449999", "kevin",
                 DigestUtils.sha256Hex("ilikesparrows123"));
 
-        og.save("jsjs", new Order(kevin, ke, 1, new ArrayList<>()));
+        og.save("jsjs", new Order(kevin, ke, new ArrayList<>()));
         Thread.sleep(5000);
     }
 
