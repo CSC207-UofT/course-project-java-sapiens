@@ -85,7 +85,7 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
             orderManager.updateStatusComp(customerName);
 
             Intent intent = new Intent( OrderStatusDeliveryManActivity.this,
-                                                     DeliveryManActivity.class);
+                                                     DeliveryRatingActivity.class);
             dm.passValue(intent);
             startActivity(intent);
         });
