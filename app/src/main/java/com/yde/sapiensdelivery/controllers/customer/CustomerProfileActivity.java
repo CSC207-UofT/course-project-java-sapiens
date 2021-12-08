@@ -17,9 +17,9 @@ public class CustomerProfileActivity extends AppCompatActivity {
 
         CustomerManager cm = new CustomerManager((Customer) getIntent().getSerializableExtra("CUSTOMER"));
 
-        TextView name = (TextView) findViewById(R.id.name_view);
-        TextView phoneView = (TextView) findViewById(R.id.ph_num_view);
-        TextView address = (TextView) findViewById(R.id.address_view);
+        TextView name = findViewById(R.id.name_view);
+        TextView phoneView = findViewById(R.id.ph_num_view);
+        TextView address = findViewById(R.id.license_view);
 
         // get information from use-cases
         String nameStr = cm.getName();

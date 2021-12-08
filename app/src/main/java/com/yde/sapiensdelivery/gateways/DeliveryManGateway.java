@@ -62,7 +62,7 @@ public class DeliveryManGateway extends UserGateway {
      */
     @Override
     protected boolean isRegexInvalid(HashMap<String, String> fieldToValue, ArrayList<Integer> errorCodes) {
-        boolean isPhoneValid = super.isRegexInvalid(fieldToValue, errorCodes);
+        boolean isPhoneInValid = super.isRegexInvalid(fieldToValue, errorCodes);
 
         String sin = fieldToValue.get("SIN");
         boolean isSinValid = InfoValidityChecker.isSinValid(sin);
@@ -76,7 +76,7 @@ public class DeliveryManGateway extends UserGateway {
             errorCodes.add(4); // Error Code for transport
         }
 
-        return !isPhoneValid || !isSinValid || !isPlateValid;
+        return isPhoneInValid || !isSinValid || !isPlateValid;
     }
 
     /**
