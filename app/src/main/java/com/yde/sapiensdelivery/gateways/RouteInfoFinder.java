@@ -2,6 +2,7 @@ package com.yde.sapiensdelivery.gateways;
 
 import com.yde.sapiensdelivery.use_cases.Locator;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,7 +32,24 @@ public class RouteInfoFinder {
 
         HashMap<String, Double> routeInfo = new HashMap<String, Double>();
 
-        String url = urlFactory(origin, destination, transportation);
+        String url = urlFactory(origin, destination, null ,transportation);
+        JSONObject json = this.readJsonFromUrl(url);
+
+        routeInfo.put("Duration", routeInfoParser(json, infoType.duration));
+        routeInfo.put("Distance", routeInfoParser(json, infoType.distance));
+        return routeInfo;
+    }
+
+
+    public HashMap<String, Double> findMultiRouteInfo(String origin,
+                                                      String destination,
+                                                      String[] waypoints,
+                                                      Locator.transportation transportation)
+            throws IOException, JSONException {
+
+        HashMap<String, Double> routeInfo = new HashMap<String, Double>();
+
+        String url = urlFactory(origin, destination, waypoints, transportation);
         JSONObject json = this.readJsonFromUrl(url);
 
         routeInfo.put("Duration", routeInfoParser(json, infoType.duration));
@@ -45,21 +63,32 @@ public class RouteInfoFinder {
      */
     private double routeInfoParser(JSONObject infoJson, infoType type) throws JSONException{
         double returnInfo = 0;
-        JSONObject info = infoJson.getJSONArray("routes").
-                getJSONObject(0).
-                getJSONArray("legs").
-                getJSONObject(0);
 
-        switch (type){
-            case duration:
-                returnInfo = info.getJSONObject("duration").getDouble("value");
-                returnInfo = Math.round(returnInfo / 3600 * 100) / 100.0;
-                break;
-            case distance:
-                returnInfo = info.getJSONObject("distance").getDouble("value");
-                returnInfo = Math.round(returnInfo / 1000 * 100) / 100.0;
-                break;
+        JSONArray infos = infoJson.getJSONArray("routes").
+                getJSONObject(0).
+                getJSONArray("legs");
+
+        int index = 0;
+        JSONObject info;
+        double unprocessed;
+        while(index < infos.length()){
+            info = infos.getJSONObject(index);
+            switch (type){
+                case duration:
+                    // convert unit and round to the second decimal place
+                    unprocessed = info.getJSONObject("duration").getDouble("value");
+                    returnInfo = returnInfo + Math.round(unprocessed / 3600 * 100) / 100.0;
+                    index = index + 1;
+                    break;
+                case distance:
+                    // convert unit and round to the second decimal place
+                    unprocessed = info.getJSONObject("distance").getDouble("value");
+                    returnInfo = returnInfo + Math.round(unprocessed / 1000 * 100) / 100.0;
+                    index = index + 1;
+                    break;
+            }
         }
+
         return returnInfo;
     }
 
@@ -68,11 +97,22 @@ public class RouteInfoFinder {
      */
     private String urlFactory(String origin,
                               String destination,
+                              String[] waypoints,
                               Locator.transportation transportation){
         String url = "";
+        StringBuffer points = new StringBuffer();
 
         origin = origin.replaceAll(" ", "%");
         destination = destination.replaceAll(" ", "%");
+
+
+        if (waypoints != null){
+            points.append("&waypoints=optimize:true|");
+            for (String point : waypoints){
+                point = point.replaceAll(" ", "%");
+                points.append(point).append("|");
+            }
+        }
 
         switch (transportation){
             case walking:
@@ -80,6 +120,7 @@ public class RouteInfoFinder {
                         origin +
                         "&destination=" +
                         destination +
+                        points.toString() +
                         "&mode=walking" +
                         "&key=AIzaSyAxeqdWPsIhW7KXVSef1uH0OmAX8Pnqb2M";
                 break;
@@ -88,6 +129,7 @@ public class RouteInfoFinder {
                         origin +
                         "&destination=" +
                         destination +
+                        points.toString() +
                         "&mode=driving" +
                         "&key=AIzaSyAxeqdWPsIhW7KXVSef1uH0OmAX8Pnqb2M";
                 break;
@@ -96,6 +138,7 @@ public class RouteInfoFinder {
                         origin +
                         "&destination=" +
                         destination +
+                        points.toString() +
                         "&mode=bicycling" +
                         "&key=AIzaSyAxeqdWPsIhW7KXVSef1uH0OmAX8Pnqb2M";
                 break;
