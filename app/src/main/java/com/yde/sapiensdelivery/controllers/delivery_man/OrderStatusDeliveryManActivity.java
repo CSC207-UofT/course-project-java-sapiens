@@ -93,11 +93,6 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
 
         otwOrderBT.setOnClickListener(v -> {
             orderManager.updateStatusOTW(customerName);
-
-            Intent intent = new Intent( OrderStatusDeliveryManActivity.this,
-                    DeliveryManActivity.class);
-            dm.passValue(intent);
-            startActivity(intent);
         });
 
     }
