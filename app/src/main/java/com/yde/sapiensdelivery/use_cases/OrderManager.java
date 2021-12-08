@@ -4,6 +4,7 @@ import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.entities.Order;
 import com.yde.sapiensdelivery.entities.ShoppingList;
+import com.yde.sapiensdelivery.gateways.OrderGateway;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -169,45 +170,15 @@ public class OrderManager{
         return journey;
     }
 
-//    /**
-//     * All Manager classes in controllers.use_cases have some transactions to save.
-//     *
-//     * @param customerUsername The username with which the database can be queried
-//     * @param order The corresponding Order
-//     */
-//    @Override
-//    public void save(String customerUsername, Order order) {
-//        Map<String, Order> toSave = new HashMap<>();
-//        toSave.put(customerUsername, (Order) order);
-//
-//        for(ShoppingList o: this.order.getShoppingLists()){
-//            stops.add(o.getOutletAddress());
-//        }
-//        stops.add(end);
-//
-//        String transport = order.getDeliveryMan().getTransport();
-//
-//
-//        for(int i = 0; i < stops.size(); i++){
-//            try {
-//                HashMap<String, Double> info = locator.findRouteInfo
-//                        (stops.get(i), stops.get(i + 1), Locator.transportation.valueOf(transport));
-//                double distance = info.get("Distance");
-//                double duration = info.get("Duration");
-//
-//                total_distance += distance;
-//                total_duration += duration;
-//            } catch (Exception e){
-//                // TODO: Error cuz either wrong address or internet issues.
-//            }
-//
-//        }
-//
-//        HashMap<String, Float> journey= new HashMap<>();
-//
-//        journey.put("Total Distance", total_distance);
-//        journey.put("Total Duration", total_duration);
-//
-//        return journey;
-//    }
+    public void updateStatusComp(String customerName) {
+        order.setStatusCOMP();
+        OrderGateway orderGateway = new OrderGateway();
+        orderGateway.save(customerName, order);
+    }
+
+    public void updateStatusOTW(String customerName) {
+        order.setStatusOTW();
+        OrderGateway orderGateway = new OrderGateway();
+        orderGateway.save(customerName, order);
+    }
 }

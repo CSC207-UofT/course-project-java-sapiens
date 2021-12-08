@@ -54,4 +54,14 @@ public class GoogleMapGateway implements Locator {
 
     }
 
+    public HashMap<String, Double> findMultiRouteInfo(String origin,
+                                                 String destination,
+                                                 String[] waypoints,
+                                                 transportation transportation)
+                                                 throws IOException, JSONException {
+
+        return routeInfoFinder.findRouteInfo(origin, destination, transportation);
+
+    }
+
 }

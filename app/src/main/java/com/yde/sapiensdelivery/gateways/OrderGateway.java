@@ -9,6 +9,7 @@ import com.yde.sapiensdelivery.entities.Order;
 import com.yde.sapiensdelivery.gateways.database.DBGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +19,37 @@ public class OrderGateway extends DBGateway<String, Order> {
 
     public OrderGateway(){
         ref = database.getReference(REF_PATH);
+    }
+
+    /**
+     * Another getter function, although here,
+     * @param obj Name of delivery man
+     * @param onDataReadListener Define onSuccess and onFailure actions
+     */
+    public void getByDeliveryman(String obj, OnDataReadListener onDataReadListener) {
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                    if(childSnapshot.hasChild(obj)){
+                        ArrayList<Object> doubleData =  new ArrayList<>();
+                        doubleData.add(snapshot.getValue(Order.class));
+                        doubleData.add(childSnapshot.getKey());
+
+                        onDataReadListener.setSavedObject(doubleData);
+                        onDataReadListener.onSuccess();
+                        return;
+                    }
+                }
+
+                onDataReadListener.onFailure();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                onDataReadListener.onFailure();
+            }
+        });
     }
 
     @Override

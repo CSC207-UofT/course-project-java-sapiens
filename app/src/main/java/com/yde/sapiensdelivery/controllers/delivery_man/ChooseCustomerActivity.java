@@ -1,18 +1,17 @@
 package com.yde.sapiensdelivery.controllers.delivery_man;
 
+import android.content.Intent;
+import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
 
 import com.yde.sapiensdelivery.R;
 import com.yde.sapiensdelivery.controllers.adapters.CustomersRVAdapter;
 import com.yde.sapiensdelivery.entities.Commodity;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.entities.ShoppingList;
+import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
 import com.yde.sapiensdelivery.use_cases.OrderManager;
 
 import java.io.Serializable;
@@ -26,7 +25,7 @@ public class ChooseCustomerActivity extends AppCompatActivity implements Custome
     CustomersRVAdapter customersAdapter;
     HashMap<String, ArrayList<ShoppingList>> customerToSL;
 
-    DeliveryMan deliveryMan;
+    DeliveryManManager deliveryManManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +35,7 @@ public class ChooseCustomerActivity extends AppCompatActivity implements Custome
         // Get data from Intent
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            DeliveryMan deliveryman = (DeliveryMan) extras.getSerializable("DELIVERYMAN");
+            deliveryManManager = new DeliveryManManager((DeliveryMan) extras.getSerializable("DELIVERYMAN"));
         }
 
 
@@ -71,15 +70,10 @@ public class ChooseCustomerActivity extends AppCompatActivity implements Custome
     public void onDetailsClick(int position) {
         Intent intent = new Intent(ChooseCustomerActivity.this, ShoppingListDisplayActivity.class);
 
-//        Log.d("Position is " + position, "MESSAGE");
-
         String customer = customers.get(position);
         ArrayList<ShoppingList> shoppingLists = customerToSL.get(customer);
 
-        assert shoppingLists != null;
-//        Log.d("Total is " + shoppingLists.toString(), "MESSAGE");
-
-        intent.putExtra("shopping_lists", (Serializable) shoppingLists);
+        intent.putExtra("shopping_lists", shoppingLists);
         startActivity(intent);
     }
 

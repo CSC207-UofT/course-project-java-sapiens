@@ -8,8 +8,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.yde.sapiensdelivery.R;
-import com.yde.sapiensdelivery.controllers.customer.CustomerActivity;
-import com.yde.sapiensdelivery.controllers.customer.CustomerProfileActivity;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
 
