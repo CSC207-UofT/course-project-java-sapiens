@@ -5,6 +5,7 @@
 Our project is a delivery service App named Sapiens Delivery that allows customers who use our app to create a delivery order from different stores, each with a list of items the customer wants to buy. Our app will then pair the customer with a deliveryman who delivery the customer's order. After the order has been delivered and completed, the customer will be prompted to pay the deliveryman, and then both the deliveryman and the customer can provide a rating for each other.  
 
 For more details, please check our [specification.md file](https://git.io/JMpmy). 
+
 Note about using our program: if you click sign in as deliveryman and the app crashes, that's due to your last know location not being recognized by the emulator you're using. Please manually open the Google Maps app on your emulator to detect your location again. 
 
 ## Major Changes We Made in Phase 2:  
