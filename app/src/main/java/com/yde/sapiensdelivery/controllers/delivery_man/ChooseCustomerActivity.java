@@ -17,6 +17,7 @@ import com.yde.sapiensdelivery.entities.ShoppingList;
 import com.yde.sapiensdelivery.gateways.CustomerGateway;
 import com.yde.sapiensdelivery.gateways.ShoppingListGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
+import com.yde.sapiensdelivery.use_cases.CustomerManager;
 import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
 import com.yde.sapiensdelivery.use_cases.OrderManager;
 
