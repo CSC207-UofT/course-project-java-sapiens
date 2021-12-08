@@ -21,4 +21,6 @@
     <string name="phone_number_deli_Ostatus">phone number</string>
     <string name="customer_name_deli_Ostatus">Customer Name</string>
     <string name="order_on_the_way">Order On The Way</string>
+    <string name="waiting_for_a_delivery_man_to_take_your_order">Waiting for a Delivery Man to Take Your Order…</string>
+    <string name="proceed">Proceed</string>
 </resources>
