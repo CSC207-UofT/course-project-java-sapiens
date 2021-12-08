@@ -14,7 +14,7 @@
 ## Summary of each group member's contributions in phase 2 and a link to their significant pull requests. 
 - Kevin: Completed 4 Activities and fixed Clean Architecture violations from Phase 1. 
 
-  Significant pull request: https://git.io/JMpZR, this pull request included the creation to completion of two Activities that allows the User to create and modify their shopping list. Each Activity also uses a custom RecyclerView Adapter.
+  Significant pull request: https://git.io/JMpZR, this pull request included the creation to completion of two Activities that allows the User to create and modify their shopping lists. Each Activity also uses a custom RecyclerView Adapter, an on click listener interface to invert the dependency, and a custom spinner that allows for items to be filtered based on the keywords that the user enters. 
 
 - Patrick: Completed three activities and add JUnit tests. 
 
