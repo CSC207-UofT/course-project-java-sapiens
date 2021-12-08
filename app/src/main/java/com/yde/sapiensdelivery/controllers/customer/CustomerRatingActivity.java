@@ -9,6 +9,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.yde.sapiensdelivery.R;
+import com.yde.sapiensdelivery.entities.Customer;
+import com.yde.sapiensdelivery.use_cases.CustomerManager;
 
 public class CustomerRatingActivity extends AppCompatActivity {
     float myRating  = 0;
@@ -26,6 +28,9 @@ public class CustomerRatingActivity extends AppCompatActivity {
          */
         main.setOnClickListener(v -> {
             Intent intent = new Intent( CustomerRatingActivity.this, CustomerActivity.class);
+            CustomerManager customerManager = new CustomerManager((Customer)
+                    getIntent().getSerializableExtra("CUSTOMER"));
+            customerManager.passValue(intent);
             startActivity(intent);
         });
 

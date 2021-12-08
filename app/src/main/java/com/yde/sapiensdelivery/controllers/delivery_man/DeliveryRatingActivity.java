@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.Toast;
 import com.yde.sapiensdelivery.R;
+import com.yde.sapiensdelivery.entities.DeliveryMan;
+import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
 
 public class DeliveryRatingActivity extends AppCompatActivity {
 
@@ -28,7 +30,10 @@ public class DeliveryRatingActivity extends AppCompatActivity {
         main.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                DeliveryManManager dm = new DeliveryManManager((DeliveryMan)
+                        getIntent().getSerializableExtra("DELIVERYMAN"));
                 Intent intent = new Intent( DeliveryRatingActivity.this, DeliveryManActivity.class);
+                dm.passValue(intent);
                 startActivity(intent);
             }
         });
