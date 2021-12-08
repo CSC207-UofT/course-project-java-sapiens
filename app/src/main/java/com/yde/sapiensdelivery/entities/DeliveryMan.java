@@ -8,12 +8,10 @@ public class DeliveryMan extends User{
 
     private long sin;
     private String transport;
-    private float rate;
 
-    public DeliveryMan(String name, String location, String phoneNumber, String userName, String password, long sin, String transport, float rate) {
+    public DeliveryMan(String name, String location, String phoneNumber, String userName, String password, long sin, String transport) {
         super(name, location, phoneNumber, userName, password);
         this.transport = transport;
-        this.rate = rate;
         this.sin = sin;
     }
 
@@ -30,7 +28,7 @@ public class DeliveryMan extends User{
         super();
     }
 
-    public DeliveryMan(String samuel, int[] ints, String phoneNumber, String samuel1, String password, int sin, String transport, float rate) {
+    public DeliveryMan(String samuel, int[] ints, String phoneNumber, String samuel1, String password, int sin, String transport) {
     }
 
     public void setSin(long sin) {
@@ -45,15 +43,7 @@ public class DeliveryMan extends User{
         this.transport = transport;
     }
 
-    public void setRate(float rate) {
-        this.rate = rate;
-    }
-
     public long getSin() {
         return sin;
-    }
-
-    public float getRate() {
-        return rate;
     }
 }

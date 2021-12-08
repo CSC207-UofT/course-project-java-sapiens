@@ -13,7 +13,6 @@ public class Order implements Serializable {
     private OrderStatus status;
 
     private DeliveryMan deliveryMan;
-    private int UID;
 
     private Customer customer;
     private ArrayList<ShoppingList> shoppingLists;
@@ -21,10 +20,9 @@ public class Order implements Serializable {
     private double totalPrice;
 
     // Order stores a list of ShoppingLists, one ShoppingList for each store/outlet.
-    public Order(DeliveryMan deliveryMan, Customer customer, int UID, ArrayList<ShoppingList> shoppingLists) {
+    public Order(DeliveryMan deliveryMan, Customer customer, ArrayList<ShoppingList> shoppingLists) {
         this.deliveryMan  = deliveryMan;
         this.customer = customer;
-        this.UID = UID;
         this.shoppingLists = shoppingLists;
         this.totalPrice = 0;
         setStatusREC();
@@ -112,19 +110,13 @@ public class Order implements Serializable {
         return this.totalPrice;
     }
 
-    public int getUID(){
-        return this.UID;
-    }
-
     public String getDeliverManDisplay() {
         String start = "The Information of the Delivery Person completing your order is: \n";
         String delName = this.deliveryMan.getName();
         String delContact = this.deliveryMan.getNumber();
-        double delRate = this.deliveryMan.getRate();
         String displayName = "Name: " + delName + "\n";
         String displayContact = "Phone Number: " + delContact + "\n";
-        String displayRate = "Rating: " + delRate  + "\n";
-        return (start + displayName + displayContact + displayRate);
+        return (start + displayName + displayContact);
     }
 }
 

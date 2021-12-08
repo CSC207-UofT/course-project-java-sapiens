@@ -67,13 +67,6 @@ public class DeliveryManManager implements Manager{
     }
 
     /**
-     * return the Delivery man's rate
-     */
-    public double getRate(){
-        return this.deliveryMan.getRate();
-    }
-
-    /**
      * set the Delivery man's name
      */
     public void setName(String name){
@@ -122,13 +115,6 @@ public class DeliveryManManager implements Manager{
      */
     public void setTransport(String transport){
         this.deliveryMan.setTransport(transport);
-    }
-
-    /**
-     * set the Delivery man's rate.
-     */
-    public void setRate(float rate){
-        this.deliveryMan.setRate(rate);
     }
 
     @Override

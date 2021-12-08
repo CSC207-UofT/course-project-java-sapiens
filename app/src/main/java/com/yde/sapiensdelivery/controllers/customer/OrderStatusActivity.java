@@ -27,7 +27,6 @@ public class OrderStatusActivity extends AppCompatActivity {
 
         ProgressBar progressBar = findViewById(R.id.progressBar);
         Button completeOrder = findViewById(R.id.complete_order);
-        TextView orderName = findViewById(R.id.order_name);
         TextView statusOrder = findViewById(R.id.status_order);
         TextView contact = findViewById(R.id.contact);
         CardView cardView = findViewById(R.id.cardView);
@@ -48,9 +47,7 @@ public class OrderStatusActivity extends AppCompatActivity {
                     if (orderManager.getStatus() == Order.OrderStatus.COMP) {
                         completeOrder.setVisibility(View.VISIBLE);
                     } else if(orderManager.getStatus() == Order.OrderStatus.REC) {
-                        String name = orderManager.getName();
                         cardView.setVisibility(View.VISIBLE);
-                        orderName.setText(name);
                         String contactInfo = orderManager.getDeliveryManContact();
                         contact.setText(contactInfo);
                         String statusInfo = orderManager.getStatus().toString();
