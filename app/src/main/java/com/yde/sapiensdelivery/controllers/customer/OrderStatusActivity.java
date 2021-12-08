@@ -45,8 +45,6 @@ public class OrderStatusActivity extends AppCompatActivity {
                     progressBar.setVisibility(View.INVISIBLE);
                     cardView.setVisibility(View.VISIBLE);
 
-                    String name = orderManager.getName();
-                    orderName.setText(name);
                     String contactInfo = orderManager.getDeliveryManContact();
                     contact.setText(contactInfo);
                     String statusInfo = orderManager.getStatus().toString();
@@ -55,7 +53,7 @@ public class OrderStatusActivity extends AppCompatActivity {
                     if (orderManager.getStatus() == Order.OrderStatus.COMP) {
                         completeOrder.setVisibility(View.VISIBLE);
                     }
-                    }
+
                 }
             }
 
