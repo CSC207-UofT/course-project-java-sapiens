@@ -27,8 +27,6 @@ import com.yde.sapiensdelivery.gateways.ShoppingListGateway;
 import com.yde.sapiensdelivery.use_cases.CustomerManager;
 import com.yde.sapiensdelivery.use_cases.OutletManager;
 import com.yde.sapiensdelivery.use_cases.ShoppingListManager;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ShoppingListCreationActivity extends AppCompatActivity implements OutletListAdapter.OnOutletClickListener {
@@ -79,7 +77,7 @@ public class ShoppingListCreationActivity extends AppCompatActivity implements O
         outletListAdapter.setOutletListManager(shoppingListManagers);
 
         Intent i = new Intent(ShoppingListCreationActivity.this, EditShoppingListActivity.class);
-        i.putExtra("sl_managers", (Serializable) shoppingListManagers);
+        i.putExtra("sl_managers", shoppingListManagers);
         i.putExtra("sl_position", shoppingListManagers.size() - 1);
         customerManager.passValue(i);
         startActivity(i);
@@ -225,7 +223,7 @@ public class ShoppingListCreationActivity extends AppCompatActivity implements O
     public void onEditClick(int position) {
         // Pass shoppingLists and the index that it needs to be edited on and Intent to be edited
         Intent i = new Intent(ShoppingListCreationActivity.this, EditShoppingListActivity.class);
-        i.putExtra("sl_managers", (Serializable) shoppingListManagers);
+        i.putExtra("sl_managers", shoppingListManagers);
         i.putExtra("sl_position", position);
         customerManager.passValue(i);
         startActivity(i);

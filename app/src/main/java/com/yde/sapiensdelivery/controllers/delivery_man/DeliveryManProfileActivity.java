@@ -1,14 +1,11 @@
 package com.yde.sapiensdelivery.controllers.delivery_man;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import com.yde.sapiensdelivery.R;
-import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
-import com.yde.sapiensdelivery.use_cases.CustomerManager;
 import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
 
 public class DeliveryManProfileActivity extends AppCompatActivity {

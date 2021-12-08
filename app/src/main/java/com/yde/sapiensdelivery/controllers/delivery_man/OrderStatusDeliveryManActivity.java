@@ -25,6 +25,9 @@ import java.util.ArrayList;
 
 public class OrderStatusDeliveryManActivity extends AppCompatActivity {
 
+    OrderManager orderManager = new OrderManager();
+    String customerName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,15 +41,16 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
         Button otwOrderBT = findViewById(R.id.order_OTW_bt);
         ListView shoppingLists = findViewById(R.id.delivery_o_status_lv);
 
-        DeliveryMan deliveryMan = (DeliveryMan) getIntent().getSerializableExtra("DELIVERYMAN");
-        DeliveryManManager dm = new DeliveryManManager(deliveryMan);
-
+        DeliveryManManager dm = new DeliveryManManager((DeliveryMan) getIntent().getSerializableExtra("DELIVERYMAN"));
         OrderGateway orderGateway = new OrderGateway();
-        orderGateway.get(dm.getName(), new OnDataReadListener() {
+
+        orderGateway.getByDeliveryman(dm.getName(), new OnDataReadListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onSuccess() {
-                OrderManager orderManager = new OrderManager((Order) getSavedObject());
+                ArrayList<Object> doubleData =  (ArrayList<Object>) getSavedObject();
+                orderManager = new OrderManager((Order) doubleData.get(0));
+                customerName = (String) doubleData.get(1);
 
                 String cusName = orderManager.getCustomerName();
                 String address = orderManager.getCustomerAddress();
@@ -78,16 +82,21 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
         });
 
         completeOrder.setOnClickListener(view -> {
-            //TODO: update order's status to Complete in the DB
+            orderManager.updateStatusComp(customerName);
 
             Intent intent = new Intent( OrderStatusDeliveryManActivity.this,
                                                      DeliveryManActivity.class);
-            intent.putExtra("DELIVERYMAN", (Serializable) deliveryMan);
+            dm.passValue(intent);
             startActivity(intent);
         });
 
         otwOrderBT.setOnClickListener(v -> {
-            //TODO: update order's status to OTW in the DB
+            orderManager.updateStatusOTW(customerName);
+
+            Intent intent = new Intent( OrderStatusDeliveryManActivity.this,
+                    DeliveryManActivity.class);
+            dm.passValue(intent);
+            startActivity(intent);
         });
 
     }
