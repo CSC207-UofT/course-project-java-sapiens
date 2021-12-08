@@ -25,6 +25,7 @@ import java.util.ArrayList;
 
 public class OrderCompletionActivity extends AppCompatActivity {
     private OrderManager orderManager;
+    OrderGateway orderGateway = new OrderGateway();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,16 +39,13 @@ public class OrderCompletionActivity extends AppCompatActivity {
         CustomerManager customerManager = new CustomerManager((Customer)
                 getIntent().getSerializableExtra("CUSTOMER"));
 
-        OrderGateway orderGateway = new OrderGateway();
         orderGateway.get(customerManager.getUsername(), new OnDataReadListener() {
 
             @SuppressLint("SetTextI18n")
             @Override
             public void onSuccess() {
                 if(getSavedObject() != null) {
-
-                    ArrayList<Object> doubleData =  (ArrayList<Object>) getSavedObject();
-                    orderManager = new OrderManager((Order) doubleData.get(0));
+                    orderManager = new OrderManager((Order) getSavedObject());
 
                     // Get the ShoppingLists and convert to String
                     ArrayList<ShoppingList> shopLists = orderManager.getShoppingLists();
@@ -73,10 +71,9 @@ public class OrderCompletionActivity extends AppCompatActivity {
         });
 
 
-
         floatingActionButton.setOnClickListener(view -> {
-            // TODO remove Order from DB (pass the DeliveryMan to be rated ?)
 
+            orderGateway.delete(customerManager.getUsername());
             DeliveryManManager deliveryManManager = new DeliveryManManager(orderManager.getDeliveryMan());
 
             Intent intent = new Intent( OrderCompletionActivity.this, CustomerRatingActivity.class);

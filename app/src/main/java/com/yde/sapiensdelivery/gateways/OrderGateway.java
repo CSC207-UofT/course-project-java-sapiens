@@ -54,6 +54,10 @@ public class OrderGateway extends DBGateway<String, Order> {
         });
     }
 
+    public void delete(String customerStr){
+        ref.child(customerStr).removeValue();
+    }
+
     @Override
     public void save(String obj, Order val) {
         Map<String, Object> toSave = new HashMap<>();

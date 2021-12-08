@@ -22,6 +22,10 @@ public class ShoppingListGateway extends DBGateway<String, ArrayList<ShoppingLis
         ref = database.getReference(REF_PATH);
     }
 
+    public void delete(String customerStr){
+        ref.child(customerStr).removeValue();
+    }
+
     @Override
     public void save(String obj, ArrayList<ShoppingList> val) {
         Map<String, Object> toSave = new HashMap<>();

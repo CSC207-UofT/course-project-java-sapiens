@@ -13,6 +13,12 @@
             android:name=".controllers.delivery_man.DeliveryManProfileActivity"
             android:exported="false" />
         <activity
+            android:name=".controllers.delivery_man.DeliveryRatingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".controllers.customer.CustomerRatingActivity"
+            android:exported="false" />
+        <activity
             android:name=".controllers.delivery_man.DeliveryManActivity"
             android:exported="false" />
         <activity

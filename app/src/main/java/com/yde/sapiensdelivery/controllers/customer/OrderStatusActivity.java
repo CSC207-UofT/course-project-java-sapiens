@@ -66,6 +66,7 @@ public class OrderStatusActivity extends AppCompatActivity {
 
         completeOrder.setOnClickListener(view -> {
             Intent intent = new Intent( OrderStatusActivity.this, OrderCompletionActivity.class);
+            customerManager.passValue(intent);
             startActivity(intent);
         });
     }
