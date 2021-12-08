@@ -6,6 +6,8 @@ Our project is a delivery service App named Sapiens Delivery that allows custome
 
 For more details, please check our [specification.md file](https://git.io/JMpmy). 
 
+Note about using our program: if you click sign in as deliveryman and the app crashes, that's due to your last know location not being recognized by the emulator you're using. Please manually open the Google Maps app on your emulator to detect your location again. 
+
 ## Major Changes We Made in Phase 2:  
 The most fundamental change we made in phase 2 was the transition from a command-line text UI to an Android application. Our controllers are changed to a number of android activities ([Link to the activities](https://github.com/CSC207-UofT/course-project-java-sapiens/tree/main/app/src/main/java/com/yde/sapiensdelivery/controllers)), each of them and their layout files corresponding to a specific page in our program.
 
