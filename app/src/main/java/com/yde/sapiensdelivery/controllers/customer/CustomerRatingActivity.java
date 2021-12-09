@@ -25,6 +25,8 @@ public class CustomerRatingActivity extends AppCompatActivity {
         DeliveryManManager deliveryManManager = new DeliveryManManager((DeliveryMan)
                 getIntent().getSerializableExtra("DELIVERYMAN"));
 
+        CustomerManager customerManager = new CustomerManager((Customer) getIntent().getSerializableExtra("CUSTOMER"));
+
         /*
          * after click the main button, it goes back to CustomerActivity page
          */
@@ -33,7 +35,7 @@ public class CustomerRatingActivity extends AppCompatActivity {
             deliveryManManager.updateRating(myRating);
 
             Intent intent = new Intent( CustomerRatingActivity.this, CustomerActivity.class);
-            deliveryManManager.passValue(intent);
+            customerManager.passValue(intent);
             startActivity(intent);
         });
 

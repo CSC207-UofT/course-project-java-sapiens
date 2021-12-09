@@ -1,13 +1,13 @@
 package com.yde.sapiensdelivery.controllers.delivery_man;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.yde.sapiensdelivery.R;
 import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
@@ -27,6 +27,9 @@ public class DeliveryRatingActivity extends AppCompatActivity {
         CustomerManager customerManager = new CustomerManager((Customer)
                 getIntent().getSerializableExtra("CUSTOMER"));
 
+        DeliveryManManager deliveryManManager = new DeliveryManManager((DeliveryMan)
+                getIntent().getSerializableExtra("DELIVERYMAN"));
+
         /*
          * after click the main button, it goes back to DeliveryActivity page
          */
@@ -35,7 +38,7 @@ public class DeliveryRatingActivity extends AppCompatActivity {
             customerManager.updateRating(myRating);
 
             Intent intent = new Intent( DeliveryRatingActivity.this, DeliveryManActivity.class);
-            customerManager.passValue(intent);
+            deliveryManManager.passValue(intent);
             startActivity(intent);
         });
 
