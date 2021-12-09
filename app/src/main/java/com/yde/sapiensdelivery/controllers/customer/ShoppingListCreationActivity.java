@@ -103,18 +103,17 @@ public class ShoppingListCreationActivity extends AppCompatActivity implements O
     }
 
     private void getOutletsFromDB() {
-        // TODO get a List of Outlets from the Database and remove the hardcoded ones below
         ArrayList<Outlet> outlets = new ArrayList<>();
 
         ArrayList<Commodity> list = new ArrayList<>();
         list.add(new Commodity("Apple", 2.5, 1));
         list.add(new Commodity("Banana", 3, 1));
-        Outlet walmart = new Outlet("Walmart", "NO ADDRESS", list);
+        Outlet walmart = new Outlet("Walmart", "Dufferin Mall Supercentre, 900 Dufferin St, Toronto, ON M6H 4A9", list);
 
         ArrayList<Commodity> house = new ArrayList<>();
         house.add(new Commodity("TV", 1000, 1));
         house.add(new Commodity("Couch", 200, 1));
-        Outlet friend = new Outlet("Friend's House", "NO ADDRESS", house);
+        Outlet friend = new Outlet("Friend's House", "253 College St, Toronto, ON M5T 1R5", house);
 
         outlets.add(friend);
         outlets.add(walmart);

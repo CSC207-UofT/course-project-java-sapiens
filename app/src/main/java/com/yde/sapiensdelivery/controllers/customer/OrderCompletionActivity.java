@@ -14,6 +14,7 @@ import com.yde.sapiensdelivery.R;
 import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.Order;
 import com.yde.sapiensdelivery.entities.ShoppingList;
+import com.yde.sapiensdelivery.gateways.GoogleMapGateway;
 import com.yde.sapiensdelivery.gateways.OrderGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 import com.yde.sapiensdelivery.use_cases.CustomerManager;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 public class OrderCompletionActivity extends AppCompatActivity {
     private OrderManager orderManager;
     OrderGateway orderGateway = new OrderGateway();
+    GoogleMapGateway googleMapGateway = new GoogleMapGateway();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +63,8 @@ public class OrderCompletionActivity extends AppCompatActivity {
                             OrderCompletionActivity.this, android.R.layout.simple_list_item_1, slStrings);
                     shoppingLists.setAdapter(adapter);
 
-                    totalTV.setText("Total: $ " + orderManager.getTotalPrice());
+                    double travel_cost = orderManager.calculateJourney(googleMapGateway);
+                    totalTV.setText("Total: $ " + (orderManager.getTotalPrice() + travel_cost));
                     }
                 }
 

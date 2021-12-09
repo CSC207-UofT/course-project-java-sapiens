@@ -18,6 +18,7 @@ public class Order implements Serializable {
     private ArrayList<ShoppingList> shoppingLists;
 
     private double totalPrice;
+    private double totalDistance;
 
     // Order stores a list of ShoppingLists, one ShoppingList for each store/outlet.
     public Order(DeliveryMan deliveryMan, Customer customer, ArrayList<ShoppingList> shoppingLists) {
@@ -112,6 +113,13 @@ public class Order implements Serializable {
 
     public double getTotalPrice() {
         return this.totalPrice;
+    }
+
+    public void setTotalDistance(double distance){
+        this.totalDistance = distance;
+    }
+    public double getTotalDistance(){
+        return this.totalDistance;
     }
 }
 
