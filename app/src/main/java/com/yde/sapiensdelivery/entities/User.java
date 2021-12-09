@@ -1,7 +1,6 @@
 package com.yde.sapiensdelivery.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  * An abstract class that represents a user,
@@ -14,7 +13,6 @@ public abstract class User implements Serializable {
     private String number;
     private float rating;
     private int noOfRatings;
-    private ArrayList<String> comments;
     private String uname;
     private String password;
 
@@ -32,7 +30,6 @@ public abstract class User implements Serializable {
         number = "";
         rating = 0.0f;
         noOfRatings = 0;
-        comments = new ArrayList<>();
         uname = "";
         password= "";
     }
@@ -83,14 +80,6 @@ public abstract class User implements Serializable {
 
     public void setNoOfRatings(int noOfRatings) {
         this.noOfRatings = noOfRatings;
-    }
-
-    public ArrayList<String> getComments() {
-        return comments;
-    }
-
-    public void setComments(ArrayList<String> comments) {
-        this.comments = comments;
     }
 
     public String getUname() {

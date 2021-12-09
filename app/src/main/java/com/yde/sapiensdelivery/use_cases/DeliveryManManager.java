@@ -100,13 +100,6 @@ public class DeliveryManManager implements Manager{
     }
 
     /**
-     * set the Delivery man's phone number
-     */
-    public void setPhoneNumber(String number){
-        this.deliveryMan.setNumber(number);
-    }
-
-    /**
      * set the Delivery man's username
      */
     public void setUsername(String username){
@@ -125,13 +118,6 @@ public class DeliveryManManager implements Manager{
      */
     public void setSin(long id){
         this.deliveryMan.setSin(id);
-    }
-
-    /**
-     * set the Delivery man's mode of transportation.
-     */
-    public void setTransport(String transport){
-        this.deliveryMan.setTransport(transport);
     }
 
     @Override
