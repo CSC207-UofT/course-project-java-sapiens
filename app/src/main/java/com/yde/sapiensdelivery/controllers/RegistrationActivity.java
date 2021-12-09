@@ -24,7 +24,6 @@ public class RegistrationActivity extends AppCompatActivity {
     EditText phoneNumber;
     EditText address;
     EditText sin;
-    EditText rate;
     EditText transport;
 
     @Override
@@ -151,10 +150,6 @@ public class RegistrationActivity extends AppCompatActivity {
         }
         if(sin.getText().toString().equals("")){
             sin.setError("This field is missing");
-            isEmpty = true;
-        }
-        if(rate.getText().toString().equals("")){
-            rate.setError("This field is missing");
             isEmpty = true;
         }
         if(transport.getText().toString().equals("")){

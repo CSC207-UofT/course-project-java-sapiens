@@ -37,9 +37,32 @@ public class CustomerActivity extends AppCompatActivity {
         });
 
         placeOrder.setOnClickListener(v -> {
-            Intent intent = new Intent( CustomerActivity.this, ShoppingListCreationActivity.class);
-            cm.passValue(intent);
-            startActivity(intent);
+            OrderGateway orderGateway = new OrderGateway();
+            
+            orderGateway.get(cm.getUsername(), new OnDataReadListener() {
+                @Override
+                public void onSuccess() {
+
+                    if(getSavedObject() != null){
+                        String message = "You have already created an active order";
+                        Toast.makeText(CustomerActivity.this, message, Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        Intent intent = new Intent( CustomerActivity.this, ShoppingListCreationActivity.class);
+
+                        cm.passValue(intent);
+                        startActivity(intent);
+                    }
+                }
+
+                @Override
+                public void onFailure() {
+                    Intent intent = new Intent( CustomerActivity.this, ShoppingListCreationActivity.class);
+
+                    cm.passValue(intent);
+                    startActivity(intent);
+                }
+            });
         });
 
         status.setOnClickListener(v -> {
