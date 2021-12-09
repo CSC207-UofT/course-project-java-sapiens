@@ -49,14 +49,6 @@ public class OrderManager{
         return order.getDeliveryMan().getName() + " : " + order.getDeliveryMan().getNumber();
     }
 
-    /**
-     * Get contact info for order
-     * @return Contact information of customer
-     */
-    public String getCustomerContact(){
-        return order.getCustomer().getName() + " : " + order.getDeliveryMan().getNumber();
-    }
-
     public String getCustomerName(){
         return order.getCustomer().getName();
     }
@@ -67,18 +59,6 @@ public class OrderManager{
 
     public String getCustomerPhoneNum(){
         return order.getCustomer().getNumber();
-    }
-
-    public void setStatusOTW() {
-        this.order.setStatusOTW();
-    }
-
-    public void setStatusREC() {
-        this.order.setStatusREC();
-    }
-
-    public void setStatusCOMP() {
-        this.order.setStatusCOMP();
     }
 
     public ArrayList<ShoppingList> getShoppingLists(){

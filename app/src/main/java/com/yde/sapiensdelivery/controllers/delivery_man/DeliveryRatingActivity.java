@@ -30,47 +30,41 @@ public class DeliveryRatingActivity extends AppCompatActivity {
         /*
          * after click the main button, it goes back to DeliveryActivity page
          */
-        main.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                float myRating = rating.getRating();
-                customerManager.updateRating(myRating);
+        main.setOnClickListener(v -> {
+            float myRating = rating.getRating();
+            customerManager.updateRating(myRating);
 
-                Intent intent = new Intent( DeliveryRatingActivity.this, DeliveryManActivity.class);
-                customerManager.passValue(intent);
-                startActivity(intent);
-            }
+            Intent intent = new Intent( DeliveryRatingActivity.this, DeliveryManActivity.class);
+            customerManager.passValue(intent);
+            startActivity(intent);
         });
 
         /*
          * send different message based on a customer input
          */
-        rating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBarD, float rating, boolean fromUser) {
-                int value = (int) rating;
-                String message = null;
+        rating.setOnRatingBarChangeListener((ratingBarD, rating1, fromUser) -> {
+            int value = (int) rating1;
+            String message = null;
 
-                switch(value){
-                    case 1:
-                        message = "sorry to hear that :(";
-                        break;
-                    case 2:
-                        message = "sorry to hear that :<";
-                        break;
-                    case 3:
-                        message = "we always accept suggestions :|";
-                        break;
-                    case 4:
-                        message = "good to hear that :>";
-                        break;
-                    case 5:
-                        message = "great enough :)";
-                        break;
-                }
-                Toast.makeText(DeliveryRatingActivity.this, message, Toast.LENGTH_LONG).show();
-
+            switch(value){
+                case 1:
+                    message = "sorry to hear that :(";
+                    break;
+                case 2:
+                    message = "sorry to hear that :<";
+                    break;
+                case 3:
+                    message = "we always accept suggestions :|";
+                    break;
+                case 4:
+                    message = "good to hear that :>";
+                    break;
+                case 5:
+                    message = "great enough :)";
+                    break;
             }
+            Toast.makeText(DeliveryRatingActivity.this, message, Toast.LENGTH_LONG).show();
+
         });
 
     }

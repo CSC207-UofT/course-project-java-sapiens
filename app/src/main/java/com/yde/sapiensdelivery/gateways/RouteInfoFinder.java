@@ -30,7 +30,7 @@ public class RouteInfoFinder {
                                                  Locator.transportation transportation)
             throws IOException, JSONException {
 
-        HashMap<String, Double> routeInfo = new HashMap<String, Double>();
+        HashMap<String, Double> routeInfo = new HashMap<>();
 
         String url = urlFactory(origin, destination, null ,transportation);
         JSONObject json = this.readJsonFromUrl(url);
@@ -47,7 +47,7 @@ public class RouteInfoFinder {
                                                       Locator.transportation transportation)
             throws IOException, JSONException {
 
-        HashMap<String, Double> routeInfo = new HashMap<String, Double>();
+        HashMap<String, Double> routeInfo = new HashMap<>();
 
         String url = urlFactory(origin, destination, waypoints, transportation);
         JSONObject json = this.readJsonFromUrl(url);
@@ -100,7 +100,7 @@ public class RouteInfoFinder {
                               String[] waypoints,
                               Locator.transportation transportation){
         String url = "";
-        StringBuffer points = new StringBuffer();
+        StringBuilder points = new StringBuilder();
 
         origin = origin.replaceAll(" ", "%");
         destination = destination.replaceAll(" ", "%");

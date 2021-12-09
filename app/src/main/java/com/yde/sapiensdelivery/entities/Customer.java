@@ -13,8 +13,4 @@ public class Customer extends User{
     public Customer(){
         super();
     }
-
-//    public Customer(String name, int[] l, String num, String user, String pass, float rating) {
-//        super(name, l, num, user, pass, rating);
-//    }
 }

@@ -39,10 +39,6 @@ public class DeliveryMan extends User{
         return transport;
     }
 
-    public void setTransport(String transport) {
-        this.transport = transport;
-    }
-
     public long getSin() {
         return sin;
     }

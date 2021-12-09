@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Outlet implements Serializable {
     private String address;
     private String name;
-    private ArrayList<Commodity> commodities;
+    private final ArrayList<Commodity> commodities;
 
     public Outlet( String name, String address, ArrayList<Commodity> commodities) {
         this.address = address;
@@ -38,10 +38,6 @@ public class Outlet implements Serializable {
      */
     public Commodity getCommodityAtIndex(int index) {
         return commodities.get(index);
-    }
-
-    public void setCommodities(ArrayList<Commodity> commodities) {
-        this.commodities = commodities;
     }
 
     public ArrayList<Commodity> getCommodities() {
