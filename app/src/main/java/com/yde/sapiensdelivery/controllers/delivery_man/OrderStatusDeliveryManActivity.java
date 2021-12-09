@@ -3,6 +3,7 @@ package com.yde.sapiensdelivery.controllers.delivery_man;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -75,6 +76,8 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
                 addressTV.setText(address);
                 phoneNumTV.setText(phoneNum);
                 double travel_cost = orderManager.calculateJourney(googleMapGateway);
+                Log.d("Check for travel cost", "Travel Cost is " + travel_cost);
+
                 totalTV.setText("Total: $ " + (orderManager.getTotalPrice() + travel_cost));
             }
 

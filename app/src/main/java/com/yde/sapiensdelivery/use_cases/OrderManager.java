@@ -1,5 +1,7 @@
 package com.yde.sapiensdelivery.use_cases;
 
+import android.util.Log;
+
 import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.entities.Order;
@@ -135,11 +137,15 @@ public class OrderManager{
 
     public double calculateJourney(Locator locator){
         double total_distance = 0;
-        double total_duration = 0;
+        // double total_duration = 0;
         double total_cost = 0;
 
         String start = this.order.getDeliveryMan().getLocation();
+        Log.d("Delivery man location", "Location of del -> " + start);
+
         String end = this.order.getCustomer().getLocation();
+        Log.d("Customer location", "Location of cus -> " + end);
+
 
         ArrayList<String> stops = new ArrayList<>();
         stops.add(start);
@@ -157,15 +163,17 @@ public class OrderManager{
                 HashMap<String, Double> info = locator.findRouteInfo
                         (stops.get(i), stops.get(i + 1), Locator.transportation.valueOf(transport));
                 double distance = info.get("Distance");
-                double duration = info.get("Duration");
+                // double duration = info.get("Duration");
 
                 total_distance += distance;
-                total_duration += duration;
+                // total_duration += duration;
             } catch (Exception e){
-                // TODO: Error cuz either wrong address or internet issues.
+                Log.d("Ad", "h");
             }
 
         }
+
+        Log.d("Total Distance", "Total Distance ->" + total_distance);
 
         total_cost = total_distance * 0.75;
 
