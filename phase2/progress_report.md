@@ -27,3 +27,5 @@
   Significant Pull Requests: \[[Link](https://github.com/CSC207-UofT/course-project-java-sapiens/pull/50)\] This pull request consists of two activities, one of them is the homepage of delivery man, the other one is where the delivery man changes the status of an accepted order.
 
   \[[Link](https://github.com/CSC207-UofT/course-project-java-sapiens/pull/41),[Link](https://github.com/CSC207-UofT/course-project-java-sapiens/pull/48)\] These two pull requests together form the complete GoogleMapGateway. This gateway is in charge of getting information from the Google Map API, and it also demonstrates my understanding of design patterns since it implements the façade and factory.
+  
+ - Nikhil Sreekumar: Assisted in Entity and Gateway creation. Implemented database interactions via FireBase API. Started the shift to Android with a functional SignInActivity and RegistrationActivity. Provided design and data transferring assistance in other activities in the project.
