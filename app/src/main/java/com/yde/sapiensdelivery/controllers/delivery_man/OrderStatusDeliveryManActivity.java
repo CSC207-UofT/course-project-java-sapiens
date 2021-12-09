@@ -3,6 +3,7 @@ package com.yde.sapiensdelivery.controllers.delivery_man;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -32,6 +33,11 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy =
+                    new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
         setContentView(R.layout.activity_order_status_delivery_man);
 
         TextView nameTV = findViewById(R.id.deli_os_cus_name_tv);
