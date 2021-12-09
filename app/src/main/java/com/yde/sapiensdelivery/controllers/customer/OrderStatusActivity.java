@@ -27,7 +27,6 @@ public class OrderStatusActivity extends AppCompatActivity {
 
         ProgressBar progressBar = findViewById(R.id.progressBar);
         Button completeOrder = findViewById(R.id.complete_order);
-        TextView orderName = findViewById(R.id.order_name);
         TextView statusOrder = findViewById(R.id.status_order);
         TextView contact = findViewById(R.id.contact);
         CardView cardView = findViewById(R.id.cardView);

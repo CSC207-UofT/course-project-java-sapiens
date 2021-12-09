@@ -49,13 +49,6 @@ public class CustomerManager implements Manager{
     }
 
     /**
-     * return the Customer's password
-     */
-    public String getPassword(){
-        return this.customer.getPassword();
-    }
-
-    /**
      * update and save the Customer's rating and number of ratings
      */
     public void updateRating(float myRating){
@@ -67,40 +60,5 @@ public class CustomerManager implements Manager{
 
         DeliveryManGateway deliveryManGateway = new DeliveryManGateway("DELIVERYMAN");
         deliveryManGateway.save(this.customer.getUname(), this.customer);
-    }
-
-    /**
-     * set the Customer's name
-     */
-    public void setName(String name){
-        this.customer.setName(name);
-    }
-
-    /**
-     * set the Customer's location.
-     */
-    public void setLocation(String location){
-        this.customer.setLocation(location);
-    }
-
-    /**
-     * set the Customer's phone number
-     */
-    public void setPhoneNumber(String number){
-        this.customer.setNumber(number);
-    }
-
-    /**
-     * set the Customer's username
-     */
-    public void setUsername(String username){
-        this.customer.setUname(username);
-    }
-
-    /**
-     * set the Customer's password
-     */
-    public void setPassword(String password){
-        this.customer.setPassword(password);
     }
 }

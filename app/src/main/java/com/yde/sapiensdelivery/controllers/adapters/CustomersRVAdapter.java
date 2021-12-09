@@ -12,21 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.yde.sapiensdelivery.R;
 import com.yde.sapiensdelivery.entities.ShoppingList;
-import com.yde.sapiensdelivery.use_cases.ShoppingListManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CustomersRVAdapter extends RecyclerView.Adapter<CustomersRVAdapter.ViewHolder> {
 
-    private ArrayList<String> customers;
-    // Use this to get additional info about that username
-    private HashMap<String, ArrayList<ShoppingList>> shoppingLists;
+    private final ArrayList<String> customers;
 
     private final OnCustomerClickListener onCustomerClickListener;
 
     public CustomersRVAdapter(ArrayList<String> customers, HashMap<String, ArrayList<ShoppingList>> shoppingLists, OnCustomerClickListener onCustomerClickListener) {
-        this.shoppingLists = shoppingLists;
+        // Use this to get additional info about that username
         this.customers = customers;
 
         this.onCustomerClickListener = onCustomerClickListener;

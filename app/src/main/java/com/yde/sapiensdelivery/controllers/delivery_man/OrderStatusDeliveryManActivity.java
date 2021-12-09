@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -13,11 +12,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.yde.sapiensdelivery.R;
-import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.entities.Order;
 import com.yde.sapiensdelivery.entities.ShoppingList;
-import com.yde.sapiensdelivery.gateways.CustomerGateway;
 import com.yde.sapiensdelivery.gateways.GoogleMapGateway;
 import com.yde.sapiensdelivery.gateways.OrderGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
@@ -34,6 +31,7 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
     String customerUsername;
     CustomerManager customerManager;
 
+    @SuppressLint("ObsoleteSdkInt")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +85,6 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
                 addressTV.setText(address);
                 phoneNumTV.setText(phoneNum);
                 double travel_cost = orderManager.calculateJourney(googleMapGateway);
-                Log.d("Check for travel cost", "Travel Cost is " + travel_cost);
 
                 totalTV.setText("Total: $ " + (orderManager.getTotalPrice() + travel_cost));
             }

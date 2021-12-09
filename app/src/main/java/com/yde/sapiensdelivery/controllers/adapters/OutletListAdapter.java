@@ -76,12 +76,12 @@ public class OutletListAdapter extends RecyclerView.Adapter<OutletListAdapter.Vi
 
         // When buttons are clicked, modify data and update the ViewHolder
         holder.editBT.setOnClickListener(v -> {
-            int position1 = holder.getAdapterPosition();
+            holder.getAdapterPosition();
             onOutletClickListener.onEditClick(position);
         });
 
         holder.removeBT.setOnClickListener(v -> {
-            int position12 = holder.getAdapterPosition();
+            holder.getAdapterPosition();
 
             this.shoppingListManagers.remove(position);
             notifyItemRemoved(position);

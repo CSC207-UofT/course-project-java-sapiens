@@ -28,13 +28,6 @@ public class DeliveryManManager implements Manager{
     }
 
     /**
-     * return the Delivery man's Location
-     */
-    public String getLocation(){
-        return this.deliveryMan.getLocation();
-    }
-
-    /**
      * return the Delivery man's PhoneNumber
      */
     public String getPhoneNumber(){
@@ -97,27 +90,6 @@ public class DeliveryManManager implements Manager{
         DeliveryManGateway deliveryManGateway = new DeliveryManGateway("DELIVERYMAN");
         this.deliveryMan.setLocation(location);
         deliveryManGateway.save(getName(), deliveryMan);
-    }
-
-    /**
-     * set the Delivery man's username
-     */
-    public void setUsername(String username){
-        this.deliveryMan.setUname(username);
-    }
-
-    /**
-     * set the Delivery man's password
-     */
-    public void setPassword(String password){
-        this.deliveryMan.setPassword(password);
-    }
-
-    /**
-     * set the Delivery man's Social Insurance Number
-     */
-    public void setSin(long id){
-        this.deliveryMan.setSin(id);
     }
 
     @Override

@@ -73,10 +73,6 @@ public class OrderManager{
         return order.isStatusCOMP(orderStatus);
     }
 
-    public void setDeliveryMan(DeliveryMan deliveryMan){
-        this.order.setDeliveryMan(deliveryMan);
-    }
-
     public DeliveryMan getDeliveryMan() {
         return this.order.getDeliveryMan();
     }
@@ -88,7 +84,7 @@ public class OrderManager{
     public double calculateJourney(Locator locator){
         double total_distance = 0;
         // double total_duration = 0;
-        double total_cost = 0;
+        double total_cost;
 
         String start = this.order.getDeliveryMan().getLocation();
         Log.d("Delivery man location", "Location of del -> " + start);
