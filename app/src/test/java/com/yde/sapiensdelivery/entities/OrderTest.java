@@ -36,25 +36,25 @@ public class OrderTest {
         s.add(shoppingList);
 
         s.add(shoppingList);
-        order = new Order(null,null,17,s);
+        order = new Order(null,null,s);
     }
 
 
     @Test
     public void OrderStatusTest() {
-        DeliveryMan deliveryMan1 = new DeliveryMan("Samuel", "ADDRESS", "648", "Samuel", "12", 1234, "moto-bike", (float)4.5);
+        DeliveryMan deliveryMan1 = new DeliveryMan("Samuel", "ADDRESS", "648", "Samuel", "12", 1234, "moto-bike");
         Customer customer1 = new Customer("Patrick", "ADDRESS", "647", "Pat", "123");
         ShoppingList shoppingList = shoppingListManager.getShoppingList();
         ArrayList<ShoppingList> s = new ArrayList<>();
         s.add(shoppingList);
-        order = new Order(deliveryMan1,customer1,17,s);
+        order = new Order(deliveryMan1,customer1,s);
         order.setStatusOTW();
         assertEquals("On the Way to get your order.", order.getStatusOTW());
     }
 
     @Test
     public void TotalPriceTest() {
-        DeliveryMan deliveryMan1 = new DeliveryMan("Samuel", "ADDRESS", "648", "Samuel", "12", 1234, "moto-bike", (float)4.5);
+        DeliveryMan deliveryMan1 = new DeliveryMan("Samuel", "ADDRESS", "648", "Samuel", "12", 1234, "moto-bike");
         Customer customer1 = new Customer("Patrick", "ADDRESS", "647", "Pat", "123");
 
         Outlet friendHouse = shoppingListManager.getOutlet();
@@ -68,7 +68,7 @@ public class OrderTest {
         ArrayList<ShoppingList> s = new ArrayList<>();
         s.add(shoppingList);
 
-        order = new Order(deliveryMan1,customer1,17,s);
+        order = new Order(deliveryMan1,customer1,s);
 
         assertEquals(400.0, order.getTotalPrice(),0);
     }

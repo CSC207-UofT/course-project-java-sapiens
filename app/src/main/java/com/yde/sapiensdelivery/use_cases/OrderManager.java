@@ -33,40 +33,7 @@ public class OrderManager{
      * @param shoppingLists The shoppingLists that the customer has added
      */
     public Order createOrder(DeliveryMan deliveryMan, Customer customer, ArrayList<ShoppingList> shoppingLists){
-        int currUID = generateUID(shoppingLists);
-        return new Order(deliveryMan, customer, ++currUID ,shoppingLists);
-    }
-
-    /**
-     * Creates an Unique ID for an order
-     *
-     * @param shoppingLists The shoppingLists that the customer has added
-     * @return unique ID based on.
-     */
-    private int generateUID(ArrayList<ShoppingList> shoppingLists) {
-        double totalPrice = 0;
-        for (ShoppingList shoppingList : shoppingLists) {
-            totalPrice += shoppingList.getTotalPrice();
-        }
-        return (int) (totalPrice + Math.floor(Math.random()*(Math.pow(10,(int) (Math.log10(totalPrice) + 1)))));
-    }
-
-    /**
-     * Provided the UID of the required order, get its information in the form of
-     * an order object.
-     * @param UID the required order's UID.
-     * @return The order corresponding to the UID.
-     */
-    public int getUID (int UID){
-        return UID; // Get order from database which matches UID. DB connection not implemented so currently null.
-    }
-
-    /**
-     * Name of Order
-     * @return Order name using UID
-     */
-    public String getName(){
-        return "Order#" + order.getUID();
+        return new Order(deliveryMan, customer ,shoppingLists);
     }
 
     /**

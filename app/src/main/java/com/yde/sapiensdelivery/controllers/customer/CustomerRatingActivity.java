@@ -10,10 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.yde.sapiensdelivery.R;
 import com.yde.sapiensdelivery.entities.Customer;
+import com.yde.sapiensdelivery.entities.DeliveryMan;
+import com.yde.sapiensdelivery.gateways.DeliveryManGateway;
 import com.yde.sapiensdelivery.use_cases.CustomerManager;
+import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
 
 public class CustomerRatingActivity extends AppCompatActivity {
-    float myRating  = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +25,18 @@ public class CustomerRatingActivity extends AppCompatActivity {
         Button main = findViewById(R.id.main);
         RatingBar rating1 = findViewById(R.id.ratingBar);
 
+        DeliveryManManager deliveryManManager = new DeliveryManManager((DeliveryMan)
+                getIntent().getSerializableExtra("DELIVERYMAN"));
+
         /*
          * after click the main button, it goes back to CustomerActivity page
          */
         main.setOnClickListener(v -> {
+            float myRating = rating1.getRating();
+            deliveryManManager.updateRating(myRating);
+
             Intent intent = new Intent( CustomerRatingActivity.this, CustomerActivity.class);
-            CustomerManager customerManager = new CustomerManager((Customer)
-                    getIntent().getSerializableExtra("CUSTOMER"));
-            customerManager.passValue(intent);
+            deliveryManManager.passValue(intent);
             startActivity(intent);
         });
 
@@ -40,7 +46,6 @@ public class CustomerRatingActivity extends AppCompatActivity {
         rating1.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> {
             int value = (int) rating;
             String message = null;
-            myRating  = ratingBar.getRating();
 
             switch(value){
                 case 1:
@@ -59,7 +64,7 @@ public class CustomerRatingActivity extends AppCompatActivity {
                     message = "great enough :)";
                     break;
             }
-            Toast.makeText(CustomerRatingActivity.this, message, Toast.LENGTH_LONG).show();
+            Toast.makeText(CustomerRatingActivity.this, message, Toast.LENGTH_SHORT).show();
 
         });
 

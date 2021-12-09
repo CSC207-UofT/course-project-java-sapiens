@@ -36,9 +36,9 @@ public class ExampleInstrumentedTest {
         Customer kevin = new Customer("Kevin", "ADDRESS", "4164449999", "hai",
                 "yo");
         DeliveryMan tyner = new DeliveryMan("Kevin", "ADDRESS", "4164449999", "hai",
-                "yo", 1111111, "MKW111", 1.1f);
+                "yo", 1111111, "MKW111");
 
-        Order order = new Order(tyner, kevin, 1, new ArrayList<>());
+        Order order = new Order(tyner, kevin, new ArrayList<>());
         cm.save("jsjs", order);
     }
 }

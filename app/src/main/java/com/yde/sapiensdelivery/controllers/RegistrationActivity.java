@@ -33,7 +33,7 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         RadioGroup userType = findViewById(R.id.user_type);
-        LinearLayout[] optionalDelivery = {findViewById(R.id.rate_ll), findViewById(R.id.sin_ll), findViewById(R.id.transport_ll)};
+        LinearLayout[] optionalDelivery = {findViewById(R.id.sin_ll), findViewById(R.id.transport_ll)};
         LinearLayout optionalCustomer = findViewById(R.id.address_ll);
         ((RadioButton) userType.getChildAt(0)).setChecked(true);
 
@@ -43,7 +43,6 @@ public class RegistrationActivity extends AppCompatActivity {
         phoneNumber = findViewById(R.id.ph_num_register);
         address = findViewById(R.id.address_register);
         sin = findViewById(R.id.sin_sign_up);
-        rate = findViewById(R.id.rate_sign_up);
         transport = findViewById(R.id.transport_sign_up);
         Button register = findViewById(R.id.register);
 
@@ -92,12 +91,6 @@ public class RegistrationActivity extends AppCompatActivity {
             String passwordStr = password.getText().toString();
             String transportStr = transport.getText().toString();
 
-            float rateVal = 0;
-            if(!rate.getText().toString().equals("")){
-                rateVal = Float.parseFloat(rate.getText().toString());
-            }
-
-            float finalRateVal = rateVal;
             long finalSinVal = sinVal;
 
             userGateway.registration(phoneNumber.getText().toString(), username.getText().toString(), sin.getText().toString(),
@@ -111,7 +104,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             intent = new Intent(RegistrationActivity.this, SignInActivity.class);
 
                             userGateway.save(usernameStr, UserManager.createUser(userChosen, nameStr, location, phNumStr, usernameStr,
-                                    userGateway.createHash(passwordStr), finalSinVal, transportStr, finalRateVal));
+                                    userGateway.createHash(passwordStr), finalSinVal, transportStr));
                             startActivity(intent);
                         }
 

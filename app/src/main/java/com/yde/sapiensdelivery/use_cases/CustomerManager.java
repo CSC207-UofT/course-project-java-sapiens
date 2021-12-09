@@ -2,6 +2,7 @@ package com.yde.sapiensdelivery.use_cases;
 
 import android.content.Intent;
 import com.yde.sapiensdelivery.entities.Customer;
+import com.yde.sapiensdelivery.gateways.DeliveryManGateway;
 
 
 public class CustomerManager implements Manager{
@@ -52,6 +53,20 @@ public class CustomerManager implements Manager{
      */
     public String getPassword(){
         return this.customer.getPassword();
+    }
+
+    /**
+     * update and save the Customer's rating and number of ratings
+     */
+    public void updateRating(float myRating){
+        float rating = this.customer.getRating();
+        int noOfRatings = this.customer.getNoOfRatings();
+        rating = (rating * noOfRatings + myRating) / ++noOfRatings;
+        this.customer.setRating(rating);
+        this.customer.setNoOfRatings(noOfRatings);
+
+        DeliveryManGateway deliveryManGateway = new DeliveryManGateway("DELIVERYMAN");
+        deliveryManGateway.save(this.customer.getUname(), this.customer);
     }
 
     /**
