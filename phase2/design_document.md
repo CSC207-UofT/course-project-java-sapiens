@@ -91,6 +91,8 @@ Once logged in, the delivery person can do one of three things: view their profi
 
 A DeliveryMan can be in charge of ONE active order at a time. The application makes adequate checks and provides messages to ensure this stays true.
 
+Note: if you are running on an AVD, we strongly suggest you, befre logging into our app, to open the "Map" app on the device and locate the phone for once. If not, there is a possibility that the app will crash when logging in as a delivery man. This is because the app need the "last know location" to login, if the AVD have never had a location before, it will cause a problem in the gateway. We didn't fix this sepcific error because we think that on a real android phone, it is extremely rare that it has never had a location.
+
 For more detail, please check out the [demonstration video ](https://utoronto.zoom.us/rec/share/_3t-9gJjbJzSl3ZZHUhCMHagpzYcEBNPlmzn_VYoOJUoICk5ZBl0vNW3OZTU-I0.UY8aXI2FZbXSwUHL) (Password:=Z88a6.T=3)
 
 ## Future Improvements...
