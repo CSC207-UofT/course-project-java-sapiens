@@ -29,7 +29,7 @@ public class OrderGateway extends DBGateway<String, Order> {
      * @param onDataReadListener Define onSuccess and onFailure actions
      */
     public void getByDeliveryman(String delStr, OnDataReadListener onDataReadListener) {
-        ref.addValueEventListener(new ValueEventListener() {
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot childSnapshot : snapshot.getChildren()) {
