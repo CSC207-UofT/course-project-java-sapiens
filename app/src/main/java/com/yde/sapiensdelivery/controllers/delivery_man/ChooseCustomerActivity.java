@@ -2,6 +2,7 @@ package com.yde.sapiensdelivery.controllers.delivery_man;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.entities.ShoppingList;
 import com.yde.sapiensdelivery.gateways.CustomerGateway;
+import com.yde.sapiensdelivery.gateways.GoogleMapGateway;
 import com.yde.sapiensdelivery.gateways.ShoppingListGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
 import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
@@ -53,6 +55,10 @@ public class ChooseCustomerActivity extends AppCompatActivity implements Custome
             public void onSuccess() {
                 customers = new ArrayList<>();
                 customers.addAll(customerToSL.keySet());
+
+                for (String c: customers){
+                    Log.d("Checking error", "Values in array list -> " + c);
+                }
 
                 customersAdapter = new CustomersRVAdapter(customers, customerToSL, ChooseCustomerActivity.this);
                 customersRV.setAdapter(customersAdapter);

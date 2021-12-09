@@ -1,5 +1,7 @@
 package com.yde.sapiensdelivery.use_cases;
 
+import android.util.Log;
+
 import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.entities.Order;
@@ -33,40 +35,7 @@ public class OrderManager{
      * @param shoppingLists The shoppingLists that the customer has added
      */
     public Order createOrder(DeliveryMan deliveryMan, Customer customer, ArrayList<ShoppingList> shoppingLists){
-        int currUID = generateUID(shoppingLists);
-        return new Order(deliveryMan, customer, ++currUID ,shoppingLists);
-    }
-
-    /**
-     * Creates an Unique ID for an order
-     *
-     * @param shoppingLists The shoppingLists that the customer has added
-     * @return unique ID based on.
-     */
-    private int generateUID(ArrayList<ShoppingList> shoppingLists) {
-        double totalPrice = 0;
-        for (ShoppingList shoppingList : shoppingLists) {
-            totalPrice += shoppingList.getTotalPrice();
-        }
-        return (int) (totalPrice + Math.floor(Math.random()*(Math.pow(10,(int) (Math.log10(totalPrice) + 1)))));
-    }
-
-    /**
-     * Provided the UID of the required order, get its information in the form of
-     * an order object.
-     * @param UID the required order's UID.
-     * @return The order corresponding to the UID.
-     */
-    public int getUID (int UID){
-        return UID; // Get order from database which matches UID. DB connection not implemented so currently null.
-    }
-
-    /**
-     * Name of Order
-     * @return Order name using UID
-     */
-    public String getName(){
-        return "Order#" + order.getUID();
+        return new Order(deliveryMan, customer ,shoppingLists);
     }
 
     /**
@@ -133,12 +102,17 @@ public class OrderManager{
         return this.order.getTotalPrice();
     }
 
-    public HashMap<String, Float> calculateJourney(Locator locator){
-        float total_distance = 0;
-        float total_duration = 0;
+    public double calculateJourney(Locator locator){
+        double total_distance = 0;
+        // double total_duration = 0;
+        double total_cost = 0;
 
         String start = this.order.getDeliveryMan().getLocation();
+        Log.d("Delivery man location", "Location of del -> " + start);
+
         String end = this.order.getCustomer().getLocation();
+        Log.d("Customer location", "Location of cus -> " + end);
+
 
         ArrayList<String> stops = new ArrayList<>();
         stops.add(start);
@@ -156,22 +130,24 @@ public class OrderManager{
                 HashMap<String, Double> info = locator.findRouteInfo
                         (stops.get(i), stops.get(i + 1), Locator.transportation.valueOf(transport));
                 double distance = info.get("Distance");
-                double duration = info.get("Duration");
+                // double duration = info.get("Duration");
 
                 total_distance += distance;
-                total_duration += duration;
+                // total_duration += duration;
             } catch (Exception e){
-                // TODO: Error cuz either wrong address or internet issues.
+
+                Log.d("Ad", "h");
             }
 
         }
 
-        HashMap<String, Float> journey= new HashMap<>();
+        Log.d("Total Distance", "Total Distance ->" + total_distance);
 
-        journey.put("Total Distance", total_distance);
-        journey.put("Total Duration", total_duration);
+        total_cost = total_distance * 0.75;
 
-        return journey;
+        order.setTotalDistance(total_distance);
+
+        return total_cost;
     }
 
     public void updateStatusComp(String customerName) {

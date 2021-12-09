@@ -8,6 +8,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.yde.sapiensdelivery.entities.Order;
 import com.yde.sapiensdelivery.gateways.database.DBGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
+import com.yde.sapiensdelivery.use_cases.OrderManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,13 +29,18 @@ public class OrderGateway extends DBGateway<String, Order> {
      * @param onDataReadListener Define onSuccess and onFailure actions
      */
     public void getByDeliveryman(String delStr, OnDataReadListener onDataReadListener) {
-        ref.addValueEventListener(new ValueEventListener() {
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                     if((Objects.requireNonNull(childSnapshot.child("deliveryMan").child("uname").getValue(String.class)))
                             .equals(delStr)){
                         ArrayList<Object> doubleData =  new ArrayList<>();
+                        OrderManager orderManager = new OrderManager(childSnapshot.getValue(Order.class));
+                        if(orderManager.getStatus() == Order.OrderStatus.COMP){
+                            continue;
+                        }
+
                         doubleData.add(childSnapshot.getValue(Order.class));
                         doubleData.add(childSnapshot.getKey());
 
@@ -68,6 +74,21 @@ public class OrderGateway extends DBGateway<String, Order> {
 
     @Override
     public void get(String obj, OnDataReadListener onDataReadListener) {
+        ref.child(obj).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                onDataReadListener.setSavedObject(snapshot.getValue(Order.class));
+                onDataReadListener.onSuccess();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                onDataReadListener.onFailure();
+            }
+        });
+    }
+
+    public void getPersist(String obj, OnDataReadListener onDataReadListener) {
         ref.child(obj).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

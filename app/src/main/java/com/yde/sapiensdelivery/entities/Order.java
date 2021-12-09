@@ -13,18 +13,17 @@ public class Order implements Serializable {
     private OrderStatus status;
 
     private DeliveryMan deliveryMan;
-    private int UID;
 
     private Customer customer;
     private ArrayList<ShoppingList> shoppingLists;
 
     private double totalPrice;
+    private double totalDistance;
 
     // Order stores a list of ShoppingLists, one ShoppingList for each store/outlet.
-    public Order(DeliveryMan deliveryMan, Customer customer, int UID, ArrayList<ShoppingList> shoppingLists) {
+    public Order(DeliveryMan deliveryMan, Customer customer, ArrayList<ShoppingList> shoppingLists) {
         this.deliveryMan  = deliveryMan;
         this.customer = customer;
-        this.UID = UID;
         this.shoppingLists = shoppingLists;
         this.totalPrice = 0;
         setStatusREC();
@@ -116,8 +115,11 @@ public class Order implements Serializable {
         return this.totalPrice;
     }
 
-    public int getUID(){
-        return this.UID;
+    public void setTotalDistance(double distance){
+        this.totalDistance = distance;
+    }
+    public double getTotalDistance(){
+        return this.totalDistance;
     }
 }
 

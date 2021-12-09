@@ -70,10 +70,17 @@ public class DeliveryManManager implements Manager{
     }
 
     /**
-     * return the Delivery man's rate
+     * update and save the Delivery man's rating and number of ratings
      */
-    public double getRate(){
-        return this.deliveryMan.getRate();
+    public void updateRating(float myRating){
+        float rating = this.deliveryMan.getRating();
+        int noOfRatings = this.deliveryMan.getNoOfRatings();
+        rating = (rating * noOfRatings + myRating) / ++noOfRatings;
+        this.deliveryMan.setRating(rating);
+        this.deliveryMan.setNoOfRatings(noOfRatings);
+
+        DeliveryManGateway deliveryManGateway = new DeliveryManGateway("DELIVERYMAN");
+        deliveryManGateway.save(this.deliveryMan.getUname(), this.deliveryMan);
     }
 
     /**
@@ -125,13 +132,6 @@ public class DeliveryManManager implements Manager{
      */
     public void setTransport(String transport){
         this.deliveryMan.setTransport(transport);
-    }
-
-    /**
-     * set the Delivery man's rate.
-     */
-    public void setRate(float rate){
-        this.deliveryMan.setRate(rate);
     }
 
     @Override

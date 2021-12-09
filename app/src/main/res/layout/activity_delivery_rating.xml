@@ -27,7 +27,6 @@
         android:progressBackgroundTint="#716F6F"
         android:progressTint="#FFC107"
         android:rating="4"
-        app:layout_constraintBottom_toTopOf="@+id/main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcome"
@@ -45,12 +44,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/delivery_man_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/ratingBar"
-        app:layout_constraintStart_toStartOf="@+id/ratingBarD" />
 </androidx.constraintlayout.widget.ConstraintLayout>
