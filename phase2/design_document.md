@@ -75,15 +75,19 @@ We covered all the key methods in all of our backend Use Cases and Entity classe
 For more details on our progress report and individual contributions, please check this seperate [markdown file](https://github.com/CSC207-UofT/course-project-java-sapiens/blob/main/phase2/progress_report.md).
 
 ## How to Use our Application:
-Once Sapiens Delivery is launched, the user has the option to either sign in or register as a new user (as either a delivery person or a customer in both cases). (You mus =t sign in again after you have registered as a new user).
+Once Sapiens Delivery is launched, the user has the option to either sign in or register as a new user (as either a delivery person or a customer in both cases). (You must sign in again after you have registered as a new user).
 
 - Customer Perspective:
 
 Once logged in, the customer can do one of three things: view their profile, place an order, or view their order status. If they have not placed an order yet, an appropriate message is displayed when they try to choose the third option. When placing an order, the customer can choose various commodities from different outlets (limited to 2 outlets and 2 commodities per outlet as of now) and add them to their order. Once they finish creating an order, they are requested to wait as a delivery person takes their order. The customer is then given the delivery person's phone number and requested to wait as the delivery person completes the delivery. Once the delivery person has completed the delivery and notified the customer, the customer can then select proceed to rate the delivery person. 
 
+A Customer can only have ONE active order at a time. The application makes adequate checks and provides messages to ensure this stays true.
+
 - Delivery Person Perspective:
 
 Once logged in, the delivery person can do one of three things: view their profile, take an order, or view the order status. If they have not taken an order yet, an appropriate message is displayed when they try to choose the third option. When choosing which order to take, the delivery person can view the order details and who has placed the order. Once they choose an order, they can notify the customer that they are out for delivery. Once the delivery is completed, they can once again notify the customer. Once the customer verifies completion of the order on their end, the delivery person can then rate the customer. 
+
+A DeliveryMan can be in charge of ONE active order at a time. The application makes adequate checks and provides messages to ensure this stays true.
 
 ## Future Improvements...
 Although we successfully completed the complete cycle of the two users and made our program functional, there are definitely a lot of possible improvements. 
