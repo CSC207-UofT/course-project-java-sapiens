@@ -128,7 +128,7 @@ public class OrderManager{
                 total_distance += distance;
                 total_duration += duration;
             } catch (Exception e){
-                // TODO: Error cuz either wrong address or internet issues.
+
             }
 
         }

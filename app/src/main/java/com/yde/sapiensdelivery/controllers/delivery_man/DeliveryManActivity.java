@@ -2,6 +2,7 @@ package com.yde.sapiensdelivery.controllers.delivery_man;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,7 +18,6 @@ import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
 import com.yde.sapiensdelivery.use_cases.OrderManager;
 
 import java.util.ArrayList;
-
 
 public class DeliveryManActivity extends AppCompatActivity {
 
@@ -43,9 +43,34 @@ public class DeliveryManActivity extends AppCompatActivity {
         });
 
         takeOrder.setOnClickListener(v -> {
-            Intent intent = new Intent( DeliveryManActivity.this, ChooseCustomerActivity.class);
-            dm.passValue(intent);
-            startActivity(intent);
+            OrderGateway orderGateway = new OrderGateway();
+
+            orderGateway.getByDeliveryman(dm.getUsername(), new OnDataReadListener() {
+                @Override
+                public void onSuccess() {
+                    ArrayList<Object> doubleData = (ArrayList<Object>) getSavedObject();
+                    OrderManager orderManager = new OrderManager((Order) doubleData.get(0));
+
+                    if(orderManager.getStatus() != Order.OrderStatus.COMP){
+                        String message = "You already have an order to deliver";
+                        Toast.makeText(DeliveryManActivity.this, message, Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        Intent intent = new Intent( DeliveryManActivity.this, ChooseCustomerActivity.class);
+
+                        dm.passValue(intent);
+                        startActivity(intent);
+                    }
+                }
+
+                @Override
+                public void onFailure() {
+                    Intent intent = new Intent( DeliveryManActivity.this, ChooseCustomerActivity.class);
+
+                    dm.passValue(intent);
+                    startActivity(intent);
+                }
+            });
         });
 
         status.setOnClickListener(v -> {
