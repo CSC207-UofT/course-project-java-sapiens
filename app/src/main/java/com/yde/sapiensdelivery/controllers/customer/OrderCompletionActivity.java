@@ -41,7 +41,7 @@ public class OrderCompletionActivity extends AppCompatActivity {
         CustomerManager customerManager = new CustomerManager((Customer)
                 getIntent().getSerializableExtra("CUSTOMER"));
 
-        orderGateway.get(customerManager.getUsername(), new OnDataReadListener() {
+        orderGateway.getPersist(customerManager.getUsername(), new OnDataReadListener() {
 
             @SuppressLint("SetTextI18n")
             @Override

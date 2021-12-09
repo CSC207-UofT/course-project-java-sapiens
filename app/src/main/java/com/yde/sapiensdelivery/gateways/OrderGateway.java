@@ -74,6 +74,21 @@ public class OrderGateway extends DBGateway<String, Order> {
 
     @Override
     public void get(String obj, OnDataReadListener onDataReadListener) {
+        ref.child(obj).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                onDataReadListener.setSavedObject(snapshot.getValue(Order.class));
+                onDataReadListener.onSuccess();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                onDataReadListener.onFailure();
+            }
+        });
+    }
+
+    public void getPersist(String obj, OnDataReadListener onDataReadListener) {
         ref.child(obj).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

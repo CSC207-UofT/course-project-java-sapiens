@@ -36,7 +36,7 @@ public class OrderStatusActivity extends AppCompatActivity {
                 getIntent().getSerializableExtra("CUSTOMER"));
 
         OrderGateway orderGateway = new OrderGateway();
-        orderGateway.get(customerManager.getUsername(), new OnDataReadListener() {
+        orderGateway.getPersist(customerManager.getUsername(), new OnDataReadListener() {
 
             @Override
             public void onSuccess() {
@@ -51,9 +51,6 @@ public class OrderStatusActivity extends AppCompatActivity {
                     String statusInfo = orderManager.getStatus().toString();
                     statusOrder.setText(statusInfo);
 
-//                    if (orderManager.getStatus() == Order.OrderStatus.COMP) {
-//                        completeOrder.setVisibility(View.VISIBLE);
-//                    }
                     if (orderManager.isStatusCOMP(orderManager.getStatus())) {
                         completeOrder.setVisibility(View.VISIBLE);
                     }
