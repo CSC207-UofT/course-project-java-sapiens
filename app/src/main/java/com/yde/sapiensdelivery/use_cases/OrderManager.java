@@ -108,10 +108,10 @@ public class OrderManager{
         Log.d("HOW YOU RIDIN?", "TRANSPORT ->" + transport);
 
 
-        for(int i = 0; i < stops.size(); i++){
+        for(int i = 1; i < stops.size(); i++){
             try {
                 HashMap<String, Double> info = locator.findRouteInfo
-                        (stops.get(i), stops.get(i + 1), Locator.transportation.driving);
+                        (stops.get(i-1), stops.get(i), Locator.transportation.driving);
                 double distance = info.get("Distance");
                 Log.d("DISTANCE", "DISTANCE GET? " + distance);
                 // double duration = info.get("Duration");
