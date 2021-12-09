@@ -5,6 +5,7 @@
 Our project is a delivery service App named Sapiens Delivery that allows customers who use our app to create a delivery order from different stores, each with a list of items the customer wants to buy. Our app will then pair the customer with a deliveryman who delivers the customer's order. After the order has been delivered and completed, the customer will be prompted to pay the delivery man, and then both the deliveryman and the customer can provide a rating for each other.   
 
 For more details, please check our [specification.md file](https://git.io/JMpmy). 
+We have provided a short demonstration video as instruction to use our app! Please check it out [here](https://utoronto.zoom.us/rec/share/_3t-9gJjbJzSl3ZZHUhCMHagpzYcEBNPlmzn_VYoOJUoICk5ZBl0vNW3OZTU-I0.UY8aXI2FZbXSwUHL) (Password:=Z88a6.T=3)
 
 Note about using our program: if you click sign in as deliveryman and the app crashes, that's due to your last know location not being recognized by the emulator you're using. Please manually open the Google Maps app on your emulator to detect your location again. 
 
@@ -88,6 +89,8 @@ A Customer can only have ONE active order at a time. The application makes adequ
 Once logged in, the delivery person can do one of three things: view their profile, take an order, or view the order status. If they have not taken an order yet, an appropriate message is displayed when they try to choose the third option. When choosing which order to take, the delivery person can view the order details and who has placed the order. Once they choose an order, they can notify the customer that they are out for delivery. Once the delivery is completed, they can once again notify the customer. Once the customer verifies completion of the order on their end, the delivery person can then rate the customer. 
 
 A DeliveryMan can be in charge of ONE active order at a time. The application makes adequate checks and provides messages to ensure this stays true.
+
+For more detail, please check out the [demonstration video ](https://utoronto.zoom.us/rec/share/_3t-9gJjbJzSl3ZZHUhCMHagpzYcEBNPlmzn_VYoOJUoICk5ZBl0vNW3OZTU-I0.UY8aXI2FZbXSwUHL) (Password:=Z88a6.T=3)
 
 ## Future Improvements...
 Although we successfully completed the complete cycle of the two users and made our program functional, there are definitely a lot of possible improvements. 
