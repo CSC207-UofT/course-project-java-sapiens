@@ -77,19 +77,12 @@ public class DeliveryManManager implements Manager{
     }
 
     /**
-     * set the Delivery man's name
-     */
-    public void setName(String name){
-        this.deliveryMan.setName(name);
-    }
-
-    /**
      * set the Delivery man's location.
      */
     public void setLocation(String location){
         DeliveryManGateway deliveryManGateway = new DeliveryManGateway("DELIVERYMAN");
         this.deliveryMan.setLocation(location);
-        deliveryManGateway.save(getName(), deliveryMan);
+        deliveryManGateway.save(getUsername(), deliveryMan);
     }
 
     @Override
