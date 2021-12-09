@@ -135,7 +135,7 @@ public class OrderManager{
         for(int i = 0; i < stops.size(); i++){
             try {
                 HashMap<String, Double> info = locator.findRouteInfo
-                        (stops.get(i), stops.get(i + 1), Locator.transportation.valueOf(transport));
+                        (stops.get(i), stops.get(i + 1), Locator.transportation.driving);
                 double distance = info.get("Distance");
                 Log.d("DISTANCE", "DISTANCE GET? " + distance);
                 // double duration = info.get("Duration");
