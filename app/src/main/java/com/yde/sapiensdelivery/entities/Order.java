@@ -118,8 +118,5 @@ public class Order implements Serializable {
     public void setTotalDistance(double distance){
         this.totalDistance = distance;
     }
-    public double getTotalDistance(){
-        return this.totalDistance;
-    }
 }
 
