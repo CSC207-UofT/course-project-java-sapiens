@@ -8,6 +8,9 @@ import com.yde.sapiensdelivery.entities.Order;
 import com.yde.sapiensdelivery.entities.ShoppingList;
 import com.yde.sapiensdelivery.gateways.OrderGateway;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -122,7 +125,11 @@ public class OrderManager{
         }
         stops.add(end);
 
+        Log.d("STOPS MADE ON THE WAY", "STOPS -> " + stops);
+
         String transport = order.getDeliveryMan().getTransport();
+
+        Log.d("HOW YOU RIDIN?", "TRANSPORT ->" + transport);
 
 
         for(int i = 0; i < stops.size(); i++){
@@ -130,18 +137,21 @@ public class OrderManager{
                 HashMap<String, Double> info = locator.findRouteInfo
                         (stops.get(i), stops.get(i + 1), Locator.transportation.valueOf(transport));
                 double distance = info.get("Distance");
+                Log.d("DISTANCE", "DISTANCE GET? " + distance);
                 // double duration = info.get("Duration");
 
                 total_distance += distance;
                 // total_duration += duration;
-            } catch (Exception e){
+            } catch (IOException e){
 
-                Log.d("Ad", "h");
+                Log.d("Exception EEROR MESSAGE", "PLEASE WORKKK INTERNET");
+            } catch (JSONException e){
+                Log.d("Exception EEROR MESSAGE", "PLEASE WORKKK ADDRESS");
             }
 
         }
 
-        Log.d("Total Distance", "Total Distance ->" + total_distance);
+        Log.d("Total Distance", "Total Distance -> " + total_distance);
 
         total_cost = total_distance * 0.75;
 
