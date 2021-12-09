@@ -81,6 +81,7 @@ public class OrderCompletionActivity extends AppCompatActivity {
 
             Intent intent = new Intent( OrderCompletionActivity.this, CustomerRatingActivity.class);
             deliveryManManager.passValue(intent);
+            customerManager.passValue(intent);
             startActivity(intent);
         });
     }

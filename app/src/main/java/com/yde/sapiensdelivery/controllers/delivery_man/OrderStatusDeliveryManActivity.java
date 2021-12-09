@@ -12,12 +12,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.yde.sapiensdelivery.R;
+import com.yde.sapiensdelivery.entities.Customer;
 import com.yde.sapiensdelivery.entities.DeliveryMan;
 import com.yde.sapiensdelivery.entities.Order;
 import com.yde.sapiensdelivery.entities.ShoppingList;
+import com.yde.sapiensdelivery.gateways.CustomerGateway;
 import com.yde.sapiensdelivery.gateways.GoogleMapGateway;
 import com.yde.sapiensdelivery.gateways.OrderGateway;
 import com.yde.sapiensdelivery.gateways.database.OnDataReadListener;
+import com.yde.sapiensdelivery.use_cases.CustomerManager;
 import com.yde.sapiensdelivery.use_cases.DeliveryManManager;
 import com.yde.sapiensdelivery.use_cases.OrderManager;
 import com.yde.sapiensdelivery.use_cases.ShoppingListManager;
@@ -27,7 +30,8 @@ import java.util.ArrayList;
 public class OrderStatusDeliveryManActivity extends AppCompatActivity {
 
     OrderManager orderManager = new OrderManager();
-    String customerName;
+    String customerUsername;
+    CustomerManager customerManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +56,8 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
             public void onSuccess() {
                 ArrayList<Object> doubleData =  (ArrayList<Object>) getSavedObject();
                 orderManager = new OrderManager((Order) doubleData.get(0));
-                customerName = (String) doubleData.get(1);
+                customerManager = new CustomerManager(((Order) doubleData.get(0)).getCustomer());
+                customerUsername = (String) doubleData.get(1);
 
                 String cusName = orderManager.getCustomerName();
                 String address = orderManager.getCustomerAddress();
@@ -87,15 +92,16 @@ public class OrderStatusDeliveryManActivity extends AppCompatActivity {
         });
 
         completeOrder.setOnClickListener(view -> {
-            orderManager.updateStatusComp(customerName);
+            orderManager.updateStatusComp(customerUsername);
 
             Intent intent = new Intent( OrderStatusDeliveryManActivity.this,
                                                      DeliveryRatingActivity.class);
             dm.passValue(intent);
+            customerManager.passValue(intent);
             startActivity(intent);
         });
 
-        otwOrderBT.setOnClickListener(v -> orderManager.updateStatusOTW(customerName));
+        otwOrderBT.setOnClickListener(v -> orderManager.updateStatusOTW(customerUsername));
 
     }
 }
