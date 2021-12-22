@@ -2,7 +2,7 @@
   <p>Sapiens Delivery</p></div>
 
 <p align="center">
-  <img src="./resources/icons/256x256.png" alt="Sapiens-Delivery-logo" width="120px" height="120px"/>
+  <img src="./logo.png" alt="Sapiens-Delivery-logo" width="120px" height="120px"/>
   <br>
   <i>Sapiens Delivery is an Android Delivery Application that links customers and deivery persons effectively..</i>
   <br>
