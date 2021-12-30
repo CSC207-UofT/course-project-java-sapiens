@@ -1,5 +1,4 @@
-<div align="center"><h1 style="margin-bottom:0">YAPR</h1>
-  <p>Sapiens Delivery</p></div>
+<div align="center"><h1 style="margin-bottom:0">Sapiens Delivery</h1>
 
 <p align="center">
   <img src="./logo.png" alt="Sapiens-Delivery-logo" width="120px" height="120px"/>
