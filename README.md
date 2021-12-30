@@ -1,9 +1,9 @@
-<div align="center"><h1 style="margin-bottom:0">Sapiens Delivery</h1>
+<div align="center"><h1 style="margin-bottom:0">Sapiens Delivery</h1></div>
 
 <p align="center">
   <img src="./logo.png" alt="Sapiens-Delivery-logo" width="120px" height="120px"/>
   <br>
-  <i>Sapiens Delivery is an Android Delivery Application that links customers and deivery persons effectively..</i>
+  <i>Sapiens Delivery is an Android Delivery Application that links customers and delivery persons effectively.</i>
   <br>
 </p>
 <hr>
