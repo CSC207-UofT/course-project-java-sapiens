@@ -21,6 +21,14 @@
 * Google Maps Services
 * Firebase Realtime Database
 
+## Design Patterns
+- Factory
+- Command 
+- Template 
+- Model-Controller-View  
+- Façade 
+- Adapters 
+
 ## Demo 
 ### For customers using the app:
 ![image](https://user-images.githubusercontent.com/74110291/149050301-6891890a-6f7e-4e03-9071-69f0c7aa90b5.png)
